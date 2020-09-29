@@ -1,0 +1,3746 @@
+[
+    {
+        "id": "4",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "U.S. Department of the Interior",
+        "wos_name": "United States Department of the Interior",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 16:49:21"
+    },
+    {
+        "id": "5",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Johann Heinrich von Thünen Institute",
+        "wos_name": "Johann Heinrich von Thunen Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:03:22"
+    },
+    {
+        "id": "6",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Livestock Genetics Research Program, International Livestock Research Institute (ILRI), PO Box 5689, Addis Ababa, Ethiopia.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:05:20"
+    },
+    {
+        "id": "7",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Department of Biosciences, International Livestock Research Institute (ILRI), Nairobi, Kenya.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:05:34"
+    },
+    {
+        "id": "8",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Department of Biosciences, International Livestock Research Institute (ILRI), Guwahati, India.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:05:54"
+    },
+    {
+        "id": "9",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "AgResearch",
+        "wos_name": "AgResearch - New Zealand",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:06:37"
+    },
+    {
+        "id": "10",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of the Philippines Los Baños",
+        "wos_name": "University of the Philippines System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 18:13:46"
+    },
+    {
+        "id": "11",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agricultural Research Council",
+        "wos_name": "Agricultural Research Council of South Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 19:59:21"
+    },
+    {
+        "id": "122222",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wageningen University and Research Centre",
+        "wos_name": "Wageningen Plant Res",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 20:09:47"
+    },
+    {
+        "id": "12",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "U.S. Environmental Protection Agency",
+        "wos_name": "United States Environmental Protection Agency",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-09 20:09:47"
+    },
+    {
+        "id": "13",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Michigan State University",
+        "wos_name": "Michigan State Univ",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:00:30"
+    },
+    {
+        "id": "14",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Agriculture, Livestock and Irrigation (Myanmar)",
+        "wos_name": "Minist Agr Livestock & Irrigat",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:22:53"
+    },
+    {
+        "id": "15",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Fisheries and Livestock (Zambia)",
+        "wos_name": "Minist Fisheries & Livestock",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:36:55"
+    },
+    {
+        "id": "16",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Fisheries and Marine Resources (Solomon Islands)",
+        "wos_name": "Minist Fisheries & Marine Resources",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:38:58"
+    },
+    {
+        "id": "17",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministère de la Santé et de la Lutte contre le sida (Côte d'Ivoire)",
+        "wos_name": "Minist Sante & Lutte Sida",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:46:06"
+    },
+    {
+        "id": "18",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Water, Irrigation and Electricity (Ethiopia)",
+        "wos_name": "Minist Water Irrigat & Elect",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:47:47"
+    },
+    {
+        "id": "19",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Minzu University of China",
+        "wos_name": "Minzu Univ China",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 12:50:41"
+    },
+    {
+        "id": "20",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Museums of Kenya",
+        "wos_name": "Natl Museums Kenya",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:19:28"
+    },
+    {
+        "id": "21",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Nepa School of Social Sciences and Humanities",
+        "wos_name": "Nepa Sch Social Sci & Humanities",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:21:46"
+    },
+    {
+        "id": "22",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Overseas Development Institute",
+        "wos_name": "Overseas Dev Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:29:48"
+    },
+    {
+        "id": "23",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Oxford Poverty and Human Development Initiative",
+        "wos_name": "Oxford Poverty & Human Dev Initiat",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:34:52"
+    },
+    {
+        "id": "24",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Pacific Northwest National Laboratory (United States)",
+        "wos_name": "Pacific Northwest Natl Lab",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:42:08"
+    },
+    {
+        "id": "25",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Rhine-Waal University of Applied Sciences",
+        "wos_name": "Rhine Waal Univ Appl Sci",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:51:32"
+    },
+    {
+        "id": "26",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Royal Roads University",
+        "wos_name": "Royal Roads Univ",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 13:59:54"
+    },
+    {
+        "id": "27",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Sierra Leone Agricultural Resarch Institute",
+        "wos_name": "Sierra Leone Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:15:12"
+    },
+    {
+        "id": "28",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Slum Dwellers International",
+        "wos_name": "Slum Dwellers Int",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:18:30"
+    },
+    {
+        "id": "29",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Sokoine University of Agriculture",
+        "wos_name": "SokoineUniv Agr",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:40:11"
+    },
+    {
+        "id": "30",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Southern Agricultural Research Institute (Ethiopia)",
+        "wos_name": "Southern Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:48:25"
+    },
+    {
+        "id": "31",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Sri Karan Narendra Agriculture University",
+        "wos_name": "Sri Karan Narendra Agr Univ",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:53:13"
+    },
+    {
+        "id": "32",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "State Serum Institute\/Statens Serum Institut",
+        "wos_name": "Statens Serum Institut",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 14:59:41"
+    },
+    {
+        "id": "33",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Stockholm Environment Institute",
+        "wos_name": "Stockholm Environm Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:00:44"
+    },
+    {
+        "id": "34",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Talking Oceans Foundation",
+        "wos_name": "Talking Oceans Fdn",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:05:30"
+    },
+    {
+        "id": "35",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Tanzania Agricultural Research Institute",
+        "wos_name": "Tanzania Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:09:57"
+    },
+    {
+        "id": "36",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Tecnológico Nacional de México",
+        "wos_name": "Tecnol Nacl Mexico",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:12:21"
+    },
+    {
+        "id": "37",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "TreeAid",
+        "wos_name": "TreeAID",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:16:12"
+    },
+    {
+        "id": "38",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "United Nations Economic Commission for Africa",
+        "wos_name": "United Nations Econ Commiss Africa",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:26:35"
+    },
+    {
+        "id": "39",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad de la Amazonía",
+        "wos_name": "Univ Amazonia",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:31:58"
+    },
+    {
+        "id": "40",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Antananarivo \/ Université d'Antananarivo",
+        "wos_name": "Univ Antananarivo",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:35:04"
+    },
+    {
+        "id": "41",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universite Catholique du Graben",
+        "wos_name": "Univ Catholique Graben",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:50:03"
+    },
+    {
+        "id": "42",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Damascus",
+        "wos_name": "Univ Damascus",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:51:19"
+    },
+    {
+        "id": "43",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Dar es Salaam",
+        "wos_name": "Univ Daar Es Salaam",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 15:54:55"
+    },
+    {
+        "id": "44",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University for Development Studies",
+        "wos_name": "Univ Dev Studies",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:07:34"
+    },
+    {
+        "id": "45",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Dschang",
+        "wos_name": "Univ Dschang",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:13:29"
+    },
+    {
+        "id": "46",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Florida",
+        "wos_name": "Univ Florida",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:20:37"
+    },
+    {
+        "id": "47",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Kisangani",
+        "wos_name": "Univ Kisangani",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:25:21"
+    },
+    {
+        "id": "48",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Federal University of Lavras",
+        "wos_name": "Univ Lavras",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:34:58"
+    },
+    {
+        "id": "49",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Ibadan",
+        "wos_name": "Univ lbadan",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:40:21"
+    },
+    {
+        "id": "50",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Université de Ouagadougou",
+        "wos_name": "Univ Ouagadougou",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:45:59"
+    },
+    {
+        "id": "51",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Pelefero Gon Coulibaly University\/Université Pelefero Gon Coulibaly de Korhogo",
+        "wos_name": "Univ Pelefero Gon Coulibaly Korhogo",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 16:49:34"
+    },
+    {
+        "id": "52",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Costa Rica",
+        "wos_name": "Universidad Costa Rica",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 17:33:02"
+    },
+    {
+        "id": "53",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Sao Paulo",
+        "wos_name": "Universidade de Sao Paulo",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 17:41:04"
+    },
+    {
+        "id": "54",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Université de Montpellier \/ Montpellier University",
+        "wos_name": "Universite de Montpellier",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 17:43:50"
+    },
+    {
+        "id": "55",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad Central de Venezuela",
+        "wos_name": "University of Central Venezuela",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 17:53:52"
+    },
+    {
+        "id": "56",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Liège",
+        "wos_name": "University of Liege",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:06:13"
+    },
+    {
+        "id": "57",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of the West of England",
+        "wos_name": "University of West England",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:10:25"
+    },
+    {
+        "id": "58",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Yaoundé 1",
+        "wos_name": "University of Yaounde I",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:14:34"
+    },
+    {
+        "id": "59",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wolaita Sodo university",
+        "wos_name": "Wolayita Sodo Univ",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:46:01"
+    },
+    {
+        "id": "60",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wetlands International",
+        "wos_name": "Wetlands Int",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:53:24"
+    },
+    {
+        "id": "61",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wildlife Conservation Society",
+        "wos_name": "Wildlife Conservat Soc",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:53:48"
+    },
+    {
+        "id": "62",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The World Vegetable Center",
+        "wos_name": "World Vegetable Ctr",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 18:58:12"
+    },
+    {
+        "id": "63",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "WorldFish",
+        "wos_name": "Worldfish",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:00:35"
+    },
+    {
+        "id": "64",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Yunnan Academy of Social Sciences",
+        "wos_name": "Yunnan Acad Social Sci",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:04:16"
+    },
+    {
+        "id": "65",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Zambia Agriculture Research Institute",
+        "wos_name": "Zambian Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:05:57"
+    },
+    {
+        "id": "66",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Action Against Hunger",
+        "wos_name": "Act Hunger",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:33:46"
+    },
+    {
+        "id": "67",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "African Agricultural Technology Foundation",
+        "wos_name": "African Agr Technol Fdn",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:35:22"
+    },
+    {
+        "id": "68",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "African Wildlife Foundation",
+        "wos_name": "African Wildlife Fdn",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:35:44"
+    },
+    {
+        "id": "69",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agence Française de Développement",
+        "wos_name": "Agence Francaise Dev",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:38:02"
+    },
+    {
+        "id": "70",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agricultural Genetics Institute",
+        "wos_name": "Agr Genet Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:40:49"
+    },
+    {
+        "id": "71",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agricultural Research Council of Nigeria",
+        "wos_name": "Agr Res Council Nigeria",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:41:23"
+    },
+    {
+        "id": "72",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "South African Medical Research Council",
+        "wos_name": "Agr Res Council South Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:41:49"
+    },
+    {
+        "id": "73",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agricultural Research,Education and Extension Organization",
+        "wos_name": "Agr Res Educ & Extens Org",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:45:09"
+    },
+    {
+        "id": "74",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Karen Environmental and Social Action Network",
+        "wos_name": "Karen Environm & Social Act Network",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:51:14"
+    },
+    {
+        "id": "75",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kenya Agricultural and Livestock Research Organization",
+        "wos_name": "Kenya Agr & Livestock Res Org",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 19:57:06"
+    },
+    {
+        "id": "76",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kenya Network for Dissemination of Agricultural Technologies",
+        "wos_name": "Kenya Network Disseminat Agr Technol",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:03:29"
+    },
+    {
+        "id": "77",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kachwekano Zonal Agricultural Research and Development Institute",
+        "wos_name": "Kachwekano Zonal Agr Res & Dev Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:04:14"
+    },
+    {
+        "id": "78",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agriculture and Agrifood Canada",
+        "wos_name": "Agriculture & Agri Food Canada",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:04:15"
+    },
+    {
+        "id": "79",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kunming Institute of Botany",
+        "wos_name": "Kunming Institute of Botany Chinese Academy of Sciences",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:12:31"
+    },
+    {
+        "id": "80",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "IPK Gatersleben",
+        "wos_name": "Leibniz Institute of Plant Genetics and Crop Plant Research, Gatersleben, Germany.",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:25:09"
+    },
+    {
+        "id": "81",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Local Initiatives for Biodiversity, Research and Development",
+        "wos_name": "Local Initiat Biodivers Res & Dev LI BIRD",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:45:46"
+    },
+    {
+        "id": "82",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "London School of Economics and Political Science",
+        "wos_name": "London Sch Econ & Polit Sci",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 20:47:50"
+    },
+    {
+        "id": "83",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Australian Center for International Agricultural Research",
+        "wos_name": "Australian Ctr Int Agr Res",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 21:25:17"
+    },
+    {
+        "id": "84",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ayub Agricultural Research Institute",
+        "wos_name": "Ayub Agr Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 21:28:26"
+    },
+    {
+        "id": "85",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bahir Dar University",
+        "wos_name": "Bahir Dar Univeristy",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 21:31:16"
+    },
+    {
+        "id": "86",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bangladesh Agricultural Research Institute",
+        "wos_name": "Bangladesh Agr Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 21:32:05"
+    },
+    {
+        "id": "87",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bangladesh Rice Research Insitute",
+        "wos_name": "Bangladesh Rice Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:35:06"
+    },
+    {
+        "id": "88",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bangladesh Wheat and Maize Research Institute",
+        "wos_name": "Bangladesh Wheat & Maize Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:35:24"
+    },
+    {
+        "id": "89",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National GeneBank of Tunisia",
+        "wos_name": "Banque Natl Genes",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:36:35"
+    },
+    {
+        "id": "90",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bern University of Applied Sciences",
+        "wos_name": "Bern Univ Appl Sci",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:48:51"
+    },
+    {
+        "id": "91",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bihar Agricultural University",
+        "wos_name": "Bihar Agr Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:49:57"
+    },
+    {
+        "id": "92",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bill & Melinda Gates Foundation",
+        "wos_name": "Bill & Melinda Gates Fdn India",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:50:34"
+    },
+    {
+        "id": "93",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Biosciences eastern and central Africa",
+        "wos_name": "Biosci Eastern & Cent Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:55:54"
+    },
+    {
+        "id": "94",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Biosciences eastern and central Africa",
+        "wos_name": "Biosci Eastern & Cent Africa Int Livestock Res In",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:56:08"
+    },
+    {
+        "id": "95",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bioversity International",
+        "wos_name": "Biovers Int",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-10 23:56:38"
+    },
+    {
+        "id": "96",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Borlaug Institute for South Asia",
+        "wos_name": "Borlaug Inst South Asia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:00:38"
+    },
+    {
+        "id": "97",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Boyce Thompson Institute",
+        "wos_name": "Boyce Thompson Inst Plant Res",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:06:52"
+    },
+    {
+        "id": "98",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "BRAC University",
+        "wos_name": "BRAC Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:07:21"
+    },
+    {
+        "id": "99",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "BRAC",
+        "wos_name": "BRAG",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:09:04"
+    },
+    {
+        "id": "100",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Busia County Government (Kenya)",
+        "wos_name": "Busia Cty Govt",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:30:12"
+    },
+    {
+        "id": "101",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cambodian Agricultural Research and Development Institute",
+        "wos_name": "Cambodian Agr Res & Dev Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 00:40:10"
+    },
+    {
+        "id": "102",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kachwekano Zonal Agricultural Research and Development Institute",
+        "wos_name": "Kachwekano Zonal Agr Res & Dev Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 10:24:54"
+    },
+    {
+        "id": "103",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Agriculture, Irrigation and Water Development (Malawi)",
+        "wos_name": "Malawi Minist Agr Irrigat & Water Dev MoAIWD",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 10:37:45"
+    },
+    {
+        "id": "104",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Agriculture and Forests (Bhutan)",
+        "wos_name": "Minist Agr & Forests",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 10:56:03"
+    },
+    {
+        "id": "105",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "M. S. Swaminathan Research Foundation",
+        "wos_name": "MS Swaminathan Res Fdn",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 11:06:31"
+    },
+    {
+        "id": "106",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Nepal Agricultural Research Council",
+        "wos_name": "Nepal Agr Res Council",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 11:31:01"
+    },
+    {
+        "id": "107",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "North-West University",
+        "wos_name": "North West University - South Africa",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 11:42:58"
+    },
+    {
+        "id": "108",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Department of Primary Industries (Australia)",
+        "wos_name": "NSW Department of Primary Industries",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 11:44:51"
+    },
+    {
+        "id": "109",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Oromia Agricultural Research Institute",
+        "wos_name": "Oromia Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 11:54:08"
+    },
+    {
+        "id": "110",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Philippine Rice Research Institute",
+        "wos_name": "Philippines Rice Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:07:28"
+    },
+    {
+        "id": "111",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Sarmap SA",
+        "wos_name": "Sarmap",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:16:04"
+    },
+    {
+        "id": "112",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Statistics for Sustainable Development",
+        "wos_name": "Stat Sustainable Dev",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:24:26"
+    },
+    {
+        "id": "113",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Stockholm International Water Institute",
+        "wos_name": "Stockholm Int Water Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:25:48"
+    },
+    {
+        "id": "114",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Tufts University",
+        "wos_name": "Tufts Univ",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:29:34"
+    },
+    {
+        "id": "115",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad Autónoma Chapingo",
+        "wos_name": "Univ Autonoma Chapingo",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:40:49"
+    },
+    {
+        "id": "116",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "West African Science Service Center on Climate Change and Adapted Land Use",
+        "wos_name": "West African Sci Serv Ctr Climate Change & Adapte",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:44:24"
+    },
+    {
+        "id": "117",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Values for Development Limited",
+        "wos_name": "Values Dev Ltd",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 12:48:05"
+    },
+    {
+        "id": "118",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cocoa Research Institute of Ghana",
+        "wos_name": "Cocoa Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 15:13:49"
+    },
+    {
+        "id": "119",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Coordinating Secretariat for Science, Technology and Innovation (Sri Lanka)",
+        "wos_name": "Coordinating Secretariat Sci Technol & Innovat CO",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 15:48:12"
+    },
+    {
+        "id": "120",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cornell University",
+        "wos_name": "Cornell Univ USA",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 15:49:31"
+    },
+    {
+        "id": "121",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Corteva AgriScience",
+        "wos_name": "Corteva Agrisci",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 15:50:56"
+    },
+    {
+        "id": "122",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centre for Agriculture and Biosciences International",
+        "wos_name": "Ctr Agr & Biosci Int",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:07:32"
+    },
+    {
+        "id": "123",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centro Agronómico Tropical de Investigación y Enseñanza",
+        "wos_name": "Ctr Agron Trop Invest & Enserianza",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:11:14"
+    },
+    {
+        "id": "124",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centers for Disease Control and Prevention",
+        "wos_name": "Ctr Dis Prevent & Control",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:19:45"
+    },
+    {
+        "id": "125",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Center for International Forestry Research",
+        "wos_name": "Ctr Int Forestry Res",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:39:03"
+    },
+    {
+        "id": "126",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Center for International Forestry Research",
+        "wos_name": "Ctr Int Forestry Res CI",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:39:19"
+    },
+    {
+        "id": "127",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centro Internacional de la Papa",
+        "wos_name": "Ctr Int Papa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:40:59"
+    },
+    {
+        "id": "128",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centre national de recherche agronomique",
+        "wos_name": "Ctr Natl Rech Agron Cote Ivoire",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:44:44"
+    },
+    {
+        "id": "129",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centre Suisse de Recherche Scientifique",
+        "wos_name": "Ctr Suisse Rech Sci Cote Ivoire",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 16:50:33"
+    },
+    {
+        "id": "130",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cuu Long Delta Rice Research Institute",
+        "wos_name": "Cuu Long Delta Rice Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 17:00:12"
+    },
+    {
+        "id": "131",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Liège",
+        "wos_name": "Department of Public Health Sciences, Faculty of Medicine, University of Liege, Liege 4000, Belgium. abhimanyu.hm@gmail.com.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 18:13:36"
+    },
+    {
+        "id": "132",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Department of Primary Industries (Australia)",
+        "wos_name": "Dept Primary Ind & Reg Dev",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 18:32:43"
+    },
+    {
+        "id": "133",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Department of Research and Specialist Services ",
+        "wos_name": "Dept Res & Specialist Serv",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 18:35:25"
+    },
+    {
+        "id": "134",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "East Africa Int Livestock Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 19:16:40"
+    },
+    {
+        "id": "135",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Energy Research Centre, University of Cape Town",
+        "wos_name": "Energy Res Ctr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 19:56:48"
+    },
+    {
+        "id": "136",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Escuela Agricola Panamericana Zamorano",
+        "wos_name": "Escuela Agr Panamer",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 20:05:37"
+    },
+    {
+        "id": "137",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ethiopian Development Research Institute",
+        "wos_name": "Ethiopian Dev Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 20:26:08"
+    },
+    {
+        "id": "138",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ethiopian Environment and Forest Research Institute",
+        "wos_name": "Ethiopian Environm & Forest Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 20:26:43"
+    },
+    {
+        "id": "139",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ethiopian Public Health Institute",
+        "wos_name": "Ethiopian Publ Hlth Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 20:27:14"
+    },
+    {
+        "id": "140",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Flinders University",
+        "wos_name": "Flinders University South Australia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 21:04:10"
+    },
+    {
+        "id": "141",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Friedrich-Loeffler-Institut ( FLI )",
+        "wos_name": "Friedrich Loeffler Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 21:35:54"
+    },
+    {
+        "id": "142",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bill & Melinda Gates Foundation",
+        "wos_name": "Gates Foundation",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 21:44:25"
+    },
+    {
+        "id": "143",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Government of Uganda",
+        "wos_name": "Govt Uganda",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:07:15"
+    },
+    {
+        "id": "144",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Grains Research and Development Corporation (Australia)",
+        "wos_name": "Grains Res & Dev Corp",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:08:25"
+    },
+    {
+        "id": "145",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Groundwork Group LLC",
+        "wos_name": "GroundWork",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:15:35"
+    },
+    {
+        "id": "146",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Gulu University",
+        "wos_name": "Gulu Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:27:57"
+    },
+    {
+        "id": "147",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Heifer International",
+        "wos_name": "Heifer Int",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:39:15"
+    },
+    {
+        "id": "148",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Helen Keller International",
+        "wos_name": "Helen Keller Int",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:40:59"
+    },
+    {
+        "id": "149",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Helmholtz Association of German Research Centres",
+        "wos_name": "Helmholtz Association",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 22:50:45"
+    },
+    {
+        "id": "150",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Huazhong Agricultural University",
+        "wos_name": "Huarhong Agr Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 23:04:56"
+    },
+    {
+        "id": "151",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Institute of Nutrition, India",
+        "wos_name": "ICMR Natl Inst Nutr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 23:20:41"
+    },
+    {
+        "id": "152",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Indonesian Center for Food Crops Research and Development",
+        "wos_name": "Indonesian Ctr Food Crops Res & Dev",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 23:45:41"
+    },
+    {
+        "id": "153",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Indonesian Center for Rice Research",
+        "wos_name": "Indonesian Ctr Rice Res",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 23:47:09"
+    },
+    {
+        "id": "154",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Instituto de Manejo e Certificação Florestal e Agrícola",
+        "wos_name": "Inst Agr & Forestry Management & Certificat IMAFL",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-11 23:54:25"
+    },
+    {
+        "id": "155",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institute of Development Studies",
+        "wos_name": "Inst Dev Studies",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 00:10:58"
+    },
+    {
+        "id": "156",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut d’Economie Rurale (Mali)",
+        "wos_name": "Inst Econ Rural",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 00:18:53"
+    },
+    {
+        "id": "157",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut d’Economie Rurale (Mali)",
+        "wos_name": "Inst Econ Rurale",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 00:19:27"
+    },
+    {
+        "id": "158",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Instituto de Investigacao Agraria de Mozambique",
+        "wos_name": "Inst Invest Agr Mocambique",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 01:14:29"
+    },
+    {
+        "id": "159",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Instituto de Investigaciones de la Amazonia Peruana (Peru)",
+        "wos_name": "Inst Invest Amazonia Peruana",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 01:15:52"
+    },
+    {
+        "id": "160",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Instituto de Manejo e Certificação Florestal e Agrícola",
+        "wos_name": "Inst Manejo & Certificacao Florestal & Agr Imaflo",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 01:18:20"
+    },
+    {
+        "id": "258",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Czech University of Life Sciences",
+        "wos_name": "Czech University of Life Sciences Prague",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "259",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wageningen University and Research Centre",
+        "wos_name": "Wageningen University & Research",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "260",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Michigan",
+        "wos_name": "University of Michigan System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "261",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Colorado",
+        "wos_name": "University of Colorado System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "262",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of California",
+        "wos_name": "University of California System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "263",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universität Osnabrück",
+        "wos_name": "University Osnabruck",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "264",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "City, University of London",
+        "wos_name": "University of London",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "265",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Instituto Nacional de Tecnología Agropecuaria",
+        "wos_name": "Instituto Nacional de Tecnologia Agropecuaria (INTA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "266",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "U.S. Department of Agriculture",
+        "wos_name": "United States Department of Agriculture (USDA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "267",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry Ctr ICRAF",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "268",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Food and Agriculture Organization of the United Nations",
+        "wos_name": "Food & Agriculture Organization of the United Nations (FAO)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:43"
+    },
+    {
+        "id": "269",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "International Livestock Research Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "270",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Swedish University of Agricultural Sciences",
+        "wos_name": "Swedish University of Agricultural Sciences",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "271",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Assam Agricultural University",
+        "wos_name": "Assam Agricultural University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "272",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Public Health Foundation of India",
+        "wos_name": "Public Health Foundation India",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "273",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Goettingen University",
+        "wos_name": "University of Gottingen",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "274",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Purdue University",
+        "wos_name": "Purdue University System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "275",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Commonwealth Scientific and Industrial Research Organisation",
+        "wos_name": "Commonwealth Scientific & Industrial Research Organisation (CSIRO)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "276",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Illinois",
+        "wos_name": "University of Illinois System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "277",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cultural Practice",
+        "wos_name": "Cultural Practice LLC",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "278",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Food Policy Research Institute",
+        "wos_name": "International Food Policy Research Institute.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "279",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Emory University",
+        "wos_name": "Emory University.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "280",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The Roslin Institute",
+        "wos_name": "BBSRC Roslin Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "281",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Hanns R. Neumann Stiftung",
+        "wos_name": "Hanns R Neumann Stiftung",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "282",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The Nature Conservancy",
+        "wos_name": "Nature Conservancy",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "283",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Georgia",
+        "wos_name": "University System of Georgia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "284",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of South Carolina",
+        "wos_name": "University of South Carolina System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "285",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry (ICRAF)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "286",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Maryland",
+        "wos_name": "University System of Maryland",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "287",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Imperial College",
+        "wos_name": "Imperial College London",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "288",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kwame Nkrumah University of Science and Technology",
+        "wos_name": "Kwame Nkrumah University Science & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "289",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Crops Research Institute for the Semi-Arid Tropics",
+        "wos_name": "International Crops Research Institute for the Semi-Arid-Tropics (ICRISAT)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "290",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Oxfam",
+        "wos_name": "Oxfam GB",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "291",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Norwegian University of Science and Technology",
+        "wos_name": "Norwegian University of Science & Technology (NTNU)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "292",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Office d'Elevage et des Paturages",
+        "wos_name": "Office de l'Elevage et des Paturages",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "293",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Center for Agricultural Research in the Dry Areas",
+        "wos_name": "International Center for Agricultural Research in the Dry Areas (ICARDA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:44"
+    },
+    {
+        "id": "294",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "U.S. Agency for International Development",
+        "wos_name": "United States Agency for International Development (USAID)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "295",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut de Recherche pour le Développement",
+        "wos_name": "Institut de Recherche pour le Developpement (IRD)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "296",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The Ohio State University",
+        "wos_name": "Ohio State University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "297",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Rural Development Administration (Korea)",
+        "wos_name": "Rural Development Administration (RDA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "298",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Minnesota",
+        "wos_name": "University of Minnesota System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "299",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Dehli School of Economics",
+        "wos_name": "Delhi School of Economics",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "300",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad Autónoma de Yucatán",
+        "wos_name": "Universidad Autonoma de Yucatan",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "301",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry Ctr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "302",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bogor Agriculture University",
+        "wos_name": "Bogor Agricultural University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "303",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cantho University",
+        "wos_name": "Can Tho University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "304",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Hohenheim",
+        "wos_name": "University Hohenheim",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "305",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of canberra",
+        "wos_name": "University of Canberra",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "306",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Jomo Kenyatta University of Agriculture and Technology",
+        "wos_name": "Jomo Kenyatta University of Agriculture and Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "307",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Nairobi",
+        "wos_name": "University of Nairobi",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "308",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Institute of Veterinary Epidemiology and Disease Informatics",
+        "wos_name": "ICAR- National Institute of Veterinary Epidemiology and Disease Informatics (ICAR-NIVEDI)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "309",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The University of Sydney",
+        "wos_name": "University of Sydney",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "310",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Natural Environment Research Council",
+        "wos_name": "NERC Natural Environment Research Council",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "311",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Council for Scientific and Industrial Research",
+        "wos_name": "Council of Scientific & Industrial Research (CSIR) - India",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "312",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Pakistan Agricultural Research Council",
+        "wos_name": "National Agricultural Research Council - Pakistan",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "313",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Global Green Growth Institute",
+        "wos_name": "Global Green Growth Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "314",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional",
+        "wos_name": "CINVESTAV - Centro de Investigacion y de Estudios Avanzados del Instituto Politecnico Nacional",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "315",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Scuola Superiore S. Anna",
+        "wos_name": "Scuola Superiore Sant'Anna",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "316",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centro Agronómico Tropical de Investigación y Enseñanza",
+        "wos_name": "CATIE - Centro Agronomico Tropical de Investigacion y Ensenanza",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "317",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Humboldt University - Berlin",
+        "wos_name": "Humboldt University of Berlin",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "318",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Salzburg",
+        "wos_name": "Salzburg University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:45"
+    },
+    {
+        "id": "319",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Lincoln University",
+        "wos_name": "Lincoln Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "320",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Potsdam-Institut für Klimafolgenforschung",
+        "wos_name": "Potsdam Institut fur Klimafolgenforschung",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "321",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Aeronautics and Space Administration",
+        "wos_name": "National Aeronautics & Space Administration (NASA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "322",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Texas A&M University",
+        "wos_name": "Texas A&M University System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "323",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Natural Resources Institute Finland (Luonnonvarakeskus)",
+        "wos_name": "Natural Resources Institute Finland (Luke)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "324",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "York University",
+        "wos_name": "University of York - UK",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "325",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Lilongwe University of Agricultural and Natural Resources",
+        "wos_name": "Lilongwe University of Agriculture & Natural Resources",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "326",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Agricultural Research Center Egypt",
+        "wos_name": "Agricultural Research Center - Egypt",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "327",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Nebraska",
+        "wos_name": "University of Nebraska System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "328",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Netherlands Environmental Assessment Agency",
+        "wos_name": "PBL Netherlands Environm Assessment Agcy",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "329",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Jomo Kenyatta University of Agriculture and Technology",
+        "wos_name": "Jomo Kenyatta University of Agriculture & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "330",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National University of Ireland Galway",
+        "wos_name": "National University of Ireland (NUI) Galway",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "331",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of the Witwatersrand",
+        "wos_name": "University of Witwatersrand",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "332",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "United States International University - Africa",
+        "wos_name": "United States International University Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "333",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Oxford Policy Management Limited",
+        "wos_name": "Oxford Policy Management",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "334",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Tufts University",
+        "wos_name": "Tufts University.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "335",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Food Policy Research Institute",
+        "wos_name": "HarvestPlus\/International Food Policy Research Institute.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "336",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centers for Disease Control and Prevention",
+        "wos_name": "Centers for Disease Control & Prevention - USA",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "337",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Massachusetts Boston",
+        "wos_name": "University of Massachusetts System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "338",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Abt Associates",
+        "wos_name": "Abt Associates Inc",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "339",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Jordan University of Science and Technology",
+        "wos_name": "Jordan University of Science & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "340",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidade Federal do Rio Grande do Sul",
+        "wos_name": "Universidade Federal do Rio Grande",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "341",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centers for Disease Control and Prevention",
+        "wos_name": "Korea Centers for Disease Control & Prevention (KCDC)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "342",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidade Eduardo Mondlane",
+        "wos_name": "Eduardo Mondlane University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "343",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Federal University of Sao Paulo",
+        "wos_name": "Universidade Federal de Sao Paulo (UNIFESP)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:46"
+    },
+    {
+        "id": "344",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Joep Lange Institute",
+        "wos_name": "Joep Lange Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "345",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Cairo",
+        "wos_name": "Cairo University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "346",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universitiy of Eastern Finland",
+        "wos_name": "University of Eastern Finland",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "347",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "African Population and Health Research Centre",
+        "wos_name": "African Population & Health Research Centre",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "348",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The University of Manchester",
+        "wos_name": "University of Manchester",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "349",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Vienna",
+        "wos_name": "Medical University of Vienna",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "350",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Freiburg University",
+        "wos_name": "University of Freiburg",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "351",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Washington State University",
+        "wos_name": "Washington State Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "352",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kenya Wildlife Services",
+        "wos_name": "Kenya Wildlife Serv",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "353",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Nelson Mandela African Institute of Science and Technology",
+        "wos_name": "Nelson Mandela African Institution of Science & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "354",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institute of Tropical Medicine Antwerp",
+        "wos_name": "Institute of Tropical Medicine (ITM)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "355",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Danforth Plant Science Center",
+        "wos_name": "Donald Danforth Plant Science Center",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "356",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Jawaharlal Nehru University",
+        "wos_name": "Jawaharlal Nehru University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "357",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "HarvestPlus",
+        "wos_name": "CIAT HarvestPlus",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "358",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Maseno University",
+        "wos_name": "Maseno Univerisy",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "359",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Centre for Diarrhoeal Disease Research, Bangladesh",
+        "wos_name": "International Centre for Diarrhoeal Disease Research",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "360",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Food Programme",
+        "wos_name": "World Food Programme Reg Bur",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "361",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "KTH Royal Institute of Technology",
+        "wos_name": "Royal Institute of Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "362",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Cornell University",
+        "wos_name": "Cornell Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "363",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institute of Crop Science",
+        "wos_name": "Institute of Crop Sciences (ICS)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "364",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidade Federal de Goiás",
+        "wos_name": "Universidade Federal de Goias",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "365",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Empresa Brasileira de Pesquisa Agropecuária",
+        "wos_name": "Empresa Brasileira de Pesquisa Agropecuaria (Embrapa)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "366",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry ICRAF",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "367",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Scotland’s Rural College",
+        "wos_name": "Scotlands Rural Coll SRUC",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "368",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "City, University of London",
+        "wos_name": "City University London",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:47"
+    },
+    {
+        "id": "369",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Université Cheikh Anta Diop de Dakar",
+        "wos_name": "University Cheikh Anta Diop Dakar",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "370",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universite Catholique de Louvain",
+        "wos_name": "Universite Catholique Louvain",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "371",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Academy of Sciences",
+        "wos_name": "National Academy of Sciences Ukraine",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "372",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Kassel",
+        "wos_name": "Universitat Kassel",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "373",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of New England",
+        "wos_name": "University of New England",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "374",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "European Commission",
+        "wos_name": "European Commiss",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "375",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Goettingen University",
+        "wos_name": "Univ Goettingen",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "376",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Top Institute Food and Nutrition",
+        "wos_name": "Top Institute Food & Nutrition",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "377",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Edinburgh",
+        "wos_name": "The University of Edinburgh",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "378",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Scotland’s Rural College",
+        "wos_name": "Scotland's Rural College (SRUC)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "379",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Center for Agricultural Research in the Dry Areas",
+        "wos_name": "International Centre for Agricultural Research in the Dry Areas",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "380",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Global Crop Diversity Trust",
+        "wos_name": "Global Crop Diversity Trust",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "381",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Bioversity International",
+        "wos_name": "5Bioversity International",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "382",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Arizona State University",
+        "wos_name": "Arizona State University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "383",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Treaty on Plant Genetic Resources for Food and Agriculture (governing body)",
+        "wos_name": "9Secretariat of the International Treaty on Plant Genetic Resources for Food and Agriculture",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "384",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Technische Universität Wien",
+        "wos_name": "Technische Universitat Wien",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "385",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Department of Biotechnology",
+        "wos_name": "Department of Biotechnology (DBT) India",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "386",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Missouri",
+        "wos_name": "University of Missouri System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "387",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Rice Research Institute",
+        "wos_name": "International Rice Research Institute.",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "388",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "King Abdullah University of Science and Technology",
+        "wos_name": "King Abdullah University of Science & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "389",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Nottingham",
+        "wos_name": "University of Nottingham Malaysia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "390",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Agriculture and Food Research Organization (Japan)",
+        "wos_name": "National Agriculture & Food Research Organization - Japan",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "391",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Rice Research Institute",
+        "wos_name": "International Rice Research Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "392",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Queensland",
+        "wos_name": "The University of Queensland",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "393",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Heinrich Heine University of Duesseldorf",
+        "wos_name": "Heinrich Heine University Dusseldorf",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:48"
+    },
+    {
+        "id": "394",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Texas Tech University",
+        "wos_name": "Texas Tech University System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "395",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Indonesian Agency for Agricutural Research and Development",
+        "wos_name": "Indonesian Agency for Agricultural Research & Development",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "396",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Indira Gandhi Krishi Vishwavidyalaya University",
+        "wos_name": "Indira Gandhi Krishi Vishwavidyalaya",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "397",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Orissa University of Agriculture and Technology",
+        "wos_name": "Orissa University of Agriculture & Technology",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "398",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Vietnam Academy of Science and Technology",
+        "wos_name": "Vietnam Academy of Science & Technology (VAST)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "399",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Southern Institute for Water Resource Planning",
+        "wos_name": "Southern Inst Water Resource Planning",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "400",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Council for Scientific and Industrial Research",
+        "wos_name": "Council for Scientific & Industrial Research (CSIR) - South Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "401",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Arkansas",
+        "wos_name": "University of Arkansas System",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "402",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Philippine Rice Research Institute",
+        "wos_name": "Philippine Rice Research Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "403",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universite Gaston Berger",
+        "wos_name": "Univ Gaston Berger",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "404",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Fondo Latinoamericano para Arroz de Riego",
+        "wos_name": "Fondo Latinoamericano Arroz Riego",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "405",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The World Bank",
+        "wos_name": "World Bank",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "406",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Victoria University of Wellington",
+        "wos_name": "Victoria University Wellington",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "407",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Advanta Seeds Pvt. Ltd.",
+        "wos_name": "Advanta Seeds Pty Ltd",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "408",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Yunnan Academy of Agricultural Science",
+        "wos_name": "Yunnan Academy of Agricultural Sciences",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "409",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Centre of Insect Physiology and Ecology",
+        "wos_name": "International Centre of Insect Physiology & Ecology (ICIPE)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "410",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "North Dakota State University",
+        "wos_name": "North Dakota State University Fargo",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "411",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "ETH Zurich",
+        "wos_name": "ETH Zurich",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "412",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Leibniz Institute for Zoo and Wildlife Research",
+        "wos_name": "Leibniz Institute for Zoo and Wildlife Research",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "413",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Clarmondial",
+        "wos_name": "Clarmondial AG",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "414",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Pontificia Universidad Católica del Perú",
+        "wos_name": "Pontificia Universidad Catolica del Peru",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "415",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ruhr Universität Bochum",
+        "wos_name": "Ruhr University Bochum",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "416",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "DHI",
+        "wos_name": "CDHI",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "417",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Water Research Institute",
+        "wos_name": "KWR Watercycle Research Institute",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "418",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "United Nations",
+        "wos_name": "United Nations Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:49"
+    },
+    {
+        "id": "419",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Guangxi Academy of Agricultural Science",
+        "wos_name": "Guangxi Academy of Agricultural Sciences",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "420",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Institute of Tropical Agriculture",
+        "wos_name": "International Institute of Tropical Agriculture (IITA)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "421",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of California",
+        "wos_name": "University of California",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "422",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The Royal Museum for Central Africa",
+        "wos_name": "Royal Museum for Central Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "423",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Dschang",
+        "wos_name": "University of Dschang",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "424",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Institute of Tropical Agriculture",
+        "wos_name": "4International Institute of Tropical Agriculture",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "425",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Florida",
+        "wos_name": "University of Florida",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "426",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad Nacional Agraria La Molina",
+        "wos_name": "University Nacional Agraria La Molina",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "427",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Kenya Plant Health Inspectorate Services",
+        "wos_name": "Kenya Plant Inspectorate Serv KEPHIS",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "428",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centre for Environment, Fisheries and Aquaculture Science",
+        "wos_name": "Centre for Environment Fisheries & Aquaculture Science",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "429",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of New England",
+        "wos_name": "University of New England - Maine",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "430",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Rajmata Vijayaraje Scindia Krishi Vishwavidyalaya",
+        "wos_name": "Rajmata Vijayaraje Scindia Krishi Vishwa Vidyalay",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "431",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Mahatma Phule Krishi Vidyapeeth, Rahuri",
+        "wos_name": "Mahatma Phule Krishi Vidyapeeth",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "432",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Catholic Relief Services",
+        "wos_name": "Catholic Relief Serv",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "433",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Philipps-University of Marburg",
+        "wos_name": "Philipps University Marburg",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "434",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "Wold Agroforestry Ctr ICRAF",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "435",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Clemson",
+        "wos_name": "Clemson University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "436",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Muséum National D'Histoire Naturelle",
+        "wos_name": "Museum National d'Histoire Naturelle (MNHN)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "437",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universidad Pedagógica y Tecnológica de Colombia",
+        "wos_name": "Universidad Pedagogica y Tecnologica de Colombia (UPTC)",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "438",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Museum Paraense Emilio Goeldi",
+        "wos_name": "Museu Paraense Emilio Goeldi",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "439",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Resources Institute",
+        "wos_name": "World Resources Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "440",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry Ctr ICBAF",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "441",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Chalmers University of Technology",
+        "wos_name": "University of Technology Sydney",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "442",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Uganda Christian University",
+        "wos_name": "Uganda Christian Univ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "443",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Mataram",
+        "wos_name": "Universitas Mataram",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:50"
+    },
+    {
+        "id": "444",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Universitas Gadjah Mada",
+        "wos_name": "Gadjah Mada University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "445",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Lincoln University",
+        "wos_name": "University of Lincoln",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "446",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Guangdong Academy of Agricultural Sciences",
+        "wos_name": "Guizhou Academy of Agricultural Sciences",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "447",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Cape-Coast",
+        "wos_name": "University of Cape Coast",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "448",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforesty Ctr ICRAF",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "449",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Environment and Forestry (Kenya)",
+        "wos_name": "Ministry of Environment & Forestry",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "450",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Agriculture and Cooperatives (Thailand)",
+        "wos_name": "Ministry of Agriculture & Cooperatives - Thailand",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "451",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Birdlife International",
+        "wos_name": "BirdLife International",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "452",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Sun Yat-Sen University",
+        "wos_name": "Sun Yat Sen University",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "453",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Wildlife Conservation Society",
+        "wos_name": "Wildlife Conservation Society - Indonesia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "454",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Royal Netherlands Academy of Arts and Sciences",
+        "wos_name": "Royal Netherlands Academy of Arts & Sciences",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "455",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Newcastle University",
+        "wos_name": "Newcastle University - UK",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:54:51"
+    },
+    {
+        "id": "456",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut National de Recherche Agricole du Benin",
+        "wos_name": "Inst Natl Rech Agricoles Benin",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 13:57:49"
+    },
+    {
+        "id": "457",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut National de la Recherche Agronomique du Niger",
+        "wos_name": "Inst Natl Rech Agron Niger",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:00:27"
+    },
+    {
+        "id": "458",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut Nationale Polytechnique Felix Houphet-Boigny (INPHB) in Côte d’Ivoire",
+        "wos_name": "INP HB Inst Natl Polytech Felix Houphouet Boigny",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:08:25"
+    },
+    {
+        "id": "459",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut Nationale Polytechnique Felix Houphet-Boigny (INPHB) in Côte d’Ivoire",
+        "wos_name": "Inst Natl Polytech Felix Houphouet Boigny INP HB",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:08:50"
+    },
+    {
+        "id": "460",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut Nationale Polytechnique Felix Houphet-Boigny (INPHB) in Côte d’Ivoire",
+        "wos_name": "Inst Natl Polytech Felix Houphouet Boigny",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:09:18"
+    },
+    {
+        "id": "461",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "L'Institution de la Recherche et de l'Enseignement Supérieur Agricoles",
+        "wos_name": "Inst Rech & Enseignement Super Agr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:20:38"
+    },
+    {
+        "id": "462",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut d’Economie Rurale (Mali)",
+        "wos_name": "Inst Rural Econ",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:25:17"
+    },
+    {
+        "id": "463",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut des Sciences Agronomiques du Burundi",
+        "wos_name": "Inst Sci Agron Burundi ISABU",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:28:03"
+    },
+    {
+        "id": "464",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institut des Sciences Agronomiques du Burundi",
+        "wos_name": "Inst Sci Agronom Burundi ISABU",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:28:55"
+    },
+    {
+        "id": "465",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Institute of Water Modeling",
+        "wos_name": "Inst Water Modelling",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:33:01"
+    },
+    {
+        "id": "466",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Institute for Amazonian Research",
+        "wos_name": "Institute Nacional de Pesquisas da Amazonia",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:43:05"
+    },
+    {
+        "id": "467",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Crops Research Institute for the Semi-Arid Tropics",
+        "wos_name": "Int Crops Res Inst Semi Arid Trop",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:57:53"
+    },
+    {
+        "id": "468",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Center for Agricultural Research in the Dry Areas",
+        "wos_name": "Int Ctr Agr Res Dry Areas",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:58:15"
+    },
+    {
+        "id": "469",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Center for Agricultural Research in the Dry Areas",
+        "wos_name": "Int Ctr Agr Res Dry Areas Jordan",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:58:36"
+    },
+    {
+        "id": "470",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Center for Biosaline Agriculture",
+        "wos_name": "Int Ctr Biosaline Agr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 14:59:01"
+    },
+    {
+        "id": "471",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Fertilizer Development Center",
+        "wos_name": "Int Fertilizer Dev Ctr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:13:12"
+    },
+    {
+        "id": "472",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Food Policy Research Institute",
+        "wos_name": "Int Food Policy Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:13:38"
+    },
+    {
+        "id": "473",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Land Coalition",
+        "wos_name": "Int Land Coalit",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:17:06"
+    },
+    {
+        "id": "474",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Int Livestock Res Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:18:06"
+    },
+    {
+        "id": "475",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Plant Nutrition Institute",
+        "wos_name": "Int Plant Nutr Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:22:31"
+    },
+    {
+        "id": "476",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The World Vegetable Center",
+        "wos_name": "Int Vegetable Ctr",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:28:32"
+    },
+    {
+        "id": "477",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Water Management Institute",
+        "wos_name": "Int Water Management Inst",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:29:13"
+    },
+    {
+        "id": "478",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "International Water Management Institute",
+        "wos_name": "Int Water Management Inst Southern Africa",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:29:40"
+    },
+    {
+        "id": "479",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "PPPLab",
+        "wos_name": "Jan Ubels PPPLab Food & Water",
+        "profile_id": "307",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 15:47:57"
+    },
+    {
+        "id": "480",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "Centro Internacional de Mejoramiento de Maíz y Trigo",
+        "wos_name": "Centro Internacional de Mejoramiento de Maiz y Trigo",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:23:46"
+    },
+    {
+        "id": "481",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Department of Biosciences, International Livestock Research Institute (ILRI), Guwahati, India.",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:24:35"
+    },
+    {
+        "id": "482",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Department of Biosciences, International Livestock Research Institute (ILRI), Nairobi, Kenya.",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:24:46"
+    },
+    {
+        "id": "483",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "Livestock Genetics Research Program, International Livestock Research Institute (ILRI), PO Box 5689, Addis Ababa, Ethiopia.",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:24:56"
+    },
+    {
+        "id": "484",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "International Livestock Research Institute Nairobi",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:25:17"
+    },
+    {
+        "id": "485",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "Basque Centre for Climate Change",
+        "wos_name": "Basque Centre for Climate Change (BC3)",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:26:26"
+    },
+    {
+        "id": "486",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "Scotland’s Rural College",
+        "wos_name": "Scotland's Rural College",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:40:13"
+    },
+    {
+        "id": "487",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "International Livestock Research Institute",
+        "wos_name": "International Livestock Research Institute Addis Ababa",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:40:35"
+    },
+    {
+        "id": "488",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "Federal University of Agriculture Abeokuta",
+        "wos_name": "Federal University of Agriculture, Abeoukuta",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:40:44"
+    },
+    {
+        "id": "489",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "South African National Parks",
+        "wos_name": "South African Natl Parks",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:41:23"
+    },
+    {
+        "id": "490",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "L'Institution de la Recherche et de l'Enseignement Supérieur Agricoles",
+        "wos_name": "Laboratoire de Parasitologie, Institution de la Recherche et de l'Enseignement Superieur Agricoles, Ecole Nationale de Medecine Veterinaire de Sidi Thabet, Univ. Manouba, Sidi Thabet, Tunisia. Electronic address: rouatbi.myriam@yahoo.fr.",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:42:11"
+    },
+    {
+        "id": "491",
+        "file": "AR_2019-cf88.xlsx",
+        "partner_name": "L'Institution de la Recherche et de l'Enseignement Supérieur Agricoles",
+        "wos_name": "Laboratoire de Parasitologie, Institution de la Recherche et de l'Enseignement Superieur Agricoles, Ecole Nationale de Medecine Veterinaire de Sidi Thabet, Univ. Manouba, Sidi Thabet, Tunisia.",
+        "profile_id": "2084",
+        "mapped_by_user": "0",
+        "date": "2020-07-12 16:42:21"
+    },
+    {
+        "id": "492",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Ministry of Agriculture (Iraq)",
+        "wos_name": "Minist Iraqi Agr",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 15:09:14"
+    },
+    {
+        "id": "493",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Scotland’s Rural College",
+        "wos_name": "Scotland Rural Coll",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:53:12"
+    },
+    {
+        "id": "494",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Scotland’s Rural College",
+        "wos_name": "Scotlands Rural Coll",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:53:54"
+    },
+    {
+        "id": "495",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Soils and Fertilizers Research Institute",
+        "wos_name": "Soil & Fertilizer Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:54:34"
+    },
+    {
+        "id": "496",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Tropical Diseases Research Centre",
+        "wos_name": "Trop Dis Res Ctr",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:55:13"
+    },
+    {
+        "id": "497",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of Sao Paulo",
+        "wos_name": "Univ Sao Paolo",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:56:01"
+    },
+    {
+        "id": "498",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "La Universidad de Erlangen-Núremberg",
+        "wos_name": "University of Erlangen Nuremberg",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:56:55"
+    },
+    {
+        "id": "499",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Centers for Disease Control and Prevention",
+        "wos_name": "US Ctr Dis Control & Prevent",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:58:08"
+    },
+    {
+        "id": "500",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Vi Agroforestry",
+        "wos_name": "Vi Agroforestry Reigonal Off",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:58:50"
+    },
+    {
+        "id": "501",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Vietnamese Academy of Agricultural Sciences",
+        "wos_name": "Vietnam Acad Agr Sci",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 16:59:29"
+    },
+    {
+        "id": "502",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Vietman National University ",
+        "wos_name": "Vietnam National University Hanoi",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:00:07"
+    },
+    {
+        "id": "503",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Water Research Commission",
+        "wos_name": "Water Res Commiss",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:00:42"
+    },
+    {
+        "id": "504",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Water Research Commission",
+        "wos_name": "Water Res Commiss South Africa",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:04:27"
+    },
+    {
+        "id": "505",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Victoria University of Wellington",
+        "wos_name": "Wctoria Univ Wellington",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:04:56"
+    },
+    {
+        "id": "506",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry Ctr East & Cent Asia",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:05:59"
+    },
+    {
+        "id": "507",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Agroforestry Centre",
+        "wos_name": "World Agroforestry Ctr Reg Off",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:06:34"
+    },
+    {
+        "id": "508",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "The World Bank",
+        "wos_name": "World Bank Grp",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:07:14"
+    },
+    {
+        "id": "509",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Food Programme",
+        "wos_name": "World Food Programme Country Off",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:07:55"
+    },
+    {
+        "id": "510",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Food Programme",
+        "wos_name": "World Food Programme Country Off",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:08:20"
+    },
+    {
+        "id": "511",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Health Organization",
+        "wos_name": "World Hlth Org Country Off",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:09:25"
+    },
+    {
+        "id": "512",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "World Wildlife Fund",
+        "wos_name": "World Wide Fund Nat Int",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:09:59"
+    },
+    {
+        "id": "513",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "National Agriculture and Food Research Organization (Japan)",
+        "wos_name": "Natl Agr & Food Food Res Org",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 17:11:01"
+    },
+    {
+        "id": "514",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "University of the West Indies",
+        "wos_name": "Univ West Indies",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-13 21:09:19"
+    },
+    {
+        "id": "515",
+        "file": "Input-d5c7.xlsx",
+        "partner_name": "Amhara Regional Agricultural Research Institute",
+        "wos_name": "Amhara Reg Agr Res Inst",
+        "profile_id": "30152",
+        "mapped_by_user": "0",
+        "date": "2020-07-14 16:29:35"
+    }
+]
