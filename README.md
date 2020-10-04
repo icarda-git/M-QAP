@@ -1,0 +1,9 @@
+# M-QAP
+The Monitoring, Evaluation and Learning Quality Assurance Processor (M-QAP) is a publications metadata extractor from Web of Science (https://clarivate.com/webofsciencegroup/solutions/xml-and-apis/), Scopus (https://dev.elsevier.com/) and unpaywall (https://unpaywall.org/). It was created to support the reporting of CGIAR institutions to its dashboard (https://www.cgiar.org/impact/results-dashboard/) and ensure that publications with a DOI are screened against the above mentioned sources. Additionally the tool matches institution names with CGIAR lists (https://clarisa.cgiar.org). CGIAR Users can submit a list of DOIs with own reference ID to export verified data. M-QAP provides a facility to submit a request for new institutions to be added to CLARISA List.
+
+Institutions pairing is done as 100% text matching or allowing the user to confirm the pairing when the similarity test is less than 100%. The tool has also an AI feature to pair institutions based on previous matching. The AI will only pair when institutions are manually matched multiple times however the user should always confirm the AI matching when reaching 100% since the tool is in pilot phase.
+
+It began as a proof of concept designed by the Monitoring, Evaluation and Learning (https://mel.cgiar.org/) team at the International Center for Agricultural Research in the Dry Areas (http://icarda.org/) with the financial support of the System Management Office (https://www.cgiar.org/how-we-work/governance/system-organization/system-management-office/). It has been developed by CodeObia (https://codeobia.com/). The code is available at: https://github.com/icarda-git/M-QAP.
+
+
+Submission into interface will retrieve metadata according to standard SMO structure to feed https://www.cgiar.org/impact/results-dashboard/.
