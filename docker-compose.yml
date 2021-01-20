@@ -6,6 +6,8 @@ services:
     working_dir: /api
     command: npm run installAndRun
     restart: "always"
+    ports:
+      - 3181:3000
     volumes:
       - ./:/api
     environment:
