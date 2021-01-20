@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "skipLibCheck":true,
+    "resolveJsonModule": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
