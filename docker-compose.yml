@@ -1,0 +1,12 @@
+version: "3.1"
+services:
+  clarisa_wos_api:
+    container_name: clarisa_wos_api
+    image: node:12.20.0
+    working_dir: /api
+    command: npm run installAndRun
+    restart: "always"
+    volumes:
+      - ./:/api
+    environment:
+      NODE_ENV: production
