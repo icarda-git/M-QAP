@@ -13,7 +13,7 @@ export class AppController {
   info(@Query('link') link: string): any {
     let doi = this.doiService.isDOI(link)
     if (doi)
-      return this.doiService.getWOSInfoByDOI(doi);
+      return this.doiService.getInfoByDOI(doi);
     else
       throw new HttpException('BadRequst DOI info must be provided', HttpStatus.BAD_REQUEST);
   }

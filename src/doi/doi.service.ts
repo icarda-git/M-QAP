@@ -1,7 +1,7 @@
 import { HttpException, HttpService, HttpStatus, Injectable } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
-import { DoiInfo } from 'src/doi-info';
+import { DoiInfo, organization } from 'src/doi-info';
 
 @Injectable()
 export class DoiService {
@@ -21,37 +21,37 @@ export class DoiService {
         })).toPromise().catch(d => d.response.status)
     }
 
-    async getWOSInfoByDOI(doi) {
-        console.log()
-        if (await this.isDOIExist(doi) != 200)
-            throw new HttpException('BadRequst DOI is not exist', HttpStatus.BAD_REQUEST);
+    newDoiInfo(): DoiInfo {
+        return {
+            publication_type: null,
+            volume: null,
+            issue: null,
+            is_isi: null,
+            doi: null,
+            oa_link: null,
+            is_oa: null,
+            source: null,
+            publication_year: null,
+            start_end_pages: null,
+            authors: [],
+            title: '',
+            journal_name: null,
+            organizations: [],
+        }
+    }
+    async getWOSinfoByDoi(doi): Promise<DoiInfo> {
+
         let link = `https://wos-api.clarivate.com/api/wos/?databaseId=WOK&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`;
-        let result: any = {};
-        result = await this.httpService.get(link, {
+        let result: any = await this.httpService.get(link, {
             headers: {
-                'X-ApiKey': 'd869e3d25b2b79cd03ff021fe40b7e9d4fb04967'
+                'X-ApiKey': `${process.env.WOS_API_KEY}`
             }
         }).pipe(map((d: any) => {
             if (d.status == 200) {
                 let finaldata: DoiInfo;
                 if (d.data.Data.Records.records != '') {
                     d.data.Data.Records.records.REC.forEach(REC => {
-                        let doiData: DoiInfo = {
-                            publication_type: null,
-                            volume: null,
-                            issue: null,
-                            is_isi: null,
-                            doi: null,
-                            oa_link: null,
-                            is_oa: null,
-                            source: null,
-                            publication_year: null,
-                            start_end_pages: null,
-                            authors: [],
-                            title: '',
-                            journal_name: null,
-                            organizations: [],
-                        }
+                        let doiData = this.newDoiInfo()
                         let summary = REC.static_data.summary
                         let pub_info = summary.pub_info
                         let authors = summary.names.name
@@ -70,20 +70,18 @@ export class DoiService {
                                 name: d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
                                 country: d.address_spec.country,
                                 full_address: d.address_spec.full_address
-
                             };
                         })
-                        doiData.organizations.map(async (d) => {
-                            let predection = await this.ai.makePrediction(d.name)
-                            d.clarisa_id = predection.value.code;
-                            d.confidant = Math.round(predection.confidant * 100);
-                        })
+
                         doiData.issue = pub_info.issue
                         doiData.volume = pub_info.vol
                         doiData.publication_year = pub_info.pubyear
                         doiData.publication_type = pub_info.pubtype
                         if (pub_info.page)
                             doiData.start_end_pages = pub_info.page.content
+                        else
+                            doiData.start_end_pages = null;
+
                         if (Array.isArray(authors))
                             doiData.authors = authors.map(d => { return { full_name: d.full_name } })
                         doiData.title = titles.filter(d => d.type == 'item')[0].content
@@ -95,14 +93,73 @@ export class DoiService {
 
                     });
                     return finaldata;
+                } else null
+            } else
+                return null;
+        })).toPromise().catch(d => console.log(d.data))
+
+        return result;
+    }
+    async getScopusInfoByDoi(doi): Promise<DoiInfo> {
+        let link = `https://api.elsevier.com/content/search/scopus?apiKey=${process.env.SCOPUS_API_KEY}&query=doi(${doi})`;
+        let result: any = await this.httpService.get(link, {
+            headers: {
+                'X-ApiKey': 'd869e3d25b2b79cd03ff021fe40b7e9d4fb04967'
+            }
+        }).pipe(map((d: any) => {
+            if (d.status == 200) {
+                let doiData: DoiInfo = this.newDoiInfo()
+                if (d.data['search-results'] && d.data['search-results']['opensearch:totalResults'] > 0) {
+                    d.data['search-results'].entry.forEach(REC => {
+
+                        // let doi = REC.dynamic_data.cluster_related.identifiers.identifier.filter(d => d.type == 'doi')[0].value
+                        let date = REC['prism:coverDisplayDate']
+                        let datesplited = date.split(' ');
+                        doiData.volume = REC['prism:volume']
+                        doiData.issue = REC['prism:issueIdentifier']
+                        doiData.publication_year = datesplited[1] ? parseInt(datesplited[1]) : date;
+                        doiData.publication_type = REC['prism:aggregationType']
+                        doiData.start_end_pages = REC['prism:pageRange']
+                        doiData.authors = [{ full_name: REC['dc:creator'] }];
+                        doiData.title = REC['dc:title'];
+                        doiData.doi = REC['prism:doi'];
+                        doiData.journal_name = REC['prism:publicationName'];
+                        doiData.is_isi = 'no';
+                        doiData.source = 'Scopus';
+                        if (REC['affiliation'] && Array.isArray(REC['affiliation']))
+                            doiData.organizations = REC['affiliation'].map(d => {
+                                return {
+                                    clarisa_id: null,
+                                    country: d['affiliation-country'] ? d['affiliation-country'] : null,
+                                    full_address: null,
+                                    name: d.affilname,
+                                    confidant: null
+                                }
+                            })
+                    });
+                    return doiData;
                 } else
                     return null;
             } else
                 return null;
         })).toPromise().catch(d => console.log(d))
-        let openAccess_link = await this.validateOA(doi);
-        if (!result)
-            result = {};
+
+        return result;
+
+    }
+    async addClarisaID(doiInfo: DoiInfo): Promise<DoiInfo> {
+        let orgs = await Promise.all(doiInfo.organizations.map(async (d) => {
+            let predection = await this.ai.makePrediction(d.name);
+            d.clarisa_id = predection.value.code;
+            d.confidant = Math.round(predection.confidant * 100);
+            return d;
+        }));
+        doiInfo.organizations = orgs;
+        return doiInfo;
+    }
+
+    async addOpenAccessInfo(result: DoiInfo, doi) {
+        let openAccess_link = await this.getUnpaywallInfoByDoi(doi);
         if (openAccess_link && openAccess_link.is_oa) {
             result['oa_link'] = openAccess_link.best_oa_location.url_for_landing_page;
             result['is_oa'] = 'yes';
@@ -110,11 +167,28 @@ export class DoiService {
             result['oa_link'] = null;
             result['is_oa'] = 'no';
         }
+        return result;
+    }
+    async getInfoByDOI(doi) {
+        let doiExist = await this.isDOIExist(doi)
+        if (doiExist == 404)
+            throw new HttpException('BadRequst DOI is not exist' + doi, HttpStatus.BAD_REQUEST);
+
+        let result = await this.getWOSinfoByDoi(doi);
+        if (!result || result == null)
+            result = await this.getScopusInfoByDoi(doi);
+        if (result && result != null) {
+            result = await this.addClarisaID(result);
+            result = await this.addOpenAccessInfo(result, doi);
+        } else if (!result || result == null) {
+            result = {} as DoiInfo;
+            result = await this.addOpenAccessInfo(result, doi);
+        }
 
         return result;
     }
 
-    async validateOA(doi) {
+    async getUnpaywallInfoByDoi(doi) {
         let link = `https://api.unpaywall.org/v2/${doi}?email=MEL@icarda.org`;
         return await this.httpService.get(link).pipe(map(d => {
             if (d.status == 200) {

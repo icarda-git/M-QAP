@@ -21,7 +21,7 @@ export interface author {
 
 export interface organization {
     confidant: number | null;
-    clarisa_id: number,
+    clarisa_id: number | null,
     name: string,
     country: string | null,
     full_address: string | null,
