@@ -172,7 +172,7 @@ export class DoiService {
     async getInfoByDOI(doi) {
         let doiExist = await this.isDOIExist(doi)
         if (doiExist == 404)
-            throw new HttpException('BadRequst DOI is not exist' + doi, HttpStatus.BAD_REQUEST);
+            throw new HttpException('BadRequst DOI is not exist ' + doi, HttpStatus.BAD_REQUEST);
 
         let result = await this.getWOSinfoByDoi(doi);
         if (!result || result == null)
@@ -184,7 +184,8 @@ export class DoiService {
             result = {} as DoiInfo;
             result = await this.addOpenAccessInfo(result, doi);
         }
-
+        if(!result.source)
+        throw new HttpException(`DOI (${doi}) not found in WOS or Scopus ` + doi, HttpStatus.NOT_FOUND);
         return result;
     }
 
