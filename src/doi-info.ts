@@ -13,6 +13,7 @@ export interface DoiInfo {
     start_end_pages: string | null,
     authors: Array<author>,
     organizations: Array<organization>,
+    altmetric?: any
 }
 
 export interface author {

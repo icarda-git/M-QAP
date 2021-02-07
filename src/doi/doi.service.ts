@@ -172,20 +172,29 @@ export class DoiService {
     async getInfoByDOI(doi) {
         let doiExist = await this.isDOIExist(doi)
         if (doiExist == 404)
-            throw new HttpException(`(${doi}) is not a valid DOI`, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`DOI (${doi}) not exist `, HttpStatus.BAD_REQUEST);
+
 
         let result = await this.getWOSinfoByDoi(doi);
+
         if (!result || result == null)
             result = await this.getScopusInfoByDoi(doi);
-        if (result && result != null) {
+
+        if (result && result != null)
             result = await this.addClarisaID(result);
-            result = await this.addOpenAccessInfo(result, doi);
-        } else if (!result || result == null) {
-            result = {} as DoiInfo;
-            result = await this.addOpenAccessInfo(result, doi);
-        }
-        if (!result.source)
-            throw new HttpException(`DOI (${doi}) not found in WOS or Scopus `, HttpStatus.NOT_FOUND);
+
+
+        if (!result || result == null)
+            result = {} as DoiInfo
+        result = await this.addOpenAccessInfo(result, doi);
+
+        result = await this.getAltmetricByDoi(result, doi)
+
+
+
+        if (!result.is_oa && !result.altmetric && !result.source )
+            throw new HttpException(`DOI (${doi}) not found in any source`, HttpStatus.NOT_FOUND);
+
         return result;
     }
 
@@ -197,6 +206,21 @@ export class DoiService {
             } else
                 return null;
         })).toPromise().catch(d => null)
+    }
+
+    async getAltmetricByDoi(result: DoiInfo, doi) {
+        let link = `https://api.altmetric.com/v1/doi/${doi}`;
+        let altmetric = await this.httpService.get(link).pipe(map(d => {
+            if (d.status == 200) {
+                return d.data
+            } else
+                return null;
+        })).toPromise().catch(d => null)
+
+        if (altmetric && altmetric !=null)
+            result.altmetric = altmetric;
+
+        return result;
     }
 
 }
