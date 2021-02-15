@@ -189,8 +189,8 @@ export class DoiService {
         let result = results[0] && results[0].source ? results[0] : results[1] && results[1].source ? results[1] : this.newDoiInfo();
         result.doi = result.doi ? result.doi : doi;
         result = { ...result, ...results[2] }
-        result.altmetric = results[3].title ? results[3] : null;
-        result.gardian = results[4].title ? results[4] : null;
+        result.altmetric = results[3] && results[3].title ? results[3] : null;
+        result.gardian = results[4] && results[4].title ? results[4] : null;
         let sources = [results[0], results[1]]
         let is_isi = sources.map(d => {
             if (d && d.source)
