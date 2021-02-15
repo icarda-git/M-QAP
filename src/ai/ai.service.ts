@@ -4,6 +4,7 @@ import * as use from "@tensorflow-models/universal-sentence-encoder"
 import * as path from 'path'
 import { HttpService, Injectable, Logger } from '@nestjs/common';
 import { map } from 'rxjs/operators';
+import * as jsonClarisa from './clarisa.json';
 @Injectable()
 export class AI {
     private readonly logger = new Logger(AI.name);
@@ -16,10 +17,11 @@ export class AI {
         this.init()
     }
     async init() {
-        this.logger.log("Loading Trained Model")
+
+        this.logger.log("Start Loading Trained Model")
         this.model = await tf.loadLayersModel('file://' + path.resolve(__dirname, 'wos_trained_model/model.json'));
         this.naturalmodel = await use.load()
-        this.clarisa = await this.httpService.get('https://clarisa.cgiar.org/api/institutions', { auth: { username: 'gldc.data', password: '7823282' } }).pipe(map((d: any) => d.data)).toPromise()
+        this.clarisa = process.env.PRODUCTION ? await this.httpService.get('https://clarisa.cgiar.org/api/institutions', { auth: { username: 'gldc.data', password: '7823282' } }).pipe(map((d: any) => d.data)).toPromise() : jsonClarisa;
         this.logger.log("Trained Model Loaded")
     }
     calculatePercent(percent) {

@@ -1,8 +1,8 @@
 import { HttpException, HttpService, HttpStatus, Injectable } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
-import { DoiInfo, organization } from 'src/doi-info';
-
+import { DoiInfo } from 'src/doi-info';
+import * as FormData from 'form-data'
 @Injectable()
 export class DoiService {
 
@@ -34,10 +34,12 @@ export class DoiService {
             publication_year: null,
             start_end_pages: null,
             authors: [],
-            title: '',
+            title: null,
             journal_name: null,
             organizations: [],
-        }
+            altmetric: null,
+            gardian: null,
+        } as DoiInfo
     }
     async getWOSinfoByDoi(doi): Promise<DoiInfo> {
 
@@ -96,7 +98,7 @@ export class DoiService {
                 } else null
             } else
                 return null;
-        })).toPromise().catch(d => console.log(d.data))
+        })).toPromise().catch(d => d)
 
         return result;
     }
@@ -142,7 +144,7 @@ export class DoiService {
                     return null;
             } else
                 return null;
-        })).toPromise().catch(d => console.log(d))
+        })).toPromise().catch(d => d)
 
         return result;
 
@@ -158,7 +160,8 @@ export class DoiService {
         return doiInfo;
     }
 
-    async addOpenAccessInfo(result: DoiInfo, doi) {
+    async addOpenAccessInfo(doi) {
+        let result = {};
         let openAccess_link = await this.getUnpaywallInfoByDoi(doi);
         if (openAccess_link && openAccess_link.is_oa) {
             result['oa_link'] = openAccess_link.best_oa_location.url_for_landing_page;
@@ -175,28 +178,75 @@ export class DoiService {
             throw new HttpException(`DOI (${doi}) not exist `, HttpStatus.BAD_REQUEST);
 
 
-        let result = await this.getWOSinfoByDoi(doi);
+        let results = await Promise.all([
+            this.getWOSinfoByDoi(doi),
+            this.getScopusInfoByDoi(doi),
+            this.addOpenAccessInfo(doi),
+            this.getAltmetricByDoi(doi),
+            this.getGardianInfo(doi)
+        ]);
 
-        if (!result || result == null)
-            result = await this.getScopusInfoByDoi(doi);
-
+        let result = results[0] && results[0].source ? results[0] : results[1] && results[1].source ? results[1] : this.newDoiInfo();
+        result.doi = result.doi ? result.doi : doi;
+        result = { ...result, ...results[2] }
+        result.altmetric = results[3].title ? results[3] : null;
+        result.gardian = results[4].title ? results[4] : null;
+        let sources = [results[0], results[1]]
+        let is_isi = sources.map(d => {
+            if (d && d.source)
+                return d.source
+        }).filter(d => d);
+        result.is_isi = is_isi.length > 1 ? 'yes' : is_isi[0] ? "no" : "N/A"
         if (result && result != null)
             result = await this.addClarisaID(result);
-
-
-        if (!result || result == null)
-            result = {} as DoiInfo
-        result = await this.addOpenAccessInfo(result, doi);
-
-        result = await this.getAltmetricByDoi(result, doi)
-
-
-
-        if (!result.is_oa && !result.altmetric && !result.source )
+        if (!result.is_oa && !result.altmetric && !result.source)
             throw new HttpException(`DOI (${doi}) not found in any source`, HttpStatus.NOT_FOUND);
 
         return result;
     }
+
+
+    async getGardianInfo(doi) {
+        let data = new FormData()
+        data.append('type', 'publication')
+        data.append('identifier', doi)
+        let gardian = await this.httpService.post('https://gardian.bigdata.cgiar.org/api/v2/getDocumentFAIRbyIdentifier.php', data, {
+            headers: {
+                'authorization': `Bearer ${await this.getGardianAccessToken()}`,
+                ...data.getHeaders()
+            }
+        }).pipe(map(d => {
+            if (d.status == 200) {
+                return d.data
+            } else
+                return null;
+        })).toPromise().catch(d => null)
+
+        return gardian;
+    }
+
+
+    async getGardianAccessToken() {
+        var data = new FormData();
+        data.append('password', process.env.GARDIAN_PASSWORD);
+        data.append('email', process.env.GARDIAN_EMAIL);
+        data.append('clientId', process.env.GARDIAN_CLIENT);
+        let gardian = await this.httpService.post('https://gardian.bigdata.cgiar.org/api/v2/getAccessToken.php', data, {
+            headers: {
+                ...data.getHeaders()
+            }
+        }).pipe(map(d => {
+            if (d.status == 200) {
+                return d.data
+            } else
+                return null;
+        })).toPromise().catch(d => null)
+        if (gardian.access_token)
+            return gardian.access_token;
+        else
+            return false;
+    }
+
 
     async getUnpaywallInfoByDoi(doi) {
         let link = `https://api.unpaywall.org/v2/${doi}?email=MEL@icarda.org`;
@@ -208,7 +258,7 @@ export class DoiService {
         })).toPromise().catch(d => null)
     }
 
-    async getAltmetricByDoi(result: DoiInfo, doi) {
+    async getAltmetricByDoi(doi) {
         let link = `https://api.altmetric.com/v1/doi/${doi}`;
         let altmetric = await this.httpService.get(link).pipe(map(d => {
             if (d.status == 200) {
@@ -217,10 +267,7 @@ export class DoiService {
                 return null;
         })).toPromise().catch(d => null)
 
-        if (altmetric && altmetric !=null)
-            result.altmetric = altmetric;
-
-        return result;
+        return altmetric;
     }
 
 }

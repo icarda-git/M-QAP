@@ -6,7 +6,7 @@ export interface DoiInfo {
     publication_year: number | null,
     is_oa: 'yes' | 'no' | 'NA',
     oa_link: string | null,
-    is_isi: 'yes' | 'no' | 'NA',
+    is_isi: string | 'NA',
     journal_name: string,
     volume: string | null,
     issue: string | null,
@@ -14,6 +14,7 @@ export interface DoiInfo {
     authors: Array<author>,
     organizations: Array<organization>,
     altmetric?: any
+    gardian?: any
 }
 
 export interface author {
