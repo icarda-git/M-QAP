@@ -151,7 +151,7 @@ export class DoiService {
     }
     async addClarisaID(doiInfo: DoiInfo): Promise<DoiInfo> {
         let orgs = await Promise.all(doiInfo.organizations.map(async (d) => {
-            let predection = await this.ai.makePrediction(d.name);
+            let predection = await this.ai.makePrediction(d.name,doiInfo.doi);
             d.clarisa_id = predection.value.code;
             d.confidant = Math.round(predection.confidant * 100);
             return d;
