@@ -38,7 +38,10 @@ export class AI {
                 "confident": Math.round(Math.max(...results.dataSync().map(d => d)) * 100),
                 "doi": doi,
                 "clarisa_id": clarisa_index.code
-            }, { headers: { "authorization": process.env.MEL_API_KEY } }).pipe(map((d: any) => d.data), catchError(d => d)).toPromise()
+            }, { headers: { "authorization": process.env.MEL_API_KEY } }).pipe(map((d: any) => d.data), catchError((d) => {
+                this.logger.log('MEL API is not connected')
+                return [null];
+            })).toPromise()
         return { value: clarisa_index ? clarisa_index : null, confidant: Math.max(...results.dataSync().map(d => d)) }
     }
 

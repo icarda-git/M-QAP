@@ -69,7 +69,7 @@ export class DoiService {
                         doiData.organizations = addresses.address_name.map(d => {
                             return {
                                 clarisa_id: null,
-                                name: d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
+                                name: (typeof d.address_spec.organizations.organization === 'string' || d.address_spec.organizations.organization instanceof String) ? d.address_spec.organizations.organization : d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
                                 country: d.address_spec.country,
                                 full_address: d.address_spec.full_address
                             };
@@ -151,7 +151,7 @@ export class DoiService {
     }
     async addClarisaID(doiInfo: DoiInfo): Promise<DoiInfo> {
         let orgs = await Promise.all(doiInfo.organizations.map(async (d) => {
-            let predection = await this.ai.makePrediction(d.name,doiInfo.doi);
+            let predection = await this.ai.makePrediction(d.name, doiInfo.doi);
             d.clarisa_id = predection.value.code;
             d.confidant = Math.round(predection.confidant * 100);
             return d;
@@ -187,16 +187,13 @@ export class DoiService {
         ]);
 
         let result = results[0] && results[0].source ? results[0] : results[1] && results[1].source ? results[1] : this.newDoiInfo();
+
         result.doi = result.doi ? result.doi : doi;
         result = { ...result, ...results[2] }
         result.altmetric = results[3] && results[3].title ? results[3] : null;
         result.gardian = results[4] && results[4].title ? results[4] : null;
-        let sources = [results[0], results[1]]
-        let is_isi = sources.map(d => {
-            if (d && d.source)
-                return d.source
-        }).filter(d => d);
-        result.is_isi = is_isi.length > 1 ? 'yes' : is_isi[0] ? "no" : "N/A"
+        result.is_isi = results[0] && results[0].source ? 'yes' : results[1] && results[1].source ? "no" : "N/A"
+
         if (result && result != null)
             result = await this.addClarisaID(result);
         if (!result.is_oa && !result.altmetric && !result.source)
