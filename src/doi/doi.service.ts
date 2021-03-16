@@ -49,7 +49,7 @@ export class DoiService {
                 'X-ApiKey': `${process.env.WOS_API_KEY}`
             }
         }).pipe(map((d: any) => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 let finaldata: DoiInfo;
                 if (d.data.Data.Records.records != '') {
                     d.data.Data.Records.records.REC.forEach(REC => {
@@ -109,7 +109,7 @@ export class DoiService {
                 'X-ApiKey': 'd869e3d25b2b79cd03ff021fe40b7e9d4fb04967'
             }
         }).pipe(map((d: any) => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 let doiData: DoiInfo = this.newDoiInfo()
                 if (d.data['search-results'] && d.data['search-results']['opensearch:totalResults'] > 0) {
                     d.data['search-results'].entry.forEach(REC => {
@@ -213,7 +213,7 @@ export class DoiService {
                 ...data.getHeaders()
             }
         }).pipe(map(d => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 return d.data
             } else
                 return null;
@@ -233,7 +233,7 @@ export class DoiService {
                 ...data.getHeaders()
             }
         }).pipe(map(d => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 return d.data
             } else
                 return null;
@@ -248,7 +248,7 @@ export class DoiService {
     async getUnpaywallInfoByDoi(doi) {
         let link = `https://api.unpaywall.org/v2/${doi}?email=MEL@icarda.org`;
         return await this.httpService.get(link).pipe(map(d => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 return d.data
             } else
                 return null;
@@ -258,7 +258,7 @@ export class DoiService {
     async getAltmetricByDoi(doi) {
         let link = `https://api.altmetric.com/v1/doi/${doi}`;
         let altmetric = await this.httpService.get(link).pipe(map(d => {
-            if (d.status == 200) {
+            if (d && d.status == 200) {
                 return d.data
             } else
                 return null;
