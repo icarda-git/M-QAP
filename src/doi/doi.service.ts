@@ -66,15 +66,29 @@ export class DoiService {
 
                         let fullrecord_metadata = REC.static_data.fullrecord_metadata
                         let addresses = fullrecord_metadata.addresses
-                        doiData.organizations = addresses.address_name.map(d => {
-                            return {
-                                clarisa_id: null,
-                                name: (typeof d.address_spec.organizations.organization === 'string' || d.address_spec.organizations.organization instanceof String) ? d.address_spec.organizations.organization : d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
-                                country: d.address_spec.country,
-                                full_address: d.address_spec.full_address
-                            };
-                        })
-
+                        try {
+                            if (Array.isArray(addresses.address_name))
+                                doiData.organizations = addresses.address_name.map(d => {
+                                    return {
+                                        clarisa_id: null,
+                                        name: (typeof d.address_spec.organizations.organization === 'string' || d.address_spec.organizations.organization instanceof String) ? d.address_spec.organizations.organization : d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
+                                        country: d.address_spec.country,
+                                        full_address: d.address_spec.full_address
+                                    };
+                                })
+                            else if (addresses.address_name.address_spec)
+                                doiData.organizations = [
+                                    {
+                                        confidant: 0,
+                                        clarisa_id: null,
+                                        name: (typeof addresses.address_name.address_spec.organizations.organization === 'string' || addresses.address_name.address_spec.organizations.organization instanceof String) ? addresses.address_name.address_spec.organizations.organization : addresses.address_name.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
+                                        country: addresses.address_name.address_spec.country,
+                                        full_address: addresses.address_name.address_spec.full_address
+                                    }]
+                        } catch (e) {
+                            console.log(addresses.address_name);
+                            console.error(e);
+                        }
                         doiData.issue = pub_info.issue
                         doiData.volume = pub_info.vol
                         doiData.publication_year = pub_info.pubyear
