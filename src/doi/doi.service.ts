@@ -17,7 +17,10 @@ export class DoiService {
     async isDOIExist(doi) {
         let link = `https://dx.doi.org/${doi}`;
         return await this.httpService.get(link).pipe(map(d => {
-            return d.status
+            if (d && d.status)
+                return d.status
+            else
+                return 404
         })).toPromise().catch(d => d.response.status)
     }
 
