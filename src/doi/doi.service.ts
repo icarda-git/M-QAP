@@ -54,65 +54,83 @@ export class DoiService {
         }).pipe(map((d: any) => {
             if (d && d.status == 200) {
                 let finaldata: DoiInfo;
-                if (d.data.Data.Records.records != '') {
-                    d.data.Data.Records.records.REC.forEach(REC => {
-                        let doiData = this.newDoiInfo()
-                        let summary = REC.static_data.summary
-                        let pub_info = summary.pub_info
-                        let authors = summary.names.name
-                        let titles = summary.titles.title
-                        let doctypes = summary.doctypes
-                        if (Array.isArray(doctypes.doctype))
-                            doiData.publication_type = doctypes.doctype.join(', ')
-                        else
-                            doiData.publication_type = doctypes.doctype
+                try {
+                    if (d.data.Data.Records.records != '') {
+                        d.data.Data.Records.records.REC.forEach(REC => {
+                            let doiData = this.newDoiInfo()
+                            let summary = REC.static_data.summary
+                            let pub_info = summary.pub_info
+                            let authors = summary.names.name
+                            let titles = summary.titles.title
+                            let doctypes = summary.doctypes
+                            if (Array.isArray(doctypes.doctype))
+                                doiData.publication_type = doctypes.doctype.join(', ')
+                            else
+                                doiData.publication_type = doctypes.doctype
 
-                        let fullrecord_metadata = REC.static_data.fullrecord_metadata
-                        let addresses = fullrecord_metadata.addresses
-                        try {
-                            if (Array.isArray(addresses.address_name))
-                                doiData.organizations = addresses.address_name.map(d => {
-                                    return {
-                                        clarisa_id: null,
-                                        name: (typeof d.address_spec.organizations.organization === 'string' || d.address_spec.organizations.organization instanceof String) ? d.address_spec.organizations.organization : d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
-                                        country: d.address_spec.country,
-                                        full_address: d.address_spec.full_address
-                                    };
-                                })
-                            else if (addresses.address_name.address_spec)
-                                doiData.organizations = [
-                                    {
-                                        confidant: 0,
-                                        clarisa_id: null,
-                                        name: (typeof addresses.address_name.address_spec.organizations.organization === 'string' || addresses.address_name.address_spec.organizations.organization instanceof String) ? addresses.address_name.address_spec.organizations.organization : addresses.address_name.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0],
-                                        country: addresses.address_name.address_spec.country,
-                                        full_address: addresses.address_name.address_spec.full_address
-                                    }]
-                        } catch (e) {
-                            console.log(addresses.address_name);
-                            console.error(e);
-                        }
-                        doiData.issue = pub_info.issue
-                        doiData.volume = pub_info.vol
-                        doiData.publication_year = pub_info.pubyear
-                        doiData.publication_type = pub_info.pubtype
-                        if (pub_info.page)
-                            doiData.start_end_pages = pub_info.page.content
-                        else
-                            doiData.start_end_pages = null;
+                            let fullrecord_metadata = REC.static_data.fullrecord_metadata
+                            let addresses = fullrecord_metadata.addresses
+                            try {
+                                if (Array.isArray(addresses.address_name))
+                                    doiData.organizations = addresses.address_name.map(d => {
+                                        return {
+                                            clarisa_id: null,
+                                            name: d.address_spec.organizations ? (typeof d.address_spec.organizations.organization === 'string' || d.address_spec.organizations.organization instanceof String) ? d.address_spec.organizations.organization : d.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0] : d.address_spec.full_address,
+                                            country: d.address_spec.country,
+                                            full_address: d.address_spec.full_address
+                                        };
+                                    })
+                                else if (addresses.address_name.address_spec)
+                                    doiData.organizations = [
+                                        {
+                                            confidant: 0,
+                                            clarisa_id: null,
+                                            name: addresses.address_name.address_spec.organizations ? (typeof addresses.address_name.address_spec.organizations.organization === 'string' || addresses.address_name.address_spec.organizations.organization instanceof String) ? addresses.address_name.address_spec.organizations.organization : addresses.address_name.address_spec.organizations.organization.map(inst => Array.isArray(inst) ? inst[1].content : inst.content ? inst.content : inst)[0] : addresses.address_name.address_spec.full_address,
+                                            country: addresses.address_name.address_spec.country,
+                                            full_address: addresses.address_name.address_spec.full_address
+                                        }]
+                            } catch (e) {
+                                console.log(addresses.address_name);
+                                console.error(e);
+                            }
+                            doiData.issue = pub_info.issue
+                            doiData.volume = pub_info.vol
+                            doiData.publication_year = pub_info.pubyear
+                            doiData.publication_type = pub_info.pubtype
+                            if (pub_info.page)
+                                doiData.start_end_pages = pub_info.page.content
+                            else
+                                doiData.start_end_pages = null;
 
-                        if (Array.isArray(authors))
-                            doiData.authors = authors.map(d => { return { full_name: d.full_name } })
-                        doiData.title = titles.filter(d => d.type == 'item')[0].content
-                        doiData.journal_name = titles.filter(d => d.type == 'source')[0].content
-                        doiData.doi = doi;
-                        doiData.source = 'WOS';
-                        doiData.is_isi = 'yes';
-                        finaldata = doiData;
+                            if (Array.isArray(authors))
+                                doiData.authors = authors.map(d => { return { full_name: d.full_name } })
+                            let title = titles.filter(d => d.type == 'item')[0].content
+                            let i = []
+                            if (titles.filter(d => d.type == 'item')[0] && titles.filter(d => d.type == 'item')[0].i)
+                                i = titles.filter(d => d.type == 'item')[0].i
+                            let titlefinal = ''
 
-                    });
-                    return finaldata;
-                } else null
+                            title.forEach((d, index) => {
+                                if (i[index])
+                                    titlefinal += index == 0 ? d + ' ' + i[index] : ' ' + d + ' ' + i[index];
+                                else
+                                    titlefinal += index == 0 ? d : ' ' + d;
+                            })
+
+                            doiData.title = titlefinal
+                            doiData.journal_name = titles.filter(d => d.type == 'source')[0].content
+                            doiData.doi = doi;
+                            doiData.source = 'WOS';
+                            doiData.is_isi = 'yes';
+                            finaldata = doiData;
+
+                        });
+
+                        return finaldata;
+                    } else null
+                } catch (e) {
+                    console.log(e)
+                }
             } else
                 return null;
         })).toPromise().catch(d => d)

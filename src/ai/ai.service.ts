@@ -18,10 +18,10 @@ export class AI {
     }
     async init() {
 
-        this.logger.log("Start Loading Trained Model")
+        this.logger.log("Start Loading Trained Model "+process.env.PRODUCTION )
         this.model = await tf.loadLayersModel('file://' + path.resolve(__dirname, 'wos_trained_model/model.json'));
         this.naturalmodel = await use.load()
-        this.clarisa = process.env.PRODUCTION ? await this.httpService.get('https://clarisa.cgiar.org/api/institutions', { auth: { username: 'gldc.data', password: '7823282' } }).pipe(map((d: any) => d.data)).toPromise() : jsonClarisa;
+        this.clarisa = process.env.PRODUCTION =="1" ? await this.httpService.get('https://clarisa.cgiar.org/api/institutions', { auth: { username: 'gldc.data', password: '7823282' } }).pipe(map((d: any) => d.data)).toPromise() : jsonClarisa;
         this.logger.log("Trained Model Loaded")
     }
     calculatePercent(percent) {
