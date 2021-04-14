@@ -109,14 +109,15 @@ export class DoiService {
                             if (titles.filter(d => d.type == 'item')[0] && titles.filter(d => d.type == 'item')[0].i)
                                 i = titles.filter(d => d.type == 'item')[0].i
                             let titlefinal = ''
-
-                            title.forEach((d, index) => {
-                                if (i[index])
-                                    titlefinal += index == 0 ? d + ' ' + i[index] : ' ' + d + ' ' + i[index];
-                                else
-                                    titlefinal += index == 0 ? d : ' ' + d;
-                            })
-
+                            if (Array.isArray(title))
+                                title.forEach((d, index) => {
+                                    if (i[index])
+                                        titlefinal += index == 0 ? d + ' ' + i[index] : ' ' + d + ' ' + i[index];
+                                    else
+                                        titlefinal += index == 0 ? d : ' ' + d;
+                                })
+                            else
+                                titlefinal = title;
                             doiData.title = titlefinal
                             doiData.journal_name = titles.filter(d => d.type == 'source')[0].content
                             doiData.doi = doi;
