@@ -24,6 +24,18 @@ export class DoiService {
         })).toPromise().catch(d => d.response.status)
     }
 
+    async crossrefAgency(doi) {
+        let link = `https://api.crossref.org/works/${doi}/agency`;
+        return await this.httpService.get(link).pipe(map(d => {
+            if (d.data && d.data.message && d.data.message.agency && d.data.message.agency.id)
+                return d.data.message.agency.id
+            else
+                return null;
+        })).toPromise().catch(d => null)
+    }
+
+
+
     newDoiInfo(): DoiInfo {
         return {
             publication_type: null,
@@ -46,7 +58,7 @@ export class DoiService {
     }
     async getWOSinfoByDoi(doi): Promise<DoiInfo> {
 
-        let link = `https://wos-api.clarivate.com/api/wos/?databaseId=WOK&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`;
+        let link = `https://wos-api.clarivate.com/api/wos/?databaseId=WOS&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`;
         let result: any = await this.httpService.get(link, {
             headers: {
                 'X-ApiKey': `${process.env.WOS_API_KEY}`
@@ -219,10 +231,15 @@ export class DoiService {
             this.getScopusInfoByDoi(doi),
             this.addOpenAccessInfo(doi),
             this.getAltmetricByDoi(doi),
-            this.getGardianInfo(doi)
+            this.getGardianInfo(doi),
+            this.crossrefAgency(doi)
         ]);
 
         let result = results[0] && results[0].source ? results[0] : results[1] && results[1].source ? results[1] : this.newDoiInfo();
+        result.crossref = results[5]
+
+        if (['datacite'].includes(result.crossref))
+            result.is_oa = 'yes'
 
         result.doi = result.doi ? result.doi : doi;
         result = { ...result, ...results[2] }
