@@ -7,8 +7,8 @@ import { DoiService } from './doi/doi.service';
 import { HandleService } from './handle/handle.service';
 
 @Module({
-  imports: [HttpModule,ConfigModule.forRoot()],
+  imports: [HttpModule, ConfigModule.forRoot()],
   controllers: [AppController],
-  providers: [AppService, DoiService,AI, HandleService],
+  providers: [AppService, DoiService, AI, HandleService],
 })
 export class AppModule {}
