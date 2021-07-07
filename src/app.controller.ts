@@ -20,7 +20,6 @@ export class AppController {
   @Get('/')
   info(@Query('link') link: string): any {
     const doi = this.doiService.isDOI(link);
-    console.log(doi);
     if (doi) return this.doiService.getInfoByDOI(doi);
     else
       throw new HttpException(
