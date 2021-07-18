@@ -3,13 +3,9 @@ import {
   Get,
   HttpException,
   HttpStatus,
-  Param,
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
-import { query } from 'express';
-import { AppService } from './app.service';
 import { AuthGuard } from './auth.guard';
 import { DoiService } from './doi/doi.service';
 

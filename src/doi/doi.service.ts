@@ -48,7 +48,7 @@ export class DoiService {
         }),
       )
       .toPromise()
-      .catch((d) => null);
+      .catch(() => null);
   }
 
   newDoiInfo(): DoiInfo {
@@ -304,7 +304,7 @@ export class DoiService {
       this.getScopusInfoByDoi(doi),
       this.addOpenAccessInfo(doi),
       this.getAltmetricByDoi(doi),
-      this.getGardianInfo('https://dx.doi.org/' + doi),
+      this.getGardianInfo(doi),
       this.crossrefAgency(doi),
     ]);
 
@@ -339,11 +339,11 @@ export class DoiService {
     return result;
   }
 
-  async getGardianInfo(doi, type = 'publication') {
+  async getGardian(doi, type) {
     const data = new FormData();
     data.append('type', type);
     data.append('identifier', doi);
-    const gardian = await this.httpService
+    return this.httpService
       .post(
         'https://gardian.bigdata.cgiar.org/api/v2/getDocumentFAIRbyIdentifier.php',
         data,
@@ -362,12 +362,22 @@ export class DoiService {
         }),
       )
       .toPromise()
-      .catch((d) => null);
-    // if (gardian) return gardian;
-    // else if (!gardian && type == 'publication')
-    //   return await this.getGardianInfo(doi, 'dataset');
-    // else 
-    return gardian;
+      .catch(() => null);
+  }
+
+  async getGardianInfo(doi, type = 'publication'): Promise<DoiInfo> {
+    const gardian = await Promise.all([
+      this.getGardian(`https://dx.doi.org/${doi}`, type),
+      this.getGardian(`https://doi.org/${doi}`, type),
+      this.getGardian(`http://dx.doi.org/${doi}`, type),
+      this.getGardian(`http://doi.org/${doi}`, type),
+      this.getGardian(`dx.doi.org/${doi}`, type),
+      this.getGardian(`doi.org/${doi}`, type),
+      this.getGardian(doi, type),
+    ]);
+    return gardian.length
+      ? (gardian.filter((d) => d && d.title)[0] as DoiInfo)
+      : ({} as DoiInfo);
   }
 
   async getGardianAccessToken() {
@@ -393,7 +403,7 @@ export class DoiService {
         }),
       )
       .toPromise()
-      .catch((d) => null);
+      .catch(() => null);
     if (gardian.access_token) return gardian.access_token;
     else return false;
   }
@@ -410,7 +420,7 @@ export class DoiService {
         }),
       )
       .toPromise()
-      .catch((d) => null);
+      .catch(() => null);
   }
 
   async getAltmetricByDoi(doi) {
@@ -425,7 +435,7 @@ export class DoiService {
         }),
       )
       .toPromise()
-      .catch((d) => null);
+      .catch(() => null);
 
     return altmetric;
   }
