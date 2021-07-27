@@ -3,13 +3,15 @@ import {
   HttpService,
   HttpStatus,
   Injectable,
+  Logger,
 } from '@nestjs/common';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
 import { DoiInfo } from 'src/doi-info';
 import * as FormData from 'form-data';
 @Injectable()
 export class DoiService {
+  private readonly logger = new Logger(DoiService.name);
   constructor(private httpService: HttpService, private ai: AI) {}
 
   isDOI(doi): any {
@@ -72,6 +74,23 @@ export class DoiService {
     } as DoiInfo;
   }
   async getWOSinfoByDoi(doi): Promise<DoiInfo> {
+    this.httpService
+      .post(
+        process.env.MEL_API + 'wos-user-quota-usage/external-usage',
+        {
+          doi: doi,
+        },
+        { headers: { authorization: process.env.MEL_API_KEY } },
+      )
+      .pipe(
+        map((d: any) => d.data),
+        catchError((e) => {
+          this.logger.log('MEL API is not connected');
+          this.logger.error(e);
+          return [null];
+        }),
+      )
+      .toPromise();
     const link = `https://wos-api.clarivate.com/api/wos/?databaseId=WOS&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`;
     const result: any = await this.httpService
       .get(link, {
