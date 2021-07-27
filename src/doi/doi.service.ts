@@ -74,7 +74,7 @@ export class DoiService {
     } as DoiInfo;
   }
   async getWOSinfoByDoi(doi): Promise<DoiInfo> {
-    this.httpService
+    await this.httpService
       .post(
         process.env.MEL_API + 'wos-user-quota-usage/external-usage',
         {
