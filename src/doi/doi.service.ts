@@ -12,7 +12,7 @@ import * as FormData from 'form-data';
 @Injectable()
 export class DoiService {
   private readonly logger = new Logger(DoiService.name);
-  constructor(private httpService: HttpService, private ai: AI) {}
+  constructor(private httpService: HttpService, private ai: AI) { }
 
   isDOI(doi): any {
     const result = new RegExp(`(?<=)10\..*`).exec(doi);
@@ -126,18 +126,18 @@ export class DoiService {
                             clarisa_id: null,
                             name: d.address_spec.organizations
                               ? typeof d.address_spec.organizations
-                                  .organization === 'string' ||
+                                .organization === 'string' ||
                                 d.address_spec.organizations
                                   .organization instanceof String
                                 ? d.address_spec.organizations.organization
                                 : d.address_spec.organizations.organization.map(
-                                    (inst) =>
-                                      Array.isArray(inst)
-                                        ? inst[1].content
-                                        : inst.content
+                                  (inst) =>
+                                    Array.isArray(inst)
+                                      ? inst[1].content
+                                      : inst.content
                                         ? inst.content
                                         : inst,
-                                  )[0]
+                                )[0]
                               : d.address_spec.full_address,
                             country: d.address_spec.country,
                             full_address: d.address_spec.full_address,
@@ -152,19 +152,19 @@ export class DoiService {
                           name: addresses.address_name.address_spec
                             .organizations
                             ? typeof addresses.address_name.address_spec
-                                .organizations.organization === 'string' ||
+                              .organizations.organization === 'string' ||
                               addresses.address_name.address_spec.organizations
                                 .organization instanceof String
                               ? addresses.address_name.address_spec
-                                  .organizations.organization
+                                .organizations.organization
                               : addresses.address_name.address_spec.organizations.organization.map(
-                                  (inst) =>
-                                    Array.isArray(inst)
-                                      ? inst[1].content
-                                      : inst.content
+                                (inst) =>
+                                  Array.isArray(inst)
+                                    ? inst[1].content
+                                    : inst.content
                                       ? inst.content
                                       : inst,
-                                )[0]
+                              )[0]
                             : addresses.address_name.address_spec.full_address,
                           country: addresses.address_name.address_spec.country,
                           full_address:
@@ -177,8 +177,11 @@ export class DoiService {
                   }
                   doiData.issue = pub_info.issue;
                   doiData.volume = pub_info.vol;
-                  doiData.publication_year = pub_info.pubyear;
                   doiData.publication_type = pub_info.pubtype;
+                  doiData.publication_year = pub_info.pubyear;
+                  doiData.publication_sortdate = pub_info?.sortdate;
+                  doiData.publication_coverdate = pub_info?.coverdate;
+
                   if (pub_info.page)
                     doiData.start_end_pages = pub_info.page.content;
                   else doiData.start_end_pages = null;
@@ -257,6 +260,7 @@ export class DoiService {
                 doiData.publication_type = REC['prism:aggregationType'];
                 doiData.start_end_pages = REC['prism:pageRange'];
                 doiData.authors = [{ full_name: REC['dc:creator'] }];
+                doiData.publication_coverdate = REC['prism:coverDate'];
                 doiData.title = REC['dc:title'];
                 doiData.doi = REC['prism:doi'];
                 doiData.journal_name = REC['prism:publicationName'];
@@ -331,8 +335,8 @@ export class DoiService {
       results[0] && results[0].source
         ? results[0]
         : results[1] && results[1].source
-        ? results[1]
-        : this.newDoiInfo();
+          ? results[1]
+          : this.newDoiInfo();
     result.crossref = results[5];
 
     if (['datacite'].includes(result.crossref)) result.is_oa = 'yes';
@@ -345,8 +349,8 @@ export class DoiService {
       results[0] && results[0].source
         ? 'yes'
         : results[1] && results[1].source
-        ? 'no'
-        : 'N/A';
+          ? 'no'
+          : 'N/A';
 
     if (result && result != null) result = await this.addClarisaID(result);
     if (!result.is_oa && !result.altmetric && !result.source)

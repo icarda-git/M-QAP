@@ -16,6 +16,8 @@ export interface DoiInfo {
   organizations: Array<organization>;
   altmetric?: any;
   gardian?: any;
+  publication_sortdate?: any;
+  publication_coverdate?: any;
 }
 
 export interface author {
