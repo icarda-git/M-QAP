@@ -427,7 +427,7 @@ export class DoiService {
       )
       .toPromise()
       .catch(() => null);
-    if (gardian.access_token) return gardian.access_token;
+    if (gardian && gardian.access_token) return gardian.access_token;
     else return false;
   }
 
