@@ -25,7 +25,7 @@ export class AI {
       process.env.PRODUCTION == '1'
         ? await this.httpService
             .get('https://clarisa.cgiar.org/api/institutions', {
-              auth: { username: 'gldc.data', password: '7823282' },
+              auth: { username: 'mel.data', password: 'Mel.data2022' },
             })
             .pipe(map((d: any) => d.data))
             .toPromise()
