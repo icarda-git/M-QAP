@@ -32,10 +32,6 @@ export class HandleService {
       this.getAltmetricByHandle(handle),
     ]);
     let data = results[0];
-    if (data.Keywords)
-      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
-
-    if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
 
     if (data.Affiliation)
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
@@ -47,9 +43,107 @@ export class HandleService {
       );
 
     data['handle_altmetric'] = results[1];
+
+    let DOI_INFO = null;
+    if (data.DOI) {
+      let doi = this.doi.isDOI(data.DOI);
+      if (doi) {
+        DOI_INFO = await this.doi.getInfoByDOI(doi);
+        data['DOI_Info'] = DOI_INFO;
+      }
+    }
+
+    if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
+
+    if (data.Keywords)
+      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
+
+    data['FAIR'] = this.calclateFAIR(data);
     return data;
   }
+  calclateFAIR(data) {
+    let FAIR = {
+      score: {
+        total: 0,
+        F: 0,
+        A: 0,
+        I: 0,
+        R: 0,
+      },
+      F: [
+        {
+          name: 'F1',
+          description:
+            'The knowledge product is retrievable through its handle',
+          valid: true,
+        },
+        {
+          name: 'F2',
+          description: 'The knowledge product is described by rich metadata',
+          valid:
+            (data.Title ? true : false) &&
+            (data.Authors ? true : false) &&
+            (data.Description ? true : false),
+        },
+        {
+          name: 'F3',
+          description: 'At least one author is linked through their ORCID',
+          valid: data.ORCID_Data
+            ? data.ORCID_Data && data.ORCID_Data.length > 0
+            : false,
+        },
+      ],
+      A: [
+        {
+          name: 'A1',
+          description: 'Metadata are retrievable through the handle',
+          valid: true,
+        },
+      ],
+      I: [
+        {
+          name: 'I1',
+          description: 'Metadata contains AGROVOC keywords',
+          valid: data?.agrovoc_keywords
+            ? data.agrovoc_keywords.keywords.length > 0
+            : false,
+        },
+        {
+          name: 'I1',
+          description:
+            'Metadata include qualified references to other (meta)data',
+          valid: data
+            ? data.hasOwnProperty('DOI_Info') ||
+              data.hasOwnProperty('Reference to other DOI or Handle')
+            : false,
+        },
+      ],
+      R: [
+        {
+          name: 'R1',
+          description:
+            'Data asset is Open Access (OA) and has a clear and accessible usage license',
+          valid: data
+            ? data?.DOI_Info?.is_oa == 'yes' ||
+              data['Open Access'] == 'Open Access'
+            : false,
+        },
+      ],
+    };
+    Object.keys(FAIR.score).forEach((key) => {
+      if (key != 'total')
+        FAIR.score[key] =
+          (FAIR[key].filter((d) => d.valid).length / FAIR[key].length) * 100;
+    });
+    FAIR.score.total =
+      Object.values(FAIR.score).reduce((partialSum, a) => partialSum + a, 0) /
+      (Object.keys(FAIR.score).length - 1);
+    Object.keys(FAIR.score).forEach((key) => {
+      FAIR.score[key] = Number((FAIR.score[key] as number).toFixed(2));
+    });
 
+    return FAIR
+  }
   async getAgrovocKeywords(Keywords: [string]) {
     let keywords_agro = [];
     Keywords.forEach((keyw) => {
@@ -87,7 +181,7 @@ export class HandleService {
           .catch((e) => null),
       );
     });
-    return await Promise.all(tohit);
+    return await (await Promise.all(tohit)).filter((d) => d);
   }
 
   async getDpsace(handle) {
@@ -99,14 +193,7 @@ export class HandleService {
       .toPromise();
 
     let formated_data = this.formatService.format(data, schema);
-    let DOI_INFO = null;
-    if (formated_data.DOI) {
-      let doi = this.doi.isDOI(formated_data.DOI);
-      if (doi) {
-        DOI_INFO = await this.doi.getInfoByDOI(doi);
-        formated_data['DOI_Info'] = DOI_INFO;
-      }
-    }
+
     return formated_data;
   }
 
