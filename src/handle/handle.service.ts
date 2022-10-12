@@ -27,39 +27,40 @@ export class HandleService {
   }
 
   async getInfoByHandle(handle) {
-    const results = await Promise.all([
-      this.getDpsace(handle),
-      this.getAltmetricByHandle(handle),
-    ]);
-    let data = results[0];
+      const results = await Promise.all([
+        this.getDpsace(handle),
+        this.getAltmetricByHandle(handle),
+      ]);
+      let data = results[0];
 
-    if (data.Affiliation)
-      data.Affiliation = await this.toClarisa(data.Affiliation, handle);
+      if (data.Affiliation)
+        data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
-    if (data['Funding source'])
-      data['Funding source'] = await this.toClarisa(
-        data['Funding source'],
-        handle,
-      );
+      if (data['Funding source'])
+        data['Funding source'] = await this.toClarisa(
+          data['Funding source'],
+          handle,
+        );
 
-    data['handle_altmetric'] = results[1];
+      data['handle_altmetric'] = results[1];
 
-    let DOI_INFO = null;
-    if (data.DOI) {
-      let doi = this.doi.isDOI(data.DOI);
-      if (doi) {
-        DOI_INFO = await this.doi.getInfoByDOI(doi);
-        data['DOI_Info'] = DOI_INFO;
+      let DOI_INFO = null;
+      if (data.DOI) {
+        let doi = this.doi.isDOI(data.DOI);
+        if (doi) {
+          DOI_INFO = await this.doi.getInfoByDOI(doi);
+          data['DOI_Info'] = DOI_INFO;
+        }
       }
-    }
 
-    if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
+      if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
 
-    if (data.Keywords)
-      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
+      if (data.Keywords)
+        data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
 
-    data['FAIR'] = this.calclateFAIR(data);
-    return data;
+      data['FAIR'] = this.calclateFAIR(data);
+
+      return data;
   }
   calclateFAIR(data) {
     let FAIR = {
@@ -142,9 +143,10 @@ export class HandleService {
       FAIR.score[key] = Number((FAIR.score[key] as number).toFixed(2));
     });
 
-    return FAIR
+    return FAIR;
   }
   async getAgrovocKeywords(Keywords: [string]) {
+    if (!Array.isArray(Keywords)) Keywords = [Keywords];
     let keywords_agro = [];
     Keywords.forEach((keyw) => {
       keywords_agro.push(
@@ -157,7 +159,10 @@ export class HandleService {
               return { keyword: keyw, is_agrovoc: d.data.results.length > 0 };
             }),
           )
-          .toPromise(),
+          .toPromise()
+          .catch((e) => {
+            return { keyword: keyw, is_agrovoc: false };
+          }),
       );
     });
     const results = await Promise.all(keywords_agro);
@@ -168,6 +173,7 @@ export class HandleService {
   }
 
   async getORCID(orcids) {
+    if (!Array.isArray(orcids)) orcids = [orcids];
     let tohit = [];
     orcids.forEach((orcid) => {
       orcid = orcid.split(': ')[1];
