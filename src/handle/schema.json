@@ -38,7 +38,7 @@
       "value": { "value": "Publication Date" }
     },
     {
-      "where": { "key": "dc.coverage.country" },
+      "where": { "key": "cg.coverage.country" },
       "value": { "value": "Countries" }
     },
     {
