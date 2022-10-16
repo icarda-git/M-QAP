@@ -18,6 +18,18 @@
       "value": { "value": "Keywords" }
     },
     {
+      "where": { "key": "cg.subject.iita" },
+      "value": { "value": "Keywords" }
+    },
+    {
+      "where": { "key": "cg.subject.cip" },
+      "value": { "value": "Keywords" }
+    },
+    {
+      "where": { "key": "cg.subject.ilri" },
+      "value": { "value": "Keywords" }
+    },
+    {
       "where": { "key": "dcterms.abstract" },
       "value": { "value": "Description" }
     },
