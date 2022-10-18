@@ -30,6 +30,14 @@
       "value": { "value": "Keywords" }
     },
     {
+      "where": { "key": "cg.subject.alliancebiovciat" },
+      "value": { "value": "Keywords" }
+    },
+    {
+      "where": { "key": "cg.subject.ccafs" },
+      "value": { "value": "Keywords" }
+    },
+    {
       "where": { "key": "dcterms.abstract" },
       "value": { "value": "Description" }
     },
