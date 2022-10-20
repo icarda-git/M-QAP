@@ -1,10 +1,10 @@
-import { HttpService, Injectable } from '@nestjs/common';
+import { BadRequestException, HttpService, Injectable } from '@nestjs/common';
 import { keep } from '@tensorflow/tfjs';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
 import { DoiService } from 'src/doi/doi.service';
 import { FormatSearvice } from './formater.service';
-import * as schema from './schema.json';
+import * as schemas from './schema.json';
 @Injectable()
 export class HandleService {
   constructor(
@@ -26,41 +26,165 @@ export class HandleService {
     return result;
   }
 
-  async getInfoByHandle(handle) {
-      const results = await Promise.all([
-        this.getDpsace(handle),
-        this.getAltmetricByHandle(handle),
-      ]);
-      let data = results[0];
+  IsDOIOrHandle(URL): any {
+    //Replace %2F with /
+    URL = URL.split('%2F');
+    URL = URL.join('/');
+    //Replace %3A with :
+    URL = URL.split('%3A');
+    URL = URL.join(':');
 
-      if (data.Affiliation)
-        data.Affiliation = await this.toClarisa(data.Affiliation, handle);
+    //match the pattern of any part after a "\" or ":" as 2 digits followed by anything the a "/" followed by anything.
+    //DOIs and Handles will follow this pattern, but it is not necessary all the matches are DOIs or Handles.
+    const regex = /(?<=\/|\:|^)\d{2,}.*[^\/]\/[^\s]+/;
+    let match = regex.exec(URL);
 
-      if (data['Funding source'])
-        data['Funding source'] = await this.toClarisa(
-          data['Funding source'],
-          handle,
-        );
-
-      data['handle_altmetric'] = results[1];
-
-      let DOI_INFO = null;
-      if (data.DOI) {
-        let doi = this.doi.isDOI(data.DOI);
-        if (doi) {
-          DOI_INFO = await this.doi.getInfoByDOI(doi);
-          data['DOI_Info'] = DOI_INFO;
-        }
+    if (match !== null) {
+      let matchArray = match[0].split('/');
+      let prefix = matchArray[0];
+      let type = 'handle';
+      if (/^10\..*/.exec(prefix)) {
+        type = 'DOI';
       }
+      return { prefix, param: match[0], link_type: type };
+    }
+    return false;
+  }
 
-      if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
+  getInfobyScheam(schemas, prefix) {
+    let repos = schemas.filter((d) => d.prefix.indexOf(prefix) != -1);
+    if (repos.length == 0)
+      throw new BadRequestException(
+        'handle provided is not supported by M-QAP the repo is not included pelase contact support',
+      );
+    return repos[0];
+  }
 
-      if (data.Keywords)
-        data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
+  async getDataverse(handle, schema, repo, link) {
+    let data = await this.http
+      .get(`${link}/api/datasets/:persistentId/?persistentId=hdl:${handle}`)
+      .pipe(map((d) => d.data.data))
+      .toPromise();
 
-      data['FAIR'] = this.calclateFAIR(data);
+    let formated_data = this.formatService.format(
+      this.flatData(data, 'typeName', 'value'),
+      schema,
+    );
 
-      return data;
+    formated_data = this.addOn(formated_data, schema);
+
+    formated_data['repo'] = repo;
+    return formated_data;
+  }
+
+  addOn(formated_data, schema) {
+    let addons = schema.metadata.filter((d) => d.addon);
+
+    addons.forEach((element) => {
+      if (Object.keys(element.addon)[0] == 'combind')
+        formated_data = this.comind(
+          formated_data,
+          element.value.value,
+          element.addon.combind,
+          schema,
+        );
+    });
+
+    return formated_data;
+  }
+
+  comind(data, src1, src2, schema) {
+    data[src1] = data[src1].map((d, i) => {
+      console.log(d, i);
+      let obj = {};
+      obj[d] = data[src2][i];
+      return obj;
+    });
+    let formated = this.formatService.format(
+      this.flatData(data[src1], '', ''),
+      schema,
+    );
+    data = { ...data, ...formated };
+    delete data[src1];
+    delete data[src2];
+    return data;
+  }
+
+  flatData(data, akey, avalue) {
+    let metadata = [];
+    // not as what i want
+    let flat = (data, akey, avalue) => {
+      if (
+        data[akey] &&
+        data[avalue] &&
+        !Array.isArray(data[avalue]) &&
+        typeof data[avalue] !== 'object'
+      )
+        metadata.push({ key: data[akey], value: data[avalue] });
+      else
+        Object.keys(data).forEach((key) => {
+          if (
+            akey != key &&
+            typeof data[key] !== 'object' &&
+            !Array.isArray(data[key])
+          )
+            metadata.push({ key, value: data[key] });
+          else if (Array.isArray(data[key]))
+            data[key].forEach((element) => {
+              flat(element, akey, avalue);
+            });
+          else flat(data[key], akey, avalue);
+        });
+    };
+    flat(data, akey, avalue);
+    return { metadata };
+  }
+
+  async getInfoByHandle(handle) {
+    let { prefix, param, link_type } = this.IsDOIOrHandle(handle);
+    if (!param) throw new BadRequestException('please provide valid handle');
+    else handle = link_type == 'handle' ? param : '';
+
+    let { schema, repo, link, type } = this.getInfobyScheam(schemas, prefix);
+
+    let dataSurces = [this.getAltmetricByHandle(handle)];
+    if (type == 'DSpace')
+      dataSurces.push(this.getDpsace(handle, schema, repo, link));
+    if (type == 'Dataverse')
+      dataSurces.push(this.getDataverse(handle, schema, repo, link));
+
+    const results = await Promise.all(dataSurces);
+
+    let data = results[1];
+
+    if (data.Affiliation)
+      data.Affiliation = await this.toClarisa(data.Affiliation, handle);
+
+    if (data['Funding source'])
+      data['Funding source'] = await this.toClarisa(
+        data['Funding source'],
+        handle,
+      );
+
+    data['handle_altmetric'] = results[0];
+
+    let DOI_INFO = null;
+    if (data.DOI) {
+      let doi = this.doi.isDOI(data.DOI);
+      if (doi) {
+        DOI_INFO = await this.doi.getInfoByDOI(doi);
+        data['DOI_Info'] = DOI_INFO;
+      }
+    }
+
+    if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
+
+    if (data.Keywords)
+      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
+
+    data['FAIR'] = this.calclateFAIR(data);
+
+    return data;
   }
   calclateFAIR(data) {
     let FAIR = {
@@ -126,7 +250,7 @@ export class HandleService {
             'Data asset is Open Access (OA) and has a clear and accessible usage license',
           valid: data
             ? data?.DOI_Info?.is_oa == 'yes' ||
-              data['Open Access'] == 'Open Access'
+              (data['Open Access'] as string).toLocaleLowerCase().includes('open access') 
             : false,
         },
       ],
@@ -176,30 +300,37 @@ export class HandleService {
     if (!Array.isArray(orcids)) orcids = [orcids];
     let tohit = [];
     orcids.forEach((orcid) => {
-      orcid = orcid.split(': ')[1];
-      tohit.push(
-        this.http
-          .get(`https://orcid.org/${orcid}`, {
-            headers: { Accept: 'application/json' },
-          })
-          .pipe(map((d) => d.data))
-          .toPromise()
-          .catch((e) => null),
-      );
+      const regex = /[0-9-]+/gim;
+      let match = regex.exec(orcid);
+      if (match && match[0]) {
+        orcid = match[0];
+        tohit.push(
+          this.http
+            .get(`https://orcid.org/${orcid}`, {
+              headers: { Accept: 'application/json' },
+            })
+            .pipe(map((d) => d.data))
+            .toPromise()
+            .catch((e) => null),
+        );
+      }
     });
-    return await (await Promise.all(tohit)).filter((d) => d);
+    if (tohit.length > 0)
+      return await (await Promise.all(tohit)).filter((d) => d);
+    else return [];
   }
 
-  async getDpsace(handle) {
+  async getDpsace(handle, schema, repo, link) {
+    console.log(repo, link);
     let data = await this.http
       .get(
-        `https://cgspace.cgiar.org/rest/handle/${handle}?expand=metadata,parentCommunityList,parentCollectionList,bitstreams`,
+        `${link}/rest/handle/${handle}?expand=metadata,parentCommunityList,parentCollectionList,bitstreams`,
       )
       .pipe(map((d) => d.data))
       .toPromise();
 
     let formated_data = this.formatService.format(data, schema);
-
+    formated_data['repo'] = repo;
     return formated_data;
   }
 

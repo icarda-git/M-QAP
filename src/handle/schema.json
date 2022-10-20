@@ -1,155 +1,378 @@
-{
-  "metadata": [
-    {
-      "where": { "key": "dc.title" },
-      "value": { "value": "Title" }
-    },
-    {
-      "where": { "key": "dc.contributor.author" },
-      "value": { "value": "Authors" }
-    },
+[
+  {
+    "repo": "CGSPACE",
+    "type": "DSpace",
+    "link": "https://cgspace.cgiar.org",
+    "prefix": ["10568", "10947"],
+    "schema": {
+      "metadata": [
+        {
+          "where": { "key": "dc.title" },
+          "value": { "value": "Title" }
+        },
+        {
+          "where": { "key": "dc.contributor.author" },
+          "value": { "value": "Authors" }
+        },
 
-    {
-      "where": { "key": "dc.identifier.uri" },
-      "value": { "value": "Handle" }
-    },
-    {
-      "where": { "key": "dcterms.subject" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "cg.subject.iita" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "cg.subject.cip" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "cg.subject.ilri" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "cg.subject.alliancebiovciat" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "cg.subject.ccafs" },
-      "value": { "value": "Keywords" }
-    },
-    {
-      "where": { "key": "dcterms.abstract" },
-      "value": { "value": "Description" }
-    },
-    {
-      "where": { "key": "dcterms.license" },
-      "value": { "value": "Rights" }
-    },
-    {
-      "where": { "key": "dcterms.accessRights" },
-      "value": { "value": "Open Access" }
-    },
-    {
-      "where": { "key": "cg.identifier.doi" },
-      "value": { "value": "DOI" }
-    },
-    {
-      "where": { "key": "dcterms.issued" },
-      "value": { "value": "Publication Date" }
-    },
-    {
-      "where": { "key": "cg.coverage.country" },
-      "value": { "value": "Countries" }
-    },
-    {
-      "where": { "key": "cg.subject.actionArea" },
-      "value": { "value": "Action Area" }
-    },
-    {
-      "where": { "key": "cg.contributor.affiliation" },
-      "value": { "value": "Affiliation" }
-    },
-    {
-      "where": { "key": "NA" },
-      "value": { "value": "AGROVOC Keywords" }
-    },
-    {
-      "where": { "key": "NA" },
-      "value": { "value": "Commodities" }
-    },
-    {
-      "where": { "key": "cg.contributor.donor" },
-      "value": { "value": "Funding source" }
-    },
-    {
-      "where": { "key": "cg.subject.impactArea" },
-      "value": { "value": "Impact Area" }
-    },
-    {
-      "where": { "key": "cg.creator.identifier" },
-      "value": { "value": "ORCID" }
-    },
-    {
-      "where": { "key": "cg.coverage.region" },
-      "value": { "value": "Region of the research" }
-    },
-    {
-      "where": { "key": "dcterms.type" },
-      "value": { "value": "Type" }
-    },
-    {
-      "where": { "key": "dcterms.relation" },
-      "value": { "value": "Reference to other DOI or Handle" }
-    },
-    {
-      "where": { "key": "cg.isijournal" },
-      "value": { "value": "ISI" }
-    },
-    {
-      "where": { "key": "cg.reviewStatus" },
-      "value": { "value": "Peer-reviewed" }
-    },
-    {
-      "where": { "key": "dcterms.bibliographicCitation" },
-      "value": { "value": "Citation" }
-    },
-    {
-      "where": { "key": "dcterms.language" },
-      "value": { "value": "Language" }
-    },
-    {
-      "where": { "key": "NA" },
-      "value": { "value": "Publisher" }
-    },
-    {
-      "where": { "key": "cg.journal" },
-      "value": { "value": "Journal" }
-    },
-    {
-      "where": { "key": "cg.edition" },
-      "value": { "value": "Volume" }
-    },
-    {
-      "where": { "key": "cg.edition" },
-      "value": { "value": "Issue" }
-    },
-    {
-      "where": { "key": "dcterms.extent" },
-      "value": { "value": "Pages" }
-    },
-    {
-      "where": { "key": "NA" },
-      "value": { "value": "Other Url" }
+        {
+          "where": { "key": "dc.identifier.uri" },
+          "value": { "value": "Handle" }
+        },
+        {
+          "where": { "key": "dcterms.subject" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "cg.subject.iita" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "cg.subject.cip" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "cg.subject.ilri" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "cg.subject.alliancebiovciat" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "cg.subject.ccafs" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "dcterms.abstract" },
+          "value": { "value": "Description" }
+        },
+        {
+          "where": { "key": "dcterms.license" },
+          "value": { "value": "Rights" }
+        },
+        {
+          "where": { "key": "dcterms.accessRights" },
+          "value": { "value": "Open Access" }
+        },
+        {
+          "where": { "key": "cg.identifier.doi" },
+          "value": { "value": "DOI" }
+        },
+        {
+          "where": { "key": "dcterms.issued" },
+          "value": { "value": "Publication Date" }
+        },
+        {
+          "where": { "key": "cg.coverage.country" },
+          "value": { "value": "Countries" }
+        },
+        {
+          "where": { "key": "cg.subject.actionArea" },
+          "value": { "value": "Action Area" }
+        },
+        {
+          "where": { "key": "cg.contributor.affiliation" },
+          "value": { "value": "Affiliation" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "AGROVOC Keywords" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "Commodities" }
+        },
+        {
+          "where": { "key": "cg.contributor.donor" },
+          "value": { "value": "Funding source" }
+        },
+        {
+          "where": { "key": "cg.subject.impactArea" },
+          "value": { "value": "Impact Area" }
+        },
+        {
+          "where": { "key": "cg.creator.identifier" },
+          "value": { "value": "ORCID" }
+        },
+        {
+          "where": { "key": "cg.coverage.region" },
+          "value": { "value": "Region of the research" }
+        },
+        {
+          "where": { "key": "dcterms.type" },
+          "value": { "value": "Type" }
+        },
+        {
+          "where": { "key": "dcterms.relation" },
+          "value": { "value": "Reference to other DOI or Handle" }
+        },
+        {
+          "where": { "key": "cg.isijournal" },
+          "value": { "value": "ISI" }
+        },
+        {
+          "where": { "key": "cg.reviewStatus" },
+          "value": { "value": "Peer-reviewed" }
+        },
+        {
+          "where": { "key": "dcterms.bibliographicCitation" },
+          "value": { "value": "Citation" }
+        },
+        {
+          "where": { "key": "dcterms.language" },
+          "value": { "value": "Language" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "Publisher" }
+        },
+        {
+          "where": { "key": "cg.journal" },
+          "value": { "value": "Journal" }
+        },
+        {
+          "where": { "key": "cg.edition" },
+          "value": { "value": "Volume" }
+        },
+        {
+          "where": { "key": "cg.edition" },
+          "value": { "value": "Issue" }
+        },
+        {
+          "where": { "key": "dcterms.extent" },
+          "value": { "value": "Pages" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "Other Url" }
+        }
+      ],
+      "uuid": "uuid",
+      "name": "name",
+      "handle": "handle",
+      "bitstreams": [
+        {
+          "where": { "bundleName": "THUMBNAIL" },
+          "value": { "retrieveLink": "thumbnail" },
+          "prefix": "https://cgspace.cgiar.org"
+        }
+      ]
     }
-  ],
-  "uuid": "uuid",
-  "name": "name",
-  "handle": "handle",
-  "bitstreams": [
-    {
-      "where": { "bundleName": "THUMBNAIL" },
-      "value": { "retrieveLink": "thumbnail" },
-      "prefix": "https://cgspace.cgiar.org"
+  },
+  {
+    "repo": "MELSPACE",
+    "type": "DSpace",
+    "link": "https://repo.mel.cgiar.org",
+    "prefix": ["20.500.11766"],
+    "schema": {
+      "metadata": [
+        {
+          "where": { "key": "dc.title" },
+          "value": { "value": "Title" }
+        },
+        {
+          "where": { "key": "dc.creator" },
+          "value": { "value": "Authors" }
+        },
+        {
+          "where": { "key": "dc.contributor" },
+          "value": { "value": "Authors" }
+        },
+        {
+          "where": { "key": "dc.identifier.uri" },
+          "value": { "value": "Handle" }
+        },
+        {
+          "where": { "key": "dc.subject" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "dc.description.abstract" },
+          "value": { "value": "Description" }
+        },
+        {
+          "where": { "key": "dc.rights" },
+          "value": { "value": "Rights" }
+        },
+        {
+          "where": { "key": "dc.identifier.status" },
+          "value": { "value": "Open Access" }
+        },
+        {
+          "where": { "key": "cg.identifier.doi" },
+          "value": { "value": "DOI" }
+        },
+        {
+          "where": { "key": "dc.date" },
+          "value": { "value": "Publication Date" }
+        },
+        {
+          "where": { "key": "cg.coverage.country" },
+          "value": { "value": "Countries" }
+        },
+        {
+          "where": { "key": "cg.contributor.center" },
+          "value": { "value": "Affiliation" }
+        },
+        {
+          "where": { "key": "cg.subject.agrovoc" },
+          "value": { "value": "AGROVOC Keywords" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "Commodities" }
+        },
+        {
+          "where": { "key": "cg.contributor.funder" },
+          "value": { "value": "Funding source" }
+        },
+        {
+          "where": { "key": "cg.subject.impactArea" },
+          "value": { "value": "Impact Area" }
+        },
+        {
+          "where": { "key": "cg.creator.id" },
+          "value": { "value": "ORCID" }
+        },
+        {
+          "where": { "key": "cg.coverage.region" },
+          "value": { "value": "Region of the research" }
+        },
+        {
+          "where": { "key": "dc.type" },
+          "value": { "value": "Type" }
+        },
+        {
+          "where": { "key": "dc.relation.uri" },
+          "value": { "value": "Reference to other DOI or Handle" }
+        },
+        {
+          "where": { "key": "cg.isijournal" },
+          "value": { "value": "ISI" }
+        },
+        {
+          "where": { "key": "cg.reviewStatus" },
+          "value": { "value": "Peer-reviewed" }
+        },
+        {
+          "where": { "key": "dc.identifier.citation" },
+          "value": { "value": "Citation" }
+        },
+        {
+          "where": { "key": "dc.language" },
+          "value": { "value": "Language" }
+        },
+        {
+          "where": { "key": "dc.publisher" },
+          "value": { "value": "Publisher" }
+        },
+        {
+          "where": { "key": "dc.source" },
+          "value": { "value": "Journal" }
+        },
+        {
+          "where": { "key": "dc.source" },
+          "value": { "value": "Volume" }
+        },
+        {
+          "where": { "key": "dc.source" },
+          "value": { "value": "Issue" }
+        },
+        {
+          "where": { "key": "dc.source" },
+          "value": { "value": "Pages" }
+        },
+        {
+          "where": { "key": "NA" },
+          "value": { "value": "Other Url" }
+        }
+      ],
+      "uuid": "uuid",
+      "name": "name",
+      "handle": "handle",
+      "bitstreams": [
+        {
+          "where": { "bundleName": "THUMBNAIL" },
+          "value": { "retrieveLink": "thumbnail" },
+          "prefix": "https://mel.cgiar.org"
+        }
+      ]
     }
-  ]
-}
+  },
+  {
+    "repo": "MELData",
+    "type": "Dataverse",
+    "link": "https://data.mel.cgiar.org",
+    "prefix": ["20.500.11766.1"],
+    "schema": {
+      "metadata": [
+        {
+          "where": { "key": "title" },
+          "value": { "value": "Title" }
+        },
+        {
+          "where": { "key": "authorName" },
+          "value": { "value": "Authors" }
+        },
+        {
+          "where": { "key": "keywordValue" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "dsDescriptionValue" },
+          "value": { "value": "Description" }
+        },
+        {
+          "where": { "key": "termsOfUse" },
+          "value": { "value": "Rights" }
+        },
+        {
+          "where": { "key": "termsOfUse" },
+          "value": { "value": "Open Access" }
+        },
+        {
+          "where": { "key": "publicationDate" },
+          "value": { "value": "Publication Date" }
+        },
+        {
+          "where": { "key": "country" },
+          "value": { "value": "Countries" }
+        },
+        {
+          "where": { "key": "producerName" },
+          "value": { "value": "Affiliation" }
+        },
+        {
+          "where": { "key": "language" },
+          "value": { "value": "Language" }
+        },
+        {
+          "where": { "key": "contributorName" },
+          "value": { "value": "contributorName" }
+        },
+        {
+          "where": { "key": "Funder" },
+          "value": { "value": "Funding source" }
+        },
+        {
+          "where": { "key": "authorIdentifier" },
+          "value": { "value": "ORCID" }
+        },
+        {
+          "where": { "key": "producerLogoURL" },
+          "value": { "value": "THUMBNAIL" }
+        },
+        {
+          "where": { "key": "contributorType" },
+          "value": { "value": "contributorType" },
+          "addon": {
+            "combind": "contributorName"
+          }
+        }
+      ],
+      "id": "id",
+      "handle": "persistentUrl"
+    }
+  }
+]
