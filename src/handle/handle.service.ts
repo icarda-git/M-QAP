@@ -5,6 +5,7 @@ import { AI } from 'src/ai/ai.service';
 import { DoiService } from 'src/doi/doi.service';
 import { FormatSearvice } from './formater.service';
 import * as schemas from './schema.json';
+import * as licences from './licences.json';
 @Injectable()
 export class HandleService {
   constructor(
@@ -60,21 +61,31 @@ export class HandleService {
     return repos[0];
   }
 
-  async getDataverse(handle, schema, repo, link) {
+  async getDataverse(handle, schema, repo, link, link_type) {
     let data = await this.http
-      .get(`${link}/api/datasets/:persistentId/?persistentId=hdl:${handle}`)
+      .get(
+        `${link}/api/datasets/:persistentId/?persistentId=${
+          link_type == 'DOI' ? 'doi' : 'hdl'
+        }:${handle}`,
+      )
       .pipe(map((d) => d.data.data))
-      .toPromise();
+      .toPromise()
+      .catch((e) => {
+        console.log(e);
+        return false;
+      });
+    if (data) {
+      console.log(data);
+      let formated_data = this.formatService.format(
+        this.flatData(data, 'typeName', 'value'),
+        schema,
+      );
 
-    let formated_data = this.formatService.format(
-      this.flatData(data, 'typeName', 'value'),
-      schema,
-    );
+      formated_data = this.addOn(formated_data, schema);
 
-    formated_data = this.addOn(formated_data, schema);
-
-    formated_data['repo'] = repo;
-    return formated_data;
+      formated_data['repo'] = repo;
+      return formated_data;
+    }
   }
 
   addOn(formated_data, schema) {
@@ -94,19 +105,20 @@ export class HandleService {
   }
 
   comind(data, src1, src2, schema) {
-    data[src1] = data[src1].map((d, i) => {
-      console.log(d, i);
-      let obj = {};
-      obj[d] = data[src2][i];
-      return obj;
-    });
-    let formated = this.formatService.format(
-      this.flatData(data[src1], '', ''),
-      schema,
-    );
-    data = { ...data, ...formated };
-    delete data[src1];
-    delete data[src2];
+    if (Array.isArray(data[src1])) {
+      data[src1] = data[src1].map((d, i) => {
+        let obj = {};
+        obj[d] = data[src2][i];
+        return obj;
+      });
+      let formated = this.formatService.format(
+        this.flatData(data[src1], '', ''),
+        schema,
+      );
+      data = { ...data, ...formated };
+      delete data[src1];
+      delete data[src2];
+    }
     return data;
   }
 
@@ -143,7 +155,7 @@ export class HandleService {
   async getInfoByHandle(handle) {
     let { prefix, param, link_type } = this.IsDOIOrHandle(handle);
     if (!param) throw new BadRequestException('please provide valid handle');
-    else handle = link_type == 'handle' ? param : '';
+    else handle = link_type == 'handle' ? param : param;
 
     let { schema, repo, link, type } = this.getInfobyScheam(schemas, prefix);
 
@@ -151,7 +163,7 @@ export class HandleService {
     if (type == 'DSpace')
       dataSurces.push(this.getDpsace(handle, schema, repo, link));
     if (type == 'Dataverse')
-      dataSurces.push(this.getDataverse(handle, schema, repo, link));
+      dataSurces.push(this.getDataverse(handle, schema, repo, link, link_type));
 
     const results = await Promise.all(dataSurces);
 
@@ -169,8 +181,8 @@ export class HandleService {
     data['handle_altmetric'] = results[0];
 
     let DOI_INFO = null;
-    if (data.DOI) {
-      let doi = this.doi.isDOI(data.DOI);
+    if (data.DOI || link_type == 'DOI') {
+      let doi = this.doi.isDOI(link_type == 'DOI'? handle : data.DOI);
       if (doi) {
         DOI_INFO = await this.doi.getInfoByDOI(doi);
         data['DOI_Info'] = DOI_INFO;
@@ -204,8 +216,10 @@ export class HandleService {
         },
         {
           name: 'F2',
-          description: 'The knowledge product is described by rich metadata',
+          description:
+            'The knowledge product is described by rich metadata such as title, authors, description/abstract, and issue date',
           valid:
+            (data['Publication Date'] ? true : false) &&
             (data.Title ? true : false) &&
             (data.Authors ? true : false) &&
             (data.Description ? true : false),
@@ -228,7 +242,7 @@ export class HandleService {
       I: [
         {
           name: 'I1',
-          description: 'Metadata contains AGROVOC keywords',
+          description: 'Metadata contain AGROVOC keywords',
           valid: data?.agrovoc_keywords
             ? data.agrovoc_keywords.keywords.length > 0
             : false,
@@ -238,8 +252,7 @@ export class HandleService {
           description:
             'Metadata include qualified references to other (meta)data',
           valid: data
-            ? data.hasOwnProperty('DOI_Info') ||
-              data.hasOwnProperty('Reference to other DOI or Handle')
+            ? data.hasOwnProperty('Reference to other DOI or Handle')
             : false,
         },
       ],
@@ -247,10 +260,14 @@ export class HandleService {
         {
           name: 'R1',
           description:
-            'Data asset is Open Access (OA) and has a clear and accessible usage license',
+            'The knowledge product is Open Access (OA) and has a clear and accessible usage license',
           valid: data
             ? data?.DOI_Info?.is_oa == 'yes' ||
-              (data['Open Access'] as string).toLocaleLowerCase().includes('open access') 
+              (data['Open Access'] &&
+                (data['Open Access'] as string)
+                  .toLocaleLowerCase()
+                  .includes('open access')) ||
+              licences.indexOf(data['Rights']) >= 0
             : false,
         },
       ],
@@ -300,7 +317,7 @@ export class HandleService {
     if (!Array.isArray(orcids)) orcids = [orcids];
     let tohit = [];
     orcids.forEach((orcid) => {
-      const regex = /[0-9-]+/gim;
+      const regex = /([A-Za-z0-9]{4}-){3}[A-Za-z0-9]{4}/gm;
       let match = regex.exec(orcid);
       if (match && match[0]) {
         orcid = match[0];
@@ -321,13 +338,12 @@ export class HandleService {
   }
 
   async getDpsace(handle, schema, repo, link) {
-    console.log(repo, link);
     let data = await this.http
       .get(
         `${link}/rest/handle/${handle}?expand=metadata,parentCommunityList,parentCollectionList,bitstreams`,
       )
       .pipe(map((d) => d.data))
-      .toPromise();
+      .toPromise().catch(e=>console.log(e));
 
     let formated_data = this.formatService.format(data, schema);
     formated_data['repo'] = repo;
