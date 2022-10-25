@@ -1,4 +1,9 @@
-import { BadRequestException, HttpService, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpService,
+  Injectable,
+  Logger,
+} from '@nestjs/common';
 import { keep } from '@tensorflow/tfjs';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
@@ -6,15 +11,34 @@ import { DoiService } from 'src/doi/doi.service';
 import { FormatSearvice } from './formater.service';
 import * as schemas from './schema.json';
 import * as licences from './licences.json';
+import xlsx from 'node-xlsx';
+import fs from 'fs';
+
 @Injectable()
 export class HandleService {
+  Commodities;
+  private readonly logger = new Logger(HandleService.name);
   constructor(
     private http: HttpService,
     private formatService: FormatSearvice,
     private doi: DoiService,
     private ai: AI,
-  ) {}
-
+  ) {
+    this.initCommodities();
+  }
+  async initCommodities() {
+    const workSheetsFromFile = await xlsx.parse(
+      `${__dirname}/Commodities.xlsx`,
+    );
+    this.Commodities = {};
+    workSheetsFromFile[0].data.forEach((d: any, i) => {
+      if (i > 0)
+        this.Commodities[d[0]] = d
+          .map((d: string) => d.toLocaleLowerCase().split(', '))
+          .flat();
+    });
+    this.logger.log('Commodities data Loaded');
+  }
   async toClarisa(Items, handle) {
     if (!Array.isArray(Items)) Items = [Items];
     let result = [];
@@ -86,6 +110,24 @@ export class HandleService {
       formated_data['repo'] = repo;
       return formated_data;
     }
+  }
+
+  getCommodities(keywords) {
+    // Or var xlsx = require('node-xlsx').default;
+    let finalCom = [];
+    // Parse a file
+
+    keywords.forEach((keyword) => {
+      let foundindex = Object.values(this.Commodities).findIndex(
+        (d: [string]) => {
+          return d.indexOf(keyword.toLocaleLowerCase()) > -1;
+        },
+      );
+      if (foundindex > -1)
+        finalCom.push(Object.keys(this.Commodities)[foundindex]);
+    });
+
+    return [...new Set(finalCom)];
   }
 
   addOn(formated_data, schema) {
@@ -178,11 +220,15 @@ export class HandleService {
         handle,
       );
 
+    if (data.Keywords) {
+      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
+      data['Commodities'] = await this.getCommodities(data.Keywords);
+    }
     data['handle_altmetric'] = results[0];
 
     let DOI_INFO = null;
     if (data.DOI || link_type == 'DOI') {
-      let doi = this.doi.isDOI(link_type == 'DOI'? handle : data.DOI);
+      let doi = this.doi.isDOI(link_type == 'DOI' ? handle : data.DOI);
       if (doi) {
         DOI_INFO = await this.doi.getInfoByDOI(doi);
         data['DOI_Info'] = DOI_INFO;
@@ -190,9 +236,6 @@ export class HandleService {
     }
 
     if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
-
-    if (data.Keywords)
-      data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
 
     data['FAIR'] = this.calclateFAIR(data);
 
@@ -343,7 +386,8 @@ export class HandleService {
         `${link}/rest/handle/${handle}?expand=metadata,parentCommunityList,parentCollectionList,bitstreams`,
       )
       .pipe(map((d) => d.data))
-      .toPromise().catch(e=>console.log(e));
+      .toPromise()
+      .catch((e) => console.log(e));
 
     let formated_data = this.formatService.format(data, schema);
     formated_data['repo'] = repo;

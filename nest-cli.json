@@ -2,6 +2,6 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions" : {
-    "assets" : ["assets/**","ai/wos_trained_model/**"]
+    "assets" : ["assets/**","ai/wos_trained_model/**","handle/*.xlsx"]
   }
 }
