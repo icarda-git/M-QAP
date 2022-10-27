@@ -291,7 +291,7 @@ export class HandleService {
             : false,
         },
         {
-          name: 'I1',
+          name: 'I2',
           description:
             'Metadata include qualified references to other (meta)data',
           valid: data
