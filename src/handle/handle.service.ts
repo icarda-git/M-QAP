@@ -318,13 +318,13 @@ export class HandleService {
     Object.keys(FAIR.score).forEach((key) => {
       if (key != 'total')
         FAIR.score[key] =
-          (FAIR[key].filter((d) => d.valid).length / FAIR[key].length) * 100;
+          (FAIR[key].filter((d) => d.valid).length / FAIR[key].length);
     });
     FAIR.score.total =
       Object.values(FAIR.score).reduce((partialSum, a) => partialSum + a, 0) /
       (Object.keys(FAIR.score).length - 1);
     Object.keys(FAIR.score).forEach((key) => {
-      FAIR.score[key] = Number((FAIR.score[key] as number).toFixed(2));
+      FAIR.score[key] = Number((FAIR.score[key] as number).toFixed(3));
     });
 
     return FAIR;
