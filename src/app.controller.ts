@@ -41,6 +41,16 @@ export class AppController {
         HttpStatus.BAD_REQUEST,
       );
   }
+  @Get('/qa')
+  async qaInfo(@Query('link') link: string = null) {
+    if (link) {
+      return this.handleService.getInfoByHandle(link);
+    } else
+      throw new HttpException(
+        'BadRequst valid handle must be provided',
+        HttpStatus.BAD_REQUEST,
+      );
+  }
 
   @Get('/predict/:name')
   async predict(@Param('name') name: string = null) {

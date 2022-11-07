@@ -887,5 +887,85 @@
       "id": "id",
       "handle": "persistentUrl"
     }
+  },
+  {
+    "repo": "IitaData",
+    "type": "CKAN",
+    "link": "https://data.iita.org",
+    "prefix": ["10.25502"],
+    "schema": {
+      "metadata": [
+        {
+          "where": { "key": "title" },
+          "value": { "value": "Title" }
+        },
+        {
+          "where": { "key": "contributor_person" },
+          "value": { "value": "Authors" },
+          "addon": {
+            "split": ","
+          }
+        },
+        {
+          "where": { "key": "display_name" },
+          "value": { "value": "Keywords" }
+        },
+        {
+          "where": { "key": "notes" },
+          "value": { "value": "Description" }
+        },
+        {
+          "where": { "key": "rights" },
+          "value": { "value": "Rights" }
+        },
+        {
+          "where": { "key": "oa_status" },
+          "value": { "value": "Open Access" }
+        },
+        {
+          "where": { "key": "creation_date" },
+          "value": { "value": "Publication Date" }
+        },
+        {
+          "where": { "key": "coverage_country" },
+          "value": { "value": "Countries" }
+        },
+        {
+          "where": { "key": "publisher" },
+          "value": { "value": "Affiliation" }
+        },
+        {
+          "where": { "key": "language" },
+          "value": { "value": "Language" }
+        },
+        {
+          "where": { "key": "contributor_funder" },
+          "value": { "value": "Funding source" },
+          "addon": {
+            "split": ","
+          }
+        },
+        {
+          "where": { "key": "creator_id" },
+          "value": { "value": "ORCID" }
+        },
+        {
+          "where": { "key": "identifier" },
+          "value": { "value": "DOI" }
+        }, {
+          "where": { "key": "coverage_region" },
+          "value": { "value": "Region of the research" }
+        }, {
+          "where": { "key": "type" },
+          "value": { "value": "Type" }
+        },
+        {
+          "where": { "key": "identifier_citation" },
+          "value": { "value": "Citation" }
+        }
+      ],
+      "id": "id",
+      "handle": "persistentUrl"
+    }
   }
 ]

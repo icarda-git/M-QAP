@@ -84,6 +84,41 @@ export class HandleService {
       );
     return repos[0];
   }
+  async getCkan(handle, schema, repo, link, link_type) {
+    let id = await this.http
+      .get(`https://doi.org/${handle}`)
+      .pipe(
+        map((d) => {
+          const splited = d.request.res.responseUrl.split('/');
+          return splited[splited.length - 1];
+        }),
+      )
+      .toPromise()
+      .catch((e) => {
+        console.log(e);
+        return false;
+      });
+
+    let data = await this.http
+      .get(`${link}/api/3/action/package_show?id=${id}`)
+      .pipe(map((d) => d.data.result))
+      .toPromise()
+      .catch((e) => {
+        console.log(e);
+        return false;
+      });
+
+    if (data) {
+      let formated_data = this.formatService.format(
+        this.flatData(data, null, null, { organization: 'title' }),
+        schema,
+      );
+      formated_data = this.addOn(formated_data, schema);
+
+      formated_data['repo'] = repo;
+      return formated_data;
+    }
+  }
 
   async getDataverse(handle, schema, repo, link, link_type) {
     let data = await this.http
@@ -141,6 +176,12 @@ export class HandleService {
           element.addon.combind,
           schema,
         );
+
+      if (Object.keys(element.addon)[0] == 'split') {
+        formated_data[element.value.value] = formated_data[
+          element.value.value
+        ].split(element.addon.split).map((d:string) =>d.trim());
+      }
     });
 
     return formated_data;
@@ -164,18 +205,24 @@ export class HandleService {
     return data;
   }
 
-  flatData(data, akey, avalue) {
+  flatData(data, akey = null, avalue = null, key_value = {}) {
+    let keys = Object.keys(key_value);
+    let values: any = Object.values(key_value);
     let metadata = [];
     // not as what i want
-    let flat = (data, akey, avalue) => {
+    let flat = (data, akey = null, avalue = null, key_value = {}) => {
       if (
+        akey &&
+        avalue &&
         data[akey] &&
+        data.hasOwnProperty(akey) &&
+        data.hasOwnProperty(avalue) &&
         data[avalue] &&
         !Array.isArray(data[avalue]) &&
         typeof data[avalue] !== 'object'
       )
         metadata.push({ key: data[akey], value: data[avalue] });
-      else
+      else if (typeof data == 'object' && data)
         Object.keys(data).forEach((key) => {
           if (
             akey != key &&
@@ -187,7 +234,14 @@ export class HandleService {
             data[key].forEach((element) => {
               flat(element, akey, avalue);
             });
-          else flat(data[key], akey, avalue);
+          else if (keys.indexOf(key) == -1) flat(data[key], akey, avalue);
+          else if (keys.indexOf(key) > -1) {
+            console.log(keys[keys.indexOf(key)], values[keys.indexOf(key)]);
+            metadata.push({
+              key: keys[keys.indexOf(key)],
+              value: data[key][values[keys.indexOf(key)]],
+            });
+          }
         });
     };
     flat(data, akey, avalue);
@@ -201,33 +255,36 @@ export class HandleService {
 
     let { schema, repo, link, type } = this.getInfobyScheam(schemas, prefix);
 
-    let dataSurces = [this.getAltmetricByHandle(handle)];
+    let dataSurces =
+      link_type == 'handle' ? [this.getAltmetricByHandle(handle)] : [];
     if (type == 'DSpace')
       dataSurces.push(this.getDpsace(handle, schema, repo, link));
     if (type == 'Dataverse')
       dataSurces.push(this.getDataverse(handle, schema, repo, link, link_type));
+    if (type == 'CKAN')
+      dataSurces.push(this.getCkan(handle, schema, repo, link, link_type));
 
     const results = await Promise.all(dataSurces);
 
-    let data = results[1];
+    let data = results.length > 1 ? results[1] : results[0];
 
-    if (data.Affiliation)
+    if (data?.Affiliation)
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
-    if (data['Funding source'])
+    if (data.hasOwnProperty('Funding source') && data['Funding source'])
       data['Funding source'] = await this.toClarisa(
         data['Funding source'],
         handle,
       );
 
-    if (data.Keywords) {
+    if (data?.Keywords) {
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
       data['Commodities'] = await this.getCommodities(data.Keywords);
     }
-    data['handle_altmetric'] = results[0];
+    if (results.length > 1) data['handle_altmetric'] = results[0];
 
     let DOI_INFO = null;
-    if (data.DOI || link_type == 'DOI') {
+    if (data?.DOI || link_type == 'DOI') {
       let doi = this.doi.isDOI(link_type == 'DOI' ? handle : data.DOI);
       if (doi) {
         DOI_INFO = await this.doi.getInfoByDOI(doi);
@@ -235,7 +292,7 @@ export class HandleService {
       }
     }
 
-    if (data.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
+    if (data?.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
 
     data['FAIR'] = this.calclateFAIR(data);
 
@@ -318,7 +375,7 @@ export class HandleService {
     Object.keys(FAIR.score).forEach((key) => {
       if (key != 'total')
         FAIR.score[key] =
-          (FAIR[key].filter((d) => d.valid).length / FAIR[key].length);
+          FAIR[key].filter((d) => d.valid).length / FAIR[key].length;
     });
     FAIR.score.total =
       Object.values(FAIR.score).reduce((partialSum, a) => partialSum + a, 0) /
