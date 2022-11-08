@@ -348,7 +348,7 @@
           "value": { "value": "Open Access" }
         },
         {
-          "where": { "key": "cg.identifier.doi" },
+          "where": { "key": "dc.identifier.doi" },
           "value": { "value": "DOI" }
         },
         {
@@ -360,7 +360,7 @@
           "value": { "value": "Countries" }
         },
         {
-          "where": { "key": "cg.contributor.center" },
+          "where": { "key": "cg.contributor.affiliation" },
           "value": { "value": "Affiliation" }
         },
         {
