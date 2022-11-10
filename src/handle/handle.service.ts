@@ -80,7 +80,7 @@ export class HandleService {
     let repos = schemas.filter((d) => d.prefix.indexOf(prefix) != -1);
     if (repos.length == 0)
       throw new BadRequestException(
-        'handle provided is not supported by M-QAP the repo is not included pelase contact support',
+        'The handle provided is not supported by the M-QAP, as the repository is not included. Please get in touch with the PRMS technical support',
       );
     return repos[0];
   }
