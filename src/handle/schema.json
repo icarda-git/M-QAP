@@ -61,11 +61,13 @@
         },
         {
           "where": { "key": "dcterms.issued" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "cg.coverage.country" },
-          "value": { "value": "Countries" }
+          "value": { "value": "Countries" },
+          "addOn": "country"
         },
         {
           "where": { "key": "cg.subject.actionArea" },
@@ -117,7 +119,8 @@
         },
         {
           "where": { "key": "dcterms.language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "NA" },
@@ -209,11 +212,13 @@
         },
         {
           "where": { "key": "dc.date" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "cg.coverage.country" },
-          "value": { "value": "Countries" }
+          "value": { "value": "Countries" },
+          "addOn": "country"
         },
         {
           "where": { "key": "cg.contributor.center" },
@@ -265,7 +270,8 @@
         },
         {
           "where": { "key": "dc.language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "dc.publisher" },
@@ -353,7 +359,8 @@
         },
         {
           "where": { "key": "dc.date.issued" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "cg.coverage.country" },
@@ -409,7 +416,8 @@
         },
         {
           "where": { "key": "dc.language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "dc.publisher" },
@@ -493,11 +501,13 @@
         },
         {
           "where": { "key": "Year" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "Country focus" },
-          "value": { "value": "Countries" }
+          "value": { "value": "Countries" },
+          "addOn": "country"
         },
         {
           "where": { "key": "Center" },
@@ -549,7 +559,8 @@
         },
         {
           "where": { "key": "dc.language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "dc.publisher" },
@@ -621,11 +632,13 @@
         },
         {
           "where": { "key": "publicationDate" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "country" },
-          "value": { "value": "Countries" }
+          "value": { "value": "Countries" },
+          "addOn": "country"
         },
         {
           "where": { "key": "producerName" },
@@ -633,7 +646,8 @@
         },
         {
           "where": { "key": "language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "contributorName" },
@@ -696,7 +710,8 @@
         },
         {
           "where": { "key": "publicationDate" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "country" },
@@ -708,7 +723,8 @@
         },
         {
           "where": { "key": "language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "contributorName" },
@@ -771,7 +787,8 @@
         },
         {
           "where": { "key": "publicationDate" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "country" },
@@ -783,7 +800,8 @@
         },
         {
           "where": { "key": "language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "contributorName" },
@@ -846,7 +864,8 @@
         },
         {
           "where": { "key": "publicationDate" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "country" },
@@ -858,7 +877,8 @@
         },
         {
           "where": { "key": "language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "contributorName" },
@@ -924,11 +944,13 @@
         },
         {
           "where": { "key": "creation_date" },
-          "value": { "value": "Publication Date" }
+          "value": { "value": "Publication Date" },
+          "addOn": "date"
         },
         {
           "where": { "key": "coverage_country" },
-          "value": { "value": "Countries" }
+          "value": { "value": "Countries" },
+          "addOn": "country"
         },
         {
           "where": { "key": "publisher" },
@@ -936,7 +958,8 @@
         },
         {
           "where": { "key": "language" },
-          "value": { "value": "Language" }
+          "value": { "value": "Language" },
+          "addOn": "language"
         },
         {
           "where": { "key": "contributor_funder" },
