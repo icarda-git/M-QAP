@@ -352,7 +352,7 @@ export class HandleService {
           description:
             'Metadata include qualified references to other (meta)data',
           valid: data
-            ? data.hasOwnProperty('Reference to other DOI or Handle')
+            ? data.hasOwnProperty('Reference to other knowledge products')
             : false,
         },
       ],
@@ -440,7 +440,7 @@ export class HandleService {
   async getDpsace(handle, schema, repo, link) {
     let data = await this.http
       .get(
-        `${link}/rest/handle/${handle}?expand=metadata,parentCommunityList,parentCollectionList,bitstreams`,
+        `${link}/rest/handle/${handle}?expand=metadata,bitstreams`,
       )
       .pipe(map((d) => d.data))
       .toPromise()

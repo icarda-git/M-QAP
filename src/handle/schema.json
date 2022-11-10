@@ -104,10 +104,6 @@
           "value": { "value": "Type" }
         },
         {
-          "where": { "key": "dcterms.relation" },
-          "value": { "value": "Reference to other DOI or Handle" }
-        },
-        {
           "where": { "key": "cg.isijournal" },
           "value": { "value": "ISI" }
         },
@@ -144,8 +140,12 @@
           "value": { "value": "Pages" }
         },
         {
-          "where": { "key": "NA" },
-          "value": { "value": "Other Url" }
+          "where": { "key": "dcterms.relation" },
+          "value": { "value": "Reference to other knowledge products" }
+        },
+        {
+          "where": { "key": "cg.identifier.dataurl" },
+          "value": { "value": "Reference to other knowledge products" }
         }
       ],
       "uuid": "uuid",
@@ -452,7 +452,7 @@
     "repo": "CimmytSPACE",
     "type": "DSpace",
     "link": "https://repository.cimmyt.org",
-    "prefix": ["10883-2222"],
+    "prefix": ["10883"],
     "schema": {
       "metadata": [
         {

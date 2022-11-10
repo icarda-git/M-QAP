@@ -10,9 +10,7 @@ let mapto: any = {};
 export class FormatSearvice {
   constructor() {}
 
-  async Init() {
-   
-  }
+  async Init() {}
 
   format(json: any, schema: any) {
     let finalValues: any = {};
@@ -66,7 +64,10 @@ export class FormatSearvice {
     else if (_.isArray(oldvalue) && !_.isArray(value)) {
       oldvalue.push(value);
       return oldvalue;
-    } else return value;
+    } else if (oldvalue && oldvalue!=null && oldvalue != '' && oldvalue != value) {
+      return [oldvalue, value];
+    }
+    return value;
   }
 
   capitalizeFirstLetter(string: any) {
