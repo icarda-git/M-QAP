@@ -9,6 +9,7 @@ import { catchError, map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
 import { DoiInfo } from 'src/doi-info';
 import * as FormData from 'form-data';
+const https = require('https');
 @Injectable()
 export class DoiService {
   private readonly logger = new Logger(DoiService.name);
@@ -22,7 +23,11 @@ export class DoiService {
   async isDOIExist(doi) {
     const link = `https://dx.doi.org/${doi}`;
     return await this.httpService
-      .get(link)
+      .get(link,
+        {
+          httpsAgent:new https.Agent({ rejectUnauthorized: false })
+        }
+        )
       .pipe(
         map((d) => {
           if (d && d.status) return d.status;

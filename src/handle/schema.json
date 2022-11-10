@@ -666,6 +666,10 @@
           "value": { "value": "THUMBNAIL" }
         },
         {
+          "where": { "key": "persistentUrl" },
+          "value": { "value": "handle" }
+        },
+        {
           "where": { "key": "contributorType" },
           "value": { "value": "contributorType" },
           "addon": {
@@ -673,15 +677,14 @@
           }
         }
       ],
-      "id": "id",
-      "handle": "persistentUrl"
+      "id": "id"
     }
   },
   {
     "repo": "CIMMYTData",
     "type": "Dataverse",
     "link": "https://data.cimmyt.org",
-    "prefix": ["11529-22222"],
+    "prefix": ["11529"],
     "schema": {
       "metadata": [
         {
@@ -741,6 +744,10 @@
         {
           "where": { "key": "producerLogoURL" },
           "value": { "value": "THUMBNAIL" }
+        },
+        {
+          "where": { "key": "persistentUrl" },
+          "value": { "value": "handle" }
         },
         {
           "where": { "key": "contributorType" },
@@ -825,10 +832,13 @@
           "addon": {
             "combind": "contributorName"
           }
+        },
+        {
+          "where": { "key": "persistentUrl" },
+          "value": { "value": "DOI" }
         }
       ],
-      "id": "id",
-      "handle": "persistentUrl"
+      "id": "id"
     }
   },
   {
@@ -897,6 +907,10 @@
           "value": { "value": "THUMBNAIL" }
         },
         {
+          "where": { "key": "persistentUrl" },
+          "value": { "value": "DOI" }
+        },
+        {
           "where": { "key": "contributorType" },
           "value": { "value": "contributorType" },
           "addon": {
@@ -904,8 +918,7 @@
           }
         }
       ],
-      "id": "id",
-      "handle": "persistentUrl"
+      "id": "id"
     }
   },
   {

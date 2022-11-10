@@ -13,7 +13,7 @@ import * as schemas from './schema.json';
 import * as licences from './licences.json';
 import xlsx from 'node-xlsx';
 import fs from 'fs';
-
+const https = require('https');
 @Injectable()
 export class HandleService {
   Commodities;
@@ -126,6 +126,14 @@ export class HandleService {
         `${link}/api/datasets/:persistentId/?persistentId=${
           link_type == 'DOI' ? 'doi' : 'hdl'
         }:${handle}`,
+        {
+          headers: {
+            Accept: 'application/json',
+            cookie: 'incap_ses_288_2801958=/N6gO8gj1g4/4pnW2C7/A9DVbGMAAAAAW5jDWMnTcDMG7GaTE79mDg==; visid_incap_2801958=moDP+bZVRZ6D2SJehPzbxs/VbGMAAAAAQUIPAAAAAACXoHcOizPhxog6dcc30XRK; JSESSIONID=124ddc7e698f28720098b66aa429',
+            'User-Agent':'CLARISA'
+          },
+          httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+        },
       )
       .pipe(map((d) => d.data.data))
       .toPromise()
@@ -134,7 +142,6 @@ export class HandleService {
         return false;
       });
     if (data) {
-      console.log(data);
       let formated_data = this.formatService.format(
         this.flatData(data, 'typeName', 'value'),
         schema,
@@ -178,9 +185,9 @@ export class HandleService {
         );
 
       if (Object.keys(element.addon)[0] == 'split') {
-        formated_data[element.value.value] = formated_data[
-          element.value.value
-        ].split(element.addon.split).map((d:string) =>d.trim());
+        formated_data[element.value.value] = formated_data[element.value.value]
+          .split(element.addon.split)
+          .map((d: string) => d.trim());
       }
     });
 
@@ -439,9 +446,7 @@ export class HandleService {
 
   async getDpsace(handle, schema, repo, link) {
     let data = await this.http
-      .get(
-        `${link}/rest/handle/${handle}?expand=metadata,bitstreams`,
-      )
+      .get(`${link}/rest/handle/${handle}?expand=metadata,bitstreams`)
       .pipe(map((d) => d.data))
       .toPromise()
       .catch((e) => console.log(e));
