@@ -369,13 +369,12 @@ export class HandleService {
           name: 'R1',
           description:
             'The knowledge product is Open Access (OA) and has a clear and accessible usage license',
-          valid: data
-            ? data?.DOI_Info?.is_oa == 'yes' ||
-              (data['Open Access'] &&
+          valid: (data['Open Access'] &&
                 (data['Open Access'] as string)
                   .toLocaleLowerCase()
                   .includes('open access') &&
                 licences.indexOf(data['Rights']) >= 0)
+                ? true
             : false,
         },
       ],
