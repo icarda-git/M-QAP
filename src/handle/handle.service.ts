@@ -129,8 +129,9 @@ export class HandleService {
         {
           headers: {
             Accept: 'application/json',
-            cookie: 'incap_ses_288_2801958=/N6gO8gj1g4/4pnW2C7/A9DVbGMAAAAAW5jDWMnTcDMG7GaTE79mDg==; visid_incap_2801958=moDP+bZVRZ6D2SJehPzbxs/VbGMAAAAAQUIPAAAAAACXoHcOizPhxog6dcc30XRK; JSESSIONID=124ddc7e698f28720098b66aa429',
-            'User-Agent':'CLARISA'
+            cookie:
+              'incap_ses_288_2801958=/N6gO8gj1g4/4pnW2C7/A9DVbGMAAAAAW5jDWMnTcDMG7GaTE79mDg==; visid_incap_2801958=moDP+bZVRZ6D2SJehPzbxs/VbGMAAAAAQUIPAAAAAACXoHcOizPhxog6dcc30XRK; JSESSIONID=124ddc7e698f28720098b66aa429',
+            'User-Agent': 'CLARISA',
           },
           httpsAgent: new https.Agent({ rejectUnauthorized: false }),
         },
@@ -373,8 +374,8 @@ export class HandleService {
               (data['Open Access'] &&
                 (data['Open Access'] as string)
                   .toLocaleLowerCase()
-                  .includes('open access')) ||
-              licences.indexOf(data['Rights']) >= 0
+                  .includes('open access') &&
+                licences.indexOf(data['Rights']) >= 0)
             : false,
         },
       ],
