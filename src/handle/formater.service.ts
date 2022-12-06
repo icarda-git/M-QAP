@@ -65,7 +65,7 @@ export class FormatSearvice {
       oldvalue.push(value);
       return oldvalue;
     } else if (oldvalue && oldvalue!=null && oldvalue != '' && oldvalue != value) {
-      return [oldvalue, value];
+      return [oldvalue, ...value];
     }
     return value;
   }
