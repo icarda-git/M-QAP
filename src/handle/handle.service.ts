@@ -446,7 +446,7 @@ export class HandleService {
 
   async getDpsace(handle, schema, repo, link) {
     let data = await this.http
-      .get(`${link}/rest/handle/${handle}?expand=metadata,bitstreams`)
+      .get(`${link}/rest/handle/${handle}?expand=all`)
       .pipe(map((d) => d.data))
       .toPromise()
       .catch((e) => console.log(e));
