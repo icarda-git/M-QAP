@@ -284,6 +284,9 @@ export class HandleService {
         data['Funding source'],
         handle,
       );
+    if(!data['Region of the research'] && ! data['Countries'] )
+      data['Geographic location'] = 'Global'
+     
 
     if (data?.Keywords) {
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);

@@ -147,6 +147,10 @@
           "value": { "value": "Reference to other knowledge products" }
         },
         {
+          "where": { "key": "cg.identifier.url" },
+          "value": { "value": "Reference to other knowledge products" }
+        },
+        {
           "where": { "key": "cg.identifier.dataurl" },
           "value": { "value": "Reference to other knowledge products" }
         }
