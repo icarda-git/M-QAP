@@ -159,7 +159,7 @@ export class HandleService {
     // Or var xlsx = require('node-xlsx').default;
     let finalCom = [];
     // Parse a file
-
+    if (!Array.isArray(keywords)) keywords = [keywords];
     keywords.forEach((keyword) => {
       let foundindex = Object.values(this.Commodities).findIndex(
         (d: [string]) => {
