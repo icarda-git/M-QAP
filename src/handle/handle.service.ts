@@ -17,6 +17,7 @@ const https = require('https');
 @Injectable()
 export class HandleService {
   Commodities;
+  ClarisaRegons;
   private readonly logger = new Logger(HandleService.name);
   constructor(
     private http: HttpService,
@@ -25,6 +26,7 @@ export class HandleService {
     private ai: AI,
   ) {
     this.initCommodities();
+    this.initRegions();
   }
   async initCommodities() {
     const workSheetsFromFile = await xlsx.parse(
@@ -38,6 +40,15 @@ export class HandleService {
           .flat();
     });
     this.logger.log('Commodities data Loaded');
+  }
+  async initRegions() {
+    const workSheetsFromFile = await xlsx.parse(`${__dirname}/CLARISA_UN.xlsx`);
+    this.ClarisaRegons = {};
+    workSheetsFromFile[0].data.forEach((d: any, i) => {
+      if (i > 0)
+        this.ClarisaRegons[d[1].toLocaleLowerCase()] = d[0]
+    });
+    this.logger.log('ClarisaRegons data Loaded');
   }
   async toClarisa(Items, handle) {
     if (!Array.isArray(Items)) Items = [Items];
@@ -123,8 +134,7 @@ export class HandleService {
   async getDataverse(handle, schema, repo, link, link_type) {
     let data = await this.http
       .get(
-        `${link}/api/datasets/:persistentId/?persistentId=${
-          link_type == 'DOI' ? 'doi' : 'hdl'
+        `${link}/api/datasets/:persistentId/?persistentId=${link_type == 'DOI' ? 'doi' : 'hdl'
         }:${handle}`,
         {
           headers: {
@@ -159,7 +169,7 @@ export class HandleService {
     // Or var xlsx = require('node-xlsx').default;
     let finalCom = [];
     // Parse a file
-    if (!Array.isArray(keywords)) keywords = [keywords];
+
     keywords.forEach((keyword) => {
       let foundindex = Object.values(this.Commodities).findIndex(
         (d: [string]) => {
@@ -256,6 +266,16 @@ export class HandleService {
     return { metadata };
   }
 
+  toClarisaRegions(regions){
+    let arrayofobjects =[];
+    if(!Array.isArray(regions))
+      regions = [regions];
+    regions.forEach(element => {
+       arrayofobjects.push({name:element, clarisa_id:this.ClarisaRegons[element.toLowerCase()]})
+    });
+    return arrayofobjects;
+  }
+
   async getInfoByHandle(handle) {
     let { prefix, param, link_type } = this.IsDOIOrHandle(handle);
     if (!param) throw new BadRequestException('please provide valid handle');
@@ -279,14 +299,16 @@ export class HandleService {
     if (data?.Affiliation)
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
+
+      if (data['Region of the research']){
+        data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
+      }
+
     if (data.hasOwnProperty('Funding source') && data['Funding source'])
       data['Funding source'] = await this.toClarisa(
         data['Funding source'],
         handle,
       );
-    if(!data['Region of the research'] && ! data['Countries'] )
-      data['Geographic location'] = 'Global'
-     
 
     if (data?.Keywords) {
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
@@ -373,11 +395,11 @@ export class HandleService {
           description:
             'The knowledge product is Open Access (OA) and has a clear and accessible usage license',
           valid: (data['Open Access'] &&
-                (data['Open Access'] as string)
-                  .toLocaleLowerCase()
-                  .includes('open access') &&
-                licences.indexOf(data['Rights']) >= 0)
-                ? true
+            (data['Open Access'] as string)
+              .toLocaleLowerCase()
+              .includes('open access') &&
+            licences.indexOf(data['Rights']) >= 0)
+            ? true
             : false,
         },
       ],

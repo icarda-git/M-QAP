@@ -322,7 +322,7 @@ export class DoiService {
   async getInfoByDOI(doi) {
     const doiExist = await this.isDOIExist(doi);
     if (doiExist == 404)
-      throw new HttpException(
+      return new HttpException(
         `DOI (${doi}) not exist `,
         HttpStatus.BAD_REQUEST,
       );
@@ -359,7 +359,7 @@ export class DoiService {
 
     if (result && result != null) result = await this.addClarisaID(result);
     if (!result.is_oa && !result.altmetric && !result.source)
-      throw new HttpException(
+      return new HttpException(
         `DOI (${doi}) not found in any source`,
         HttpStatus.NOT_FOUND,
       );
