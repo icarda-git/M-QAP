@@ -304,6 +304,10 @@ export class HandleService {
         data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
       }
 
+      if(!data['Region of the research'] && ! data['Countries'] )
+      data['Geographic location'] = 'Global'
+
+
     if (data.hasOwnProperty('Funding source') && data['Funding source'])
       data['Funding source'] = await this.toClarisa(
         data['Funding source'],
