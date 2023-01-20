@@ -167,11 +167,12 @@ export class HandleService {
 
   getCommodities(keywords) {
     // Or var xlsx = require('node-xlsx').default;
-    let finalCom = [];
+    const finalCom = [];
     // Parse a file
+    if (!Array.isArray(keywords)) keywords = [keywords];
 
     keywords.forEach((keyword) => {
-      let foundindex = Object.values(this.Commodities).findIndex(
+      const foundindex = Object.values(this.Commodities).findIndex(
         (d: [string]) => {
           return d.indexOf(keyword.toLocaleLowerCase()) > -1;
         },
@@ -266,12 +267,12 @@ export class HandleService {
     return { metadata };
   }
 
-  toClarisaRegions(regions){
-    let arrayofobjects =[];
-    if(!Array.isArray(regions))
+  toClarisaRegions(regions) {
+    let arrayofobjects = [];
+    if (!Array.isArray(regions))
       regions = [regions];
     regions.forEach(element => {
-       arrayofobjects.push({name:element, clarisa_id:this.ClarisaRegons[element.toLowerCase()]})
+      arrayofobjects.push({ name: element, clarisa_id: this.ClarisaRegons[element.toLowerCase()] })
     });
     return arrayofobjects;
   }
@@ -300,9 +301,9 @@ export class HandleService {
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
 
-      if (data['Region of the research']){
-        data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
-      }
+    if (data['Region of the research']) {
+      data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
+    }
 
     if (data.hasOwnProperty('Funding source') && data['Funding source'])
       data['Funding source'] = await this.toClarisa(
@@ -311,6 +312,7 @@ export class HandleService {
       );
 
     if (data?.Keywords) {
+      if (!Array.isArray(data?.Keywords)) data.Keywords = [data.Keywords];
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
       data['Commodities'] = await this.getCommodities(data.Keywords);
     }
