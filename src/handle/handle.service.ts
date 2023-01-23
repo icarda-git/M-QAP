@@ -300,14 +300,15 @@ export class HandleService {
     if (data?.Affiliation)
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
-
     if (data['Region of the research']) {
       data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
     }
 
-      if(!data['Region of the research'] && ! data['Countries'] )
-      data['Geographic location'] = 'Global'
-
+    if (!data['Region of the research'] && !data['Countries'])
+      data['Geographic location'] = {
+        name: 'Global',
+        clarisa_id: 1,
+      };
 
     if (data.hasOwnProperty('Funding source') && data['Funding source'])
       data['Funding source'] = await this.toClarisa(
