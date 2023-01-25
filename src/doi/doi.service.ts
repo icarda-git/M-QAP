@@ -240,11 +240,7 @@ export class DoiService {
   async getScopusInfoByDoi(doi): Promise<DoiInfo> {
     const link = `https://api.elsevier.com/content/search/scopus?apiKey=${process.env.SCOPUS_API_KEY}&query=doi(${doi})`;
     const result: any = await this.httpService
-      .get(link, {
-        headers: {
-          'X-ApiKey': 'd869e3d25b2b79cd03ff021fe40b7e9d4fb04967',
-        },
-      })
+      .get(link)
       .pipe(
         map((d: any) => {
           if (d && d.status == 200) {
