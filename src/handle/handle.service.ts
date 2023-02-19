@@ -321,6 +321,19 @@ export class HandleService {
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
       data['Commodities'] = await this.getCommodities(data.Keywords);
     }
+    
+    if (data?.Countries) {
+      const newArrayOfcountries = [];
+      if (!Array.isArray(data?.Countries)) data.Countries = [data.Countries];
+      data?.Countries.forEach((element) => {
+        console.log(element);
+        if (Array.isArray(element) && element.length > 1)
+          newArrayOfcountries.push(element.join(', '));
+        else newArrayOfcountries.push(element);
+      });
+      data['Countries'] = newArrayOfcountries.flat();
+    }
+
     if (results.length > 1) data['handle_altmetric'] = results[0];
 
     let DOI_INFO = null;
