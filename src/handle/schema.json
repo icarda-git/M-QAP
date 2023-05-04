@@ -157,9 +157,11 @@
         {
           "where": { "key": "dcterms.available" },
           "value": { "value": "online_publication_date" }
+        },
+        {
+          "where": { "key": "cg.coverage.iso3166-alpha2" },
+          "value": { "value": "Countries_ISO" }
         }
-
-        
       ],
       "uuid": "uuid",
       "name": "name",
