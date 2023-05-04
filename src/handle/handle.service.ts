@@ -334,7 +334,6 @@ export class HandleService {
       const tobeDeleted = ['Democratic Republic Of'];
       if (!Array.isArray(data?.Countries)) data.Countries = [data.Countries];
       data?.Countries.forEach((element) => {
-        console.log(element);
         if (Array.isArray(element) && element.length > 1)
           newArrayOfcountries.push(element.join(', '));
         else newArrayOfcountries.push(element);
