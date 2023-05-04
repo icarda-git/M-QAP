@@ -45,8 +45,7 @@ export class HandleService {
     const workSheetsFromFile = await xlsx.parse(`${__dirname}/CLARISA_UN.xlsx`);
     this.ClarisaRegons = {};
     workSheetsFromFile[0].data.forEach((d: any, i) => {
-      if (i > 0)
-        this.ClarisaRegons[d[1].toLocaleLowerCase()] = d[0]
+      if (i > 0) this.ClarisaRegons[d[1].toLocaleLowerCase()] = d[0];
     });
     this.logger.log('ClarisaRegons data Loaded');
   }
@@ -134,7 +133,8 @@ export class HandleService {
   async getDataverse(handle, schema, repo, link, link_type) {
     let data = await this.http
       .get(
-        `${link}/api/datasets/:persistentId/?persistentId=${link_type == 'DOI' ? 'doi' : 'hdl'
+        `${link}/api/datasets/:persistentId/?persistentId=${
+          link_type == 'DOI' ? 'doi' : 'hdl'
         }:${handle}`,
         {
           headers: {
@@ -269,10 +269,12 @@ export class HandleService {
 
   toClarisaRegions(regions) {
     let arrayofobjects = [];
-    if (!Array.isArray(regions))
-      regions = [regions];
-    regions.forEach(element => {
-      arrayofobjects.push({ name: element, clarisa_id: this.ClarisaRegons[element.toLowerCase()] })
+    if (!Array.isArray(regions)) regions = [regions];
+    regions.forEach((element) => {
+      arrayofobjects.push({
+        name: element,
+        clarisa_id: this.ClarisaRegons[element.toLowerCase()],
+      });
     });
     return arrayofobjects;
   }
@@ -301,7 +303,9 @@ export class HandleService {
       data.Affiliation = await this.toClarisa(data.Affiliation, handle);
 
     if (data['Region of the research']) {
-      data['Region of the research'] = this.toClarisaRegions(data['Region of the research']);
+      data['Region of the research'] = this.toClarisaRegions(
+        data['Region of the research'],
+      );
     }
 
     if (!data['Region of the research'] && !data['Countries'])
@@ -321,9 +325,13 @@ export class HandleService {
       data['agrovoc_keywords'] = await this.getAgrovocKeywords(data.Keywords);
       data['Commodities'] = await this.getCommodities(data.Keywords);
     }
-    
+
     if (data?.Countries) {
-      const newArrayOfcountries = [];
+      let newArrayOfcountries = [];
+      const tobeChange = {
+        Congo: 'Congo, Democratic Republic of',
+      };
+      const tobeDeleted = ['Democratic Republic Of'];
       if (!Array.isArray(data?.Countries)) data.Countries = [data.Countries];
       data?.Countries.forEach((element) => {
         console.log(element);
@@ -331,7 +339,15 @@ export class HandleService {
           newArrayOfcountries.push(element.join(', '));
         else newArrayOfcountries.push(element);
       });
-      data['Countries'] = newArrayOfcountries.flat();
+      const flatedAray = newArrayOfcountries.flat();
+      newArrayOfcountries = [];
+      flatedAray.forEach((element) => {
+        if(tobeChange[element])
+        newArrayOfcountries.push(tobeChange[element]);
+        else if(tobeDeleted.indexOf(element) == -1)
+        newArrayOfcountries.push(element)
+      });
+      data['Countries'] = newArrayOfcountries;
     }
 
     if (results.length > 1) data['handle_altmetric'] = results[0];
@@ -414,13 +430,14 @@ export class HandleService {
           name: 'R1',
           description:
             'The knowledge product is Open Access (OA) and has a clear and accessible usage license',
-          valid: (data['Open Access'] &&
+          valid:
+            data['Open Access'] &&
             (data['Open Access'] as string)
               .toLocaleLowerCase()
               .includes('open access') &&
-            licences.indexOf(data['Rights']) >= 0)
-            ? true
-            : false,
+            licences.indexOf(data['Rights']) >= 0
+              ? true
+              : false,
         },
       ],
     };
