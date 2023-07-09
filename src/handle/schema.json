@@ -74,6 +74,10 @@
           "addOn": "country"
         },
         {
+          "where": { "key": "cg.coverage.iso3166-alpha2" },
+          "value": { "value": "Country ISO code" }
+        },
+        {
           "where": { "key": "cg.subject.actionArea" },
           "value": { "value": "Action Area" }
         },
@@ -157,10 +161,6 @@
         {
           "where": { "key": "cg.identifier.dataurl" },
           "value": { "value": "Reference to other knowledge products" }
-        },
-        {
-          "where": { "key": "cg.coverage.iso3166-alpha2" },
-          "value": { "value": "Countries_ISO" }
         }
       ],
       "uuid": "uuid",
@@ -1000,10 +1000,12 @@
         {
           "where": { "key": "identifier" },
           "value": { "value": "DOI" }
-        }, {
+        },
+        {
           "where": { "key": "coverage_region" },
           "value": { "value": "Region of the research" }
-        }, {
+        },
+        {
           "where": { "key": "type" },
           "value": { "value": "Type" }
         },
