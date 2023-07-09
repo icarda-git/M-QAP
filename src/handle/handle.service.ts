@@ -387,7 +387,7 @@ export class HandleService {
           description:
             'The knowledge product is described by rich metadata such as title, authors, description/abstract, and issue date',
           valid:
-            (data['Publication Date'] ? true : false) &&
+            (data['Issued date'] ? true : false) &&
             (data.Title ? true : false) &&
             (data.Authors ? true : false) &&
             (data.Description ? true : false),
