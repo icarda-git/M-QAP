@@ -13,7 +13,7 @@ const https = require('https');
 @Injectable()
 export class DoiService {
   private readonly logger = new Logger(DoiService.name);
-  constructor(private httpService: HttpService, private ai: AI) { }
+  constructor(private httpService: HttpService, private ai: AI) {}
 
   isDOI(doi): any {
     const result = new RegExp(`(?<=)10\..*`).exec(doi);
@@ -23,11 +23,9 @@ export class DoiService {
   async isDOIExist(doi) {
     const link = `https://dx.doi.org/${doi}`;
     return await this.httpService
-      .get(link,
-        {
-          httpsAgent:new https.Agent({ rejectUnauthorized: false })
-        }
-        )
+      .get(link, {
+        httpsAgent: new https.Agent({ rejectUnauthorized: false }),
+      })
       .pipe(
         map((d) => {
           if (d && d.status) return d.status;
@@ -37,7 +35,6 @@ export class DoiService {
       .toPromise()
       .catch((d) => d.response.status);
   }
-
   async crossrefAgency(doi) {
     const link = `https://api.crossref.org/works/${doi}/agency`;
     return await this.httpService
@@ -96,20 +93,23 @@ export class DoiService {
         }),
       )
       .toPromise();
-    const link = `https://wos-api.clarivate.com/api/wos/?databaseId=WOS&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`;
     const result: any = await this.httpService
-      .get(link, {
-        headers: {
-          'X-ApiKey': `${process.env.WOS_API_KEY}`,
+      .get(
+        `${process.env.WOS_API_URL}?databaseId=WOS&count=100&firstRecord=1&optionView=FR&usrQuery=DO=${doi}`,
+        {
+          headers: {
+            'X-ApiKey': `${process.env.WOS_API_KEY}`,
+          },
         },
-      })
+      )
       .pipe(
-        map((d: any) => {
-          if (d && d.status == 200) {
+        map((data_from_wos: any) => {
+          if (data_from_wos && data_from_wos.status == 200) {
             let finaldata: DoiInfo;
             try {
-              if (d.data.Data.Records.records != '') {
-                d.data.Data.Records.records.REC.forEach((REC) => {
+              const records = data_from_wos?.data?.Data?.Records?.records;
+              if (records != '') {
+                records.REC.forEach((REC) => {
                   const doiData = this.newDoiInfo();
                   const summary = REC.static_data.summary;
                   const pub_info = summary.pub_info;
@@ -119,10 +119,10 @@ export class DoiService {
                   if (Array.isArray(doctypes.doctype))
                     doiData.publication_type = doctypes.doctype.join(', ');
                   else doiData.publication_type = doctypes.doctype;
-
                   const fullrecord_metadata =
                     REC.static_data.fullrecord_metadata;
                   const addresses = fullrecord_metadata.addresses;
+                  const address_spec = addresses?.address_name?.address_spec;
                   try {
                     if (Array.isArray(addresses.address_name))
                       doiData.organizations = addresses.address_name.map(
@@ -131,53 +131,49 @@ export class DoiService {
                             clarisa_id: null,
                             name: d.address_spec.organizations
                               ? typeof d.address_spec.organizations
-                                .organization === 'string' ||
+                                  .organization === 'string' ||
                                 d.address_spec.organizations
                                   .organization instanceof String
                                 ? d.address_spec.organizations.organization
                                 : d.address_spec.organizations.organization.map(
-                                  (inst) =>
-                                    Array.isArray(inst)
-                                      ? inst[1].content
-                                      : inst.content
+                                    (inst) =>
+                                      Array.isArray(inst)
+                                        ? inst[1].content
+                                        : inst.content
                                         ? inst.content
                                         : inst,
-                                )[0]
+                                  )[0]
                               : d.address_spec.full_address,
                             country: d.address_spec.country,
                             full_address: d.address_spec.full_address,
                           };
                         },
                       );
-                    else if (addresses.address_name.address_spec)
+                    else if (address_spec)
                       doiData.organizations = [
                         {
                           confidant: 0,
                           clarisa_id: null,
-                          name: addresses.address_name.address_spec
-                            .organizations
-                            ? typeof addresses.address_name.address_spec
-                              .organizations.organization === 'string' ||
-                              addresses.address_name.address_spec.organizations
-                                .organization instanceof String
-                              ? addresses.address_name.address_spec
-                                .organizations.organization
-                              : addresses.address_name.address_spec.organizations.organization.map(
-                                (inst) =>
-                                  Array.isArray(inst)
-                                    ? inst[1].content
-                                    : inst.content
-                                      ? inst.content
-                                      : inst,
-                              )[0]
-                            : addresses.address_name.address_spec.full_address,
-                          country: addresses.address_name.address_spec.country,
-                          full_address:
-                            addresses.address_name.address_spec.full_address,
+                          name: address_spec.organizations
+                            ? typeof address_spec.organizations.organization ===
+                                'string' ||
+                              address_spec.organizations.organization instanceof
+                                String
+                              ? address_spec.organizations.organization
+                              : address_spec.organizations.organization.map(
+                                  (institution) =>
+                                    Array.isArray(institution)
+                                      ? institution[1].content
+                                      : institution.content
+                                      ? institution.content
+                                      : institution,
+                                )[0]
+                            : address_spec.full_address,
+                          country: address_spec.country,
+                          full_address: address_spec.full_address,
                         },
                       ];
                   } catch (e) {
-                    console.log(addresses.address_name);
                     console.error(e);
                   }
                   doiData.issue = pub_info.issue;
@@ -186,14 +182,12 @@ export class DoiService {
                   doiData.publication_year = pub_info.pubyear;
                   doiData.publication_sortdate = pub_info?.sortdate;
                   doiData.publication_coverdate = pub_info?.coverdate;
-
                   if (pub_info.page)
                     doiData.start_end_pages = pub_info.page.content;
                   else doiData.start_end_pages = null;
-
                   if (Array.isArray(authors))
                     doiData.authors = authors.map((d) => {
-                      return { full_name: d.full_name };
+                      return d.full_name;
                     });
                   const title = titles.filter((d) => d.type == 'item')[0]
                     .content;
@@ -223,7 +217,6 @@ export class DoiService {
                   doiData.is_isi = 'yes';
                   finaldata = doiData;
                 });
-
                 return finaldata;
               } else null;
             } catch (e) {
@@ -234,7 +227,6 @@ export class DoiService {
       )
       .toPromise()
       .catch((d) => d);
-
     return result;
   }
   async getScopusInfoByDoi(doi): Promise<DoiInfo> {
@@ -260,7 +252,7 @@ export class DoiService {
                   : date;
                 doiData.publication_type = REC['prism:aggregationType'];
                 doiData.start_end_pages = REC['prism:pageRange'];
-                doiData.authors = [{ full_name: REC['dc:creator'] }];
+                doiData.authors = [REC['dc:creator']];
                 doiData.publication_coverdate = REC['prism:coverDate'];
                 doiData.title = REC['dc:title'];
                 doiData.doi = REC['prism:doi'];
@@ -336,8 +328,8 @@ export class DoiService {
       results[0] && results[0].source
         ? results[0]
         : results[1] && results[1].source
-          ? results[1]
-          : this.newDoiInfo();
+        ? results[1]
+        : this.newDoiInfo();
     result.crossref = results[5];
 
     if (['datacite'].includes(result.crossref)) result.is_oa = 'yes';
@@ -350,8 +342,8 @@ export class DoiService {
       results[0] && results[0].source
         ? 'yes'
         : results[1] && results[1].source
-          ? 'no'
-          : 'N/A';
+        ? 'no'
+        : 'N/A';
 
     if (result && result != null) result = await this.addClarisaID(result);
     if (!result.is_oa && !result.altmetric && !result.source)

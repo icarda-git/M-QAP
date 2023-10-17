@@ -255,7 +255,6 @@ export class HandleService {
             });
           else if (keys.indexOf(key) == -1) flat(data[key], akey, avalue);
           else if (keys.indexOf(key) > -1) {
-            console.log(keys[keys.indexOf(key)], values[keys.indexOf(key)]);
             metadata.push({
               key: keys[keys.indexOf(key)],
               value: data[key][values[keys.indexOf(key)]],
@@ -511,7 +510,6 @@ export class HandleService {
       .pipe(map((d) => d.data))
       .toPromise()
       .catch((e) => console.log(e));
-
     let formated_data = this.formatService.format(data, schema);
     formated_data['repo'] = repo;
     return formated_data;
