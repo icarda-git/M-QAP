@@ -4,11 +4,11 @@ import * as use from '@tensorflow-models/universal-sentence-encoder';
 import * as path from 'path';
 import {
   BadRequestException,
-  HttpService,
   Injectable,
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { catchError, map } from 'rxjs/operators';
 import * as fs from 'fs';
 @Injectable()

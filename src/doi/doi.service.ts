@@ -1,6 +1,5 @@
 import {
   HttpException,
-  HttpService,
   HttpStatus,
   Injectable,
   Logger,
@@ -10,6 +9,7 @@ import { AI } from 'src/ai/ai.service';
 import { DoiInfo } from 'src/doi-info';
 import * as FormData from 'form-data';
 const https = require('https');
+import { HttpService } from '@nestjs/axios';
 @Injectable()
 export class DoiService {
   private readonly logger = new Logger(DoiService.name);

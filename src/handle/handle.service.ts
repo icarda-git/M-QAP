@@ -1,6 +1,5 @@
 import {
   BadRequestException,
-  HttpService,
   Injectable,
   Logger,
 } from '@nestjs/common';
@@ -12,6 +11,7 @@ import { FormatSearvice } from './formater.service';
 import * as schemas from './schema.json';
 import * as licences from './licences.json';
 import xlsx from 'node-xlsx';
+import { HttpService } from '@nestjs/axios';
 import fs from 'fs';
 const https = require('https');
 @Injectable()
