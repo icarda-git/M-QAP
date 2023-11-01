@@ -13,6 +13,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrainningCycleModule } from './trainning-cycle/trainning-cycle.module';
 import { PredictionsModule } from './predictions/predictions.module';
 import { OrganizationsModule } from './organizations/organizations.module';
+import { DashboardController } from './dashboard/dashboard.controller';
 
 @Module({
   imports: [
@@ -37,7 +38,7 @@ import { OrganizationsModule } from './organizations/organizations.module';
     PredictionsModule,
     OrganizationsModule
   ],
-  controllers: [AppController],
+  controllers: [AppController, DashboardController],
   providers: [AppService, DoiService, AI, HandleService, FormatSearvice],
 })
 export class AppModule {}

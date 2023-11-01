@@ -7,6 +7,7 @@ import { TrainningData } from 'src/entities/trainning-data.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([TrainningData])],
   controllers: [TrainningDataController],
-  providers: [TrainningDataService]
+  providers: [TrainningDataService],
+  exports:[TrainningDataService]
 })
 export class TrainningDataModule {}
