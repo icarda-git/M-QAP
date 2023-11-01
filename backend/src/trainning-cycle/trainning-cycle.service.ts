@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TrainningCycle } from 'src/entities/trainning-cycle.entity';
-import { Repository } from 'typeorm';
+import { IsNull, Not, Repository } from 'typeorm';
 
 @Injectable()
 export class TrainningCycleService {
@@ -21,6 +21,10 @@ export class TrainningCycleService {
 
   findOne(id: number) {
     return this.trainningCycleRepository.findOne({ where: { id } });
+  }
+
+  findLatestOne() {
+    return this.trainningCycleRepository.findOne({ where:{ id:Not(IsNull())  }, order:{id:'DESC'} });
   }
 
   update(id: number, updateUserDto: any) {

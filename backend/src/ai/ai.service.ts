@@ -11,6 +11,8 @@ import {
 import { HttpService } from '@nestjs/axios';
 import { catchError, map } from 'rxjs/operators';
 import * as fs from 'fs';
+import { firstValueFrom } from 'rxjs';
+import { PredictionsService } from 'src/predictions/predictions.service';
 @Injectable()
 export class AI {
   private readonly logger = new Logger(AI.name);
@@ -18,7 +20,10 @@ export class AI {
   clarisa;
   naturalmodel;
   traningModel: tf.Sequential;
-  constructor(private httpService: HttpService) {
+  constructor(
+    private httpService: HttpService,
+    private predictionsService: PredictionsService
+  ) {
     this.init();
   }
   async init() {
@@ -42,29 +47,37 @@ export class AI {
       const results: any = this.model.predict(todoEmbedding);
       const clarisa_index = this.clarisa[results.argMax(1).dataSync()[0]];
       if (clarisa_index)
-        this.httpService
-          .post(
-            process.env.MEL_API + 'prediction/external',
-            {
-              wos_name: value,
-              type: 'clarisa',
-              confident: Math.round(
-                Math.max(...results.dataSync().map((d) => d)) * 100,
-              ),
-              doi: doi,
-              clarisa_id: clarisa_index.code,
-            },
-            { headers: { authorization: process.env.MEL_API_KEY } },
-          )
-          .pipe(
-            map((d: any) => d.data),
-            catchError((e) => {
-              this.logger.log('MEL API is not connected');
-              this.logger.error(e);
-              return [null];
-            }),
-          )
-          .toPromise();
+        firstValueFrom(
+          this.httpService
+            .post(
+              process.env.MEL_API + 'prediction/external',
+              {
+                wos_name: value,
+                type: 'clarisa',
+                confident: Math.round(
+                  Math.max(...results.dataSync().map((d) => d)) * 100,
+                ),
+                doi: doi,
+                clarisa_id: clarisa_index.code,
+              },
+              { headers: { authorization: process.env.MEL_API_KEY } },
+            )
+            .pipe(
+              map((d: any) => d.data),
+              catchError((e) => {
+                this.logger.log('MEL API is not connected');
+                this.logger.error(e);
+                return [null];
+              }),
+            ),
+        );
+
+      const confidant: number = this.calculatePercent(
+        Math.max(...results.dataSync().map((d) => d)),
+      );
+      const clarisa_id = clarisa_index ? clarisa_index.code : null;
+      
+      this.predictionsService.create({ confidant, clarisa_id, text: value });
       return {
         value: clarisa_index ? clarisa_index : null,
         confidant: this.calculatePercent(

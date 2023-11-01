@@ -1,8 +1,10 @@
 import {
     Column,
     Entity,
+    OneToMany,
     PrimaryGeneratedColumn,
   } from 'typeorm';
+import { Predictions } from './predictions.entity';
   
   @Entity()
   export class TrainningCycle {
@@ -11,6 +13,10 @@ import {
   
     @Column()
     text: string;
+
+    @OneToMany(() => Predictions, (predictions) => predictions.trainningCycle)
+    predictions: Predictions[];
+  
   
 
   }
