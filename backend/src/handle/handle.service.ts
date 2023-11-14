@@ -30,7 +30,7 @@ export class HandleService {
   }
   async initCommodities() {
     const workSheetsFromFile = await xlsx.parse(
-      `${__dirname}/Commodities.xlsx`,
+      `${process.cwd()+'/assets'}/Commodities.xlsx`,
     );
     this.Commodities = {};
     workSheetsFromFile[0].data.forEach((d: any, i) => {
@@ -42,7 +42,7 @@ export class HandleService {
     this.logger.log('Commodities data Loaded');
   }
   async initRegions() {
-    const workSheetsFromFile = await xlsx.parse(`${__dirname}/CLARISA_UN.xlsx`);
+    const workSheetsFromFile = await xlsx.parse(`${process.cwd()+'/assets'}/CLARISA_UN.xlsx`);
     this.ClarisaRegons = {};
     workSheetsFromFile[0].data.forEach((d: any, i) => {
       if (i > 0) this.ClarisaRegons[d[1].toLocaleLowerCase()] = d[0];
