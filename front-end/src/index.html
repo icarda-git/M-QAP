@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MQAP</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      id="faviconTag"
+      rel="icon"
+      type="image/x-icon"
+      href="/assets/shared-image/mask-group.svg"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="mat-typography">
+    <app-root></app-root>
+    <script>
+      changeFavicon();
+      isDark.addEventListener("change", changeFavicon);
+      console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      console.log(window.matchMedia("(prefers-color-scheme: light)").matches);
+    </script>
+  </body>
+</html>

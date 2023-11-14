@@ -1,0 +1,119 @@
+.nav-tab-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+// .tab-box {
+//   width: 19.7rem;
+//   height: 4rem;
+//   border-radius: 1.6rem 0px 0px 0px;
+//   border: 0.2px solid #b9b9b9;
+//   font-family: "Poppins", sans-serif !important;
+//   font-size: 1.6rem;
+//   font-weight: 400;
+//   line-height: 24px;
+//   letter-spacing: 0em;
+//   text-align: center;
+//   border: 0.2px solid #b9b9b91f;
+//   background-color: #f3f3f3;
+//   color: #436280;
+//   cursor: pointer;
+//   padding: 0.9rem;
+
+//   &:nth-child(2) {
+//     border-radius: 0;
+//   }
+
+//   &:nth-child(3) {
+//     border-radius: 0;
+//     border-top-right-radius: 1.6rem;
+//   }
+// }
+
+.tab-link:link,
+.tab-link:visited {
+  text-decoration: none;
+}
+
+.tab-active {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  width: 197px;
+  height: 40px;
+  color: #ffffff !important;
+
+  background-color: #436280 !important;
+}
+
+.tab-text {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+
+  color: #5569dd;
+}
+
+.t-m-b {
+  margin-bottom: 4rem;
+}
+
+// ::ng-deep .mat-mdc-tab-header {
+//   margin-top: -68px !important ;
+// }
+
+::ng-deep .mat-mdc-tab-body {
+  margin-top: 84px !important;
+}
+
+::ng-deep
+  .mat-mdc-tab-header.mat-mdc-tab-nav-bar-stretch-tabs
+  .mat-mdc-tab-link {
+  flex-grow: 0 !important;
+  width: 197px;
+  height: 40px;
+}
+
+::ng-deep .mdc-tab:nth-child(2) {
+  border-radius: 0px;
+}
+
+::ng-deep .mdc-tab:nth-child(3) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 16px;
+}
+
+// ::ng-deep .mat-mdc-tab-header {
+//   margin-left: -3rem;
+// }
+
+::ng-deep .mat-mdc-tab .mdc-tab__content {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #ffffff !important;
+}
+
+::ng-deep
+  .mat-mdc-tab:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label,
+.mat-mdc-tab-link:not(.mat-mdc-tab-disabled).mdc-tab--active
+  .mdc-tab__text-label {
+  font-family: "Poppins", sans-serif !important;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+}

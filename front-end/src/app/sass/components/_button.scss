@@ -1,0 +1,103 @@
+@import "../abstracts/variables";
+//Create-category-btn
+
+.parameters-settings__button-box__btn {
+  width: 16.6rem;
+  height: 3.2rem;
+
+  border-radius: 0.5rem;
+  background-color: $color-button-primary !important;
+
+  box-shadow: 4px 4px 4px 0px #00000040;
+}
+
+.send-btn {
+  color: #436280;
+}
+
+// risk-management-btn
+
+.risk-management-reset-btn {
+  width: 9.1rem;
+  height: 3.2rem;
+
+  color: #ffffff !important;
+  text-align: center;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  border-radius: 1rem;
+  // background-color: #436280 !important;
+  background-image: linear-gradient(to right, #436280, #30455b);
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.risk-management-export-btn {
+  width: 14.8rem;
+  height: 3.2rem;
+
+  color: #ffffff !important;
+  text-align: center;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 1rem;
+  background-color: #9e553e !important;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+  align-items: center;
+  padding: 0 0.9rem 0 0.9rem;
+}
+
+//risk-report-btn
+.risk-report-button-box {
+  &__btn {
+    color: #ffffff !important;
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    background-color: #0f212f !important;
+
+    &--4 {
+      color: #ffffff !important;
+      text-align: center;
+      font-family: "Poppins", sans-serif !important;
+      font-size: 1.4rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      // background-color: #436280 !important;
+      background-image: linear-gradient(to right, #436280, #30455b) !important;
+    }
+  }
+}
+
+//Submitted versions-btn
+
+.risk-management-export-submitted-btn {
+  width: 14.8rem;
+  height: 3.2rem;
+
+  color: #ffffff !important;
+  text-align: center;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 1rem;
+  background-color: #436280 !important;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+  align-items: center;
+  padding: 0 0.9rem 0 0.9rem;
+}

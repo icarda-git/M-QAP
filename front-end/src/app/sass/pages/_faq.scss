@@ -1,0 +1,173 @@
+.section-faq {
+  height: 13.13%;
+
+  background-color: #fafafa;
+}
+
+.faq-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8rem;
+}
+
+.faq-title-box {
+  width: 67rem;
+  height: 10.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  margin: 8rem 0 0 0;
+  &__title {
+    color: #0f212f;
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 4rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+.faq-main-content {
+  width: 95%;
+  height: 7.9%;
+  margin: 0 auto;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  border-radius: 1rem;
+  background-color: #ffffff;
+  margin-bottom: 10rem;
+}
+
+.faq-content-container {
+  width: 85%;
+  margin: 5rem auto 13rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  // align-items: start;
+  // position: relative;
+}
+
+.faq-text-box {
+  display: flex;
+  // width: 118.8rem;
+  height: 4.6rem;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 8rem;
+  &__text {
+    color: #436280;
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+// ::ng-deep .mat-body p,
+// .mat-body-2 p,
+// .mat-typography .mat-body p,
+// .mat-typography .mat-body-2 p,
+// .mat-typography p {
+//   width: 120rem;
+//   height: 18.9rem;
+//   flex-shrink: 0;
+
+// }
+
+:host {
+  ::ng-deep .mat-expansion-panel-header {
+    // width: 95%;
+    height: 5rem;
+
+    border-radius: 1.5rem !important;
+    border: 1px solid #d9d9d9 !important;
+    background: #ffffff !important;
+    box-shadow: 0px 4px 4px 0px #00000040 !important;
+  }
+}
+
+:host {
+  ::ng-deep .mat-expansion-panel {
+    // display: contents !important;
+    border-radius: 1.5rem !important;
+  }
+
+  // ::ng-deep .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  //   box-shadow: none !important;
+  // }
+}
+
+:host {
+  ::ng-deep .mat-expansion-panel-header-title,
+  .mat-expansion-panel-header-description {
+    color: #0f212f;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    flex-basis: auto !important;
+    padding: 0 1rem !important;
+
+    @media only screen and (max-width: 90em) {
+      font-size: 1.6rem;
+      padding: 0 !important;
+    }
+  }
+}
+
+:host {
+  ::ng-deep .mat-expansion-panel-body {
+    // width: 95%;
+    height: 18.9rem;
+    flex-shrink: 0;
+    border-radius: 0rem 0rem 2rem 2rem;
+    border: 0.5px solid #436280;
+    background: rgba(175, 167, 178, 0.2);
+    border-top: none;
+    margin-top: -1rem;
+  }
+}
+
+.panel1 {
+  color: #0f212f;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 4.2rem 1.2rem 0 1.2rem !important;
+}
+
+.panel2 {
+  color: #0f212f;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 4.2rem 1.2rem 0 1.2rem !important;
+}
+
+:host {
+  ::ng-deep .mat-content {
+    align-items: center !important;
+  }
+}
+
+:host {
+  ::ng-deep .mat-accordion > .mat-expansion-panel-spacing:last-child,
+  .mat-accordion
+    > *:last-child:not(.mat-expansion-panel)
+    .mat-expansion-panel-spacing {
+    border-radius: 2rem 2rem 2rem 2rem !important;
+  }
+}

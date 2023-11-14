@@ -1,0 +1,66 @@
+.license-container {
+  padding: 24px;
+  padding-top: 56px;
+  margin: 0px auto 56px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.apache-license-box-text {
+  color: #0087ca;
+  font: 400 16px/28px Poppins;
+  letter-spacing: 0.0094em;
+  margin: 0 0 16px;
+}
+
+.license-title {
+  color: #0087ca;
+  font: 500 20px/32px Poppins;
+  letter-spacing: 0.0075em;
+  margin: 0 0 16px;
+}
+
+.license-main-list {
+  margin: 0;
+  padding: 16px;
+}
+
+.license-item-list {
+  &__h3 {
+    color: #0087ca;
+    font: 400 16px/28px Poppins;
+    letter-spacing: 0.0094em;
+    margin: 0 0 16px;
+  }
+
+  &__text {
+    color: #000000;
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 16px;
+  }
+
+  &__link:link,
+  &__link:visited {
+    display: inline-block;
+    text-decoration: none;
+
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: all 0.3s;
+
+    color: #0087ca;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__link:hover,
+  &__link:active {
+    color: #003a57;
+    border-bottom: 1px solid transparent;
+  }
+}

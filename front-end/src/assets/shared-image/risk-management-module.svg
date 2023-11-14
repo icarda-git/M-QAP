@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1134.41 965.7">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        font-family: Calibri-Bold, Calibri;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #fff;
+        font-size: 28.42px;
+      }
+
+      .cls-4 {
+        stroke: #bacbe9;
+        stroke-width: 3px;
+      }
+
+      .cls-4, .cls-5 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #3a3a3a;
+        font-size: 26.86px;
+      }
+
+      .cls-3 {
+        font-family: SourceSansRoman-Regular, 'Source Sans Variable';
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-5 {
+        stroke: #e7e6e6;
+        stroke-width: 19.63px;
+      }
+
+      .cls-6 {
+        fill: #4472c4;
+      }
+
+      .cls-6, .cls-7, .cls-8, .cls-9 {
+        stroke-width: 0px;
+      }
+
+      .cls-7 {
+        fill: #b0bcde;
+      }
+
+      .cls-8 {
+        fill: #8faadc;
+      }
+
+      .cls-9 {
+        fill: #e7e6e6;
+      }
+    </style>
+  </defs>
+  <circle class="cls-5" cx="579.98" cy="467.37" r="442.56"/>
+  <rect class="cls-6" x="334.67" y="120.21" width="465.07" height="82.34" rx="11.94" ry="11.94"/>
+  <rect class="cls-6" x="334.67" y="732.18" width="465.07" height="82.34" rx="11.94" ry="11.94"/>
+  <text class="cls-1" transform="translate(370.3 169.09)"><tspan x="0" y="0">Defne scope, context and criteria</tspan></text>
+  <rect class="cls-6" x="334.67" y="244.16" width="465.07" height="448.07" rx="13.82" ry="13.82"/>
+  <text class="cls-1" transform="translate(470.35 291.91)"><tspan x="0" y="0">Risk assessment</tspan></text>
+  <g>
+    <rect class="cls-8" x="431.68" y="340.71" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+    <rect class="cls-4" x="431.68" y="340.71" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+  </g>
+  <g>
+    <rect class="cls-8" x="431.68" y="457.37" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+    <rect class="cls-4" x="431.68" y="457.37" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+  </g>
+  <g>
+    <rect class="cls-8" x="431.68" y="581.43" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+    <rect class="cls-4" x="431.68" y="581.43" width="271.06" height="75.02" rx="12.67" ry="12.67"/>
+  </g>
+  <g>
+    <rect class="cls-7" x="559.35" y="213.13" width="15.71" height="15.71"/>
+    <polygon class="cls-7" points="567.21 240.43 584.5 223.04 549.91 223.04 567.21 240.43"/>
+  </g>
+  <g>
+    <rect class="cls-7" x="559.35" y="307.94" width="15.71" height="15.71"/>
+    <polygon class="cls-7" points="567.21 335.24 584.5 317.85 549.91 317.85 567.21 335.24"/>
+  </g>
+  <g>
+    <rect class="cls-7" x="559.35" y="698.02" width="15.71" height="15.71"/>
+    <polygon class="cls-7" points="567.21 725.32 584.5 707.93 549.91 707.93 567.21 725.32"/>
+  </g>
+  <g>
+    <rect class="cls-7" x="559.35" y="422.9" width="15.71" height="15.71"/>
+    <polygon class="cls-7" points="567.21 450.2 584.5 432.81 549.91 432.81 567.21 450.2"/>
+  </g>
+  <g>
+    <rect class="cls-7" x="559.35" y="544.03" width="15.71" height="15.71"/>
+    <polygon class="cls-7" points="567.21 571.32 584.5 553.93 549.91 553.93 567.21 571.32"/>
+  </g>
+  <text class="cls-1" transform="translate(491.46 385.93)"><tspan x="0" y="0">Identfy risks</tspan></text>
+  <text class="cls-3" transform="translate(491.46 503.59)"><tspan x="0" y="0">Analyze risks</tspan></text>
+  <text class="cls-1" transform="translate(486.16 626.38)"><tspan x="0" y="0">Evaluate risks</tspan></text>
+  <text class="cls-1" transform="translate(506.62 781.05)"><tspan x="0" y="0">Treat risks</tspan></text>
+  <rect class="cls-9" x="930.82" y="411.24" width="188.67" height="111.6"/>
+  <text class="cls-2" transform="translate(952.05 460.86)"><tspan x="0" y="0">Monitor and </tspan><tspan x="35.43" y="32.24">review</tspan></text>
+  <rect class="cls-9" x="17.87" y="411.24" width="245.33" height="111.6"/>
+  <text class="cls-2" transform="translate(36.14 454.67)"><tspan x="0" y="0">Communicate and</tspan><tspan x="57.74" y="32.24" xml:space="preserve"> consult</tspan></text>
+  <rect class="cls-9" x="449.6" y="846.23" width="235.21" height="111.6"/>
+  <text class="cls-2" transform="translate(505.14 889.66)"><tspan x="0" y="0">Report and</tspan><tspan x="-31.91" y="32.24">maintain records</tspan></text>
+</svg>

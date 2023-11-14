@@ -1,0 +1,14 @@
+.form-dialog-content {
+  max-width: 57.8rem;
+  margin: 2rem auto 2rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+
+  &__layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+  }
+}

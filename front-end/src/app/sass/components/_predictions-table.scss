@@ -1,0 +1,142 @@
+.m {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.training-data-table-icon {
+  border: none;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.training-data-table {
+  &__icon {
+    width: 28px;
+    height: 32px;
+  }
+}
+
+.table-header {
+  height: 53px;
+}
+
+.example-container {
+  height: 44.2rem;
+  max-width: 100%;
+  overflow: auto;
+  padding: 0 0.5rem;
+}
+
+.table-box::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+.table-box::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #d9d9d9;
+  border-radius: 0.4rem;
+  height: 2rem;
+}
+
+.table-box::-webkit-scrollbar-thumb {
+  background-color: $color-button-primary;
+  // outline: 1px solid slategrey;
+  border-radius: 4px;
+}
+
+.table-box {
+  cursor: auto;
+}
+
+.table-box::-webkit-scrollbar-button,
+.table-box::-webkit-scrollbar-track,
+.table-box::-webkit-scrollbar-track-piece,
+.table-box::-webkit-scrollbar-corner,
+.table-box::-webkit-resizer {
+  display: block;
+  height: 3rem;
+}
+
+.table-box {
+  overflow: auto;
+  position: relative;
+
+  margin-bottom: 2rem;
+
+  .color-icons-table-action {
+    color: #9e553e;
+  }
+
+  td:nth-child(2) {
+    text-align: left;
+  }
+  td {
+    border: 1px solid #b9b9b9b5;
+
+    text-align: center;
+
+    font-weight: 400;
+
+    color: #04030f;
+    font-size: 1.4rem;
+    font-style: normal;
+    line-height: 18.75px;
+    font-family: "Poppins", sans-serif !important;
+    /* font-weight: 500; */
+    /* margin: 16px 0 12px 0; */
+    /* display: block; */
+    /* max-width: 450px; */
+    /* min-width: 250px; */
+    white-space: normal !important;
+  }
+
+  th {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 130%; /* 1.56rem */
+    // background-color: #436280;
+    color: #ffffff;
+    letter-spacing: 0em;
+    text-align: center;
+    // background-image: linear-gradient(to bottom, #436280, #39536d);
+    background: linear-gradient(to bottom left, #436280, #30455b);
+    // border: 0.2rem solid #154c83;
+    font-style: normal;
+  }
+
+  .text-color-linear {
+    background-image: linear-gradient(to bottom, #ffffff, #ededed);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.1rem;
+    transition: all 0.2s;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .text-s-c-linear {
+    background-image: linear-gradient(to bottom, #0f212f, #0c1a25);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 0.1rem;
+    transition: all 0.2s;
+  }
+
+  @media only screen and (max-width: 48em) {
+    th,
+    td {
+      padding: 1.6rem;
+    }
+  }
+
+  @media only screen and (max-width: 34em) {
+    th {
+      font-size: 1.6rem;
+    }
+
+    th {
+      padding: 1.4rem;
+    }
+  }
+}

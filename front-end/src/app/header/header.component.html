@@ -1,0 +1,211 @@
+<header class="header-risk">
+  <!-- section header -->
+
+  <div
+    [style.background]="headerService.background"
+    class="header-risk__content"
+  >
+    <div class="header-content-box">
+      <div routerLink="/" class="header-content-box--1">
+        <img
+          src="../../assets/shared-image/mask-group.svg"
+          class="header-logo-size"
+          alt="~/Frontend/images/question-circular-button.svg"
+        />
+      </div>
+      <div routerLink="/" class="header-content-box--2">
+        <p class="header-content-box--2__title">
+          <span class="header-content-box--2__title--1">CGIAR</span>
+          MQAP
+        </p>
+      </div>
+    </div>
+
+    <nav class="header-user-nav-box">
+      <!-- <a
+        *ngIf="user_info && isAdmin"
+        class="user-nav-button"
+        mat-icon-button
+        routerLink="admin"
+      >
+        <span class="user-nav-button__title--1">Admin Area</span>
+      </a> -->
+      <!-- 
+      <button [style.background]="headerService.backgroundUserNavButton" class="user-nav-button" mat-icon-button *ngIf="user_info">
+        <mat-icon class="user-nav-button__icon">
+          <img
+            class="user-nav-button__icon--1"
+            src="../../assets/shared-image/🦆 icon _User avatar filled_.svg"
+            alt="~/Frontend/images/icon _User avatar"
+        /></mat-icon>
+        <span class="user-nav-button__title--1">{{
+          user_info?.full_name
+        }}</span>
+      </button> -->
+
+      <button
+        [style.background]="headerService.backgroundUserNavButton"
+        class="user-nav-button"
+        mat-icon-button
+      >
+        <span class="user-nav-button__visible">
+          <mat-icon class="user-nav-button__icon">
+            <img
+              class="user-nav-button__icon--1"
+              src="../../assets/shared-image/🦆 icon _User avatar filled_.svg"
+              alt="~/Frontend/images/icon _User avatar"
+          /></mat-icon>
+          <span class="user-nav-button__title--1">
+            mohammad
+            <!--{{
+             user_info?.full_name
+          }}--></span
+          >
+        </span>
+
+        <span class="user-nav-button__invisible">
+          <span class="user-nav-button__title--3">
+            mohammad musa<!--{{
+             user_info?.full_name
+          }}--></span
+          ></span
+        >
+      </button>
+
+      <!-- ///////////////////////////////////////////// -->
+
+      <button
+        [style.background]="headerService.backgroundUserNavButton"
+        class="user-nav-button"
+        mat-icon-button
+      >
+        <span class="user-nav-button__visible">
+          <span class="user-nav-button__title--2">Logout</span></span
+        >
+        <span class="user-nav-button__invisible">
+          <mat-icon class="user-nav-button__icon">
+            <img
+              src="../../assets/shared-image/🦆 icon _logout_.svg"
+              class="user-nav-button__icon--2"
+              alt="~/Frontend/images/icon _logout"
+          /></mat-icon>
+        </span>
+      </button>
+      <!-- 
+      <button
+        [style.background]="headerService.backgroundUserNavButton"
+        class="user-nav-button"
+        mat-icon-button
+        
+      
+      >
+        <span class="user-nav-button__visible">
+          <span class="user-nav-button__title--2">Login</span>
+        </span>
+        <span class="user-nav-button__invisible">
+          <mat-icon class="user-nav-button__icon">
+            <img
+              src="../../assets/shared-image/login-planning.png"
+              class="user-nav-button__icon--3"
+              alt="~/Frontend/images/icon _logout"
+          /></mat-icon>
+        </span>
+      </button> -->
+    </nav>
+  </div>
+
+  <!-- section nav -->
+  <nav
+    class="header-risk__main-nav"
+    [style.background]="headerService.backgroundNavMain"
+  >
+    <ul class="main-nav-list">
+      <li>
+        <a
+          routerLink="home"
+          class="main-nav-link cool-link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="training-data"
+          class="main-nav-link cool-link"
+          routerLinkActive="active"
+        >
+          <span>Training Data</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="training-cycle"
+          class="main-nav-link cool-link"
+          routerLinkActive="active"
+        >
+          <span>Training cycle</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="predictions"
+          class="main-nav-link cool-link"
+          routerLinkActive="active"
+        >
+          <span>Predictions</span>
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="clarisa"
+          class="main-nav-link cool-link"
+          routerLinkActive="active"
+        >
+          <span>Clarisa</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<!-- section nav
+<nav class="sidebar">
+  <ul class="side-nav">
+    <li class="side-nav__item side-nav__item--active">
+      <a href="#" class="side-nav__link">
+        <svg class="side-nav__icon">
+          <use xlink:href="img/sprite.svg#icon-home"></use>
+        </svg>
+        <span>Hotel</span>
+      </a>
+    </li>
+    <li class="side-nav__item">
+      <a href="#" class="side-nav__link">
+        <svg class="side-nav__icon">
+          <use xlink:href="img/sprite.svg#icon-aircraft-take-off"></use>
+        </svg>
+        <span>Flight</span>
+      </a>
+    </li>
+    <li class="side-nav__item">
+      <a href="#" class="side-nav__link">
+        <svg class="side-nav__icon">
+          <use xlink:href="img/sprite.svg#icon-key"></use>
+        </svg>
+        <span>Car rental</span>
+      </a>
+    </li>
+    <li class="side-nav__item">
+      <a href="#" class="side-nav__link">
+        <svg class="side-nav__icon">
+          <use xlink:href="img/sprite.svg#icon-map"></use>
+        </svg>
+        <span>Tours</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="legal">&copy; 2017 by trillo. All rights reserved.</div>
+</nav> -->
