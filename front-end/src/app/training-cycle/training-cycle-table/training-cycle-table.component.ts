@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 
 import { TrainingCycleAddDialogComponent } from './training-cycle-add-dialog/training-cycle-add-dialog.component';
+import { DeleteConfirmDialogComponent } from 'src/app/delete-confirm-dialog/delete-confirm-dialog.component';
 
 export interface TrainingCycle {
   id: number;
@@ -30,6 +31,26 @@ export class TrainingCycleTableComponent {
       name: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
       createdDate: '26/10/2023',
     },
+    {
+      id: 2,
+      name: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
+      createdDate: '26/10/2023',
+    },
+    {
+      id: 3,
+      name: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
+      createdDate: '26/10/2023',
+    },
+    {
+      id: 4,
+      name: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
+      createdDate: '26/10/2023',
+    },
+    {
+      id: 5,
+      name: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
+      createdDate: '26/10/2023',
+    },
   ];
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -45,6 +66,7 @@ export class TrainingCycleTableComponent {
   openNewTrainingCycleDialog(title: any, element: any = null) {
     this.dialog.open(TrainingCycleAddDialogComponent, {
       data: {
+        id: 'add',
         title: title,
         element: element,
       },
@@ -54,37 +76,25 @@ export class TrainingCycleTableComponent {
   openDialogEditTrainingCycle(title: any, element: any) {
     this.dialog.open(TrainingCycleAddDialogComponent, {
       data: {
+        id: 'edit',
         title: title,
         element: element,
       },
     });
   }
 
-  //Delete-User-By-Id
+  //deleteTrainingCycleById
 
-  async deleteUserById(id: any) {
-    // this.dialog
-    // .open(DeleteConfirmDialogComponent, {
-    //   maxWidth: '400px',
-    //   data: {
-    //     message : 'Are you sure you want to delete this record ?'
-    //   }
-    // }).afterClosed()
-    // .subscribe(async (res) => {
-    //   if(res == true) {
-    //     const result =  await this.users.deleteUser(id);
-    //     if(result) {
-    //       this.toastr.success(
-    //         'Success deleted'
-    //       );
-    //     }
-    //     else {
-    //       this.toastr.error(
-    //         'can not deleted'
-    //       );
-    //     }
-    //   }
-    //   await this.init();
-    // });
+  async deleteTrainingCycleById(id: any) {
+    this.dialog
+      .open(DeleteConfirmDialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete this record ?',
+          title: 'Delete',
+
+          svg: `../../../../assets/shared-image/delete-user.png`,
+        },
+      })
+      .afterClosed();
   }
 }

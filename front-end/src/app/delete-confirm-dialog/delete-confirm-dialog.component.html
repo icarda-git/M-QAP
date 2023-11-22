@@ -1,0 +1,122 @@
+<div mat-dialog-container class="delete-box">
+  <!-- <div class="form-dialog-header delete-header">
+    <div class="form-dialog-header__text-box">
+      <p
+        class="form-dialog-header__text-box__text"
+        *ngIf="data.title == 'Logout'"
+      >
+        Logout
+      </p>
+      <p
+        class="form-dialog-header__text-box__text"
+        *ngIf="data.title != 'Send to all users' || data.title != 'Logout'"
+      >
+        Delete
+      </p>
+      <p
+        class="form-dialog-header__text-box__text"
+        *ngIf="data.title == 'Send to all users'"
+      >
+        {{ data.title }}
+      </p>
+      <p class="form-dialog-header__text-box__text" *ngIf="data.title == 'Logout'">Logout</p>
+      <p class="form-dialog-header__text-box__text" *ngIf="data.title != 'Send to all users' && data.title != 'Logout'">Delete</p>
+      <p class="form-dialog-header__text-box__text" *ngIf="data.title == 'Send to all users'">{{data.title}}</p>
+    </div>
+
+    <div class="form-dialog-header__icon-box">
+      <button class="form-dialog-header__icon-box__btn" (click)="closeDialog()">
+        <mat-icon class="form-dialog-header__icon-box__icon-size">
+          <img
+            class="form-dialog-header__icon-box__icon-size__icon"
+            src="../../../assets/shared-image/Vector-close.svg"
+            alt="~/Frontend/images/icon _ Vector-close"
+          />
+        </mat-icon>
+      </button>
+    </div>
+  </div> -->
+
+  <div
+    class="delete-content-box"
+    [style.background]="headerService.backgroundDeleteLr"
+  >
+    <div class="el-1"></div>
+    <div class="el-2">
+      <div class="el-2-box">
+        <div *ngIf="!data.svg">
+          <img
+            class="dialog-img-2"
+            src="../../assets/shared-image/delete.png"
+            alt=""
+          />
+        </div>
+        <div *ngIf="data.svg">
+          <img class="dialog-img" src="{{ data.svg }}" alt="" />
+        </div>
+
+        <div class="delete-text-box" *ngIf="data?.risks?.length > 0">
+          <p class="delete-text-risks">
+            This user is assigned as risk owner for risks(
+            <strong class="delete-text-box__text-q">
+              <!-- {{ risks }} -->
+            </strong>
+            ). If the user is deleted, make sure to appoint another team member
+            for the risk(s) above
+          </p>
+        </div>
+        <div class="delete-text-box">
+          <p class="delete-text-box__text">
+            <mat-dialog-content class="delete-text-box__text">
+              {{ data.message }}
+            </mat-dialog-content>
+          </p>
+        </div>
+
+        <div>
+          <mat-dialog-actions>
+            <button
+              [style.background]="headerService.backgroundDeleteYes"
+              class="delete-dialog-button-box__btn"
+              mat-raised-button
+              [mat-dialog-close]="true"
+              cdkFocusInitial
+            >
+              Yes
+            </button>
+
+            <button
+              [style.background]="headerService.backgroundDeleteClose"
+              class="delete-dialog-button-box__btn--no"
+              mat-raised-button
+              [mat-dialog-close]="false"
+            >
+              No
+            </button>
+          </mat-dialog-actions>
+        </div>
+      </div>
+    </div>
+    <div class="el-3"></div>
+  </div>
+
+  <!-- <mat-dialog-actions>
+    <button
+      class="delete-dialog-button-box__btn"
+      mat-raised-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+    >
+      Yes
+    </button>
+
+    <button
+      class="delete-dialog-button-box__btn--no"
+      mat-raised-button
+      [mat-dialog-close]="false"
+    >
+      No
+    </button>
+  </mat-dialog-actions> 
+ -->
+</div>

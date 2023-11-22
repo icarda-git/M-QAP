@@ -4,6 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { TrainingDataAddDialogComponent } from './training-data-add-dialog/training-data-add-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DeleteConfirmDialogComponent } from 'src/app/delete-confirm-dialog/delete-confirm-dialog.component';
+import { HeaderServiceService } from 'src/app/header-service.service';
 
 export interface TrainingData {
   text: string;
@@ -22,7 +24,23 @@ export class TrainingDataTableComponent {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    public headerService: HeaderServiceService
+  ) {
+    this.headerService.background =
+      'linear-gradient(to right, #04030F, #04030F)';
+    this.headerService.backgroundNavMain =
+      'linear-gradient(to right, #2A2E45, #212537)';
+    this.headerService.backgroundUserNavButton =
+      'linear-gradient(to right, #2A2E45, #212537)';
+
+    this.headerService.backgroundFooter =
+      'linear-gradient(to top right, #2A2E45, #212537)';
+    this.headerService.backgroundDeleteYes = '#5569dd';
+    this.headerService.backgroundDeleteClose = '#808080';
+    this.headerService.backgroundDeleteLr = '#5569dd';
+  }
 
   ELEMENT_DATA: TrainingData[] = [
     {
@@ -103,6 +121,7 @@ export class TrainingDataTableComponent {
   openNewTrainingDataDialog(title: any, element: any = null) {
     this.dialog.open(TrainingDataAddDialogComponent, {
       data: {
+        id: 'add',
         title: title,
         element: element,
       },
@@ -112,37 +131,25 @@ export class TrainingDataTableComponent {
   openDialogEditTrainingData(title: any, element: any) {
     this.dialog.open(TrainingDataAddDialogComponent, {
       data: {
+        id: 'edit',
         title: title,
         element: element,
       },
     });
   }
 
-  //Delete-User-By-Id
+  //deleteTrainingDataById
 
-  async deleteUserById(id: any) {
-    // this.dialog
-    // .open(DeleteConfirmDialogComponent, {
-    //   maxWidth: '400px',
-    //   data: {
-    //     message : 'Are you sure you want to delete this record ?'
-    //   }
-    // }).afterClosed()
-    // .subscribe(async (res) => {
-    //   if(res == true) {
-    //     const result =  await this.users.deleteUser(id);
-    //     if(result) {
-    //       this.toastr.success(
-    //         'Success deleted'
-    //       );
-    //     }
-    //     else {
-    //       this.toastr.error(
-    //         'can not deleted'
-    //       );
-    //     }
-    //   }
-    //   await this.init();
-    // });
+  async deleteTrainingDataById(id: any) {
+    this.dialog
+      .open(DeleteConfirmDialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete this record ?',
+          title: 'Delete',
+
+          svg: `../../../../assets/shared-image/delete-user.png`,
+        },
+      })
+      .afterClosed();
   }
 }

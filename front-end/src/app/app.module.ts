@@ -23,6 +23,9 @@ import { TrainingCycleOverviewComponent } from './training-cycle/training-cycle-
 import { SearchTrainingCycleComponent } from './training-cycle/search-training-cycle/search-training-cycle.component';
 import { PredictionsTableComponent } from './predictions/predictions-table/predictions-table.component';
 import { PredictionsOverviewComponent } from './predictions/predictions-overview/predictions-overview.component';
+import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
+import { ClarisaOverviewComponent } from './clarisa/clarisa-overview/clarisa-overview.component';
+import { ClarisaTableComponent } from './clarisa/clarisa-table/clarisa-table.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { PredictionsOverviewComponent } from './predictions/predictions-overview
     SearchTrainingCycleComponent,
     PredictionsTableComponent,
     PredictionsOverviewComponent,
+    DeleteConfirmDialogComponent,
+    ClarisaOverviewComponent,
+    ClarisaTableComponent,
   ],
   imports: [
     BrowserModule,

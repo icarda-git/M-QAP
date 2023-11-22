@@ -216,8 +216,8 @@
 
   background-image: linear-gradient(
     to right bottom,
-    #0f212f,
-    #09151e
+    #04030f,
+    #04030f
   ) !important;
   padding: 0 1rem;
 
@@ -241,7 +241,7 @@
 
     &__btn {
       border: none;
-      background-color: #09151e;
+      background-color: #04030f;
       cursor: pointer;
     }
   }
@@ -370,7 +370,7 @@
     width: 16px !important;
     height: 10px !important;
     background-color: #ffffff !important;
-    background-image: url("../../../../assets/shared-image/VectorNew.svg") !important;
+    background-image: url("../../../../assets/shared-image/Vector-risk-m.svg");
     background-position: center;
     background-size: cover;
   }

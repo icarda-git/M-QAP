@@ -8,6 +8,7 @@
   border: none;
   cursor: pointer;
   background-color: #ffffff;
+  color: #403f3f;
 }
 
 .training-data-table {
@@ -100,7 +101,8 @@
     letter-spacing: 0em;
     text-align: center;
     // background-image: linear-gradient(to bottom, #436280, #39536d);
-    background: linear-gradient(to bottom left, #436280, #30455b);
+    // background: linear-gradient(to bottom left, #436280, #30455b);
+    background: linear-gradient(to right, #04030f, #04030f);
     // border: 0.2rem solid #154c83;
     font-style: normal;
   }
@@ -138,5 +140,43 @@
     th {
       padding: 1.4rem;
     }
+  }
+}
+
+.table-header {
+  height: 3.5rem;
+}
+
+:host {
+  ::ng-deep.mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    /* align-items: center; */
+    letter-spacing: normal;
+    outline: 0;
+    justify-content: center !important;
+  }
+}
+
+:host {
+  ::ng-deep.mat-sort-header-arrow {
+    height: 12px;
+    width: 12px;
+    min-width: 12px;
+    position: relative;
+    display: flex;
+    opacity: 0;
+    color: #5569dd !important ;
+  }
+}
+
+:host {
+  ::ng-deep.mat-mdc-select-arrow svg {
+    fill: currentColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #5569dd !important ;
   }
 }

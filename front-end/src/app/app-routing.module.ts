@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TrainingDataComponent } from './training-data/training-data.component';
@@ -8,6 +8,7 @@ import { ClarisaComponent } from './clarisa/clarisa.component';
 import { TrainingDataOverviewComponent } from './training-data/training-data-overview/training-data-overview.component';
 import { TrainingCycleOverviewComponent } from './training-cycle/training-cycle-overview/training-cycle-overview.component';
 import { PredictionsOverviewComponent } from './predictions/predictions-overview/predictions-overview.component';
+import { ClarisaOverviewComponent } from './clarisa/clarisa-overview/clarisa-overview.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,12 @@ const routes: Routes = [
   {
     path: 'clarisa',
     component: ClarisaComponent,
+    children: [
+      {
+        path: '',
+        component: ClarisaOverviewComponent,
+      },
+    ],
   },
 ];
 

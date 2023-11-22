@@ -14,13 +14,17 @@ export class TrainingDataComponent {
     private meta: Meta
   ) {
     this.headerService.background =
-      'linear-gradient(to right, #0F212F, #0E1E2B)';
+      'linear-gradient(to right, #04030F, #04030F)';
     this.headerService.backgroundNavMain =
-      'linear-gradient(to right, #436280, #30455B)';
+      'linear-gradient(to right, #2A2E45, #212537)';
     this.headerService.backgroundUserNavButton =
-      'linear-gradient(to right, #436280, #30455B)';
+      'linear-gradient(to right, #2A2E45, #212537)';
+
     this.headerService.backgroundFooter =
-      'linear-gradient(to right, #0F212F, #0E1E2B)';
+      'linear-gradient(to top right, #2A2E45, #212537)';
+    this.headerService.backgroundDeleteYes = '#5569dd';
+    this.headerService.backgroundDeleteClose = '#808080';
+    this.headerService.backgroundDeleteLr = '#5569dd';
   }
 
   ngOnInit() {

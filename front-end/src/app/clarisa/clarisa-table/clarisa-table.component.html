@@ -8,12 +8,6 @@
           <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
-        <!-- Text Column -->
-        <ng-container matColumnDef="text">
-          <th mat-header-cell *matHeaderCellDef>Text</th>
-          <td mat-cell *matCellDef="let element">{{ element.text }}</td>
-        </ng-container>
-
         <!-- CLARISA Name Column -->
         <ng-container matColumnDef="clarisaName">
           <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
@@ -25,22 +19,6 @@
           <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
           <td mat-cell *matCellDef="let element">
             {{ element.clarisaAcronym }}
-          </td>
-        </ng-container>
-
-        <!-- Confident Column -->
-        <ng-container matColumnDef="confident">
-          <th mat-header-cell *matHeaderCellDef>Confident</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.confident }}
-          </td>
-        </ng-container>
-
-        <!-- Cycle Column -->
-        <ng-container matColumnDef="cycle">
-          <th mat-header-cell *matHeaderCellDef>Cycle</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.cycle }}
           </td>
         </ng-container>
 

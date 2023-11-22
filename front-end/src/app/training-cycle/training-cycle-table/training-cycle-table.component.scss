@@ -10,7 +10,7 @@
 }
 
 .user-management__search-box-flex {
-  margin-top: 3rem;
+  // margin-top: 3rem;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -110,4 +110,118 @@
       #7c4230
     ) !important;
   }
+}
+
+::ng-deep.mdc-tooltip__surface {
+  background-color: #04030f !important;
+}
+
+.risk-report-btn-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: #b9b9b9;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 15px;
+  transition: all 0.3s;
+}
+
+.create-risk {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0;
+  display: inline-block;
+  position: relative;
+  top: 0.3rem;
+  left: 0.5rem;
+}
+.risk-report-title-box {
+  text-align: center;
+  padding: 4.8rem 0;
+  &__title {
+    color: #0f212f;
+    text-align: center;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 2.2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  text-decoration: none;
+
+  display: inline-block;
+
+  transition: all 0.2s;
+  position: relative;
+
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn:active,
+.btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--white {
+  background-color: #5569dd !important;
+  color: #ffffff;
+}
+.btn--white::after {
+  background-color: #5569dd !important;
+}
+
+.btn--white-2 {
+  background-image: linear-gradient(to right, #436280, #30455b);
+  color: #ffffff;
+}
+.btn--white-2::after {
+  background-image: linear-gradient(to right, #436280, #30455b);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.85s;
+  animation-fill-mode: backwards;
 }

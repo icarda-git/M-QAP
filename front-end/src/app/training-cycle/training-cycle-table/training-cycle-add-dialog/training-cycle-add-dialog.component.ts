@@ -10,7 +10,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class TrainingCycleAddDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<TrainingCycleAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public trainingCycle: { title: any; element: any }
+    @Inject(MAT_DIALOG_DATA)
+    public trainingCycle: { title: any; element: any; id: any }
   ) {}
 
   trainingFormCycle = new FormGroup({
