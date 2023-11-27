@@ -489,3 +489,90 @@
   animation: moveInBottom 0.5s ease-out 0.85s;
   animation-fill-mode: backwards;
 }
+
+
+
+::ng-deep.ng-select .ng-select-container.ng-appearance-outline {
+  padding: 0 0.5em;
+  min-height: 60px;
+  width: 57.8rem;
+  height: 4.4rem !important;
+  position: relative !important;
+  background-color: none !important;
+  &::-webkit-input-placeholder {
+    font-family: "Poppins", sans-serif;
+
+    font-style: normal;
+    font-weight: 300;
+
+    position: absolute !important;
+    top: 50% !important;
+    left: 45% !important;
+    transform: translate(-71%, -43%);
+
+    color: #142837d9 !important;
+
+    font-size: 1.4rem !important;
+
+    line-height: 171.5%; /* 2.401rem */
+  }
+}
+.ng-select-option-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #0f212f;
+  text-align: left;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 114.5%; /* 1.374rem */
+}
+
+::ng-deep.ng-select.ng-select-single .ng-select-container {
+  height: 49px !important;
+
+  border: 2px solid #8080804c !important;
+  border-radius: 1rem !important;
+}
+
+::ng-deep.ng-select .ng-select-container .ng-value-container .ng-input > input {
+  box-sizing: content-box;
+  background: none transparent;
+  border: 0 none;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  cursor: default;
+  width: 100%;
+  position: relative;
+  // top: 13px !important;
+}
+:host {
+  ::ng-deep.ng-select .ng-select-container.ng-appearance-outline {
+    padding: 0 0.5em;
+    min-height: 60px;
+    width: 57.8rem;
+    // height: 4.4rem !important;
+    position: relative !important;
+    background-color: none !important;
+    /* border-radius: 1rem; */
+    /* border: 2.5px solid #8080807c !important; */
+    /* border-radius: 1rem !important; */
+    height: 49px !important;
+    border: 2px solid #8080804c !important;
+    border-radius: 1rem !important;
+  }
+}
+
+::ng-deep.ng-select.ng-select-single
+  .ng-select-container
+  .ng-value-container
+  .ng-input {
+  top: 18px !important;
+  left: 0;
+  padding-left: 15px !important;
+  padding-right: 50px;
+}

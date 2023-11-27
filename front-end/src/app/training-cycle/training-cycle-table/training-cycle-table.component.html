@@ -27,7 +27,7 @@
       <div class="risk-report-button-box">
         <button
           class="risk-report-button-box__btn btn--white btn"
-          (click)="openNewTrainingCycleDialog('Add Training cycle')"
+          (click)="openDialog()"
           mat-raised-button
         >
           <mat-icon class="create-risk">
@@ -59,9 +59,9 @@
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="text">
           <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.text }}</td>
         </ng-container>
 
         <!-- Created Date Column -->
@@ -71,7 +71,7 @@
         </ng-container>
 
         <!-- Action Name Column -->
-        <ng-container matColumnDef="action">
+        <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>
             <span class="h5">Action</span>
           </th>
@@ -80,9 +80,7 @@
               <button
                 class="training-data-table-icon"
                 matTooltip="Edit"
-                (click)="
-                  openDialogEditTrainingCycle('Edit Training cycle', element)
-                "
+                (click)="openDialog(element.id)"
               >
                 <mat-icon class="training-data-table__icon"
                   ><svg
@@ -135,12 +133,12 @@
         <tr
           class="table-header"
           mat-header-row
-          *matHeaderRowDef="displayedColumns"
+          *matHeaderRowDef="columnsToDisplay"
         ></tr>
         <tr
           class="table-header"
           mat-row
-          *matRowDef="let row; columns: displayedColumns"
+          *matRowDef="let row; columns: columnsToDisplay"
         ></tr>
       </table>
 

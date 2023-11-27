@@ -10,6 +10,7 @@ import { Meta, Title } from '@angular/platform-browser';
 export class TrainingCycleComponent {
   constructor(
     public headerService: HeaderServiceService,
+    
     private title: Title,
     private meta: Meta
   ) {

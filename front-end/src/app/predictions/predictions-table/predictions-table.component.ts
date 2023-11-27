@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { PredictionsService } from 'src/app/services/predictions.service';
+
 
 export interface TrainingCycle {
   id: number;
@@ -18,36 +20,44 @@ export interface TrainingCycle {
   styleUrls: ['./predictions-table.component.scss'],
 })
 export class PredictionsTableComponent {
+  columnsToDisplay: string[] = ["text", "acronym","code","confidant","cycle"];
+  dataSource!: MatTableDataSource<any>;
+  predictions: any = [];
+  organizations: any = [];
+  allTrainningCycle: any = [];
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor() {}
 
-  ELEMENT_DATA: TrainingCycle[] = [
-    {
-      id: 1,
-      text: 'Scaling impact, Operations, Legal, Funding, Partners and Partnerships	',
-      clarisaName: 'Scaling impact',
-      clarisaAcronym: 'Scaling impact',
-      confident: 'Scaling impact',
-      cycle: 'Scaling impact',
-    },
-  ];
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
+  constructor( private predictionsService: PredictionsService,) {}
 
-  displayedColumns: string[] = [
-    'id',
-    'text',
-    'clarisaName',
-    'clarisaAcronym',
-    'confident',
-    'cycle',
-  ];
-  dataSource = new MatTableDataSource<TrainingCycle>(this.ELEMENT_DATA);
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  ngOnInit() {
+   
+    this.initTable();
+
   }
-}
+  
+  async initTable() {
+    this.predictions = await this.predictionsService.getAllPredictions(
+    
+    );
+    this.dataSource = new MatTableDataSource(this.predictions);
+    
+ 
+
+    console.log(this.predictions)
+    // this.title.setTitle("Periods");
+    // this.meta.updateTag({ name: "description", content: "Periods" });
+  }
+  
+
+    
+    // this.title.setTitle("Periods");
+    // this.meta.updateTag({ name: "description", content: "Periods" });
+  }
+
+
+

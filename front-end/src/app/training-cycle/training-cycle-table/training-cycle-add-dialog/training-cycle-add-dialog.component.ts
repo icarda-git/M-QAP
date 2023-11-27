@@ -1,6 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { ToastrService } from "ngx-toastr";
+import { TrainningCycleService } from "src/app/services/trainning-cycle.service";
+
+export interface DialogData {
+  id: number;
+}
 
 @Component({
   selector: 'app-training-cycle-add-dialog',
@@ -8,25 +14,63 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./training-cycle-add-dialog.component.scss'],
 })
 export class TrainingCycleAddDialogComponent implements OnInit {
+  TrainningCycleId: number = 0;
+  trainingFormCycle!: FormGroup;
+
   constructor(
     private dialogRef: MatDialogRef<TrainingCycleAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public trainingCycle: { title: any; element: any; id: any }
-  ) {}
+    @Inject(MAT_DIALOG_DATA) private data: DialogData,
+    private trainningCycleService: TrainningCycleService,
+    private toast: ToastrService,
+    private fb: FormBuilder
+  ) {
+    this.TrainningCycleId = data.id;
+  }
 
-  trainingFormCycle = new FormGroup({
-    name: new FormControl('', Validators.required),
-  });
+  ngOnInit() {
+    this.formInit();
+  }
 
-  async setValue() {
-    if (this.trainingCycle.element != null) {
-      this.trainingFormCycle.patchValue({
-        name: this.trainingCycle.element.name,
+  private async formInit() {
+    this.trainingFormCycle = this.fb.group({
+      text: [null, Validators.required],
+      
+    });
+    if (this.TrainningCycleId) {
+      let { id, ...trainningCycleValues } = await this.trainningCycleService.getTrainningCycle(this.TrainningCycleId);
+      this.trainingFormCycle.setValue({
+        ...trainningCycleValues,
       });
     }
   }
 
-  ngOnInit(): void {}
+  async submit() {
+    this.trainingFormCycle.markAllAsTouched();
+   this.trainingFormCycle.updateValueAndValidity();
+    if (this.trainingFormCycle.valid) {
+      await this.trainningCycleService.submitTrainningCycle(this.TrainningCycleId, this.trainingFormCycle.value).then(
+        (data) => {
+          if (this.TrainningCycleId === 0) this.toast.success("trainningCycle added successfully");
+          else this.toast.success("trainningCycle updated successfully");
+
+          this.dialogRef.close({ submitted: true });
+        },
+        (error) => {
+          this.toast.error(error.error.message);
+        }
+      );
+    }
+  }
+
+  // async submit() {
+  //   this.ipsrForm.markAllAsTouched();
+  //   this.ipsrForm.updateValueAndValidity();
+  //   if (this.ipsrForm.valid) {
+  //     await this.ipsrService.submitIpsr(this.ipsrId, this.ipsrForm.value);
+  //     this.toast.success("IPSR Item added Successfully");
+  //     this.dialogRef.close({ submitted: true });
+  //   }
+  // }
 
   //Close-Dialog
   onCloseDialog() {

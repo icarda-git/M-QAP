@@ -27,7 +27,7 @@
       <div class="risk-report-button-box">
         <button
           class="risk-report-button-box__btn btn--white btn"
-          (click)="openNewTrainingDataDialog('Add Training Data')"
+          (click)="openDialog()"
           mat-raised-button
         >
           <mat-icon class="create-risk">
@@ -64,28 +64,19 @@
           <td mat-cell *matCellDef="let element">{{ element.text }}</td>
         </ng-container>
 
-        <!-- CLARISA Name Column -->
-        <ng-container matColumnDef="clarisaName">
-          <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
-          <td mat-cell *matCellDef="let element">{{ element.clarisaName }}</td>
+        <ng-container matColumnDef="clarisa_id">
+          <th mat-header-cell *matHeaderCellDef>clarisa_id</th>
+          <td mat-cell *matCellDef="let element">{{ element.clarisa_id }}</td>
         </ng-container>
 
-        <!-- CLARISA Acronym Column -->
-        <ng-container matColumnDef="clarisaAcronym">
-          <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.clarisaAcronym }}
-          </td>
-        </ng-container>
 
-        <!-- Source Column -->
         <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef>Source</th>
           <td mat-cell *matCellDef="let element">{{ element.source }}</td>
         </ng-container>
 
         <!-- Action Name Column -->
-        <ng-container matColumnDef="action">
+        <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>
             <span class="h5">Action</span>
           </th>
@@ -94,9 +85,7 @@
               <button
                 class="training-data-table-icon"
                 matTooltip="Edit"
-                (click)="
-                  openDialogEditTrainingData('Edit Training Data', element)
-                "
+                (click)="openDialog(element.id)"
               >
                 <mat-icon class="training-data-table__icon"
                   ><svg
@@ -149,12 +138,12 @@
         <tr
           class="table-header"
           mat-header-row
-          *matHeaderRowDef="displayedColumns"
+          *matHeaderRowDef="columnsToDisplay"
         ></tr>
         <tr
           class="table-header"
           mat-row
-          *matRowDef="let row; columns: displayedColumns"
+          *matRowDef="let row; columns: columnsToDisplay"
         ></tr>
       </table>
 

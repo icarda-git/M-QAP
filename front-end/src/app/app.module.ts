@@ -26,6 +26,14 @@ import { PredictionsOverviewComponent } from './predictions/predictions-overview
 import { DeleteConfirmDialogComponent } from './delete-confirm-dialog/delete-confirm-dialog.component';
 import { ClarisaOverviewComponent } from './clarisa/clarisa-overview/clarisa-overview.component';
 import { ClarisaTableComponent } from './clarisa/clarisa-table/clarisa-table.component';
+import { TrainningCycleService } from './services/trainning-cycle.service';
+import {HttpClientModule } from "@angular/common/http";
+import { ToastrModule } from "ngx-toastr";
+import { OrganizationsService } from './services/organizations.service';
+import { PredictionsService } from './services/predictions.service';
+import { TrainningDataService } from './services/trainning-data.service';
+import { NgSelectModule } from "@ng-select/ng-select";
+ 
 
 @NgModule({
   declarations: [
@@ -58,8 +66,11 @@ import { ClarisaTableComponent } from './clarisa/clarisa-table/clarisa-table.com
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    NgSelectModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [TrainningCycleService,OrganizationsService,PredictionsService,TrainningDataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

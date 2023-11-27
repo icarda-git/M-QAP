@@ -22,10 +22,17 @@ export class PredictionsController {
     return this.predictionsService.findAll();
   }
 
+
+  
+
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.predictionsService.findOne(+id);
   }
+
+
+  
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: any) {

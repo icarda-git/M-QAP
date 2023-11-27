@@ -5,9 +5,12 @@
 
 @import "app/sass/base/base";
 @import "app/sass/abstracts/variables";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 *:focus {
   outline: none;
   /* outline: 4px dotted #e67e22; */
   /* outline-offset: 8px; */
   box-shadow: 0 0 0 0.8rem #30455b00;
 }
+
+

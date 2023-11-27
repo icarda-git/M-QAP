@@ -40,6 +40,7 @@
     "@tensorflow/tfjs-node": "^3.20.0",
     "axios": "^1.4.0",
     "cache-manager": "^5.2.3",
+    "cors": "^2.8.5",
     "form-data": "^3.0.0",
     "iso-3166-1": "^2.1.1",
     "iso-639-1": "^2.1.15",
