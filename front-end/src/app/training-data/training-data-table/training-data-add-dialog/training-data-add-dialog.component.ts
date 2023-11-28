@@ -48,6 +48,7 @@ export class TrainingDataAddDialogComponent implements OnInit {
       source: [null, Validators.required],
       clarisa_id: [null,Validators.required],
       
+      
     }
     );
 
@@ -94,4 +95,22 @@ export class TrainingDataAddDialogComponent implements OnInit {
   onCloseDialog() {
     this.dialogRef.close();
   }
+
+
+
+
+
+  // onToppingRemoved(t: any) {
+    
+  //   const toppings = this.trainingFormData?.value?.clarisa_id as any[];
+  //   this.removeFirst(toppings, t);
+  //   this.trainingFormData.controls?.["clarisa_id"].setValue(toppings); // To trigger change detection
+  // }
+
+  // private removeFirst<T>(array: T[], toRemove: T): void {
+  //   const index = array.indexOf(toRemove);
+  //   if (index !== -1) {
+  //     array.splice(index, 1);
+  //   }
+  // }
 }

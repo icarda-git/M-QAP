@@ -70,10 +70,40 @@
         appearance="outline"
       >
         <mat-select formControlName="clarisa_id">
+          <!-- <mat-select-trigger>
+            <mat-chip-listbox>
+              <mat-chip
+                *ngFor="let t of trainingFormData?.value?.clarisa_id"
+                [removable]="true"
+                (removed)="onToppingRemoved(t)"
+              >
+              <div class="organization-flex-box">
+                <div class="organization-flex-box">
+                <p><span class="organiztion-text">Clarisa Name</span>:</p>
+                <p><span class="organiztion-title">{{ t.name }}</span></p>
+                </div>
+                <div class="organization-flex-box">
+                <p><span class="organiztion-text">Clarisa Acronym</span>:</p>
+                <p> <span class="organiztion-title">{{t.acronym}}</span></p>
+              </div>
+              </div>
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-listbox>
+          </mat-select-trigger> -->
           
-          <mat-option *ngFor="let organization of organizations" [value]="organization.id">
-            {{ organization.name }}
+
+          <ng-container *ngFor="let organization of organizations" >
+          <mat-option [value]="organization.id">
+            
+             
+              
+              <p><span class="organiztion-title">{{ organization.name }}</span></p>
+              
+            
+             
           </mat-option>
+          </ng-container>
         </mat-select>
 
        
@@ -140,7 +170,7 @@
           <div class="risk-report-button-box">
           
           <button
-          class="risk-report-button-box__btn btn--animated btn--chestnut btn"
+          class="risk-report-button-box__btn  btn--chestnut btn"
             type="submit"
             mat-raised-button
             mat-button
