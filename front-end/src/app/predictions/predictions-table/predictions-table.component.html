@@ -16,19 +16,19 @@
 
      
 
-        <!-- CLARISA Acronym Column -->
-        <ng-container matColumnDef="acronym">
-          <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
+        <!-- CLARISA Name Column -->
+        <ng-container matColumnDef="name" >
+          <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.acronym?.acronym }}
+            {{ element.claresa.name }}
           </td>
         </ng-container>
 
 
-           <!-- CLARISA code Column -->
-           <ng-container matColumnDef="code">
-            <th mat-header-cell *matHeaderCellDef>CLARISA Code</th>
-            <td mat-cell *matCellDef="let element"> {{ element.code?.code }}</td>
+           <!-- CLARISA Acronym Column -->
+           <ng-container matColumnDef="acronym" >
+            <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
+            <td mat-cell *matCellDef="let element"> {{ element.claresa.acronym }}</td>
           </ng-container>
 
         <!-- Confident Column -->
@@ -43,7 +43,7 @@
         <ng-container matColumnDef="cycle">
           <th mat-header-cell *matHeaderCellDef>Cycle</th>
           <td mat-cell *matCellDef="let element">
-            {{ element.cycle ? element.phase.name : "" }}
+            {{ element.trainningCycle.text }}
           </td>
         </ng-container>
 

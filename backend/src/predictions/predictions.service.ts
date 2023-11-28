@@ -27,7 +27,7 @@ export class PredictionsService {
   }
 
   findAll() {
-    return this.predictionsRepository.find();
+    return this.predictionsRepository.find({relations:['trainningCycle','claresa']});
   }
 
   findOne(id: number) {

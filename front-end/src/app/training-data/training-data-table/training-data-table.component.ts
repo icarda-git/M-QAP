@@ -22,7 +22,7 @@ export interface TrainingData {
   styleUrls: ['./training-data-table.component.scss'],
 })
 export class TrainingDataTableComponent {
-  columnsToDisplay: string[] = ["id", "text","clarisa_id","source", "actions"];
+  columnsToDisplay: string[] = ["id", "text","name","acronym","source", "actions"];
   dataSource!: MatTableDataSource<any>;
   TrainningData: any = [];
   @ViewChild(MatPaginator)

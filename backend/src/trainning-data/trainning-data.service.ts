@@ -16,7 +16,7 @@ export class TrainningDataService {
   }
 
   findAll() {
-    return this.trainningDataRepository.find();
+    return this.trainningDataRepository.find({relations:['claresa']});
   }
 
   findOne(id: number) {

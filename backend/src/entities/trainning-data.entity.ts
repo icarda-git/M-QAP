@@ -1,8 +1,11 @@
 import {
     Column,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
   } from 'typeorm';
+import { Organization } from './organization.entity';
   
   @Entity()
   export class TrainningData {
@@ -13,7 +16,11 @@ import {
     text: string;
   
     @Column()
-    clarisa_id: string;
+  clarisa_id: number;
+
+  @ManyToOne(() => Organization)
+  @JoinColumn({ name: 'clarisa_id' ,})
+  claresa: Organization;
   
     @Column()
     source: string;

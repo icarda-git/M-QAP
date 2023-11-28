@@ -64,10 +64,20 @@
           <td mat-cell *matCellDef="let element">{{ element.text }}</td>
         </ng-container>
 
-        <ng-container matColumnDef="clarisa_id">
-          <th mat-header-cell *matHeaderCellDef>clarisa_id</th>
-          <td mat-cell *matCellDef="let element">{{ element.clarisa_id }}</td>
+        <!-- CLARISA Name Column -->
+        <ng-container matColumnDef="name" >
+          <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.claresa.name }}
+          </td>
         </ng-container>
+
+
+           <!-- CLARISA Acronym Column -->
+           <ng-container matColumnDef="acronym" >
+            <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
+            <td mat-cell *matCellDef="let element"> {{ element.claresa.acronym }}</td>
+          </ng-container>
 
 
         <ng-container matColumnDef="source">

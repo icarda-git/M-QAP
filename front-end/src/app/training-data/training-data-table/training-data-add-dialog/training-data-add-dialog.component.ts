@@ -19,6 +19,7 @@ export class TrainingDataAddDialogComponent implements OnInit {
   TrainningDataId: number = 0;
   trainingFormData: FormGroup<any> = new FormGroup([]);
   organizations: any = [];
+  TrainningData: any = [];
   k:any=[];
   constructor(
     private dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
@@ -56,8 +57,10 @@ export class TrainingDataAddDialogComponent implements OnInit {
       let { id,clarisa_id, ...trainningDataValues } = await this.trainningDataService.getTrainningData(
         this.TrainningDataId
       );
-     this.k=clarisa_id
+      this.TrainningData = await this.trainningDataService.getAllTrainningData();
+     this.k=trainningDataValues
      console.log(this.k)
+     console.log(this.TrainningData)
       this.trainingFormData.patchValue({
         text: trainningDataValues.text,
         source: trainningDataValues.source,
