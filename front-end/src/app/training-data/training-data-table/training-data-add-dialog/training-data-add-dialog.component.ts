@@ -57,14 +57,9 @@ export class TrainingDataAddDialogComponent implements OnInit {
       let { id,clarisa_id, ...trainningDataValues } = await this.trainningDataService.getTrainningData(
         this.TrainningDataId
       );
-      this.TrainningData = await this.trainningDataService.getAllTrainningData();
-     this.k=trainningDataValues
-     console.log(this.k)
-     console.log(this.TrainningData)
-      this.trainingFormData.patchValue({
-        text: trainningDataValues.text,
-        source: trainningDataValues.source,
-          clarisa_id: trainningDataValues.clarisa_id
+      this.trainingFormData.setValue({
+        ...trainningDataValues,
+        clarisa_id: clarisa_id ? clarisa_id : null,
       });
       
      
