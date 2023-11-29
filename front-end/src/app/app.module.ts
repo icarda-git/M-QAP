@@ -33,6 +33,10 @@ import { OrganizationsService } from './services/organizations.service';
 import { PredictionsService } from './services/predictions.service';
 import { TrainningDataService } from './services/trainning-data.service';
 import { NgSelectModule } from "@ng-select/ng-select";
+import { CommoditiesComponent } from './commodities/commodities.component';
+import { CommoditiesOverviewComponent } from './commodities/commodities-overview/commodities-overview.component';
+import { CommoditiesTableComponent } from './commodities/commodities-table/commodities-table.component';
+import { CommoditiesService } from './services/commodities.service';
  
 
 @NgModule({
@@ -58,6 +62,9 @@ import { NgSelectModule } from "@ng-select/ng-select";
     DeleteConfirmDialogComponent,
     ClarisaOverviewComponent,
     ClarisaTableComponent,
+    CommoditiesComponent,
+    CommoditiesOverviewComponent,
+    CommoditiesTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +77,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
     NgSelectModule,
     ToastrModule.forRoot(),
   ],
-  providers: [TrainningCycleService,OrganizationsService,PredictionsService,TrainningDataService],
+  providers: [TrainningCycleService,OrganizationsService,PredictionsService,TrainningDataService,CommoditiesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

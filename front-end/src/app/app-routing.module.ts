@@ -9,6 +9,8 @@ import { TrainingDataOverviewComponent } from './training-data/training-data-ove
 import { TrainingCycleOverviewComponent } from './training-cycle/training-cycle-overview/training-cycle-overview.component';
 import { PredictionsOverviewComponent } from './predictions/predictions-overview/predictions-overview.component';
 import { ClarisaOverviewComponent } from './clarisa/clarisa-overview/clarisa-overview.component';
+import { CommoditiesComponent } from './commodities/commodities.component';
+import { CommoditiesOverviewComponent } from './commodities/commodities-overview/commodities-overview.component';
 
 const routes: Routes = [
   {
@@ -54,6 +56,17 @@ const routes: Routes = [
       {
         path: '',
         component: ClarisaOverviewComponent,
+      },
+    ],
+  },
+
+  {
+    path: 'commodities',
+    component: CommoditiesComponent,
+    children: [
+      {
+        path: '',
+        component: CommoditiesOverviewComponent,
       },
     ],
   },

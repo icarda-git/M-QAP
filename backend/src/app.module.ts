@@ -14,6 +14,7 @@ import { TrainningCycleModule } from './trainning-cycle/trainning-cycle.module';
 import { PredictionsModule } from './predictions/predictions.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { DashboardController } from './dashboard/dashboard.controller';
+import { CommoditiesModule } from './commodities/commodities.module';
 
 @Module({
   imports: [
@@ -36,7 +37,8 @@ import { DashboardController } from './dashboard/dashboard.controller';
     TrainningDataModule,
     TrainningCycleModule,
     PredictionsModule,
-    OrganizationsModule
+    OrganizationsModule,
+    CommoditiesModule
   ],
   controllers: [AppController, DashboardController],
   providers: [AppService, DoiService, AI, HandleService, FormatSearvice],
