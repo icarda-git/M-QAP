@@ -80,7 +80,7 @@ export class TrainingDataTableComponent {
 
   openDialog(id: number = 0): void {
     const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
-      data: { id: id },
+      data: { id: id, },
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -23,7 +23,7 @@ export class TrainingDataAddDialogComponent implements OnInit {
   k:any=[];
   constructor(
     private dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: any = {},
     private trainningDataService: TrainningDataService,
     private toast: ToastrService,
     private fb: FormBuilder,
