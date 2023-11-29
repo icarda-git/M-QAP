@@ -62,6 +62,8 @@ export class TrainingDataTableComponent {
   async initTable() {
     this.TrainningData = await this.trainningDataService.getAllTrainningData();
     this.dataSource = new MatTableDataSource(this.TrainningData);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
       console.log(this.TrainningData)
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;

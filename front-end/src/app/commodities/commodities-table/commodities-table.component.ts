@@ -36,11 +36,19 @@ export class CommoditiesTableComponent {
   }
 
   
+
+
+
+
+
+
+
   
   async initTable() {
     this.allCommodities = await this.commodities.getAllCommodities();
     this.dataSource = new MatTableDataSource(this.allCommodities);
-
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
 
 

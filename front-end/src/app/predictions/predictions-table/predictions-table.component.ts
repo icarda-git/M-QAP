@@ -44,6 +44,8 @@ export class PredictionsTableComponent {
   async initTable() {
     this.predictions = await this.predictionsService.getAllPredictions();
     this.dataSource = new MatTableDataSource(this.predictions);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
 
 
 this.organizations = await this.organizationsService.getOrganizations();
