@@ -12,7 +12,9 @@ export class TrainingDataComponent {
     public headerService: HeaderServiceService,
     private title: Title,
     private meta: Meta
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.headerService.background =
       'linear-gradient(to right, #04030F, #04030F)';
     this.headerService.backgroundNavMain =
@@ -25,9 +27,6 @@ export class TrainingDataComponent {
     this.headerService.backgroundDeleteYes = '#5569dd';
     this.headerService.backgroundDeleteClose = '#808080';
     this.headerService.backgroundDeleteLr = '#5569dd';
-  }
-
-  ngOnInit() {
     this.title.setTitle('Training data');
     this.meta.updateTag({ name: 'description', content: 'Training data' });
   }

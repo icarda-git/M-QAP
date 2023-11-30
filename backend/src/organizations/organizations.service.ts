@@ -7,6 +7,8 @@ import { Repository } from 'typeorm';
 import { catchError, firstValueFrom, map } from 'rxjs';
 import { HttpService } from '@nestjs/axios';
 import { AxiosError } from 'axios';
+import { OrganizationQueryParamsDTO } from './dto/search-organization-query.dto';
+import * as FuzzySearch from 'fuzzy-search';
 
 @Injectable()
 export class OrganizationsService {
@@ -42,6 +44,8 @@ export class OrganizationsService {
     return this.organizationRepository.delete({ id });
   }
 
+  OrganizationQueryParamsDTO;
+
   async importPartners() {
     const partnersData = await firstValueFrom(
       this.httpService
@@ -68,5 +72,16 @@ export class OrganizationsService {
         this.organizationRepository.save(newPartner);
       }
     }
+  }
+
+  async searchOrganization(query: OrganizationQueryParamsDTO) {
+    return this.organizationRepository.find().then((list) => {
+      const searcher = new FuzzySearch(list, ['acronym', 'name'], {
+        caseSensitive: false,
+        sort: true,
+      });
+      const result = searcher.search(query.term);
+      return result.slice(0, 10);
+    });
   }
 }

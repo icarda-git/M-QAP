@@ -7,7 +7,7 @@ let langISO = require('iso-639-1');
 let mapto: any = {};
 
 @Injectable()
-export class FormatSearvice {
+export class FormatService {
   constructor() {}
 
   async Init() {}

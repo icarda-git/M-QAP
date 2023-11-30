@@ -1,10 +1,8 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { ToastrService } from "ngx-toastr";
-import { TrainningDataService } from "src/app/services/trainning-data.service";
-import { OrganizationsService } from 'src/app/services/organizations.service';
-
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { TrainingDataService } from 'src/app/services/training-data.service';
 
 export interface DialogData {
   id: number;
@@ -16,101 +14,58 @@ export interface DialogData {
   styleUrls: ['./training-data-add-dialog.component.scss'],
 })
 export class TrainingDataAddDialogComponent implements OnInit {
-  TrainningDataId: number = 0;
-  trainingFormData: FormGroup<any> = new FormGroup([]);
-  organizations: any = [];
-  TrainningData: any = [];
-  k:any=[];
+  form: FormGroup<any> = new FormGroup([]);
+
   constructor(
     private dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any = {},
-    private trainningDataService: TrainningDataService,
+    @Inject(MAT_DIALOG_DATA) private data: DialogData,
+    private trainingDataService: TrainingDataService,
     private toast: ToastrService,
-    private fb: FormBuilder,
-    private organizationsService: OrganizationsService
-  ) {
-    this.TrainningDataId = data.id;
-  }
-
-
-
+    private fb: FormBuilder
+  ) {}
 
   async ngOnInit() {
     this.formInit();
-    this.organizations = await this.organizationsService.getOrganizations();
-  
+    this.patchForm();
+  }
+
+  get id() {
+    return this.data?.id;
+  }
+
+  async patchForm() {
+    if (this.id) {
+      const data = await this.trainingDataService.getTrainingData(this.id);
+      this.form.patchValue(data);
+    }
   }
 
   private async formInit() {
-    
-    this.trainingFormData = this.fb.group({
+    this.form = this.fb.group({
       text: [null, Validators.required],
-      source: [null, Validators.required],
-      clarisa_id: [null,Validators.required],
-      
-      
-    }
-    );
-
-    
-    if (this.TrainningDataId) {
-      
-      let { id,clarisa_id, ...trainningDataValues } = await this.trainningDataService.getTrainningData(
-        this.TrainningDataId
-      );
-      this.trainingFormData.setValue({
-        ...trainningDataValues,
-        clarisa_id: clarisa_id ? clarisa_id : null,
-      });
-      
-     
-    }
-
-    
+      source: ['system/form', Validators.required],
+      clarisa_id: [null, Validators.required],
+    });
   }
- 
-  async submit() {
-    this.trainingFormData.markAllAsTouched();
-    this.trainingFormData.updateValueAndValidity();
-    if (this.trainingFormData.valid) {
-      await this.trainningDataService
-        .submitTrainningData(this.TrainningDataId, this.trainingFormData.value)
-        .then(
-          (data) => {
-            if (this.TrainningDataId == 0)
-              this.toast.success("trainningData added successfully");
-            else this.toast.success("trainningData updated successfully");
 
+  async submit() {
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
+    if (this.form.valid) {
+      await this.trainingDataService
+        .submitTrainingData(this.id, this.form.value)
+        .then(
+          () => {
+            if (this.id) this.toast.success('Training data added successfully');
+            else this.toast.success('Training data updated successfully');
             this.dialogRef.close({ submitted: true });
           },
-          (error) => {
-            this.toast.error(error.error.message);
-          }
+          (error) => this.toast.error(error.error.message)
         );
     }
-    
   }
 
-  //Close-Dialog
   onCloseDialog() {
     this.dialogRef.close();
   }
-
-
-
-
-
-  // onToppingRemoved(t: any) {
-    
-  //   const toppings = this.trainingFormData?.value?.clarisa_id as any[];
-  //   this.removeFirst(toppings, t);
-  //   this.trainingFormData.controls?.["clarisa_id"].setValue(toppings); // To trigger change detection
-  // }
-
-  // private removeFirst<T>(array: T[], toRemove: T): void {
-  //   const index = array.indexOf(toRemove);
-  //   if (index !== -1) {
-  //     array.splice(index, 1);
-  //   }
-  // }
 }

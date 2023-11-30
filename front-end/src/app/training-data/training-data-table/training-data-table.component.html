@@ -1,56 +1,43 @@
 <div class="risk-management-content">
   <div class="user-management__search-box-flex">
-    <!-- <div class="user-management__search-box">
-      <form action="" class="search">
-        <input
-          class="search__input"
-          matInput
-          (keyup)="applyFilter($event)"
-          placeholder="Search"
-          #input
-        />
-  
-        <button
-          style="border: none; cursor: pointer; background-color: #ffffff12"
-          class="search__button"
-        >
-          <mat-icon class="search__icon">
-            <img
-              class="search__icon"
-              src="../../assets/shared-image/Vector-search.svg"
-              alt="~/Frontend/images/icon _ search-icon"
-          /></mat-icon>
-        </button>
-      </form>
-    </div> -->
     <div class="user-management__button-box">
       <div class="risk-report-button-box">
-        <button
-          class="risk-report-button-box__btn btn--white btn"
-          (click)="openDialog()"
-          mat-raised-button
+        <button (click)="openDialog()" mat-raised-button color="primary">
+          <mat-icon> add_box </mat-icon>
+          Add training data
+        </button>
+
+        <app-upload-file-material (uploaded)="fileUploaded($event)">
+          Upload file</app-upload-file-material
         >
-          <mat-icon class="create-risk">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="13"
-              height="13"
-              viewBox="0 0 13 13"
-              fill="none"
-            >
-              <path
-                d="M11.5556 0H1.44444C0.642778 0 0 0.65 0 1.44444V11.5556C0 12.35 0.642778 13 1.44444 13H11.5556C12.35 13 13 12.35 13 11.5556V1.44444C13 0.65 12.35 0 11.5556 0ZM11.5556 11.5556H1.44444V1.44444H11.5556V11.5556ZM5.77778 10.1111H7.22222V7.22222H10.1111V5.77778H7.22222V2.88889H5.77778V5.77778H2.88889V7.22222H5.77778V10.1111Z"
-                fill="white"
-              />
-            </svg>
-          </mat-icon>
-          Add Training Data
+
+        <button (click)="downloadFile()" mat-raised-button color="primary">
+          <mat-icon> download_file </mat-icon>
+          Download template file
         </button>
       </div>
     </div>
   </div>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput formControlName="text" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Order</mat-label>
+      <mat-select formControlName="sortBy">
+        <mat-option value="id:DESC">Id / DESC</mat-option>
+        <mat-option value="id:ASC">Id / ACS</mat-option>
+        <mat-option value="text:DESC">Name / DESC</mat-option>
+        <mat-option value="text:ASC">Name / ACS</mat-option>
+        <mat-option value="claresa.(name):DESC"> CLARISA Name / DESC</mat-option>
+        <mat-option value="claresa.(name):ASC"> CLARISA Name / ACS</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
   <div class="table-box">
-    <div class="table-box mat-elevation-z8">
+    <div class="table-box">
       <table mat-table [dataSource]="dataSource" matSort>
         <!-- ID Column -->
         <ng-container matColumnDef="id">
@@ -65,20 +52,20 @@
         </ng-container>
 
         <!-- CLARISA Name Column -->
-        <ng-container matColumnDef="name" >
+        <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
           <td mat-cell *matCellDef="let element">
             {{ element.claresa.name }}
           </td>
         </ng-container>
 
-
-           <!-- CLARISA Acronym Column -->
-           <ng-container matColumnDef="acronym" >
-            <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
-            <td mat-cell *matCellDef="let element"> {{ element.claresa.acronym }}</td>
-          </ng-container>
-
+        <!-- CLARISA Acronym Column -->
+        <ng-container matColumnDef="acronym">
+          <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.claresa.acronym }}
+          </td>
+        </ng-container>
 
         <ng-container matColumnDef="source">
           <th mat-header-cell *matHeaderCellDef>Source</th>
@@ -158,9 +145,12 @@
       </table>
 
       <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
+        [pageSizeOptions]="[50, 100, 150, 200]"
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
         showFirstLastButtons
-        aria-label="Select page of periodic elements"
+        (page)="handlePageEvent($event)"
       >
       </mat-paginator>
     </div>

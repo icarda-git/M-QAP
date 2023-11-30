@@ -1,0 +1,17 @@
+@import "src/app/sass/components/button";
+
+
+:host {
+  display: block;
+}
+
+.hide {
+  width: size(1px);
+  height: size(1px);
+  visibility: hidden;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  position: absolute;
+  z-index: -100;
+}

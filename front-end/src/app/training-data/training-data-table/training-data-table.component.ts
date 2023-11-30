@@ -1,20 +1,19 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatTableDataSource } from "@angular/material/table";
-import { ToastrService } from "ngx-toastr";
-import { TrainningDataService } from "src/app/services/trainning-data.service";
-import { TrainingDataAddDialogComponent } from "./training-data-add-dialog/training-data-add-dialog.component";
-import { DeleteConfirmDialogComponent } from "src/app/delete-confirm-dialog/delete-confirm-dialog.component";
-
-export interface TrainingData {
-  text: string;
-  id: number;
-  clarisaName: string;
-  clarisaAcronym: string;
-  source: string;
-}
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { TrainingDataService } from 'src/app/services/training-data.service';
+import { TrainingDataAddDialogComponent } from './training-data-add-dialog/training-data-add-dialog.component';
+import { DeleteConfirmDialogComponent } from 'src/app/delete-confirm-dialog/delete-confirm-dialog.component';
+import {
+  MediaService,
+  UploadFileResponse,
+} from 'src/app/services/media.service';
+import { Paginated } from 'src/app/share/types/paginate.type';
+import { TrainingData } from 'src/app/share/types/training-data.type';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-training-data-table',
@@ -22,101 +21,95 @@ export interface TrainingData {
   styleUrls: ['./training-data-table.component.scss'],
 })
 export class TrainingDataTableComponent {
-  columnsToDisplay: string[] = ["id", "text","name","acronym","source", "actions"];
+  columnsToDisplay: string[] = [
+    'id',
+    'text',
+    'name',
+    'acronym',
+    'source',
+    'actions',
+  ];
   dataSource!: MatTableDataSource<any>;
-  TrainningData: any = [];
+  trainingData!: Paginated<TrainingData>;
+  length = 0;
+  pageSize = 50;
+  pageIndex = 0;
+  sortBy = 'text:ASC';
+  text = '';
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   sort!: MatSort;
   organizations: any = [];
+  form!: FormGroup;
+  constructor(
+    public dialog: MatDialog,
+    private trainingDataService: TrainingDataService,
+    private toastr: ToastrService,
+    private mediaService: MediaService,
+    private fb: FormBuilder
+  ) {}
 
-  constructor(public dialog: MatDialog, private trainningDataService: TrainningDataService,private toastr: ToastrService,) {}
-
-
-
-
-
- 
   ngOnInit() {
-   
-    this.initTable();
-
-  
-    
+    this.initForm();
+    this.loadData();
   }
 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-  async initTable() {
-    this.TrainningData = await this.trainningDataService.getAllTrainningData();
-    this.dataSource = new MatTableDataSource(this.TrainningData);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-      console.log(this.TrainningData)
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
-    
+  initForm() {
+    this.form = this.fb.group({
+      text: [''],
+      sortBy: ['text:ASC'],
+    });
+    this.form.valueChanges.subscribe((value) => {
+      this.text = value.text;
+      this.sortBy = value.sortBy;
+      this.loadData();
+    });
   }
 
+  handlePageEvent(e: PageEvent) {
+    console.log(e);
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    this.loadData();
+  }
 
+  async loadData() {
+    const queryString = [];
+    queryString.push(`limit=${this.pageSize}`);
+    queryString.push(`page=${this.pageIndex + 1}`);
+    queryString.push(`sortBy=${this.sortBy}`);
+    queryString.push(`search=${this.text}`);
 
+    this.trainingDataService
+      .getAllTrainingData(queryString.join('&'))
+      .subscribe((response) => {
+        this.trainingData = response;
+        this.length = response.meta.totalItems;
+        this.dataSource = new MatTableDataSource(response.data);
+      });
+  }
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  //   this.dataSource.sort = this.sort;
-  // }
-
-  openDialog(id: number = 0): void {
+  openDialog(id?: number): void {
     const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
-      data: { id: id, },
+      data: { id },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result && result.submitted) this.initTable();
+      if (result && result.submitted) this.loadData();
     });
   }
 
-  //deleteTrainingCycleById
+  fileUploaded(e: UploadFileResponse) {
+    this.trainingDataService.processSheet(e.fileName).subscribe();
+  }
 
-  // async deleteTrainingCycleById(id: number) {
-  //   this.dialog
-  //     .open(DeleteConfirmDialogComponent, {
-  //       data: {
-  //         message: 'Are you sure you want to delete this record ?',
-  //         title: 'Delete',
-
-  //         svg: `../../../../assets/shared-image/delete-user.png`,
-  //       },
-  //     }) 
-  //     .afterClosed();
-  //     .subscribe(async (dialogResult) => {
-  //       if (dialogResult == true) {
-  //         await this.trainningCycleService.deleteTrainningCycle(id).then(
-  //           (data) => {
-  //             this.initTable();
-  //             this.toastr.success("Deleted successfully");
-  //           },
-  //           (error) => {
-  //             this.toastr.error(error.error.message);
-  //           }
-  //         );
-  //       }
-  //     });
-  // }
-
-
+  downloadFile() {
+    this.mediaService.downloadFile(
+      'Matched_partners_PRMS.xlsx',
+      'Matched_partners_PRMS'
+    );
+  }
 
   deleteTrainingDataById(id: number) {
     this.dialog
@@ -131,10 +124,10 @@ export class TrainingDataTableComponent {
       .afterClosed()
       .subscribe(async (dialogResult) => {
         if (dialogResult == true) {
-          await this.trainningDataService.deleteTrainningData(id).then(
+          await this.trainingDataService.deleteTrainingData(id).then(
             (data) => {
-              this.initTable();
-              this.toastr.success("Deleted successfully");
+              this.loadData();
+              this.toastr.success('Deleted successfully');
             },
             (error) => {
               this.toastr.error(error.error.message);
@@ -143,8 +136,4 @@ export class TrainingDataTableComponent {
         }
       });
   }
-
-
-
-
 }

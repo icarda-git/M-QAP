@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { OrganizationsService } from './organizations.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { OrganizationQueryParamsDTO } from './dto/search-organization-query.dto';
 
 @ApiTags('Organizations')
 @Controller('organizations')
@@ -27,11 +29,15 @@ export class OrganizationsController {
     return this.organizationsService.findAll();
   }
 
+  @Get('/search')
+  search(@Query() query: OrganizationQueryParamsDTO) {
+    return this.organizationsService.searchOrganization(query);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.organizationsService.findOne(+id);
   }
-
 
   @Get('import/partners')
   async importPartners() {

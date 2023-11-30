@@ -1,59 +1,49 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { firstValueFrom, map } from "rxjs";
-import { environment } from "src/environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { firstValueFrom, map } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class TrainningCycleService {
+export class TrainingCycleService {
+  private apiAllTrainingCycle: string = `http://localhost:3000/trainning-cycle`;
 
+  constructor(private http: HttpClient) {}
 
-  private apiAllTrainningCycle:string=`http://localhost:3000/trainning-cycle`;
-  
-
-  constructor(private http: HttpClient) { }
-
-
-
-
-  async getAllTrainningCycle() {
-   
+  async getAllTrainingCycle() {
     return firstValueFrom(
-      this.http.get(`${this.apiAllTrainningCycle}`).pipe(map((d: any) => d))).catch((e) => false);
-  }
-
-
-
-  async getTrainningCycle(id: number) {
-    return firstValueFrom(
-      this.http.get(`${this.apiAllTrainningCycle}/` + id).pipe(map((d: any) => d))
+      this.http.get(`${this.apiAllTrainingCycle}`).pipe(map((d: any) => d))
     ).catch((e) => false);
   }
 
+  async getTrainingCycle(id: number) {
+    return firstValueFrom(
+      this.http
+        .get(`${this.apiAllTrainingCycle}/` + id)
+        .pipe(map((d: any) => d))
+    ).catch((e) => false);
+  }
 
-
-  
-
-
-
-  submitTrainningCycle(id: number = 0, data: {}) {
+  submitTrainingCycle(id: number = 0, data: {}) {
     if (id) {
       return firstValueFrom(
-        this.http.patch(`${this.apiAllTrainningCycle}/` + id, data).pipe(map((d: any) => d))
+        this.http
+          .patch(`${this.apiAllTrainingCycle}/` + id, data)
+          .pipe(map((d: any) => d))
       ).catch((e) => false);
     } else {
       return firstValueFrom(
-        this.http.post(`${this.apiAllTrainningCycle}`, data).pipe(map((d: any) => d))
+        this.http
+          .post(`${this.apiAllTrainingCycle}`, data)
+          .pipe(map((d: any) => d))
       ).catch((e) => false);
     }
   }
 
-
-  
-  deleteTrainningCycle(id: number) {
+  deleteTrainingCycle(id: number) {
     return firstValueFrom(
-      this.http.delete(`${this.apiAllTrainningCycle}/` + id).pipe(map((d: any) => d))
+      this.http
+        .delete(`${this.apiAllTrainingCycle}/` + id)
+        .pipe(map((d: any) => d))
     );
   }
-
 }

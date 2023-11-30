@@ -1,10 +1,4 @@
-import {
-  Column,
-  Entity,
-  ManyToMany,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Organization {
@@ -14,10 +8,9 @@ export class Organization {
   @Column()
   name: string;
 
-  @Column({default:null,nullable:true})
+  @Column({ default: null, nullable: true })
   acronym: string;
 
   @Column()
   code: string;
-
 }

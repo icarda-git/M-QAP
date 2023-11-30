@@ -4,17 +4,17 @@ import { AI } from './ai/ai.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DoiService } from './doi/doi.service';
-import { FormatSearvice } from './handle/formater.service';
+import { FormatService } from './handle/formater.service';
 import { HandleService } from './handle/handle.service';
 import { HttpModule } from '@nestjs/axios';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
-import { TrainningDataModule } from './trainning-data/trainning-data.module';
+import { TrainingDataModule } from './training-data/training-data.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TrainningCycleModule } from './trainning-cycle/trainning-cycle.module';
 import { PredictionsModule } from './predictions/predictions.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { DashboardController } from './dashboard/dashboard.controller';
-import { CommoditiesModule } from './commodities/commodities.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -34,13 +34,13 @@ import { CommoditiesModule } from './commodities/commodities.module';
       namingStrategy: new SnakeNamingStrategy(),
     }),
     HttpModule,
-    TrainningDataModule,
+    TrainingDataModule,
     TrainningCycleModule,
     PredictionsModule,
     OrganizationsModule,
-    CommoditiesModule
+    MediaModule,
   ],
   controllers: [AppController, DashboardController],
-  providers: [AppService, DoiService, AI, HandleService, FormatSearvice],
+  providers: [AppService, DoiService, AI, HandleService, FormatService],
 })
 export class AppModule {}

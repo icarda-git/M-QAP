@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
-import { TrainningCycleService } from "src/app/services/trainning-cycle.service";
+import { TrainingCycleService } from "src/app/services/trainning-cycle.service";
 
 export interface DialogData {
   id: number;
@@ -20,7 +20,7 @@ export class TrainingCycleAddDialogComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<TrainingCycleAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
-    private trainningCycleService: TrainningCycleService,
+    private trainningCycleService: TrainingCycleService,
     private toast: ToastrService,
     private fb: FormBuilder
   ) {
@@ -37,7 +37,7 @@ export class TrainingCycleAddDialogComponent implements OnInit {
       
     });
     if (this.TrainningCycleId) {
-      let { id, ...trainningCycleValues } = await this.trainningCycleService.getTrainningCycle(this.TrainningCycleId);
+      let { id, ...trainningCycleValues } = await this.trainningCycleService.getTrainingCycle(this.TrainningCycleId);
       this.trainingFormCycle.setValue({
         ...trainningCycleValues,
       });
@@ -48,7 +48,7 @@ export class TrainingCycleAddDialogComponent implements OnInit {
     this.trainingFormCycle.markAllAsTouched();
    this.trainingFormCycle.updateValueAndValidity();
     if (this.trainingFormCycle.valid) {
-      await this.trainningCycleService.submitTrainningCycle(this.TrainningCycleId, this.trainingFormCycle.value).then(
+      await this.trainningCycleService.submitTrainingCycle(this.TrainningCycleId, this.trainingFormCycle.value).then(
         (data) => {
           if (this.TrainningCycleId === 0) this.toast.success("trainningCycle added successfully");
           else this.toast.success("trainningCycle updated successfully");

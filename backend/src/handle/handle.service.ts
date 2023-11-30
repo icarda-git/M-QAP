@@ -7,7 +7,7 @@ import { keep } from '@tensorflow/tfjs';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
 import { DoiService } from 'src/doi/doi.service';
-import { FormatSearvice } from './formater.service';
+import { FormatService } from './formater.service';
 import * as schemas from './schema.json';
 import * as licences from './licences.json';
 import xlsx from 'node-xlsx';
@@ -21,7 +21,7 @@ export class HandleService {
   private readonly logger = new Logger(HandleService.name);
   constructor(
     private http: HttpService,
-    private formatService: FormatSearvice,
+    private formatService: FormatService,
     private doi: DoiService,
     private ai: AI,
   ) {

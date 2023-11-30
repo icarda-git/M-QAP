@@ -3,7 +3,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatTableDataSource } from "@angular/material/table";
-import { TrainningCycleService } from "src/app/services/trainning-cycle.service";
+import { TrainingCycleService } from "src/app/services/trainning-cycle.service";
 
 import { ToastrService } from "ngx-toastr";
  
@@ -28,7 +28,7 @@ export class TrainingCycleTableComponent {
   @ViewChild(MatSort)
   sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private trainningCycleService: TrainningCycleService,private toastr: ToastrService,) {}
+  constructor(public dialog: MatDialog, private trainningCycleService: TrainingCycleService,private toastr: ToastrService,) {}
 
 
 
@@ -59,7 +59,7 @@ export class TrainingCycleTableComponent {
 
 
   async initTable() {
-    this.allTrainningCycle = await this.trainningCycleService.getAllTrainningCycle();
+    this.allTrainningCycle = await this.trainningCycleService.getAllTrainingCycle();
     this.dataSource = new MatTableDataSource(this.allTrainningCycle);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -130,7 +130,7 @@ export class TrainingCycleTableComponent {
       .afterClosed()
       .subscribe(async (dialogResult) => {
         if (dialogResult == true) {
-          await this.trainningCycleService.deleteTrainningCycle(id).then(
+          await this.trainningCycleService.deleteTrainingCycle(id).then(
             (data) => {
               this.initTable();
               this.toastr.success("Deleted successfully");

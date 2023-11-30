@@ -1,0 +1,31 @@
+:host {
+  width: 100%;
+  display: block;
+
+  >* {
+    width: 100%;
+  }
+}
+
+
+.input-with-icon {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--u-2);
+
+  app-icon-button {
+    margin-top: var(--u-1);
+  }
+}
+
+.ng-select-custom-style {
+  position: relative;
+
+  .tooltip {
+    position: absolute;
+    top: 23px;
+    right: 10px;
+    font-size: 20px;
+    color: var(--accent-color);
+  }
+}

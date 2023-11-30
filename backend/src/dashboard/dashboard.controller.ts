@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
 import { TrainningCycle } from 'src/entities/trainning-cycle.entity';
 import { PredictionsService } from 'src/predictions/predictions.service';
-import { TrainningDataService } from 'src/trainning-data/trainning-data.service';
+import { TrainingDataService } from 'src/training-data/training-data.service';
 import { DataSource } from 'typeorm';
 
 @Controller('dashboard')
 export class DashboardController {
-  constructor(private dataSource: DataSource,private trainningDataService :TrainningDataService,private predictionsService :PredictionsService) {}
+  constructor(private dataSource: DataSource,private trainningDataService :TrainingDataService,private predictionsService :PredictionsService) {}
   @Get('avg_confidant')
   avg_confidant() {
     return  this.dataSource
@@ -25,7 +25,7 @@ export class DashboardController {
   @Get('counters')
  async counters() {
     return {
-    trainningData: await this.trainningDataService.trainningDataRepository.count(),
+    trainningData: await this.trainningDataService.trainingDataRepository.count(),
     predictions: await this.predictionsService.predictionsRepository.count()
    }
   }
