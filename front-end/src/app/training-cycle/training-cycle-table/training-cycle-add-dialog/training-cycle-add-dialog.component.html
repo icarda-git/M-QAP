@@ -33,6 +33,12 @@
         appearance="outline"
       >
         <input matInput formControlName="text" />
+
+        <mat-error
+        class="error"
+        *ngIf="trainingFormCycle.controls?.['text']?.errors?.['required']"
+        >This field is mandatory</mat-error
+      >
       </mat-form-field>
     </div>
 
