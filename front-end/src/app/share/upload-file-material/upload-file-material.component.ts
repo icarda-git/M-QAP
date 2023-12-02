@@ -1,5 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   MediaService,
   UploadFileResponse,
@@ -17,6 +23,16 @@ export const FileExtension = {
   selector: 'app-upload-file-material',
   templateUrl: './upload-file-material.component.html',
   styleUrls: ['./upload-file-material.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTooltipModule,
+  ],
 })
 export class UploadFileMaterialComponent {
   @Output() uploaded = new EventEmitter<UploadFileResponse>();

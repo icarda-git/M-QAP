@@ -1,4 +1,3 @@
-@import "../../abstracts/variables";
 .announcement-box {
   width: 100%;
   height: 4rem;
@@ -119,7 +118,7 @@
     line-height: 15px;
     letter-spacing: 0em;
     text-align: center;
-    color: $color-button-primary;
+    color: var(color-button-primary);
     padding: 1rem 0.5rem 0.5rem 0;
     text-align: center;
     // border-right: 2.5px solid #3d50bd;
@@ -134,7 +133,7 @@
       line-height: 15px;
       letter-spacing: 0em;
       text-align: center;
-      color: $color-button-primary;
+      color: var(color-button-primary);
       padding: 1rem 1.2rem 1rem 1.2rem;
       text-align: center;
       // border-right: 2.5px solid #3d50bd;

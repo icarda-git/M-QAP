@@ -1,0 +1,30 @@
+@import "../../../sass/components/training-data-table";
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.action-button-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: end;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  & > :first-child {
+    flex: auto;
+  }
+  & > :last-child {
+    width: 100%;
+    max-width: 24rem;
+  }
+}

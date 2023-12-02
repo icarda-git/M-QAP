@@ -1,15 +1,5 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { TrainingDataComponent } from './training-data/training-data.component';
-import { TrainingCycleComponent } from './training-cycle/training-cycle.component';
-import { PredictionsComponent } from './predictions/predictions.component';
-import { ClarisaComponent } from './clarisa/clarisa.component';
-import { TrainingCycleOverviewComponent } from './training-cycle/training-cycle-overview/training-cycle-overview.component';
-import { PredictionsOverviewComponent } from './predictions/predictions-overview/predictions-overview.component';
-import { ClarisaOverviewComponent } from './clarisa/clarisa-overview/clarisa-overview.component';
-import { CommoditiesComponent } from './commodities/commodities.component';
-import { CommoditiesOverviewComponent } from './commodities/commodities-overview/commodities-overview.component';
 
 const routes: Routes = [
   {
@@ -17,51 +7,47 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home-page/home-page.module').then(
+        (m) => m.HomePageModule
+      ),
+  },
   {
     path: 'training-data',
-    component: TrainingDataComponent,
+    loadChildren: () =>
+      import('./pages/training-data-page/training-data-page.module').then(
+        (m) => m.TrainingDataPageModule
+      ),
   },
   {
     path: 'training-cycle',
-    component: TrainingCycleComponent,
-    children: [
-      {
-        path: '',
-        component: TrainingCycleOverviewComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/training-cycle-page/training-cycle-page.module').then(
+        (m) => m.TrainingCyclePageModule
+      ),
   },
   {
     path: 'predictions',
-    component: PredictionsComponent,
-    children: [
-      {
-        path: '',
-        component: PredictionsOverviewComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/predictions-page/predictions-page.module').then(
+        (m) => m.PredictionsPageModule
+      ),
   },
   {
     path: 'clarisa',
-    component: ClarisaComponent,
-    children: [
-      {
-        path: '',
-        component: ClarisaOverviewComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/clarisa-page/clarisa-page.module').then(
+        (m) => m.ClarisaPageModule
+      ),
   },
-
   {
     path: 'commodities',
-    component: CommoditiesComponent,
-    children: [
-      {
-        path: '',
-        component: CommoditiesOverviewComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/commodities-page/commodities-page.module').then(
+        (m) => m.CommoditiesPageModule
+      ),
   },
 ];
 

@@ -1,12 +1,9 @@
-@import "../../abstracts/variables";
 .admin-module-box {
   display: flex;
-  // background-color: #fafafa;
   background-image: linear-gradient(to right bottom, #fafafa, #e8e8e8);
   min-height: calc(100vh - 142px);
   &__sidebar {
     width: 18%;
-    // background-color: $color-side-bar;
     background-image: linear-gradient(to bottom, #0f212f, #09151e);
 
     @media only screen and (max-width: 160em) {

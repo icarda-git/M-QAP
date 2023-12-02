@@ -1,16 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
-
-// html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-@import "app/sass/base/base";
-@import "app/sass/abstracts/variables";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 *:focus {
   outline: none;
-  /* outline: 4px dotted #e67e22; */
-  /* outline-offset: 8px; */
   box-shadow: 0 0 0 0.8rem #30455b00;
 }
 
+* {
+  padding: 0px;
+  margin: 0px;
+}
+html {
+  --color-button-primary: #9e553e;
 
+  --color-main-header-risk-primary: #0f212f;
+  --color-main-nav-link-primary: #436280;
+
+  --color-main-header-risk-secondary: #04030f;
+  --color-main-nav-link-secondary: #0f212f;
+
+  --color-user-nav-primary: #436280;
+  --color-user-nav-secondary: #0f212f;
+
+  --color-button-nav-link: #ffffff;
+
+  --color-side-bar: #0f212f;
+
+  --color-anchor-side-bar: #a3bad24d;
+
+  --color-primary: #55c57a;
+  --color-primary-light: #7ed56f;
+  --color-primary-dark: #28b485;
+
+  --color-secondary-light: #ffb900;
+  --color-secondary-dark: #ff7730;
+
+  --color-tertiary-light: #2998ff;
+  --color-tertiary-dark: #5643fa;
+
+  --color-grey-light-1: #f7f7f7;
+  --color-grey-light-2: #eee;
+
+  --color-grey-dark: #777;
+  --color-grey-dark-2: #999;
+  --color-grey-dark-3: #333;
+
+  --color-white: #fff;
+  --color-black: #000;
+
+  // FONT
+  --default-font-size: 1.6rem;
+
+  // GRID
+  --grid-width: 114rem;
+  --gutter-vertical: 8rem;
+  --gutter-vertical-small: 6rem;
+  --gutter-horizontal: 6rem;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}

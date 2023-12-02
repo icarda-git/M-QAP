@@ -1,35 +1,3 @@
-@import "../abstracts/variables";
-//table-style
-// ::ng-deep .mat-sort-header-stem {
-//   background: none !important;
-//   width: 16px !important;
-//   background-image: url("../../../assets/shared-image/Vector-header-sort.svg") !important;
-//   background-position: center;
-//   background-size: cover;
-//   margin-right: -0.3rem !important;
-// }
-// ::ng-deep .mat-sort-header-indicator {
-//   opacity: -1% !important;
-// }
-// ::ng-deep .mat-sort-header-arrow,
-// [dir="rtl"] .mat-sort-header-position-before .mat-sort-header-arrow {
-//   margin: 0 0 0 1rem !important;
-// }
-// .mtable {
-//   width: 1.5rem;
-//   height: 1.5rem;
-//   margin-left: 0.3rem;
-//   border-radius: 2px;
-//   background-color: #d9d9d9;
-//   @media only screen and (max-width: 160em) {
-//     margin-left: 0.5rem;
-//   }
-// }
-// .h1 {
-//   width: 4.3rem;
-//   height: 1.6rem;
-// }
-
 .th-1-m {
   margin-left: 0.1rem;
   text-align: center;
@@ -45,22 +13,7 @@
     margin-left: 1px;
   }
 }
-// .h3 {
-//   width: 6.3rem;
-//   height: 1.6rem;
-// }
-// .h3 {
-//   width: 4.3rem;
-//   height: 1.6rem;
-// }
-// .h4 {
-//   width: 4.3rem;
-//   height: 1.6rem;
-// }
-// .h5 {
-//   width: 4.3rem;
-//   height: 1.6rem;
-// }
+
 .user-management-table-icon {
   border: none;
   cursor: pointer;
@@ -95,7 +48,7 @@
 }
 
 .table-box::-webkit-scrollbar-thumb {
-  background-color: $color-button-primary;
+  background-color: var(color-button-primary);
   // outline: 1px solid slategrey;
   border-radius: 4px;
 }

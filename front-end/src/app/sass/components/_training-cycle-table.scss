@@ -40,7 +40,7 @@
 }
 
 .table-box::-webkit-scrollbar-thumb {
-  background-color: $color-button-primary;
+  background-color: var(color-button-primary);
   // outline: 1px solid slategrey;
   border-radius: 4px;
 }

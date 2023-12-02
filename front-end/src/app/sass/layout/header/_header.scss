@@ -1,10 +1,4 @@
-@import "../../abstracts/variables";
-
-// header-risk-background-c-primary header-risk-background-c-secondary
-// header-user-nav-box__background-c-primary
 .header-risk {
-  // width: 151.2rem;
-  // height: 8.2rem;
   &__content {
     display: flex;
     justify-content: space-between;
@@ -14,23 +8,22 @@
 
   &__main-nav {
     height: 5.4rem;
-    // background-color: #2a2e45;
 
     &__background-c-primary {
-      background-color: $color-main-nav-link-primary;
+      background-color: var(color-main-nav-link-primary);
     }
 
     &__background-c-secondary {
-      background-color: $color-main-nav-link-secondary;
+      background-color: var(color-main-nav-link-secondary);
     }
   }
 
   &__background-c-primary {
-    background-color: $color-main-header-risk-primary;
+    background-color: var(color-main-header-risk-primary);
   }
 
   &__background-c-secondary {
-    background-color: $color-main-header-risk-secondary;
+    background-color: var(color-main-header-risk-secondary);
   }
 }
 
@@ -41,19 +34,7 @@
   padding: 0.5rem 0.5rem 0;
 
   @media only screen and (max-width: 64em) {
-    //change on 1024
     padding: 1rem;
-  }
-  ////////////////////////////////
-
-  &--1 {
-    // width: 6.708rem;
-    // height: 7.0197rem;
-
-    &__logo {
-      // width: 4.9rem;
-      // height: 57.12rem;
-    }
   }
 
   &--2 {
@@ -191,11 +172,11 @@
   }
 
   &__background-c-primary {
-    background-color: $color-user-nav-primary;
+    background-color: var(color-user-nav-primary);
   }
 
   &__background-c-secondary {
-    background-color: $color-user-nav-secondary;
+    background-color: var(color-user-nav-secondary);
   }
 }
 

@@ -1,4 +1,3 @@
-@import "../../abstracts/variables";
 .form-dialog-conten-button-box-2 {
   text-align: right;
   margin-top: 4.5rem !important;
@@ -60,7 +59,7 @@ textarea::-webkit-scrollbar-track {
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background-color: $color-button-primary;
+  background-color: var(color-button-primary);
   // outline: 1px solid slategrey;
   border-radius: 4px;
 }

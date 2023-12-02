@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import {
   Component,
   EventEmitter,
@@ -11,11 +12,14 @@ import {
 import {
   ControlValueAccessor,
   FormControl,
+  FormsModule,
   NG_VALUE_ACCESSOR,
   Validators,
 } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { TooltipPosition } from '@angular/material/tooltip';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { concat, Observable, of, Subject } from 'rxjs';
 import {
   catchError,
@@ -30,6 +34,15 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
   selector: 'app-organization-input',
   templateUrl: './organization-input.component.html',
   styleUrls: ['./organization-input.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    NgSelectModule,
+    FormsModule,
+    MatTooltipModule,
+    MatIconModule,
+  ],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
