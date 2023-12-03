@@ -13,6 +13,7 @@ import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { OrganizationQueryParamsDTO } from './dto/search-organization-query.dto';
+import { Paginate, PaginateQuery } from 'nestjs-paginate';
 
 @ApiTags('Organizations')
 @Controller('organizations')
@@ -24,11 +25,11 @@ export class OrganizationsController {
     return this.organizationsService.create(createOrganizationDto);
   }
 
-  @Get()
-  findAll() {
-    return this.organizationsService.findAll();
+  @Get('')
+  findAll(@Paginate() query: PaginateQuery) {
+    return this.organizationsService.findAll(query);
   }
-
+  
   @Get('/search')
   search(@Query() query: OrganizationQueryParamsDTO) {
     return this.organizationsService.searchOrganization(query);

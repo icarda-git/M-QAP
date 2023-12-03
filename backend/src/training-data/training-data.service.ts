@@ -5,14 +5,7 @@ import { Repository } from 'typeorm';
 const excelToJson = require('convert-excel-to-json');
 import { resolve } from 'path';
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
-import {
-  FilterOperator,
-  FilterSuffix,
-  Paginate,
-  PaginateQuery,
-  paginate,
-  Paginated,
-} from 'nestjs-paginate';
+import { PaginateQuery, paginate, Paginated } from 'nestjs-paginate';
 
 @Injectable()
 export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
@@ -29,15 +22,10 @@ export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
     return this.trainingDataRepository.save(newUser);
   }
 
-  // findAll() {
-  //   return this.trainingDataRepository.find({ relations: ['claresa'] });
-  // }
-
   public findAll(query: PaginateQuery): Promise<Paginated<TrainingData>> {
     console.log(query);
     return paginate(query, this.trainingDataRepository, {
       sortableColumns: ['id', 'text', 'claresa.(name)'],
-      // defaultSortBy: [['text', 'DESC']],
       searchableColumns: ['text', 'claresa.(name)'],
       relations: ['claresa'],
       select: [],
@@ -68,10 +56,6 @@ export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
 
     return result;
   }
-
-  //  findOne(id: number) {
-  //   return this.trainingDataRepository.findOne({ where: { id } });
-  // }
 
   update(id: number, updateUserDto: any) {
     return this.trainingDataRepository.update({ id }, { ...updateUserDto });

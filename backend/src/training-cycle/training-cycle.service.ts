@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
-import { TrainingCycle as TrainingCycle } from 'src/entities/trainning-cycle.entity';
+import { TrainingCycle as TrainingCycle } from 'src/entities/training-cycle.entity';
 import { IsNull, Not, Repository } from 'typeorm';
 
 @Injectable()

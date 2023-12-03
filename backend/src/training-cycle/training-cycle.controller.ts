@@ -9,17 +9,17 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { TrainingCycleService } from './trainning-cycle.service';
+import { TrainingCycleService } from './training-cycle.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Paginate, PaginateQuery } from 'nestjs-paginate';
-@Controller('trainning-cycle')
-export class TrainningCycleController {
-  constructor(private trainningCycleService: TrainingCycleService) {}
+@Controller('training-cycle')
+export class TrainingCycleController {
+  constructor(private trainingCycleService: TrainingCycleService) {}
   @Post()
   create(@Body() createUserDto: any) {
-    return this.trainningCycleService.create(createUserDto);
+    return this.trainingCycleService.create(createUserDto);
   }
 
   @Post(':id')
@@ -46,21 +46,21 @@ export class TrainningCycleController {
 
   @Get('')
   findAll(@Paginate() query: PaginateQuery) {
-    return this.trainningCycleService.findAll(query);
+    return this.trainingCycleService.findAll(query);
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.trainningCycleService.findOne(+id);
+    return this.trainingCycleService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: any) {
-    return this.trainningCycleService.update(+id, updateUserDto);
+    return this.trainingCycleService.update(+id, updateUserDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.trainningCycleService.remove(+id);
+    return this.trainingCycleService.remove(+id);
   }
 }

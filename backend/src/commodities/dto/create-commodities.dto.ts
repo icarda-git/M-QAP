@@ -1,4 +1,4 @@
-export class CreateOrganizationDto {
+export class CreateCommoditiesDto {
   name: string;
   acronym: string;
 }

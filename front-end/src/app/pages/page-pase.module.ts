@@ -11,6 +11,11 @@ import { MatTableModule } from '@angular/material/table';
 import { ContentContainerComponent } from '../share/content-container/content-container.component';
 import { H1Component } from '../share/h1/h1.component';
 import { UploadFileMaterialComponent } from '../share/upload-file-material/upload-file-material.component';
+import { DeleteIconComponent } from '../share/delete-icon/delete-icon.component';
+import { DialogLayoutComponent } from '../share/dialog-layout/dialog-layout.component';
+import { EditIconComponent } from '../share/edit-icon/edit-icon.component';
+import { InputComponent } from '../share/input/input.component';
+import { OrganizationInputComponent } from '../share/organization-input/organization-input.component';
 
 @NgModule({
   imports: [
@@ -28,6 +33,13 @@ import { UploadFileMaterialComponent } from '../share/upload-file-material/uploa
     MatInputModule,
     H1Component,
     ContentContainerComponent,
+    EditIconComponent,
+    DeleteIconComponent,
+    InputComponent,
+    OrganizationInputComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    DialogLayoutComponent
   ],
   exports: [
     CommonModule,
@@ -44,6 +56,13 @@ import { UploadFileMaterialComponent } from '../share/upload-file-material/uploa
     MatInputModule,
     H1Component,
     ContentContainerComponent,
+    EditIconComponent,
+    DeleteIconComponent,
+    InputComponent,
+    OrganizationInputComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    DialogLayoutComponent,
   ],
 })
 export class PagePaseModule {}

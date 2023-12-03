@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 import { Predictions } from 'src/entities/predictions.entity';
-import { TrainingCycleService } from 'src/trainning-cycle/trainning-cycle.service';
+import { TrainingCycleService } from 'src/training-cycle/training-cycle.service';
 import { Repository } from 'typeorm';
 
 @Injectable()

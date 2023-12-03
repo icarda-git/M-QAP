@@ -3,12 +3,12 @@ import { PredictionsService } from './predictions.service';
 import { PredictionsController } from './predictions.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Predictions } from 'src/entities/predictions.entity';
-import { TrainningCycleModule } from 'src/trainning-cycle/trainning-cycle.module';
+import { TrainingCycleModule } from 'src/training-cycle/training-cycle.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Predictions]),TrainningCycleModule],
+  imports: [TypeOrmModule.forFeature([Predictions]), TrainingCycleModule],
   providers: [PredictionsService],
   controllers: [PredictionsController],
-  exports:[PredictionsService]
+  exports: [PredictionsService],
 })
 export class PredictionsModule {}

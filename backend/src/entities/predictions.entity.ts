@@ -1,6 +1,6 @@
 import { type } from 'os';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { TrainingCycle } from './trainning-cycle.entity';
+import { TrainingCycle } from './training-cycle.entity';
 import { Organization } from './organization.entity';
 
 @Entity()

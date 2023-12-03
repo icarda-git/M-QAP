@@ -1,81 +1,124 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
+import {
+  MediaService,
+  UploadFileResponse,
+} from 'src/app/services/media.service';
+import { Paginated } from 'src/app/share/types/paginate.type';
+import { TrainingData } from 'src/app/share/types/training-data.type';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommoditiesService } from 'src/app/services/commodities.service';
-
-
 
 @Component({
   selector: 'app-commodities-table',
   templateUrl: './commodities-table.component.html',
-  styleUrls: ['./commodities-table.component.scss']
+  styleUrls: ['./commodities-table.component.scss'],
 })
 export class CommoditiesTableComponent {
-  columnsToDisplay: string[] = ["id", "name", "parent_id"];
+  columnsToDisplay: string[] = ['id', 'name', 'parent_id', 'source', 'actions'];
   dataSource!: MatTableDataSource<any>;
-  allCommodities: any = [];
-  
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
-
-
-
-
-  constructor( private commodities: CommoditiesService) {}
-
-  
-
+  trainingData!: Paginated<TrainingData>;
+  length = 0;
+  pageSize = 50;
+  pageIndex = 0;
+  sortBy = 'id:ASC';
+  text = '';
+  organizations: any = [];
+  form!: FormGroup;
+  constructor(
+    public dialog: MatDialog,
+    private commoditiesService: CommoditiesService,
+    private toastr: ToastrService,
+    private mediaService: MediaService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
-   
-    this.initTable();
-
+    this.initForm();
+    this.loadData();
   }
 
-  
-
-
-
-
-
-
-
-  
-  async initTable() {
-    this.allCommodities = await this.commodities.getAllCommodities();
-    this.dataSource = new MatTableDataSource(this.allCommodities);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-
-
-    // for (let i = 0; i < this.organizations.length; i++) {
-    //   for (let x = 0; x < this.predictions.length; x++) {
-    //     if (this.organizations[i].id === this.predictions[x].clarisa_id) {
-    //       this.organNames.push(this.organizations[i].name)
-    //       this.organAcronyms.push(this.organizations[i].acronym)
-    //       console.log(this.organNames);
-    //       console.log(this.organAcronyms);
-    //     }
-    //   }
-      
-    // }
-  
-    // console.log(this.organizations)
- 
-
-    console.log(this.allCommodities)
-    // this.title.setTitle("Periods");
-    // this.meta.updateTag({ name: "description", content: "Periods" });
+  initForm() {
+    this.form = this.fb.group({
+      text: [''],
+      sortBy: ['id:ASC'],
+    });
+    this.form.valueChanges.subscribe((value) => {
+      this.text = value.text;
+      this.sortBy = value.sortBy;
+      this.loadData();
+    });
   }
 
+  handlePageEvent(e: PageEvent) {
+    console.log(e);
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    this.loadData();
+  }
 
+  async loadData() {
+    const queryString = [];
+    queryString.push(`limit=${this.pageSize}`);
+    queryString.push(`page=${this.pageIndex + 1}`);
+    queryString.push(`sortBy=${this.sortBy}`);
+    queryString.push(`search=${this.text}`);
 
+    this.commoditiesService
+      .find(queryString.join('&'))
+      .subscribe((response) => {
+        this.trainingData = response;
+        this.length = response.meta.totalItems;
+        this.dataSource = new MatTableDataSource(response.data);
+      });
+  }
 
-    
-    // this.title.setTitle("Periods");
-    // this.meta.updateTag({ name: "description", content: "Periods" });
+  openDialog(id?: number): void {
+    // const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
+    //   data: { id },
+    //   width: '100%',
+    //   maxWidth: '650px',
+    // });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   if (result && result.submitted) this.loadData();
+    // });
+  }
+
+  fileUploaded(e: UploadFileResponse) {
+    this.commoditiesService.processSheet(e.fileName).subscribe();
+  }
+
+  downloadFile() {
+    this.mediaService.downloadFile('Commodities.xlsx', 'Commodities');
+  }
+
+  delete(id: number) {
+    this.dialog
+      .open(DeleteConfirmDialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete this record ?',
+          title: 'Delete',
+
+          svg: `../../../../assets/shared-image/delete-user.png`,
+        },
+      })
+      .afterClosed()
+      .subscribe(async (dialogResult) => {
+        if (dialogResult == true) {
+          await this.commoditiesService.deleteTrainingData(id).then(
+            (data) => {
+              this.loadData();
+              this.toastr.success('Deleted successfully');
+            },
+            (error) => {
+              this.toastr.error(error.error.message);
+            }
+          );
+        }
+      });
+  }
 }

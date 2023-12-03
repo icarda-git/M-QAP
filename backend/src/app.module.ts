@@ -10,11 +10,12 @@ import { HttpModule } from '@nestjs/axios';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { TrainingDataModule } from './training-data/training-data.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TrainningCycleModule } from './trainning-cycle/trainning-cycle.module';
+import { TrainingCycleModule } from './training-cycle/training-cycle.module';
 import { PredictionsModule } from './predictions/predictions.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { DashboardController } from './dashboard/dashboard.controller';
 import { MediaModule } from './media/media.module';
+import { CommoditiesModule } from './commodities/commodities.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -36,11 +37,12 @@ import { AuthModule } from './auth/auth.module';
     }),
     HttpModule,
     TrainingDataModule,
-    TrainningCycleModule,
+    TrainingCycleModule,
     PredictionsModule,
     OrganizationsModule,
     MediaModule,
-    AuthModule
+    AuthModule,
+    CommoditiesModule,
   ],
   controllers: [AppController, DashboardController],
   providers: [AppService, DoiService, AI, HandleService, FormatService],

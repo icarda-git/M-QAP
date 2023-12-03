@@ -14,6 +14,7 @@ import { Paginate, PaginateQuery } from 'nestjs-paginate';
 @Controller('training-data')
 export class TrainingDataController {
   constructor(private trainingDataService: TrainingDataService) {}
+  
   @Post()
   create(@Body() createUserDto: any) {
     return this.trainingDataService.create(createUserDto);

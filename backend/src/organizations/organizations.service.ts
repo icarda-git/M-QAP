@@ -9,6 +9,7 @@ import { HttpService } from '@nestjs/axios';
 import { AxiosError } from 'axios';
 import { OrganizationQueryParamsDTO } from './dto/search-organization-query.dto';
 import * as FuzzySearch from 'fuzzy-search';
+import { PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 
 @Injectable()
 export class OrganizationsService {
@@ -25,8 +26,14 @@ export class OrganizationsService {
     return this.organizationRepository.save(newOrganization);
   }
 
-  findAll() {
-    return this.organizationRepository.find();
+  findAll(query: PaginateQuery): Promise<Paginated<Organization>> {
+    return paginate(query, this.organizationRepository, {
+      sortableColumns: ['id', 'name', 'acronym'],
+      searchableColumns: ['name', 'acronym'],
+      relations: [],
+      select: [],
+      filterableColumns: {},
+    });
   }
 
   findOne(id: number) {

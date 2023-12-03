@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { TrainingCycle } from 'src/entities/trainning-cycle.entity';
+import { TrainingCycle } from 'src/entities/training-cycle.entity';
 import { PredictionsService } from 'src/predictions/predictions.service';
 import { TrainingDataService } from 'src/training-data/training-data.service';
 import { DataSource } from 'typeorm';

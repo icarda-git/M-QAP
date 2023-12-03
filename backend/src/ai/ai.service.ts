@@ -13,7 +13,7 @@ import { catchError, map } from 'rxjs/operators';
 import * as fs from 'fs';
 import { firstValueFrom } from 'rxjs';
 import { PredictionsService } from 'src/predictions/predictions.service';
-import { TrainingCycleService } from 'src/trainning-cycle/trainning-cycle.service';
+import { TrainingCycleService } from 'src/training-cycle/training-cycle.service';
 @Injectable()
 export class AI {
   private readonly logger = new Logger(AI.name);
