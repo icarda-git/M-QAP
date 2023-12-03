@@ -15,6 +15,7 @@ import { PredictionsModule } from './predictions/predictions.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { DashboardController } from './dashboard/dashboard.controller';
 import { MediaModule } from './media/media.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { MediaModule } from './media/media.module';
     PredictionsModule,
     OrganizationsModule,
     MediaModule,
+    AuthModule
   ],
   controllers: [AppController, DashboardController],
   providers: [AppService, DoiService, AI, HandleService, FormatService],

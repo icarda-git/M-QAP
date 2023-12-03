@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DeleteIconComponent } from './share/delete-icon/delete-icon.component';
 import { EditIconComponent } from './share/edit-icon/edit-icon.component';
+import { AuthModule } from './pages/auth/auth.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -46,6 +47,7 @@ import { EditIconComponent } from './share/edit-icon/edit-icon.component';
     MatButtonModule,
     DeleteIconComponent,
     EditIconComponent,
+    AuthModule
   ],
   providers: [
     TrainingCycleService,

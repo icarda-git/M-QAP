@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    canActivate: [AdminGuard],
     path: 'home',
     loadChildren: () =>
       import('./pages/home-page/home-page.module').then(
@@ -15,6 +17,7 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AdminGuard],
     path: 'training-data',
     loadChildren: () =>
       import('./pages/training-data-page/training-data-page.module').then(
@@ -22,6 +25,7 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AdminGuard],
     path: 'training-cycle',
     loadChildren: () =>
       import('./pages/training-cycle-page/training-cycle-page.module').then(
@@ -29,6 +33,7 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AdminGuard],
     path: 'predictions',
     loadChildren: () =>
       import('./pages/predictions-page/predictions-page.module').then(
@@ -36,6 +41,7 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AdminGuard],
     path: 'clarisa',
     loadChildren: () =>
       import('./pages/clarisa-page/clarisa-page.module').then(
@@ -43,10 +49,18 @@ const routes: Routes = [
       ),
   },
   {
+    canActivate: [AdminGuard],
     path: 'commodities',
     loadChildren: () =>
       import('./pages/commodities-page/commodities-page.module').then(
         (m) => m.CommoditiesPageModule
+      ),
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./pages/auth/auth.module').then(
+        (m) => m.AuthModule
       ),
   },
 ];

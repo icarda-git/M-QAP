@@ -1,0 +1,21 @@
+.loading-shade {
+    z-index: 9999 !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h4 {
+    margin: 0 auto;
+    position: inherit;
+    margin-top: 35px;
+}
+mat-spinner {
+    margin: 0 auto;
+}

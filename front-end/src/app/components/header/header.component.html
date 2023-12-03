@@ -12,6 +12,7 @@
       <button
         [style.background]="headerService.backgroundUserNavButton"
         mat-button
+        *ngIf="user_info"
       >
         <div>
           <img
@@ -20,13 +21,58 @@
             alt="~/Frontend/images/icon _User avatar"
             height="16px"
           />
-          <span class="user-nav-button__title--1"> mohammad </span>
+          <span class="user-nav-button__title--1">
+            {{ user_info?.full_name }}
+          </span>
         </div>
       </button>
+      <button
+        [style.background]="headerService.backgroundUserNavButton"
+        mat-button
+        *ngIf="!user_info"
+        (click)="login()"
+      >
+        <div>
+          <img
+            class="user-nav-button__icon--1"
+            src="../../assets/shared-image/🦆 icon _User avatar filled_.svg"
+            alt="~/Frontend/images/icon _User avatar"
+            height="16px"
+          />
+          <span class="user-nav-button__title--1"> Login </span>
+        </div>
+      </button>
+
+      <!-- <button
+        [style.background]="headerService.backgroundUserNavButton"
+        class="user-nav-button"
+        mat-icon-button
+        *ngIf="user_info"
+      >
+        <span class="user-nav-button__visible">
+          <mat-icon class="user-nav-button__icon">
+            <img
+              class="user-nav-button__icon--1"
+              src="../../assets/shared-image/🦆 icon _User avatar filled_.svg"
+              alt="~/Frontend/images/icon _User avatar"
+          /></mat-icon>
+          <span class="user-nav-button__title--1">{{
+            user_info?.full_name
+          }}</span>
+        </span>
+
+        <span class="user-nav-button__invisible">
+          <span class="user-nav-button__title--3">{{
+            user_info?.full_name
+          }}</span></span
+        >
+      </button> -->
 
       <button
         [style.background]="headerService.backgroundUserNavButton"
         mat-button
+        *ngIf="user_info"
+        (click)="logout()"
       >
         <div>
           <img
@@ -35,7 +81,7 @@
             alt="~/Frontend/images/icon _logout"
             height="16px"
           />
-          <span class="user-nav-button__title--1"> mohammad </span>
+          <span class="user-nav-button__title--1"> Logout </span>
         </div>
       </button>
     </nav>
