@@ -1,70 +1,87 @@
-<div class="risk-management-content">
+<div class="main-container">
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Search</mat-label>
+      <input type="text" matInput formControlName="text" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Order</mat-label>
+      <mat-select formControlName="sortBy">
+        <mat-option value="id:DESC">Id / DESC</mat-option>
+        <mat-option value="id:ASC">Id / ACS</mat-option>
+        <mat-option value="text:DESC">Name / DESC</mat-option>
+        <mat-option value="text:ASC">Name / ACS</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
   <div class="table-box">
-    <div class="table-box">
-      <table mat-table [dataSource]="dataSource" matSort>
-        <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-        </ng-container>
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
 
-        <!-- Text Column -->
-        <ng-container matColumnDef="text">
-          <th mat-header-cell *matHeaderCellDef>Text</th>
-          <td mat-cell *matCellDef="let element">{{ element.text }}</td>
-        </ng-container>
+      <!-- Text Column -->
+      <ng-container matColumnDef="text">
+        <th mat-header-cell *matHeaderCellDef>Text</th>
+        <td mat-cell *matCellDef="let element">{{ element.text }}</td>
+      </ng-container>
 
-     
+      <!-- CLARISA Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.claresa.name }}
+        </td>
+      </ng-container>
 
-        <!-- CLARISA Name Column -->
-        <ng-container matColumnDef="name" >
-          <th mat-header-cell *matHeaderCellDef>CLARISA Name</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.claresa.name }}
-          </td>
-        </ng-container>
+      <!-- CLARISA Acronym Column -->
+      <ng-container matColumnDef="acronym">
+        <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.claresa.acronym }}
+        </td>
+      </ng-container>
 
+      <!-- Confident Column -->
+      <ng-container matColumnDef="confidant">
+        <th mat-header-cell *matHeaderCellDef>Confident</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.confidant }}
+        </td>
+      </ng-container>
 
-           <!-- CLARISA Acronym Column -->
-           <ng-container matColumnDef="acronym" >
-            <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
-            <td mat-cell *matCellDef="let element"> {{ element.claresa.acronym }}</td>
-          </ng-container>
+      <!-- Cycle Column -->
+      <ng-container matColumnDef="cycle">
+        <th mat-header-cell *matHeaderCellDef>Cycle</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.trainingCycle?.text }}
+        </td>
+      </ng-container>
+      <tr
+        class="table-header"
+        mat-header-row
+        *matHeaderRowDef="columnsToDisplay"
+      ></tr>
+      <tr
+        class="table-header"
+        mat-row
+        *matRowDef="let row; columns: columnsToDisplay"
+      ></tr>
+    </table>
 
-        <!-- Confident Column -->
-        <ng-container matColumnDef="confidant">
-          <th mat-header-cell *matHeaderCellDef>Confident</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.confidant }}
-          </td>
-        </ng-container>
-
-        <!-- Cycle Column -->
-        <ng-container matColumnDef="cycle">
-          <th mat-header-cell *matHeaderCellDef>Cycle</th>
-          <td mat-cell *matCellDef="let element">
-            {{ element.trainningCycle.text }}
-          </td>
-        </ng-container>
-
-        <tr
-          class="table-header"
-          mat-header-row
-          *matHeaderRowDef="columnsToDisplay"
-        ></tr>
-        <tr
-          class="table-header"
-          mat-row
-          *matRowDef="let row; columns: columnsToDisplay"
-        ></tr>
-      </table>
-
-      <mat-paginator
-        [pageSizeOptions]="[5, 10, 20]"
-        showFirstLastButtons
-        aria-label="Select page of periodic elements"
-      >
-      </mat-paginator>
-    </div>
+    <mat-paginator
+      [pageSizeOptions]="[5, 100, 150, 200]"
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      showFirstLastButtons
+      (page)="handlePageEvent($event)"
+    >
+    </mat-paginator>
   </div>
 </div>

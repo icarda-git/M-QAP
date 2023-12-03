@@ -13,23 +13,23 @@ import { catchError, map } from 'rxjs/operators';
 import * as fs from 'fs';
 import { firstValueFrom } from 'rxjs';
 import { PredictionsService } from 'src/predictions/predictions.service';
-import { TrainningCycleService } from 'src/trainning-cycle/trainning-cycle.service';
+import { TrainingCycleService } from 'src/trainning-cycle/trainning-cycle.service';
 @Injectable()
 export class AI {
   private readonly logger = new Logger(AI.name);
   model;
   clarisa;
-  naturalmodel;
-  traningModel: tf.Sequential;
+  naturalModel;
+  trainingModel: tf.Sequential;
   constructor(
     private httpService: HttpService,
     private predictionsService: PredictionsService,
-    private trainning_cycle: TrainningCycleService,
+    private training_cycle: TrainingCycleService,
   ) {
     this.init();
   }
   async init() {
-      const active_cycle = await this.trainning_cycle.findLatestOne();
+      const active_cycle = await this.training_cycle.findLatestOne();
       const training_folder_path = path.join(
         process.cwd(),
         'uploads/training-data/' + active_cycle.id,
@@ -43,11 +43,11 @@ export class AI {
       this.model = await tf.loadLayersModel(
         'file://' + training_folder_path + '/model.json',
       );
-      this.naturalmodel = await use.load();
-      let rawdata: any = fs.readFileSync(
+      this.naturalModel = await use.load();
+      let rawData: any = fs.readFileSync(
         training_folder_path + '/clarisa_data.json',
       );
-      this.clarisa = JSON.parse(rawdata);
+      this.clarisa = JSON.parse(rawData);
       this.logger.log('Trained Model Loaded');
   }
   calculatePercent(percent) {
@@ -55,7 +55,7 @@ export class AI {
   }
   async makePrediction(value, doi) {
     try {
-      const todoEmbedding = await this.naturalmodel.embed(value.toLowerCase());
+      const todoEmbedding = await this.naturalModel.embed(value.toLowerCase());
       const results: any = this.model.predict(todoEmbedding);
       const clarisa_index = this.clarisa[results.argMax(1).dataSync()[0]];
       if (clarisa_index)

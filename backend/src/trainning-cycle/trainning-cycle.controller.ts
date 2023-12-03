@@ -9,13 +9,14 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { TrainningCycleService } from './trainning-cycle.service';
+import { TrainingCycleService } from './trainning-cycle.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import * as fs from 'fs';
 import * as path from 'path';
+import { Paginate, PaginateQuery } from 'nestjs-paginate';
 @Controller('trainning-cycle')
 export class TrainningCycleController {
-  constructor(private trainningCycleService: TrainningCycleService) {}
+  constructor(private trainningCycleService: TrainingCycleService) {}
   @Post()
   create(@Body() createUserDto: any) {
     return this.trainningCycleService.create(createUserDto);
@@ -44,8 +45,8 @@ export class TrainningCycleController {
   }
 
   @Get('')
-  findAll() {
-    return this.trainningCycleService.findAll();
+  findAll(@Paginate() query: PaginateQuery) {
+    return this.trainningCycleService.findAll(query);
   }
 
   @Get(':id')

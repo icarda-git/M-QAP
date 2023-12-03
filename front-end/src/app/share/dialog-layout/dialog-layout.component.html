@@ -1,0 +1,17 @@
+<section class="form-header">
+  <div>
+    <ng-content select="[header-label]"></ng-content>
+  </div>
+
+  <div>
+    <ng-content select="[header-action]"></ng-content>
+  </div>
+</section>
+
+<section class="content-container">
+  <ng-content select="[content]"></ng-content>
+</section>
+
+<section class="action-container">
+  <ng-content select="[action]"></ng-content>
+</section>

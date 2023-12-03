@@ -8,6 +8,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { PredictionsService } from './predictions.service';
+import { TrainingData } from 'src/entities/training-data.entity';
+import { Paginate, PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 
 @Controller('predictions')
 export class PredictionsController {
@@ -18,21 +20,14 @@ export class PredictionsController {
   }
 
   @Get('')
-  findAll() {
-    return this.predictionsService.findAll();
+  findAll(@Paginate() query: PaginateQuery) {
+    return this.predictionsService.findAll(query);
   }
-
-
-  
-
 
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.predictionsService.findOne(+id);
   }
-
-
-  
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: any) {

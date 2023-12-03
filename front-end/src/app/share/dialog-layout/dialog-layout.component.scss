@@ -1,0 +1,27 @@
+.form-header {
+  display: flex;
+  padding: 0px 0px 0px 1rem;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #050410;
+  color: white;
+
+  h3 {
+    margin: 0px;
+  }
+}
+
+.content-container {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.action-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0px 1rem 1rem 1rem;
+  gap: 1rem;
+}

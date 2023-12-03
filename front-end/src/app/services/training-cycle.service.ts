@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, map } from 'rxjs';
+import { Paginated } from '../share/types/paginate.type';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,10 +10,10 @@ export class TrainingCycleService {
 
   constructor(private http: HttpClient) {}
 
-  async getAllTrainingCycle() {
-    return firstValueFrom(
-      this.http.get(`${this.apiAllTrainingCycle}`).pipe(map((d: any) => d))
-    ).catch((e) => false);
+  find(queryString: string) {
+    return this.http.get<Paginated<any>>(
+      `${this.apiAllTrainingCycle}?${queryString}`
+    );
   }
 
   async getTrainingCycle(id: number) {

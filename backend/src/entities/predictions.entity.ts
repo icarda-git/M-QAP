@@ -1,12 +1,14 @@
 import { type } from 'os';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { TrainningCycle } from './trainning-cycle.entity';
+import { TrainingCycle } from './trainning-cycle.entity';
 import { Organization } from './organization.entity';
 
 @Entity()
 export class Predictions {
   @PrimaryGeneratedColumn()
   id: number;
+
+  
   @Column()
   text: string;
 
@@ -19,6 +21,7 @@ export class Predictions {
 
   @Column({ type: 'float' })
   confidant: number;
-  @ManyToOne(() => TrainningCycle, (trainningCycle) => trainningCycle.predictions)
-  trainningCycle: TrainningCycle;
+
+  @ManyToOne(() => TrainingCycle, (trainingCycle) => trainingCycle.predictions)
+  trainingCycle: TrainingCycle;
 }

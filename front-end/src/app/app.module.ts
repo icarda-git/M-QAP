@@ -21,6 +21,9 @@ import { ContentContainerComponent } from './share/content-container/content-con
 import { OrganizationInputComponent } from './share/organization-input/organization-input.component';
 import { UploadFileMaterialComponent } from './share/upload-file-material/upload-file-material.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { DeleteIconComponent } from './share/delete-icon/delete-icon.component';
+import { EditIconComponent } from './share/edit-icon/edit-icon.component';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -40,6 +43,9 @@ import { MatIconModule } from '@angular/material/icon';
     ContentContainerComponent,
     DeleteConfirmDialogComponent,
     MatIconModule,
+    MatButtonModule,
+    DeleteIconComponent,
+    EditIconComponent,
   ],
   providers: [
     TrainingCycleService,

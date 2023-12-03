@@ -14,17 +14,17 @@ export interface DialogData {
   styleUrls: ['./training-cycle-add-dialog.component.scss'],
 })
 export class TrainingCycleAddDialogComponent implements OnInit {
-  trainingCycleId: number = 0;
-  trainingFormCycle!: FormGroup;
+  id: number = 0;
+  form!: FormGroup;
 
   constructor(
-    private dialogRef: MatDialogRef<TrainingCycleAddDialogComponent>,
+    public dialogRef: MatDialogRef<TrainingCycleAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
     private trainingCycleService: TrainingCycleService,
     private toast: ToastrService,
     private fb: FormBuilder
   ) {
-    this.trainingCycleId = data.id;
+    this.id = data.id;
   }
 
   ngOnInit() {
@@ -32,27 +32,27 @@ export class TrainingCycleAddDialogComponent implements OnInit {
   }
 
   private async formInit() {
-    this.trainingFormCycle = this.fb.group({
+    this.form = this.fb.group({
       text: [null, Validators.required],
     });
-    if (this.trainingCycleId) {
+    if (this.id) {
       let { id, ...trainingCycleValues } =
-        await this.trainingCycleService.getTrainingCycle(this.trainingCycleId);
-      this.trainingFormCycle.setValue({
+        await this.trainingCycleService.getTrainingCycle(this.id);
+      this.form.setValue({
         ...trainingCycleValues,
       });
     }
   }
 
   async submit() {
-    this.trainingFormCycle.markAllAsTouched();
-    this.trainingFormCycle.updateValueAndValidity();
-    if (this.trainingFormCycle.valid) {
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
+    if (this.form.valid) {
       await this.trainingCycleService
-        .submitTrainingCycle(this.trainingCycleId, this.trainingFormCycle.value)
+        .submitTrainingCycle(this.id, this.form.value)
         .then(
           (data) => {
-            if (this.trainingCycleId === 0)
+            if (this.id === 0)
               this.toast.success('trainingCycle added successfully');
             else this.toast.success('trainingCycle updated successfully');
 
@@ -63,9 +63,5 @@ export class TrainingCycleAddDialogComponent implements OnInit {
           }
         );
     }
-  }
-
-  onCloseDialog() {
-    this.dialogRef.close();
   }
 }

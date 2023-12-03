@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { TrainningCycle } from 'src/entities/trainning-cycle.entity';
+import { TrainingCycle } from 'src/entities/trainning-cycle.entity';
 import { PredictionsService } from 'src/predictions/predictions.service';
 import { TrainingDataService } from 'src/training-data/training-data.service';
 import { DataSource } from 'typeorm';
@@ -12,7 +12,7 @@ export class DashboardController {
     return  this.dataSource
     .createQueryBuilder()
     .from('predictions', 'predictions')
-    .leftJoin(TrainningCycle,'cycle','cycle.id =  predictions.trainning_cycle_id')
+    .leftJoin(TrainingCycle,'cycle','cycle.id =  predictions.trainning_cycle_id')
     .addSelect(`AVG(predictions.confidant)`, 'avg_confidant')
     .addSelect('cycle.id','cycle_id')
     .addSelect('cycle.text','cycle_name')

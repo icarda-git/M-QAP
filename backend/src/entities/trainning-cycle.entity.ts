@@ -1,23 +1,27 @@
 import {
-    Column,
-    Entity,
-    OneToMany,
-    PrimaryGeneratedColumn,
-  } from 'typeorm';
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { Predictions } from './predictions.entity';
-  
-  @Entity()
-  export class TrainningCycle {
-    @PrimaryGeneratedColumn()
-    id: number;
-  
-    @Column()
-    text: string;
 
-    @OneToMany(() => Predictions, (predictions) => predictions.trainningCycle)
-    predictions: Predictions[];
-  
-  
+@Entity()
+export class TrainingCycle {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-  }
+  @CreateDateColumn()
+  creation_date: string;
+
+  @UpdateDateColumn()
+  update_date: string;
   
+  @Column()
+  text: string;
+
+  @OneToMany(() => Predictions, (predictions) => predictions.trainingCycle)
+  predictions: Predictions[];
+}

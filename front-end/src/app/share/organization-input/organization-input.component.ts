@@ -17,6 +17,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -42,6 +43,7 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
     FormsModule,
     MatTooltipModule,
     MatIconModule,
+    MatFormFieldModule
   ],
   providers: [
     {

@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
 import { Predictions } from 'src/entities/predictions.entity';
-import { TrainningCycleService } from 'src/trainning-cycle/trainning-cycle.service';
+import { TrainingCycleService } from 'src/trainning-cycle/trainning-cycle.service';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -9,16 +10,16 @@ export class PredictionsService {
   constructor(
     @InjectRepository(Predictions)
     public predictionsRepository: Repository<Predictions>,
-    private trainningCycleService: TrainningCycleService,
+    private trainingCycleService: TrainingCycleService,
   ) {}
 
   async create(createUserDto: any) {
-    const cycle = await this.trainningCycleService.findLatestOne();
+    const cycle = await this.trainingCycleService.findLatestOne();
     const exist = await this.predictionsRepository.findOne({
-      where: { text: createUserDto.text, trainningCycle: cycle },
+      where: { text: createUserDto.text, trainingCycle: cycle },
     });
     if (!exist) {
-      createUserDto['trainningCycle'] = cycle;
+      createUserDto['trainingCycle'] = cycle;
       const newUser = this.predictionsRepository.create({
         ...createUserDto,
       });
@@ -26,8 +27,15 @@ export class PredictionsService {
     }
   }
 
-  findAll() {
-    return this.predictionsRepository.find({relations:['trainningCycle','claresa']});
+  findAll(query: PaginateQuery): Promise<Paginated<Predictions>> {
+    return paginate(query, this.predictionsRepository, {
+      sortableColumns: ['id', 'text', 'claresa.(name)'],
+      // defaultSortBy: [['text', 'DESC']],
+      searchableColumns: ['text', 'claresa.(name)'],
+      relations: ['trainingCycle', 'claresa'],
+      select: [],
+      filterableColumns: {},
+    });
   }
 
   findOne(id: number) {

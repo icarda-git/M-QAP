@@ -1,38 +1,23 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { firstValueFrom, map } from "rxjs";
-import { environment } from "src/environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { firstValueFrom, map } from 'rxjs';
+import { Paginated } from '../share/types/paginate.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PredictionsService {
+  private api: string = `http://localhost:3000/predictions`;
 
-  private apiAllPredictions:string=`http://localhost:3000/predictions`;
-  
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  
-
-
-  async getAllPredictions() {
-   
-    return firstValueFrom(
-      this.http.get(`${this.apiAllPredictions}`).pipe(map((d: any) => d))).catch((e) => false);
+  find(queryString: string) {
+    return this.http.get<Paginated<any>>(`${this.api}?${queryString}`);
   }
-
-
 
   async getPredictions(id: number) {
     return firstValueFrom(
-      this.http.get(`${this.apiAllPredictions}/` + id).pipe(map((d: any) => d))
+      this.http.get(`${this.api}/` + id).pipe(map((d: any) => d))
     ).catch((e) => false);
   }
-
-
-
-
- 
-
 }

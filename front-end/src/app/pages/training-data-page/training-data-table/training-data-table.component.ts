@@ -1,11 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { TrainingDataService } from 'src/app/services/training-data.service';
-import { TrainingDataAddDialogComponent } from './training-data-add-dialog/training-data-add-dialog.component';
+import { TrainingDataAddDialogComponent } from '../training-data-add-dialog/training-data-add-dialog.component';
 import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
 import {
   MediaService,
@@ -36,10 +35,6 @@ export class TrainingDataTableComponent {
   pageIndex = 0;
   sortBy = 'text:ASC';
   text = '';
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
   organizations: any = [];
   form!: FormGroup;
   constructor(
@@ -93,6 +88,8 @@ export class TrainingDataTableComponent {
   openDialog(id?: number): void {
     const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
       data: { id },
+      width: '100%',
+      maxWidth: '650px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -111,7 +108,7 @@ export class TrainingDataTableComponent {
     );
   }
 
-  deleteTrainingDataById(id: number) {
+  delete(id: number) {
     this.dialog
       .open(DeleteConfirmDialogComponent, {
         data: {

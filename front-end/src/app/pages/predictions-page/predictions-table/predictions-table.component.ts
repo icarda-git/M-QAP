@@ -1,12 +1,11 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { Component } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Paginated } from 'src/app/share/types/paginate.type';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { PredictionsService } from 'src/app/services/predictions.service';
-import { OrganizationsService } from 'src/app/services/organizations.service';
-
-
-
 
 @Component({
   selector: 'app-predictions-table',
@@ -14,69 +13,66 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
   styleUrls: ['./predictions-table.component.scss'],
 })
 export class PredictionsTableComponent {
-  columnsToDisplay: string[] = ["text", "name","acronym","confidant","cycle"];
+  columnsToDisplay: string[] = [
+    'text',
+    'name',
+    'acronym',
+    'confidant',
+    'cycle',
+  ];
   dataSource!: MatTableDataSource<any>;
-  predictions: any = [];
+  trainingData!: Paginated<any>;
+  length = 0;
+  pageSize = 50;
+  pageIndex = 0;
+  sortBy = 'text:ASC';
+  text = '';
   organizations: any = [];
-  allTrainningCycle: any = [];
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
-  // organNames: any =[];
-  // organAcronyms: any=[];
-
-
-
-  constructor( private predictionsService: PredictionsService,private organizationsService: OrganizationsService) {}
-
-  
-
+  form!: FormGroup;
+  constructor(
+    public dialog: MatDialog,
+    private predictionsService: PredictionsService,
+    private toastr: ToastrService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit() {
-   
-    this.initTable();
-
+    this.initForm();
+    this.loadData();
   }
 
-  
-  
-  async initTable() {
-    this.predictions = await this.predictionsService.getAllPredictions();
-    this.dataSource = new MatTableDataSource(this.predictions);
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
-
-this.organizations = await this.organizationsService.getOrganizations();
-
-    // for (let i = 0; i < this.organizations.length; i++) {
-    //   for (let x = 0; x < this.predictions.length; x++) {
-    //     if (this.organizations[i].id === this.predictions[x].clarisa_id) {
-    //       this.organNames.push(this.organizations[i].name)
-    //       this.organAcronyms.push(this.organizations[i].acronym)
-    //       console.log(this.organNames);
-    //       console.log(this.organAcronyms);
-    //     }
-    //   }
-      
-    // }
-  
-    // console.log(this.organizations)
- 
-
-    console.log(this.predictions)
-    // this.title.setTitle("Periods");
-    // this.meta.updateTag({ name: "description", content: "Periods" });
+  initForm() {
+    this.form = this.fb.group({
+      text: [''],
+      sortBy: ['text:ASC'],
+    });
+    this.form.valueChanges.subscribe((value) => {
+      this.text = value.text;
+      this.sortBy = value.sortBy;
+      this.loadData();
+    });
   }
 
-
-
-
-    
-    // this.title.setTitle("Periods");
-    // this.meta.updateTag({ name: "description", content: "Periods" });
+  handlePageEvent(e: PageEvent) {
+    console.log(e);
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    this.loadData();
   }
 
+  async loadData() {
+    const queryString = [];
+    queryString.push(`limit=${this.pageSize}`);
+    queryString.push(`page=${this.pageIndex + 1}`);
+    queryString.push(`sortBy=${this.sortBy}`);
+    queryString.push(`search=${this.text}`);
 
-
+    this.predictionsService
+      .find(queryString.join('&'))
+      .subscribe((response) => {
+        this.trainingData = response;
+        this.length = response.meta.totalItems;
+        this.dataSource = new MatTableDataSource(response.data);
+      });
+  }
+}

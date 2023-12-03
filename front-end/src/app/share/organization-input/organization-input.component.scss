@@ -1,31 +1,16 @@
 :host {
-  width: 100%;
-  display: block;
-
-  >* {
-    width: 100%;
+  .error-section {
+    min-height: 22px;
   }
-}
 
-
-.input-with-icon {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--u-2);
-
-  app-icon-button {
-    margin-top: var(--u-1);
-  }
-}
-
-.ng-select-custom-style {
-  position: relative;
-
-  .tooltip {
+  ::ng-deep
+    .ng-select.ng-select-single
+    .ng-select-container
+    .ng-value-container
+    .ng-input {
     position: absolute;
-    top: 23px;
-    right: 10px;
-    font-size: 20px;
-    color: var(--accent-color);
+    left: 0px;
+    width: 100%;
+    top: 17px;
   }
 }

@@ -17,7 +17,7 @@ export class TrainingDataAddDialogComponent implements OnInit {
   form: FormGroup<any> = new FormGroup([]);
 
   constructor(
-    private dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
+    public dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
     private trainingDataService: TrainingDataService,
     private toast: ToastrService,
@@ -63,9 +63,5 @@ export class TrainingDataAddDialogComponent implements OnInit {
           (error) => this.toast.error(error.error.message)
         );
     }
-  }
-
-  onCloseDialog() {
-    this.dialogRef.close();
   }
 }
