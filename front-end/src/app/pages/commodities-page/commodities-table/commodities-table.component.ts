@@ -90,7 +90,9 @@ export class CommoditiesTableComponent {
   }
 
   fileUploaded(e: UploadFileResponse) {
-    this.commoditiesService.processSheet(e.fileName).subscribe();
+    this.commoditiesService.processSheet(e.fileName).subscribe(() => {
+      this.loadData();
+    });
   }
 
   downloadFile() {

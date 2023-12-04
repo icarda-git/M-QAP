@@ -32,7 +32,7 @@ export class AI {
       const active_cycle = await this.training_cycle.findLatestOne();
       const training_folder_path = path.join(
         process.cwd(),
-        'uploads/training-data/' + active_cycle.id,
+        'uploads/training-data/' + '1',
       );
       this.logger.log(
         'Start Loading Trained Model ' +

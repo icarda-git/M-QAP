@@ -1,6 +1,7 @@
 section {
-  background-image: linear-gradient(to right bottom, #fafafa, #e8e8e8);
   min-height: calc(100vh - 179px);
+  max-width: 1600px;
+  margin: auto;
   padding: 1.5rem;
 
   .container {

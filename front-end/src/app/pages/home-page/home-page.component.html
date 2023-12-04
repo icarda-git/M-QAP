@@ -1,3 +1,35 @@
-<app-content-container>
-  <app-h1>Home </app-h1>
-</app-content-container>
+<ng-container *ngIf="statistics">
+  <app-content-container>
+    <div>
+      <h4>Total</h4>
+      <section class="avg">
+        <app-container>
+          <h5>Prediction</h5>
+          <span>{{ statistics.totalPrediction }}</span>
+        </app-container>
+        <app-container>
+          <h5>Organization</h5>
+          <span>{{ statistics.totalOrganization }}</span>
+        </app-container>
+        <app-container>
+          <h5>training cycle</h5>
+          <span>{{ statistics.totalTrainingCycle }}</span>
+        </app-container>
+        <app-container>
+          <h5>Commodities</h5>
+          <span>{{ statistics.totalCommodities }}</span>
+        </app-container>
+      </section>
+
+      <h4>Count prediction for each Cycle</h4>
+      <app-container>
+        <div [chart]="averageChart"></div>
+      </app-container>
+
+      <h4>Average prediction for each Cycle</h4>
+      <app-container>
+        <div [chart]="countChart"></div>
+      </app-container>
+    </div>
+  </app-content-container>
+</ng-container>

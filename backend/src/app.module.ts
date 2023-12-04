@@ -17,6 +17,7 @@ import { DashboardController } from './dashboard/dashboard.controller';
 import { MediaModule } from './media/media.module';
 import { CommoditiesModule } from './commodities/commodities.module';
 import { AuthModule } from './auth/auth.module';
+import { StatisticsModule } from './statistics/statistics.module';
 
 @Module({
   imports: [
@@ -43,6 +44,7 @@ import { AuthModule } from './auth/auth.module';
     MediaModule,
     AuthModule,
     CommoditiesModule,
+    StatisticsModule,
   ],
   controllers: [AppController, DashboardController],
   providers: [AppService, DoiService, AI, HandleService, FormatService],

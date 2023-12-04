@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { HeaderServiceService } from '../../header-service.service';
+import { Chart } from 'angular-highcharts';
+import {
+  Statistics,
+  StatisticsService,
+} from 'src/app/services/statistics.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,7 +12,13 @@ import { HeaderServiceService } from '../../header-service.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  constructor(public headerService: HeaderServiceService) {}
+  averageChart!: Chart;
+  countChart!: Chart;
+  statistics!: Statistics;
+  constructor(
+    public headerService: HeaderServiceService,
+    private statisticsService: StatisticsService
+  ) {}
 
   ngOnInit() {
     this.headerService
@@ -20,5 +31,65 @@ export class HomePageComponent {
       .setBackgroundDeleteLr('#5569dd')
       .setTitle('Home')
       .setDescription('Home');
+
+    this.statisticsService.find().subscribe((response) => {
+      this.averageChart = new Chart({
+        chart: {
+          type: 'line',
+        },
+        title: {
+          text: '',
+        },
+        credits: {
+          enabled: false,
+        },
+        yAxis: {
+          title: {
+            text: 'Average',
+          },
+        },
+        xAxis: {
+          title: {
+            text: 'Cycle',
+          },
+        },
+        series: [
+          {
+            name: 'Cycle id',
+            data: response.cyclePredictionsAverage.map(
+              (i) => i.predictions_average
+            ),
+          } as any,
+        ],
+      });
+      this.countChart = new Chart({
+        chart: {
+          type: 'line',
+        },
+        title: {
+          text: '',
+        },
+        credits: {
+          enabled: false,
+        },
+        yAxis: {
+          title: {
+            text: 'Average',
+          },
+        },
+        xAxis: {
+          title: {
+            text: 'Cycle',
+          },
+        },
+        series: [
+          {
+            name: 'Cycle id',
+            data: response.chartData.map((i) => i.predictions_count),
+          } as any,
+        ],
+      });
+      this.statistics = response;
+    });
   }
 }

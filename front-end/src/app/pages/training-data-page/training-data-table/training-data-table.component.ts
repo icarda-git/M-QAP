@@ -98,7 +98,9 @@ export class TrainingDataTableComponent {
   }
 
   fileUploaded(e: UploadFileResponse) {
-    this.trainingDataService.processSheet(e.fileName).subscribe();
+    this.trainingDataService.processSheet(e.fileName).subscribe(() => {
+      this.loadData();
+    });
   }
 
   downloadFile() {

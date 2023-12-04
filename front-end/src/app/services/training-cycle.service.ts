@@ -6,7 +6,7 @@ import { Paginated } from '../share/types/paginate.type';
   providedIn: 'root',
 })
 export class TrainingCycleService {
-  private apiAllTrainingCycle: string = `http://localhost:3000/trainning-cycle`;
+  private apiAllTrainingCycle: string = `http://localhost:3000/training-cycle`;
 
   constructor(private http: HttpClient) {}
 
