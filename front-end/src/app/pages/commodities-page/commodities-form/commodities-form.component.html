@@ -1,0 +1,38 @@
+<app-dialog-layout>
+  <h3 header-label>{{ id ? "Edit" : "Add" }} Training Data</h3>
+
+  <button header-action mat-icon-button (click)="dialogRef.close()">
+    <mat-icon> close </mat-icon>
+  </button>
+
+  <form content [formGroup]="form">
+    <app-input>
+      <mat-label>Name <span class="star">*</span> </mat-label>
+      <mat-form-field hideRequiredMarker appearance="outline">
+        <input matInput formControlName="name" />
+      </mat-form-field>
+    </app-input>
+
+    <app-input>
+      <mat-label>Commodity</mat-label>
+      <app-commodity-input formControlName="parent"></app-commodity-input>
+    </app-input>
+
+    <app-input>
+      <mat-label>Source<span class="star">*</span></mat-label>
+      <mat-form-field hideRequiredMarker appearance="outline">
+        <input matInput formControlName="source" />
+      </mat-form-field>
+    </app-input>
+  </form>
+
+  <button
+    action
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="submit()"
+  >
+    {{ id ? "Edit" : "Add" }}
+  </button>
+</app-dialog-layout>

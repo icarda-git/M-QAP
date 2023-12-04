@@ -1,0 +1,22 @@
+<div>
+  <ng-select
+    appearance="outline"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    [multiple]="multiple"
+    (change)="selected()"
+    [(ngModel)]="selectedPartner"
+    [items]="filteredOptions$ | async"
+    [trackByFn]="trackByFn"
+    [loading]="loading"
+    [minTermLength]="2"
+    bindLabel="name"
+    [compareWith]="compareObjects"
+    [typeahead]="partnerInput$"
+    (open)="this.focus.emit($event)"
+    (close)="this.blur.emit($event)"
+    addTagText="Add New Partner"
+  >
+  </ng-select>
+</div>
+<section class="error-section"></section>

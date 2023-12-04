@@ -33,7 +33,7 @@ export class CommoditiesController {
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.commoditiesService.findOne({ where: { id } });
+    return this.commoditiesService.findOne({ where: { id }, relations: ['parent'] });
   }
 
   @Patch(':id')

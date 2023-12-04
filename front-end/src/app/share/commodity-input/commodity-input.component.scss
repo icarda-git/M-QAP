@@ -1,0 +1,16 @@
+:host {
+  .error-section {
+    min-height: 22px;
+  }
+
+  ::ng-deep
+    .ng-select.ng-select-single
+    .ng-select-container
+    .ng-value-container
+    .ng-input {
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    top: 17px;
+  }
+}

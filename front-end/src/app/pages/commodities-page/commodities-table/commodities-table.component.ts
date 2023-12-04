@@ -12,6 +12,7 @@ import { Paginated } from 'src/app/share/types/paginate.type';
 import { TrainingData } from 'src/app/share/types/training-data.type';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommoditiesService } from 'src/app/services/commodities.service';
+import { CommoditiesFormComponent } from '../commodities-form/commodities-form.component';
 
 @Component({
   selector: 'app-commodities-table',
@@ -78,14 +79,14 @@ export class CommoditiesTableComponent {
   }
 
   openDialog(id?: number): void {
-    // const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
-    //   data: { id },
-    //   width: '100%',
-    //   maxWidth: '650px',
-    // });
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result && result.submitted) this.loadData();
-    // });
+    const dialogRef = this.dialog.open(CommoditiesFormComponent, {
+      data: { id },
+      width: '100%',
+      maxWidth: '650px',
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.submitted) this.loadData();
+    });
   }
 
   fileUploaded(e: UploadFileResponse) {
@@ -109,15 +110,15 @@ export class CommoditiesTableComponent {
       .afterClosed()
       .subscribe(async (dialogResult) => {
         if (dialogResult == true) {
-          await this.commoditiesService.deleteTrainingData(id).then(
-            (data) => {
+          await this.commoditiesService.delete(id).subscribe({
+            next: () => {
               this.loadData();
               this.toastr.success('Deleted successfully');
             },
-            (error) => {
+            error: (error) => {
               this.toastr.error(error.error.message);
-            }
-          );
+            },
+          });
         }
       });
   }

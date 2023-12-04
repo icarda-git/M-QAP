@@ -47,7 +47,7 @@ import { AuthModule } from './pages/auth/auth.module';
     MatButtonModule,
     DeleteIconComponent,
     EditIconComponent,
-    AuthModule
+    AuthModule,
   ],
   providers: [
     TrainingCycleService,

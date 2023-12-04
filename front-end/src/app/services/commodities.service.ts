@@ -15,28 +15,24 @@ export class CommoditiesService {
     return this.http.get<Paginated<any>>(`${this.api}?${queryString}`);
   }
 
-  async getTrainingData(id: number) {
-    return firstValueFrom(
-      this.http.get(`${this.api}/` + id).pipe(map((d: any) => d))
-    ).catch((e) => false);
+  get(id: number) {
+    return this.http.get(`${this.api}/` + id);
   }
 
-  submitTrainingData(id: number = 0, data: {}) {
-    if (id) {
-      return firstValueFrom(
-        this.http.patch(`${this.api}/` + id, data).pipe(map((d: any) => d))
-      ).catch((e) => false);
-    } else {
-      return firstValueFrom(
-        this.http.post(`${this.api}`, data).pipe(map((d: any) => d))
-      ).catch((e) => false);
-    }
+  create(data: {}) {
+    return this.http.post(`${this.api}`, data);
   }
 
-  deleteTrainingData(id: number) {
-    return firstValueFrom(
-      this.http.delete(`${this.api}/` + id).pipe(map((d: any) => d))
-    );
+  update(id: number, data: {}) {
+    return this.http.patch(`${this.api}/` + id, data);
+  }
+
+  upsert(id: number | null | undefined, data: { [key: string]: any }) {
+    return !!id ? this.update(id, data) : this.create(data);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.api}/` + id);
   }
 
   processSheet(fileName: string) {

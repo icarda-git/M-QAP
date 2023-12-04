@@ -9,15 +9,15 @@ export interface DialogData {
 }
 
 @Component({
-  selector: 'app-training-data-add-dialog',
-  templateUrl: './training-data-add-dialog.component.html',
-  styleUrls: ['./training-data-add-dialog.component.scss'],
+  selector: 'app-training-data-form',
+  templateUrl: './training-data-form.component.html',
+  styleUrls: ['./training-data-form.component.scss'],
 })
-export class TrainingDataAddDialogComponent implements OnInit {
+export class TrainingDataFormComponent implements OnInit {
   form: FormGroup<any> = new FormGroup([]);
 
   constructor(
-    public dialogRef: MatDialogRef<TrainingDataAddDialogComponent>,
+    public dialogRef: MatDialogRef<TrainingDataFormComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,
     private trainingDataService: TrainingDataService,
     private toast: ToastrService,

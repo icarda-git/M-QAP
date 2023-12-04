@@ -4,7 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { TrainingDataService } from 'src/app/services/training-data.service';
-import { TrainingDataAddDialogComponent } from '../training-data-add-dialog/training-data-add-dialog.component';
+import { TrainingDataFormComponent } from '../training-data-form/training-data-form.component';
 import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
 import {
   MediaService,
@@ -86,7 +86,7 @@ export class TrainingDataTableComponent {
   }
 
   openDialog(id?: number): void {
-    const dialogRef = this.dialog.open(TrainingDataAddDialogComponent, {
+    const dialogRef = this.dialog.open(TrainingDataFormComponent, {
       data: { id },
       width: '100%',
       maxWidth: '650px',

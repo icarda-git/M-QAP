@@ -24,17 +24,19 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { concat, Observable, of, Subject } from 'rxjs';
 import {
   catchError,
+  debounceTime,
   distinctUntilChanged,
   filter,
+  map,
   switchMap,
   tap,
 } from 'rxjs/operators';
-import { OrganizationsService } from 'src/app/services/organizations.service';
+import { CommoditiesService } from 'src/app/services/commodities.service';
 
 @Component({
-  selector: 'app-organization-input',
-  templateUrl: './organization-input.component.html',
-  styleUrls: ['./organization-input.component.scss'],
+  selector: 'app-commodity-input',
+  templateUrl: './commodity-input.component.html',
+  styleUrls: ['./commodity-input.component.scss'],
   standalone: true,
   imports: [
     CommonModule,
@@ -48,12 +50,12 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => OrganizationInputComponent),
+      useExisting: forwardRef(() => CommodityInputComponent),
       multi: true,
     },
   ],
 })
-export class OrganizationInputComponent
+export class CommodityInputComponent
   implements ControlValueAccessor, OnDestroy, OnInit
 {
   @Output() add = new EventEmitter();
@@ -63,9 +65,7 @@ export class OrganizationInputComponent
   @Input() showAddButton = false;
   @Input() multiple: boolean = false;
   @Input() labelTemplate?: TemplateRef<any>;
-  @Input() label = 'Institution';
   @Input() placeholder = 'Search ...';
-  @Input() hint = 'Must select one of listed institutions';
   @Input() readonly: boolean = false;
   @Input() tooltip?: string;
   @Input() tooltipPosition: TooltipPosition = 'left';
@@ -88,7 +88,7 @@ export class OrganizationInputComponent
   control = new FormControl('', Validators.required);
 
   constructor(
-    private organizationsService: OrganizationsService,
+    private commoditiesService: CommoditiesService,
     public dialogService: MatDialog
   ) {}
 
@@ -104,15 +104,22 @@ export class OrganizationInputComponent
       of([]), // default items
       this.partnerInput$.pipe(
         distinctUntilChanged(),
+        debounceTime(200),
         tap(() => (this.loading = true)),
         filter((term) => {
           return typeof term == 'string' && term.length >= 2;
         }),
         switchMap((term) => {
           console.log(term);
-          return this.organizationsService.searchOrganization(term).pipe(
-            catchError(() => of([])), // empty list on error
-            tap(() => (this.loading = false))
+          const queryString = [];
+          queryString.push(`limit=15`);
+          queryString.push(`page=1`);
+          queryString.push(`search=${term}`);
+          queryString.push(`filter.parent_id=$null`);
+          return this.commoditiesService.find(queryString.join('&')).pipe(
+            catchError(() => of({ data: [] })),
+            tap(() => (this.loading = false)),
+            map((response) => response.data)
           );
         })
       )
@@ -132,16 +139,17 @@ export class OrganizationInputComponent
     return option && option.name ? option.name : '';
   }
 
-  async writeValue(obj: any) {
-    if (obj?.clarisa_id) {
-      this.filteredOptions$ = of([obj]);
-    } else if (typeof obj == 'number') {
-      const org = await this.organizationsService.getOrganization(obj);
-      this.filteredOptions$ = of([org]);
+  writeValue(value: any) {
+    if (value?.clarisa_id) {
+      this.filteredOptions$ = of([value]);
+    } else if (typeof value == 'number') {
+      this.commoditiesService.get(value).subscribe((commodity) => {
+        this.filteredOptions$ = of([commodity]);
+      });
     }
-    this.value = obj;
-    this.selectedPartner = obj;
-    this.control.patchValue(obj, { emitEvent: false });
+    this.value = value;
+    this.selectedPartner = value;
+    this.control.patchValue(value, { emitEvent: false });
   }
 
   registerOnChange(fn: any): void {

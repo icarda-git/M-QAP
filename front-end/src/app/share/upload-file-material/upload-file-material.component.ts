@@ -53,6 +53,7 @@ export class UploadFileMaterialComponent {
 
     this.mediaService.upload(formData).subscribe((file) => {
       this.uploaded.emit(file);
+      input.srcElement.value = '';
     });
   }
 }
