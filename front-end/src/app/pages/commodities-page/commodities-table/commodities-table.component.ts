@@ -40,6 +40,13 @@ export class CommoditiesTableComponent {
 
   ngOnInit() {
     this.initForm();
+
+    this.form.valueChanges.subscribe((value) => {
+      this.text = value.text;
+      this.sortBy = value.sortBy;
+      this.loadData();
+    });
+
     this.loadData();
   }
 
@@ -47,11 +54,6 @@ export class CommoditiesTableComponent {
     this.form = this.fb.group({
       text: [''],
       sortBy: ['id:ASC'],
-    });
-    this.form.valueChanges.subscribe((value) => {
-      this.text = value.text;
-      this.sortBy = value.sortBy;
-      this.loadData();
     });
   }
 

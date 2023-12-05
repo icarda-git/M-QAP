@@ -4,9 +4,7 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AuthService } from '../pages/auth/auth.service';
 
 @Injectable({
@@ -18,13 +16,13 @@ export class AdminGuard implements CanActivate {
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const user = await this.authService.getLoggedInUser();
     if (!user) {
-      this.authService.goToLogin()
+      this.authService.goToLogin();
       return false;
     } else {
       if (user.role == 'admin') {
         return true;
       } else {
-        this.authService.goToLogin()
+        this.authService.goToLogin();
         return false;
       }
     }

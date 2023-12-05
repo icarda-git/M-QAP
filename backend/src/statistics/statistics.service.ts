@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { Expose, Transform, plainToClass } from 'class-transformer';
-import { isNumber } from 'class-validator';
 import { PaginateQuery } from 'nestjs-paginate';
 import { CommoditiesService } from 'src/commodities/commodities.service';
 import { OrganizationsService } from 'src/organizations/organizations.service';
@@ -21,7 +20,6 @@ class PredictionsAverageForEachCycle {
 
   @Expose()
   @Transform(({ value }) => {
-    console.log('V : ', value);
     return !!value ? value : 0;
   })
   predictions_average: number = 0;
@@ -45,8 +43,6 @@ export class StatisticsService {
     total.chartData = await this.findTrainingCycleData();
     total.cyclePredictionsAverage =
       await this.findTrainingCyclePredictionsAverage();
-
-    console.log(total);
     return total;
   }
 

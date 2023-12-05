@@ -14,6 +14,7 @@ import { PredictionsService } from 'src/app/services/predictions.service';
 })
 export class PredictionsTableComponent {
   columnsToDisplay: string[] = [
+    'id',
     'text',
     'name',
     'acronym',

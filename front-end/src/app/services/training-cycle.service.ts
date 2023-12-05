@@ -2,49 +2,36 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, map } from 'rxjs';
 import { Paginated } from '../share/types/paginate.type';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class TrainingCycleService {
-  private apiAllTrainingCycle: string = `http://localhost:3000/training-cycle`;
+  private api: string = `${environment.api_url}/training-cycle`;
 
   constructor(private http: HttpClient) {}
 
   find(queryString: string) {
-    return this.http.get<Paginated<any>>(
-      `${this.apiAllTrainingCycle}?${queryString}`
-    );
+    return this.http.get<Paginated<any>>(`${this.api}?${queryString}`);
   }
 
-  async getTrainingCycle(id: number) {
-    return firstValueFrom(
-      this.http
-        .get(`${this.apiAllTrainingCycle}/` + id)
-        .pipe(map((d: any) => d))
-    ).catch((e) => false);
+  get(id: number) {
+    return this.http.get(`${this.api}/` + id);
   }
 
-  submitTrainingCycle(id: number = 0, data: {}) {
-    if (id) {
-      return firstValueFrom(
-        this.http
-          .patch(`${this.apiAllTrainingCycle}/` + id, data)
-          .pipe(map((d: any) => d))
-      ).catch((e) => false);
-    } else {
-      return firstValueFrom(
-        this.http
-          .post(`${this.apiAllTrainingCycle}`, data)
-          .pipe(map((d: any) => d))
-      ).catch((e) => false);
-    }
+  create(data: {}) {
+    return this.http.post(`${this.api}`, data);
   }
 
-  deleteTrainingCycle(id: number) {
-    return firstValueFrom(
-      this.http
-        .delete(`${this.apiAllTrainingCycle}/` + id)
-        .pipe(map((d: any) => d))
-    );
+  update(id: number, data: {}) {
+    return this.http.patch(`${this.api}/` + id, data);
+  }
+
+  upsert(id: number | null | undefined, data: { [key: string]: any }) {
+    return !!id ? this.update(id, data) : this.create(data);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${this.api}/` + id);
   }
 }

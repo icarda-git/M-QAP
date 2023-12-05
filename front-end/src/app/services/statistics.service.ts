@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 export type Statistics = {
   totalCommodities: number;
@@ -20,7 +21,7 @@ export type Statistics = {
   providedIn: 'root',
 })
 export class StatisticsService {
-  private api: string = `http://localhost:3000/statistics`;
+  private api: string = `${environment.api_url}/statistics`;
 
   constructor(private http: HttpClient) {}
 

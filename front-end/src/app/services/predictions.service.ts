@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, map } from 'rxjs';
 import { Paginated } from '../share/types/paginate.type';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PredictionsService {
-  private api: string = `http://localhost:3000/predictions`;
+  private api: string = `${environment.api_url}/predictions`;
 
   constructor(private http: HttpClient) {}
 
@@ -15,9 +15,23 @@ export class PredictionsService {
     return this.http.get<Paginated<any>>(`${this.api}?${queryString}`);
   }
 
-  async getPredictions(id: number) {
-    return firstValueFrom(
-      this.http.get(`${this.api}/` + id).pipe(map((d: any) => d))
-    ).catch((e) => false);
+  get(id: number) {
+    return this.http.get(`${this.api}/` + id);
+  }
+
+  // create(data: {}) {
+  //   return this.http.post(`${this.api}`, data);
+  // }
+
+  // update(id: number, data: {}) {
+  //   return this.http.patch(`${this.api}/` + id, data);
+  // }
+
+  // upsert(id: number | null | undefined, data: { [key: string]: any }) {
+  //   return !!id ? this.update(id, data) : this.create(data);
+  // }
+
+  delete(id: number) {
+    return this.http.delete(`${this.api}/` + id);
   }
 }

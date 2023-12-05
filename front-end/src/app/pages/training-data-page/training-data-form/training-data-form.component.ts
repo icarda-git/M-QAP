@@ -33,10 +33,11 @@ export class TrainingDataFormComponent implements OnInit {
     return this.data?.id;
   }
 
-  async patchForm() {
+  patchForm() {
     if (this.id) {
-      const data = await this.trainingDataService.getTrainingData(this.id);
-      this.form.patchValue(data);
+      this.trainingDataService.get(this.id).subscribe((data) => {
+        this.form.patchValue(data);
+      });
     }
   }
 
@@ -53,15 +54,15 @@ export class TrainingDataFormComponent implements OnInit {
     this.form.updateValueAndValidity();
     if (this.form.valid) {
       await this.trainingDataService
-        .submitTrainingData(this.id, this.form.value)
-        .then(
-          () => {
+        .upsert(this.id, this.form.value)
+        .subscribe({
+          next: () => {
             if (this.id) this.toast.success('Training data added successfully');
             else this.toast.success('Training data updated successfully');
             this.dialogRef.close({ submitted: true });
           },
-          (error) => this.toast.error(error.error.message)
-        );
+          error: (error) => this.toast.error(error.error.message),
+        });
     }
   }
 }

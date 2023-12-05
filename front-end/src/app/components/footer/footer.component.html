@@ -1,35 +1,33 @@
-<div class="footer-risk" [style.background]="headerService.backgroundFooter">
-  <div class="footer-risk__logo-box">
+<div class="main-container" [style.background]="headerService.backgroundFooter">
+  <div>
     <img
       src="../../assets/shared-image/mask-group.svg"
-      class="footer-risk__logo-box__logo"
       alt="~/Frontend/images/question-circular-button.svg"
+      height="58"
     />
   </div>
 
-  <div class="footer-risk__main">
+  <div>
     <nav class="footer-nav">
-      <ul class="footer-nav__list">
-        <li class="footer-nav__list__footer-item">
-          <a (click)="openDialogContactUs()" class="footer-link">Contact Us</a>
+      <ul>
+        <li>
+          <a mat-button (click)="openDialogContactUs()">Contact Us</a>
         </li>
-        <li class="footer-nav__list__footer-item">
+        <li>
           <a
+            mat-button
             href="https://cgiar-prms.notion.site/Legal-Terms-eb2f3e436f3e46bd9057b1cb1e3391b8"
-            class="footer-link"
             >Terms and Conditions</a
           >
         </li>
-        <li class="footer-nav__list__footer-item">
-          <a routerLink="/license" class="footer-link">License</a>
+        <li>
+          <a mat-button routerLink="/license">License</a>
         </li>
       </ul>
     </nav>
 
-    <div class="footer-copyright-box">
-      <p class="footer-copyright-box__text">
-        © 2023 CGIAR System Organization. All rights reserved.
-      </p>
+    <div>
+      <p>© 2023 CGIAR System Organization. All rights reserved.</p>
     </div>
   </div>
 </div>

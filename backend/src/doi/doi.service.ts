@@ -220,7 +220,7 @@ export class DoiService {
                 return finaldata;
               } else null;
             } catch (e) {
-              console.log(e);
+              console.error(e);
             }
           } else return null;
         }),

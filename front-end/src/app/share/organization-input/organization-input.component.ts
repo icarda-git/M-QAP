@@ -136,8 +136,9 @@ export class OrganizationInputComponent
     if (obj?.clarisa_id) {
       this.filteredOptions$ = of([obj]);
     } else if (typeof obj == 'number') {
-      const org = await this.organizationsService.getOrganization(obj);
-      this.filteredOptions$ = of([org]);
+      this.organizationsService.get(obj).subscribe((org) => {
+        this.filteredOptions$ = of([org]);
+      });
     }
     this.value = obj;
     this.selectedPartner = obj;

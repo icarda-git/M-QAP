@@ -17,7 +17,7 @@ import { CommoditiesService } from './services/commodities.service';
 import { TrainingDataService } from './services/training-data.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { H1Component } from './share/h1/h1.component';
-import { ContentContainerComponent } from './share/content-container/content-container.component';
+import { PageContainerComponent } from './share/page-container/page-container.component';
 import { OrganizationInputComponent } from './share/organization-input/organization-input.component';
 import { UploadFileMaterialComponent } from './share/upload-file-material/upload-file-material.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DeleteIconComponent } from './share/delete-icon/delete-icon.component';
 import { EditIconComponent } from './share/edit-icon/edit-icon.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { DeleteConfirmDialogModule } from './share/delete-confirm-dialog/delete-confirm-dialog.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -41,8 +42,8 @@ import { AuthModule } from './pages/auth/auth.module';
     UploadFileMaterialComponent,
     MatFormFieldModule,
     H1Component,
-    ContentContainerComponent,
-    DeleteConfirmDialogComponent,
+    PageContainerComponent,
+    DeleteConfirmDialogModule,
     MatIconModule,
     MatButtonModule,
     DeleteIconComponent,

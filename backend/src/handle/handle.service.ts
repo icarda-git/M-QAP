@@ -1,27 +1,24 @@
-import {
-  BadRequestException,
-  Injectable,
-  Logger,
-} from '@nestjs/common';
-import { keep } from '@tensorflow/tfjs';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { AI } from 'src/ai/ai.service';
 import { DoiService } from 'src/doi/doi.service';
-import { FormatService } from './formater.service';
+import { FormatService } from './formatter.service';
 import * as schemas from './schema.json';
-import * as licences from './licences.json';
+import * as licenses from './licenses.json';
 import xlsx from 'node-xlsx';
 import { HttpService } from '@nestjs/axios';
-import fs from 'fs';
+import { CommoditiesService } from 'src/commodities/commodities.service';
+import { In } from 'typeorm';
 const https = require('https');
 @Injectable()
 export class HandleService {
   Commodities;
-  ClarisaRegons;
+  ClarisaRegions;
   private readonly logger = new Logger(HandleService.name);
   constructor(
     private http: HttpService,
     private formatService: FormatService,
+    private commoditiesService: CommoditiesService,
     private doi: DoiService,
     private ai: AI,
   ) {
@@ -30,7 +27,7 @@ export class HandleService {
   }
   async initCommodities() {
     const workSheetsFromFile = await xlsx.parse(
-      `${process.cwd()+'/assets'}/Commodities.xlsx`,
+      `${process.cwd() + '/assets'}/Commodities.xlsx`,
     );
     this.Commodities = {};
     workSheetsFromFile[0].data.forEach((d: any, i) => {
@@ -39,15 +36,18 @@ export class HandleService {
           .map((d: string) => d.toLocaleLowerCase().split(', '))
           .flat();
     });
+    console.log(this.Commodities);
     this.logger.log('Commodities data Loaded');
   }
   async initRegions() {
-    const workSheetsFromFile = await xlsx.parse(`${process.cwd()+'/assets'}/CLARISA_UN.xlsx`);
-    this.ClarisaRegons = {};
+    const workSheetsFromFile = await xlsx.parse(
+      `${process.cwd() + '/assets'}/CLARISA_UN.xlsx`,
+    );
+    this.ClarisaRegions = {};
     workSheetsFromFile[0].data.forEach((d: any, i) => {
-      if (i > 0) this.ClarisaRegons[d[1].toLocaleLowerCase()] = d[0];
+      if (i > 0) this.ClarisaRegions[d[1].toLocaleLowerCase()] = d[0];
     });
-    this.logger.log('ClarisaRegons data Loaded');
+    this.logger.log('Clarisa Regions data Loaded');
   }
   async toClarisa(Items, handle) {
     if (!Array.isArray(Items)) Items = [Items];
@@ -86,7 +86,7 @@ export class HandleService {
     return false;
   }
 
-  getInfobyScheam(schemas, prefix) {
+  getInfoBySchema(schemas, prefix) {
     let repos = schemas.filter((d) => d.prefix.indexOf(prefix) != -1);
     if (repos.length == 0)
       throw new BadRequestException(
@@ -99,13 +99,13 @@ export class HandleService {
       .get(`https://doi.org/${handle}`)
       .pipe(
         map((d) => {
-          const splited = d.request.res.responseUrl.split('/');
-          return splited[splited.length - 1];
+          const splitted = d.request.res.responseUrl.split('/');
+          return splitted[splitted.length - 1];
         }),
       )
       .toPromise()
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         return false;
       });
 
@@ -114,23 +114,23 @@ export class HandleService {
       .pipe(map((d) => d.data.result))
       .toPromise()
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         return false;
       });
 
     if (data) {
-      let formated_data = this.formatService.format(
+      let formatted_data = this.formatService.format(
         this.flatData(data, null, null, { organization: 'title' }),
         schema,
       );
-      formated_data = this.addOn(formated_data, schema);
+      formatted_data = this.addOn(formatted_data, schema);
 
-      formated_data['repo'] = repo;
-      return formated_data;
+      formatted_data['repo'] = repo;
+      return formatted_data;
     }
   }
 
-  async getDataverse(handle, schema, repo, link, link_type) {
+  async getDataVerse(handle, schema, repo, link, link_type) {
     let data = await this.http
       .get(
         `${link}/api/datasets/:persistentId/?persistentId=${
@@ -149,61 +149,56 @@ export class HandleService {
       .pipe(map((d) => d.data.data))
       .toPromise()
       .catch((e) => {
-        console.log(e);
+        console.error(e);
         return false;
       });
     if (data) {
-      let formated_data = this.formatService.format(
+      let formatted_data = this.formatService.format(
         this.flatData(data, 'typeName', 'value'),
         schema,
       );
 
-      formated_data = this.addOn(formated_data, schema);
+      formatted_data = this.addOn(formatted_data, schema);
 
-      formated_data['repo'] = repo;
-      return formated_data;
+      formatted_data['repo'] = repo;
+      return formatted_data;
     }
   }
 
-  getCommodities(keywords) {
-    // Or var xlsx = require('node-xlsx').default;
-    const finalCom = [];
-    // Parse a file
+  async getCommodities(keywords: string[]) {
     if (!Array.isArray(keywords)) keywords = [keywords];
-
-    keywords.forEach((keyword) => {
-      const foundindex = Object.values(this.Commodities).findIndex(
-        (d: [string]) => {
-          return d.indexOf(keyword.toLocaleLowerCase()) > -1;
-        },
-      );
-      if (foundindex > -1)
-        finalCom.push(Object.keys(this.Commodities)[foundindex]);
-    });
-
-    return [...new Set(finalCom)];
+    keywords = keywords.map((i) => i.toLowerCase());
+    const q = this.commoditiesService.commoditiesRepository
+      .createQueryBuilder('commodity')
+      .where('LOWER(commodity.name)  IN(:keywords)', { keywords });
+    console.log(q.getSql());
+    const list = await q.getMany();
+    console.log(list);
+    return list.map((i) => i.name);
   }
 
-  addOn(formated_data, schema) {
+  addOn(formatted_data, schema) {
     let addons = schema.metadata.filter((d) => d.addon);
 
     addons.forEach((element) => {
       if (Object.keys(element.addon)[0] == 'combind')
-        formated_data = this.comind(
-          formated_data,
+        formatted_data = this.comind(
+          formatted_data,
           element.value.value,
           element.addon.combind,
           schema,
         );
 
       if (Object.keys(element.addon)[0] == 'split') {
-        formated_data[element.value.value] = formated_data[element.value.value]
+        formatted_data[element.value.value] = formatted_data[
+          element.value.value
+        ]
           .split(element.addon.split)
           .map((d: string) => d.trim());
       }
     });
 
-    return formated_data;
+    return formatted_data;
   }
 
   comind(data, src1, src2, schema) {
@@ -213,47 +208,47 @@ export class HandleService {
         obj[d] = data[src2][i];
         return obj;
       });
-      let formated = this.formatService.format(
+      let formatted = this.formatService.format(
         this.flatData(data[src1], '', ''),
         schema,
       );
-      data = { ...data, ...formated };
+      data = { ...data, ...formatted };
       delete data[src1];
       delete data[src2];
     }
     return data;
   }
 
-  flatData(data, akey = null, avalue = null, key_value = {}) {
+  flatData(data, aKey = null, aValue = null, key_value = {}) {
     let keys = Object.keys(key_value);
     let values: any = Object.values(key_value);
     let metadata = [];
     // not as what i want
-    let flat = (data, akey = null, avalue = null, key_value = {}) => {
+    let flat = (data, aKey = null, aValue = null, key_value = {}) => {
       if (
-        akey &&
-        avalue &&
-        data[akey] &&
-        data.hasOwnProperty(akey) &&
-        data.hasOwnProperty(avalue) &&
-        data[avalue] &&
-        !Array.isArray(data[avalue]) &&
-        typeof data[avalue] !== 'object'
+        aKey &&
+        aValue &&
+        data[aKey] &&
+        data.hasOwnProperty(aKey) &&
+        data.hasOwnProperty(aValue) &&
+        data[aValue] &&
+        !Array.isArray(data[aValue]) &&
+        typeof data[aValue] !== 'object'
       )
-        metadata.push({ key: data[akey], value: data[avalue] });
+        metadata.push({ key: data[aKey], value: data[aValue] });
       else if (typeof data == 'object' && data)
         Object.keys(data).forEach((key) => {
           if (
-            akey != key &&
+            aKey != key &&
             typeof data[key] !== 'object' &&
             !Array.isArray(data[key])
           )
             metadata.push({ key, value: data[key] });
           else if (Array.isArray(data[key]))
             data[key].forEach((element) => {
-              flat(element, akey, avalue);
+              flat(element, aKey, aValue);
             });
-          else if (keys.indexOf(key) == -1) flat(data[key], akey, avalue);
+          else if (keys.indexOf(key) == -1) flat(data[key], aKey, aValue);
           else if (keys.indexOf(key) > -1) {
             metadata.push({
               key: keys[keys.indexOf(key)],
@@ -262,20 +257,20 @@ export class HandleService {
           }
         });
     };
-    flat(data, akey, avalue);
+    flat(data, aKey, aValue);
     return { metadata };
   }
 
   toClarisaRegions(regions) {
-    let arrayofobjects = [];
+    let arrayOfObjects = [];
     if (!Array.isArray(regions)) regions = [regions];
     regions.forEach((element) => {
-      arrayofobjects.push({
+      arrayOfObjects.push({
         name: element,
-        clarisa_id: this.ClarisaRegons[element.toLowerCase()],
+        clarisa_id: this.ClarisaRegions[element.toLowerCase()],
       });
     });
-    return arrayofobjects;
+    return arrayOfObjects;
   }
 
   async getInfoByHandle(handle) {
@@ -283,18 +278,20 @@ export class HandleService {
     if (!param) throw new BadRequestException('please provide valid handle');
     else handle = link_type == 'handle' ? param : param;
 
-    let { schema, repo, link, type } = this.getInfobyScheam(schemas, prefix);
+    let { schema, repo, link, type } = this.getInfoBySchema(schemas, prefix);
 
-    let dataSurces =
+    let dataSources =
       link_type == 'handle' ? [this.getAltmetricByHandle(handle)] : [];
     if (type == 'DSpace')
-      dataSurces.push(this.getDpsace(handle, schema, repo, link));
+      dataSources.push(this.getDpsace(handle, schema, repo, link));
     if (type == 'Dataverse')
-      dataSurces.push(this.getDataverse(handle, schema, repo, link, link_type));
+      dataSources.push(
+        this.getDataVerse(handle, schema, repo, link, link_type),
+      );
     if (type == 'CKAN')
-      dataSurces.push(this.getCkan(handle, schema, repo, link, link_type));
+      dataSources.push(this.getCkan(handle, schema, repo, link, link_type));
 
-    const results = await Promise.all(dataSurces);
+    const results = await Promise.all(dataSources);
 
     let data = results.length > 1 ? results[1] : results[0];
 
@@ -326,26 +323,25 @@ export class HandleService {
     }
 
     if (data?.Countries) {
-      let newArrayOfcountries = [];
-      const tobeChange = {
+      let newArrayOfCountries = [];
+      const toBeChange = {
         Congo: 'Congo, Democratic Republic of',
       };
-      const tobeDeleted = ['Democratic Republic Of'];
+      const toBeDeleted = ['Democratic Republic Of'];
       if (!Array.isArray(data?.Countries)) data.Countries = [data.Countries];
       data?.Countries.forEach((element) => {
         if (Array.isArray(element) && element.length > 1)
-          newArrayOfcountries.push(element.join(', '));
-        else newArrayOfcountries.push(element);
+          newArrayOfCountries.push(element.join(', '));
+        else newArrayOfCountries.push(element);
       });
-      const flatedAray = newArrayOfcountries.flat();
-      newArrayOfcountries = [];
-      flatedAray.forEach((element) => {
-        if(tobeChange[element])
-        newArrayOfcountries.push(tobeChange[element]);
-        else if(tobeDeleted.indexOf(element) == -1)
-        newArrayOfcountries.push(element)
+      const flattedArray = newArrayOfCountries.flat();
+      newArrayOfCountries = [];
+      flattedArray.forEach((element) => {
+        if (toBeChange[element]) newArrayOfCountries.push(toBeChange[element]);
+        else if (toBeDeleted.indexOf(element) == -1)
+          newArrayOfCountries.push(element);
       });
-      data['Countries'] = newArrayOfcountries;
+      data['Countries'] = newArrayOfCountries;
     }
 
     if (results.length > 1) data['handle_altmetric'] = results[0];
@@ -361,11 +357,11 @@ export class HandleService {
 
     if (data?.ORCID) data['ORCID_Data'] = await this.getORCID(data.ORCID);
 
-    data['FAIR'] = this.calclateFAIR(data);
+    data['FAIR'] = this.calculateFAIR(data);
 
     return data;
   }
-  calclateFAIR(data) {
+  calculateFAIR(data) {
     let FAIR = {
       score: {
         total: 0,
@@ -433,7 +429,7 @@ export class HandleService {
             (data['Open Access'] as string)
               .toLocaleLowerCase()
               .includes('open access') &&
-            licences.indexOf(data['Rights']) >= 0
+            licenses.indexOf(data['Rights']) >= 0
               ? true
               : false,
         },
@@ -482,13 +478,13 @@ export class HandleService {
 
   async getORCID(orcids) {
     if (!Array.isArray(orcids)) orcids = [orcids];
-    let tohit = [];
+    let toHit = [];
     orcids.forEach((orcid) => {
       const regex = /([A-Za-z0-9]{4}-){3}[A-Za-z0-9]{4}/gm;
       let match = regex.exec(orcid);
       if (match && match[0]) {
         orcid = match[0];
-        tohit.push(
+        toHit.push(
           this.http
             .get(`https://orcid.org/${orcid}`, {
               headers: { Accept: 'application/json' },
@@ -499,8 +495,8 @@ export class HandleService {
         );
       }
     });
-    if (tohit.length > 0)
-      return await (await Promise.all(tohit)).filter((d) => d);
+    if (toHit.length > 0)
+      return await (await Promise.all(toHit)).filter((d) => d);
     else return [];
   }
 
@@ -509,10 +505,10 @@ export class HandleService {
       .get(`${link}/rest/handle/${handle}?expand=all`)
       .pipe(map((d) => d.data))
       .toPromise()
-      .catch((e) => console.log(e));
-    let formated_data = this.formatService.format(data, schema);
-    formated_data['repo'] = repo;
-    return formated_data;
+      .catch((e) => console.error(e));
+    let formatted_data = this.formatService.format(data, schema);
+    formatted_data['repo'] = repo;
+    return formatted_data;
   }
 
   async getAltmetricByHandle(handle) {

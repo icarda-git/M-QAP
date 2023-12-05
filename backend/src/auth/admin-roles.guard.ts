@@ -23,7 +23,6 @@ export class AdminRolesGuard implements CanActivate {
 
     const user: any =  request.user;
 
-    // console.log(user)
     if(user.role == 'admin') {
         return true;
     }

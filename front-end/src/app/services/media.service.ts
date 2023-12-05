@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { environment } from 'src/environments/environment';
 
 export type UploadFileResponse = {
   fileName: string;
@@ -10,33 +11,27 @@ export type UploadFileResponse = {
   providedIn: 'root',
 })
 export class MediaService {
+  private api: string = `${environment.api_url}/media`;
+
   constructor(private httpService: HttpClient) {}
 
-  getURL(route: string) {
-    return `http://localhost:3000` + route;
-  }
-
   upload(formData: FormData) {
-    return this.httpService.post<UploadFileResponse>(
-      this.getURL('/media'),
-      formData,
-      {
-        headers: {},
-      }
-    );
+    return this.httpService.post<UploadFileResponse>(this.api, formData, {
+      headers: {},
+    });
   }
 
   download(id: string) {
-    return this.httpService.get(this.getURL(`/media/file/${id}`));
+    return this.httpService.get(`${this.api}/file/${id}`);
   }
 
   downloadFileFromLink(url: string, name: string) {
-    saveAs(this.getURL(url), name);
+    saveAs(`${this.api}/${url}`, name);
   }
 
   downloadFile(file: any, text: string) {
     saveAs(
-      this.getURL(`/media/file/${file}`),
+      `${this.api}/file/${file}`,
       [text, '.', file.split('.').pop()].join('')
     );
   }

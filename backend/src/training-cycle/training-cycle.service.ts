@@ -17,7 +17,6 @@ export class TrainingCycleService {
   }
 
   public findAll(query: PaginateQuery): Promise<Paginated<TrainingCycle>> {
-    console.log(query);
     return paginate(query, this.trainingCycleRepository, {
       sortableColumns: ['id', 'text', 'creation_date'],
       searchableColumns: ['text', 'creation_date'],

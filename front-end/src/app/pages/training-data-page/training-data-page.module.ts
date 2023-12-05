@@ -4,6 +4,7 @@ import { TrainingDataPageComponent } from './training-data-page.component';
 import { TrainingDataTableComponent } from './training-data-table/training-data-table.component';
 import { TrainingDataFormComponent } from './training-data-form/training-data-form.component';
 import { PagePaseModule } from '../page-pase.module';
+import { DeleteConfirmDialogModule } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,10 @@ import { PagePaseModule } from '../page-pase.module';
     TrainingDataTableComponent,
     TrainingDataFormComponent,
   ],
-  imports: [PagePaseModule, TrainingDataPageRoutingModule],
+  imports: [
+    PagePaseModule,
+    TrainingDataPageRoutingModule,
+    DeleteConfirmDialogModule,
+  ],
 })
 export class TrainingDataPageModule {}

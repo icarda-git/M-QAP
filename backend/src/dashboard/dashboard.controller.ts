@@ -6,13 +6,13 @@ import { DataSource } from 'typeorm';
 
 @Controller('dashboard')
 export class DashboardController {
-  constructor(private dataSource: DataSource,private trainningDataService :TrainingDataService,private predictionsService :PredictionsService) {}
+  constructor(private dataSource: DataSource,private trainingDataService :TrainingDataService,private predictionsService :PredictionsService) {}
   @Get('avg_confidant')
   avg_confidant() {
     return  this.dataSource
     .createQueryBuilder()
     .from('predictions', 'predictions')
-    .leftJoin(TrainingCycle,'cycle','cycle.id =  predictions.trainning_cycle_id')
+    .leftJoin(TrainingCycle,'cycle','cycle.id =  predictions.training_cycle_id')
     .addSelect(`AVG(predictions.confidant)`, 'avg_confidant')
     .addSelect('cycle.id','cycle_id')
     .addSelect('cycle.text','cycle_name')
@@ -25,7 +25,7 @@ export class DashboardController {
   @Get('counters')
  async counters() {
     return {
-    trainningData: await this.trainningDataService.trainingDataRepository.count(),
+    trainningData: await this.trainingDataService.trainingDataRepository.count(),
     predictions: await this.predictionsService.predictionsRepository.count()
    }
   }

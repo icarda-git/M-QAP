@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, map } from 'rxjs';
 import { Paginated } from '../share/types/paginate.type';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommoditiesService {
-  private api: string = `http://localhost:3000/commodities`;
+  private api: string = `${environment.api_url}/commodities`;
 
   constructor(private http: HttpClient) {}
 

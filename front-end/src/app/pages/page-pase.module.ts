@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { ContentContainerComponent } from '../share/content-container/content-container.component';
+import { PageContainerComponent } from '../share/page-container/page-container.component';
 import { H1Component } from '../share/h1/h1.component';
 import { UploadFileMaterialComponent } from '../share/upload-file-material/upload-file-material.component';
 import { DeleteIconComponent } from '../share/delete-icon/delete-icon.component';
@@ -32,7 +32,7 @@ import { OrganizationInputComponent } from '../share/organization-input/organiza
     MatFormFieldModule,
     MatInputModule,
     H1Component,
-    ContentContainerComponent,
+    PageContainerComponent,
     EditIconComponent,
     DeleteIconComponent,
     InputComponent,
@@ -55,7 +55,7 @@ import { OrganizationInputComponent } from '../share/organization-input/organiza
     MatFormFieldModule,
     MatInputModule,
     H1Component,
-    ContentContainerComponent,
+    PageContainerComponent,
     EditIconComponent,
     DeleteIconComponent,
     InputComponent,

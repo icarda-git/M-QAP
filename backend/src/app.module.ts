@@ -4,7 +4,7 @@ import { AI } from './ai/ai.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DoiService } from './doi/doi.service';
-import { FormatService } from './handle/formater.service';
+import { FormatService } from './handle/formatter.service';
 import { HandleService } from './handle/handle.service';
 import { HttpModule } from '@nestjs/axios';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';

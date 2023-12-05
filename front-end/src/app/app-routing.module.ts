@@ -9,6 +9,13 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'license',
+    loadChildren: () =>
+      import('./pages/license-page/license-page.module').then(
+        (m) => m.LicensePageModule
+      ),
+  },
+  {
     canActivate: [AdminGuard],
     path: 'home',
     loadChildren: () =>
@@ -59,9 +66,7 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./pages/auth/auth.module').then(
-        (m) => m.AuthModule
-      ),
+      import('./pages/auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TrainingCycleAddDialogComponent } from '../training-cycle-add-dialog/training-cycle-add-dialog.component';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Paginated } from 'src/app/share/types/paginate.type';
+import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-training-cycle-table',
@@ -90,27 +91,26 @@ export class TrainingCycleTableComponent {
   }
 
   delete(id: number) {
-    // this.dialog
-    //   .open(DeleteConfirmDialogComponent, {
-    //     data: {
-    //       message: 'Are you sure you want to delete this record ?',
-    //       title: 'Delete',
-    //       svg: `../../../../assets/shared-image/delete-user.png`,
-    //     },
-    //   })
-    //   .afterClosed()
-    //   .subscribe(async (dialogResult) => {
-    //     if (dialogResult == true) {
-    //       await this.trainingCycleService.deleteTrainingCycle(id).then(
-    //         (data) => {
-    //           this.initTable();
-    //           this.toastr.success('Deleted successfully');
-    //         },
-    //         (error) => {
-    //           this.toastr.error(error.error.message);
-    //         }
-    //       );
-    //     }
-    //   });
+    this.dialog
+      .open(DeleteConfirmDialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete this record ?',
+          title: 'Delete',
+        },
+      })
+      .afterClosed()
+      .subscribe(async (dialogResult) => {
+        if (dialogResult == true) {
+          await this.trainingCycleService.delete(id).subscribe({
+            next: () => {
+              this.loadData();
+              this.toastr.success('Deleted successfully');
+            },
+            error: (error) => {
+              this.toastr.error(error.error.message);
+            },
+          });
+        }
+      });
   }
 }

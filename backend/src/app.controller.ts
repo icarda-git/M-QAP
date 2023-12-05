@@ -5,10 +5,8 @@ import {
   HttpStatus,
   Param,
   Query,
-  UseGuards,
 } from '@nestjs/common';
 import { AI } from './ai/ai.service';
-import { AuthGuard } from './auth.guard';
 import { DoiService } from './doi/doi.service';
 import { HandleService } from './handle/handle.service';
 
@@ -30,14 +28,14 @@ export class AppController {
       if (doi) return this.doiService.getInfoByDOI(doi);
       else
         throw new HttpException(
-          'BadRequst valid DOI must be provided',
+          'Bad request valid DOI must be provided',
           HttpStatus.BAD_REQUEST,
         );
     } else if (handle) {
       return this.handleService.getInfoByHandle(handle);
     } else
       throw new HttpException(
-        'BadRequst valid handle must be provided',
+        'Bad request valid handle must be provided',
         HttpStatus.BAD_REQUEST,
       );
   }
@@ -47,7 +45,7 @@ export class AppController {
       return this.handleService.getInfoByHandle(link);
     } else
       throw new HttpException(
-        'BadRequst valid handle must be provided',
+        'Bad request valid handle must be provided',
         HttpStatus.BAD_REQUEST,
       );
   }

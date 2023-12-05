@@ -27,7 +27,6 @@ export class CommoditiesService extends TypeOrmCrudService<Commodity> {
   }
 
   public findAll(query: PaginateQuery): Promise<Paginated<Commodity>> {
-    console.log(query);
     return paginate(query, this.commoditiesRepository, {
       sortableColumns: ['id', 'name'],
       searchableColumns: ['name'],
@@ -72,7 +71,7 @@ export class CommoditiesService extends TypeOrmCrudService<Commodity> {
         name: item.A,
         source: 'system/excel',
       }).catch(() => {
-        console.log('Duplicated Parent : ', item.A);
+        console.info('Duplicated Parent : ', item.A);
 
         return this.findOneByName(item.A);
       });
@@ -85,7 +84,7 @@ export class CommoditiesService extends TypeOrmCrudService<Commodity> {
           parent: commodity,
           source: 'system/excel',
         }).catch(() => {
-          console.log('Duplicated Child : ', item.A);
+          console.info('Duplicated Child : ', item.A);
 
           return null;
         });

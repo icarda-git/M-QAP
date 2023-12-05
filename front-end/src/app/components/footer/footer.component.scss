@@ -1,2 +1,29 @@
-@import "../../sass/layout/header/header";
-@import "../../sass/layout/footer/footer";
+.main-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  align-items: center;
+  color: #f8f8f9;
+
+  div:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    nav {
+      ul {
+        display: flex;
+        grid-area: 1rem;
+        list-style: none;
+        gap: 0.9rem;
+        padding-bottom: .25rem;
+        li {
+          a {
+            color: #f8f8f9;
+          }
+        }
+      }
+    }
+  }
+}

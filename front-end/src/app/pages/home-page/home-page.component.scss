@@ -1,16 +1,15 @@
 div {
   display: flex;
   flex-direction: column;
-  > *{
+  > * {
     margin-bottom: 2rem;
   }
 
   h4 {
     font-size: 1.5rem;
-    color: #050410;
     margin-top: 1.5rem;
+    color: #2caffe;
   }
-
 
   .avg {
     display: flex;

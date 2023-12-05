@@ -23,7 +23,6 @@ export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
   }
 
   public findAll(query: PaginateQuery): Promise<Paginated<TrainingData>> {
-    console.log(query);
     return paginate(query, this.trainingDataRepository, {
       sortableColumns: ['id', 'text', 'claresa.(name)'],
       searchableColumns: ['text', 'claresa.(name)'],
@@ -43,14 +42,13 @@ export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
     result.pop(); //remove columns readers.
 
     for await (const item of result) {
-      console.log(item);
       const record = this.trainingDataRepository.create({
         clarisa_id: item.B,
         text: item.A,
         source: 'system/excel',
       });
       await this.trainingDataRepository.save(record).catch((e) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>> error');
+        console.error('>>>>>>>>>>>>>>>>>>>>>> error');
       });
     }
 

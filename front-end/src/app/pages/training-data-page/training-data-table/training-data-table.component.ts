@@ -5,7 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { TrainingDataService } from 'src/app/services/training-data.service';
 import { TrainingDataFormComponent } from '../training-data-form/training-data-form.component';
-import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
 import {
   MediaService,
   UploadFileResponse,
@@ -13,6 +12,8 @@ import {
 import { Paginated } from 'src/app/share/types/paginate.type';
 import { TrainingData } from 'src/app/share/types/training-data.type';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DeleteDialogService } from 'src/app/share/delete-confirm-dialog/delete-dialog.service';
+import { filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-training-data-table',
@@ -39,6 +40,7 @@ export class TrainingDataTableComponent {
   form!: FormGroup;
   constructor(
     public dialog: MatDialog,
+    private deleteDialogService: DeleteDialogService,
     private trainingDataService: TrainingDataService,
     private toastr: ToastrService,
     private mediaService: MediaService,
@@ -77,7 +79,7 @@ export class TrainingDataTableComponent {
     queryString.push(`search=${this.text}`);
 
     this.trainingDataService
-      .getAllTrainingData(queryString.join('&'))
+      .find(queryString.join('&'))
       .subscribe((response) => {
         this.trainingData = response;
         this.length = response.meta.totalItems;
@@ -111,28 +113,15 @@ export class TrainingDataTableComponent {
   }
 
   delete(id: number) {
-    this.dialog
-      .open(DeleteConfirmDialogComponent, {
-        data: {
-          message: 'Are you sure you want to delete this record ?',
-          title: 'Delete',
-
-          svg: `../../../../assets/shared-image/delete-user.png`,
-        },
-      })
-      .afterClosed()
-      .subscribe(async (dialogResult) => {
-        if (dialogResult == true) {
-          await this.trainingDataService.deleteTrainingData(id).then(
-            (data) => {
-              this.loadData();
-              this.toastr.success('Deleted successfully');
-            },
-            (error) => {
-              this.toastr.error(error.error.message);
-            }
-          );
-        }
+    this.deleteDialogService
+      .create()
+      .pipe(
+        filter((answer) => answer),
+        switchMap(() => this.trainingDataService.delete(id))
+      )
+      .subscribe(() => {
+        this.loadData();
+        this.toastr.success('Deleted successfully');
       });
   }
 }

@@ -14,7 +14,6 @@ export interface DialogData {
   styleUrls: ['./training-cycle-add-dialog.component.scss'],
 })
 export class TrainingCycleAddDialogComponent implements OnInit {
-  id: number = 0;
   form!: FormGroup;
 
   constructor(
@@ -23,23 +22,27 @@ export class TrainingCycleAddDialogComponent implements OnInit {
     private trainingCycleService: TrainingCycleService,
     private toast: ToastrService,
     private fb: FormBuilder
-  ) {
-    this.id = data.id;
-  }
+  ) {}
 
   ngOnInit() {
     this.formInit();
+    this.patchForm();
   }
 
-  private async formInit() {
+  formInit() {
     this.form = this.fb.group({
       text: [null, Validators.required],
     });
+  }
+
+  get id() {
+    return this.data?.id;
+  }
+
+  patchForm() {
     if (this.id) {
-      let { id, ...trainingCycleValues } =
-        await this.trainingCycleService.getTrainingCycle(this.id);
-      this.form.setValue({
-        ...trainingCycleValues,
+      this.trainingCycleService.get(this.id).subscribe((data) => {
+        this.form.patchValue(data);
       });
     }
   }
@@ -49,19 +52,20 @@ export class TrainingCycleAddDialogComponent implements OnInit {
     this.form.updateValueAndValidity();
     if (this.form.valid) {
       await this.trainingCycleService
-        .submitTrainingCycle(this.id, this.form.value)
-        .then(
-          (data) => {
-            if (this.id === 0)
-              this.toast.success('trainingCycle added successfully');
-            else this.toast.success('trainingCycle updated successfully');
-
+        .upsert(this.id, this.form.value)
+        .subscribe({
+          next: (data) => {
+            if (this.id) {
+              this.toast.success('Training cycle updated  successfully');
+            } else {
+              this.toast.success('Training cycle added successfully');
+            }
             this.dialogRef.close({ submitted: true });
           },
-          (error) => {
+          error: (error) => {
             this.toast.error(error.error.message);
-          }
-        );
+          },
+        });
     }
   }
 }
