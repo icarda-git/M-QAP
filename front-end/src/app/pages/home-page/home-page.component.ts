@@ -52,13 +52,17 @@ export class HomePageComponent {
           title: {
             text: 'Cycle',
           },
+          tickPositioner: function () {
+            return (this.series[0] as any)?.processedXData;
+          },
         },
         series: [
           {
             name: 'Cycle id',
-            data: response.cyclePredictionsAverage.map(
-              (i) => i.predictions_average
-            ),
+            data: response.cyclePredictionsAverage.map((i) => ({
+              y: i.predictions_average,
+              x: i.cycle_id,
+            })),
           } as any,
         ],
       });
@@ -74,18 +78,24 @@ export class HomePageComponent {
         },
         yAxis: {
           title: {
-            text: 'Average',
+            text: 'Count',
           },
         },
         xAxis: {
           title: {
             text: 'Cycle',
           },
+          tickPositioner: function () {
+            return (this.series[0] as any)?.processedXData;
+          },
         },
         series: [
           {
             name: 'Cycle id',
-            data: response.chartData.map((i) => i.predictions_count),
+            data: response.chartData.map((i) => ({
+              y: i.predictions_count,
+              x: i.cycle_id,
+            })),
           } as any,
         ],
       });

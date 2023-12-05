@@ -171,9 +171,7 @@ export class HandleService {
     const q = this.commoditiesService.commoditiesRepository
       .createQueryBuilder('commodity')
       .where('LOWER(commodity.name)  IN(:keywords)', { keywords });
-    console.log(q.getSql());
     const list = await q.getMany();
-    console.log(list);
     return list.map((i) => i.name);
   }
 
