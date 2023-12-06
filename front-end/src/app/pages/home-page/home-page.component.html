@@ -17,6 +17,11 @@
           <span>{{ statistics.totalTrainingCycle }}</span>
         </app-container>
         <app-container>
+          <h5>Training data</h5>
+          <span>{{ statistics.totalTrainingData }}</span>
+        </app-container>
+
+        <app-container>
           <h5>Commodities</h5>
           <span>{{ statistics.totalCommodities }}</span>
         </app-container>
@@ -27,7 +32,7 @@
       <app-container>
         <div [chart]="countChart"></div>
       </app-container>
-      
+
       <h4>Average prediction for each Cycle</h4>
       <app-container>
         <div [chart]="averageChart"></div>

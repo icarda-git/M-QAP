@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TrainingData } from 'src/entities/training-data.entity';
 import { Repository } from 'typeorm';
@@ -16,10 +16,16 @@ export class TrainingDataService extends TypeOrmCrudService<TrainingData> {
     super(trainingDataRepository);
   }
 
-  create(createUserDto: any) {
-    this.find({});
-    const newUser = this.trainingDataRepository.create({ ...createUserDto });
-    return this.trainingDataRepository.save(newUser);
+  async create(createUserDto: any) {
+    try {
+      const record = this.trainingDataRepository.create({ ...createUserDto });
+      console.log(record);
+      return await this.trainingDataRepository.save(record);
+      // .catch((error) => console.log('>>>>', error));
+    } catch (error) {
+      (error) => console.log('>>>>', error);
+      throw new BadRequestException('Duplicated data');
+    }
   }
 
   public findAll(query: PaginateQuery): Promise<Paginated<TrainingData>> {

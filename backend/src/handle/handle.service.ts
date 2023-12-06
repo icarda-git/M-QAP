@@ -8,7 +8,6 @@ import * as licenses from './licenses.json';
 import xlsx from 'node-xlsx';
 import { HttpService } from '@nestjs/axios';
 import { CommoditiesService } from 'src/commodities/commodities.service';
-import { In } from 'typeorm';
 const https = require('https');
 @Injectable()
 export class HandleService {
@@ -170,7 +169,7 @@ export class HandleService {
     keywords = keywords.map((i) => i.toLowerCase());
     const q = this.commoditiesService.commoditiesRepository
       .createQueryBuilder('commodity')
-      .where('LOWER(commodity.name)  IN(:keywords)', { keywords });
+      .where('LOWER(commodity.name) IN(:keywords)', { keywords });
     const list = await q.getMany();
     return list.map((i) => i.name);
   }

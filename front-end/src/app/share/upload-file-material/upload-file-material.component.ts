@@ -45,6 +45,7 @@ export class UploadFileMaterialComponent {
   constructor(private mediaService: MediaService) {}
 
   fileSelected(input: any) {
+    console.log(input);
     const { files } = input.srcElement;
     const formData = new FormData();
     for (let i = 0; i < files.length; i++) {

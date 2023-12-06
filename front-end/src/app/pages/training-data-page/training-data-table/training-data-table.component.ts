@@ -10,7 +10,7 @@ import {
   UploadFileResponse,
 } from 'src/app/services/media.service';
 import { Paginated } from 'src/app/share/types/paginate.type';
-import { TrainingData } from 'src/app/share/types/training-data.type';
+import { TrainingData } from 'src/app/share/types/training-data.model.type';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DeleteDialogService } from 'src/app/share/delete-confirm-dialog/delete-dialog.service';
 import { filter, switchMap } from 'rxjs';
@@ -29,14 +29,13 @@ export class TrainingDataTableComponent {
     'source',
     'actions',
   ];
-  dataSource!: MatTableDataSource<any>;
+  dataSource!: MatTableDataSource<TrainingData>;
   trainingData!: Paginated<TrainingData>;
   length = 0;
   pageSize = 50;
   pageIndex = 0;
   sortBy = 'text:ASC';
   text = '';
-  organizations: any = [];
   form!: FormGroup;
   constructor(
     public dialog: MatDialog,

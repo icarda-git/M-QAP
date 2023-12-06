@@ -4,8 +4,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Paginated } from 'src/app/share/types/paginate.type';
 import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
 import { PredictionsService } from 'src/app/services/predictions.service';
+import { Prediction } from 'src/app/share/types/prediction.model.type';
+import { TrainingDataFormComponent } from '../../training-data-page/training-data-form/training-data-form.component';
 
 @Component({
   selector: 'app-predictions-table',
@@ -13,6 +14,7 @@ import { PredictionsService } from 'src/app/services/predictions.service';
   styleUrls: ['./predictions-table.component.scss'],
 })
 export class PredictionsTableComponent {
+  form!: FormGroup;
   columnsToDisplay: string[] = [
     'id',
     'text',
@@ -20,20 +22,19 @@ export class PredictionsTableComponent {
     'acronym',
     'confidant',
     'cycle',
+    'actions',
   ];
-  dataSource!: MatTableDataSource<any>;
-  trainingData!: Paginated<any>;
+  dataSource!: MatTableDataSource<Prediction>;
+  response!: Paginated<Prediction>;
   length = 0;
   pageSize = 50;
   pageIndex = 0;
   sortBy = 'text:ASC';
   text = '';
-  organizations: any = [];
-  form!: FormGroup;
+
   constructor(
     public dialog: MatDialog,
     private predictionsService: PredictionsService,
-    private toastr: ToastrService,
     private fb: FormBuilder
   ) {}
 
@@ -61,6 +62,24 @@ export class PredictionsTableComponent {
     this.loadData();
   }
 
+  openDialog(prediction: Prediction): void {
+    const dialogRef = this.dialog.open(TrainingDataFormComponent, {
+      data: {
+        data: {
+          text: prediction.text,
+          source: 'system/prediction',
+          clarisa_id: prediction.clarisa_id,
+        },
+      },
+      width: '100%',
+      maxWidth: '650px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.submitted) this.loadData();
+    });
+  }
+
   async loadData() {
     const queryString = [];
     queryString.push(`limit=${this.pageSize}`);
@@ -71,7 +90,7 @@ export class PredictionsTableComponent {
     this.predictionsService
       .find(queryString.join('&'))
       .subscribe((response) => {
-        this.trainingData = response;
+        this.response = response;
         this.length = response.meta.totalItems;
         this.dataSource = new MatTableDataSource(response.data);
       });

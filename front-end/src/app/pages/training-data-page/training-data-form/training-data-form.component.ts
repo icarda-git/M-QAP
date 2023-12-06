@@ -5,7 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { TrainingDataService } from 'src/app/services/training-data.service';
 
 export interface DialogData {
-  id: number;
+  id?: number;
+  data?: any;
 }
 
 @Component({
@@ -14,7 +15,7 @@ export interface DialogData {
   styleUrls: ['./training-data-form.component.scss'],
 })
 export class TrainingDataFormComponent implements OnInit {
-  form: FormGroup<any> = new FormGroup([]);
+  form!: FormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<TrainingDataFormComponent>,
@@ -38,6 +39,8 @@ export class TrainingDataFormComponent implements OnInit {
       this.trainingDataService.get(this.id).subscribe((data) => {
         this.form.patchValue(data);
       });
+    } else if (!!this.data?.data) {
+      this.form.patchValue(this.data.data);
     }
   }
 
@@ -61,7 +64,12 @@ export class TrainingDataFormComponent implements OnInit {
             else this.toast.success('Training data updated successfully');
             this.dialogRef.close({ submitted: true });
           },
-          error: (error) => this.toast.error(error.error.message),
+          error: (error) => {
+            console.log(error);
+            if (this.id) this.toast.error('Training data failed to update');
+            else this.toast.error('Training data failed to add');
+            this.toast.error(error.error.message);
+          },
         });
     }
   }

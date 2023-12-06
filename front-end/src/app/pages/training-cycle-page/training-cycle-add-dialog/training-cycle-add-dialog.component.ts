@@ -54,7 +54,7 @@ export class TrainingCycleAddDialogComponent implements OnInit {
       await this.trainingCycleService
         .upsert(this.id, this.form.value)
         .subscribe({
-          next: (data) => {
+          next: () => {
             if (this.id) {
               this.toast.success('Training cycle updated  successfully');
             } else {

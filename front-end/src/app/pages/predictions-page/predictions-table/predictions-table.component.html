@@ -29,7 +29,7 @@
       <!-- Text Column -->
       <ng-container matColumnDef="text">
         <th mat-header-cell *matHeaderCellDef>Text</th>
-        <td mat-cell *matCellDef="let element"  class="width-8">{{ element.text }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.text }}</td>
       </ng-container>
 
       <!-- CLARISA Name Column -->
@@ -43,7 +43,7 @@
       <!-- CLARISA Acronym Column -->
       <ng-container matColumnDef="acronym">
         <th mat-header-cell *matHeaderCellDef>CLARISA Acronym</th>
-        <td mat-cell *matCellDef="let element"  class="width-12">
+        <td mat-cell *matCellDef="let element" class="width-12">
           {{ element.claresa.acronym }}
         </td>
       </ng-container>
@@ -51,16 +51,34 @@
       <!-- Confident Column -->
       <ng-container matColumnDef="confidant">
         <th mat-header-cell *matHeaderCellDef>Confident</th>
-        <td mat-cell *matCellDef="let element"  class="width-5">
+        <td mat-cell *matCellDef="let element" class="width-5">
           {{ element.confidant }}
         </td>
       </ng-container>
 
       <!-- Cycle Column -->
-      <ng-container matColumnDef="cycle">
+      <ng-container matColumnDef="cycle" >
         <th mat-header-cell *matHeaderCellDef>Cycle</th>
-        <td mat-cell *matCellDef="let element"  class="width-15">
+        <td mat-cell *matCellDef="let element" class="width-8">
           {{ element.trainingCycle?.text }}
+        </td>
+      </ng-container>
+
+      <!-- Action Name Column -->
+      <ng-container matColumnDef="actions" class="width-8">
+        <th mat-header-cell *matHeaderCellDef>
+          <span class="h5">Action</span>
+        </th>
+        <td mat-cell *matCellDef="let element" class="width-8">
+          <div class="action-container">
+            <button
+              mat-icon-button
+              matTooltip="Edit"
+              (click)="openDialog(element)"
+            >
+              <mat-icon><app-edit-icon></app-edit-icon> </mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
       <tr

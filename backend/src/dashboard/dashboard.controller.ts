@@ -11,9 +11,9 @@ export class DashboardController {
   avg_confidant() {
     return  this.dataSource
     .createQueryBuilder()
-    .from('predictions', 'predictions')
-    .leftJoin(TrainingCycle,'cycle','cycle.id =  predictions.training_cycle_id')
-    .addSelect(`AVG(predictions.confidant)`, 'avg_confidant')
+    .from('prediction', 'prediction')
+    .leftJoin(TrainingCycle,'cycle','cycle.id =  prediction.training_cycle_id')
+    .addSelect(`AVG(prediction.confidant)`, 'avg_confidant')
     .addSelect('cycle.id','cycle_id')
     .addSelect('cycle.text','cycle_name')
     .addGroupBy('cycle.id')

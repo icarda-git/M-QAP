@@ -1,51 +1,34 @@
-<div mat-dialog-container class="contact-box">
-  <div class="contact-content-box">
-    <div class="el-1"></div>
-    <div class="el-2">
-      <div class="el-2-box">
-        <div class="close-box">
-          <button
-            class="form-dialog-header__icon-box__btn"
-            (click)="onCloseDialog()"
-          >
-            <div class="form-dialog-header__icon-box__icon-size">
-              <img
-                class="contact-dialog-header__icon"
-                src="../../../assets/shared-image/Vector-close.svg"
-                alt="~/Frontend/images/icon _ Vector-close"
-              />
-            </div>
-          </button>
-        </div>
+<app-dialog-layout>
+  <h3 header-label>Contact us</h3>
+  <button header-action mat-icon-button (click)="dialogRef.close(false)">
+    <mat-icon> close </mat-icon>
+  </button>
 
-        <div>
-          <p class="contact-text-main">Please do not hesitate to contact us:</p>
-        </div>
-        <div class="contact-text-box">
-          <p class="contact-text-box__text">
-            For technical questions related with this tool, please contact
-
-            <a
-              class="contact-text-box__link"
-              href="mailto:PRMSTechSupport@cgiar.org"
-              >PRMSTechSupport&#64;cgiar.org &rarr;</a
-            >
-          </p>
-        </div>
-        <div class="contact-text-box">
-          <p class="contact-text-box__text">
-            For content questions related on how to fill different sections,
-            please contact
-            <a
-              class="contact-text-box__link"
-              href="mailto:projectcoordinationunit@cgiar.org"
-            >
-              projectcoordinationunit&#64;cgiar.org &rarr;</a
-            >
-          </p>
-        </div>
+  <section content>
+    <div>
+      <div>
+        <p>Please do not hesitate to contact us:</p>
       </div>
+      <div>
+        <p>
+          For technical questions related with this tool, please contact
+
+          <a href="mailto:PRMSTechSupport@cgiar.org"
+            >PRMSTechSupport&#64;cgiar.org &rarr;</a
+          >
+        </p>
+      </div>
+
     </div>
-    <div class="el-3"></div>
-  </div>
-</div>
+  </section>
+
+  <button
+    action
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="dialogRef.close(false)"
+  >
+    Close
+  </button>
+</app-dialog-layout>

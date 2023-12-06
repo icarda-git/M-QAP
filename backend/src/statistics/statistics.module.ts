@@ -5,6 +5,7 @@ import { OrganizationsModule } from 'src/organizations/organizations.module';
 import { PredictionsModule } from 'src/predictions/predictions.module';
 import { TrainingCycleModule } from 'src/training-cycle/training-cycle.module';
 import { CommoditiesModule } from 'src/commodities/commodities.module';
+import { TrainingDataModule } from 'src/training-data/training-data.module';
 
 @Module({
   controllers: [StatisticsController],
@@ -14,6 +15,7 @@ import { CommoditiesModule } from 'src/commodities/commodities.module';
     PredictionsModule,
     TrainingCycleModule,
     CommoditiesModule,
+    TrainingDataModule
   ],
 })
 export class StatisticsModule {}

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Paginated } from 'src/app/share/types/paginate.type';
 import { MatDialog } from '@angular/material/dialog';
 import { OrganizationsService } from 'src/app/services/organizations.service';
+import { Organization } from 'src/app/share/types/organization.model.type';
 
 @Component({
   selector: 'app-clarisa-table',
@@ -13,8 +14,8 @@ import { OrganizationsService } from 'src/app/services/organizations.service';
 })
 export class ClarisaTableComponent {
   columnsToDisplay: string[] = ['id', 'name', 'acronym', 'code'];
-  dataSource!: MatTableDataSource<any>;
-  response!: Paginated<any>;
+  dataSource!: MatTableDataSource<Organization>;
+  response!: Paginated<Organization>;
   length = 0;
   pageSize = 50;
   pageIndex = 0;

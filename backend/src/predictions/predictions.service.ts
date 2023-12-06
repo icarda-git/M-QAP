@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
-import { Predictions } from 'src/entities/predictions.entity';
+import { Prediction } from 'src/entities/predictions.entity';
 import { TrainingCycleService } from 'src/training-cycle/training-cycle.service';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class PredictionsService {
   constructor(
-    @InjectRepository(Predictions)
-    public predictionsRepository: Repository<Predictions>,
+    @InjectRepository(Prediction)
+    public predictionsRepository: Repository<Prediction>,
     private trainingCycleService: TrainingCycleService,
   ) {}
 
@@ -27,7 +27,7 @@ export class PredictionsService {
     }
   }
 
-  findAll(query: PaginateQuery): Promise<Paginated<Predictions>> {
+  findAll(query: PaginateQuery): Promise<Paginated<Prediction>> {
     return paginate(query, this.predictionsRepository, {
       sortableColumns: ['id', 'text', 'claresa.(name)'],
       // defaultSortBy: [['text', 'DESC']],

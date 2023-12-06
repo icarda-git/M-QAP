@@ -21,9 +21,9 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.authService.logintoAWS(
-        this.route.snapshot.queryParamMap.get('code'),
-        this.route.snapshot.queryParamMap.get('redirect_url')
+      this.authService.logIntoAWS(
+        this.route.snapshot.queryParamMap.get('code') as string,
+        this.route.snapshot.queryParamMap.get('redirect_url') as string
       );
     }
   }

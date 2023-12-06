@@ -11,13 +11,11 @@ import {
   StreamableFile,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import * as XLSX from 'xlsx';
 import {
   ApiBearerAuth,
   ApiBody,
   ApiCreatedResponse,
-  ApiProperty,
   ApiTags,
 } from '@nestjs/swagger';
 import { User } from '../entities/user.entity';
@@ -27,10 +25,8 @@ import { createReadStream } from 'fs';
 import { join } from 'path';
 import { unlink } from 'fs/promises';
 import { Brackets, In } from 'typeorm';
-import { createAndUpdateUsers, exportToExcel, getUsers } from 'DTO/users.dto';
-import { RolesGuard } from 'src/auth/roles.guard';
+import { createAndUpdateUsers, exportToExcel, getUsers } from 'src/users/dto/users.dto';
 import { Roles } from 'src/auth/roles.decorator';
-import { Role } from 'src/auth/role.enum';
 import { AdminRolesGuard } from 'src/auth/admin-roles.guard';
 @ApiBearerAuth()
 @UseGuards(JwtAuthGuard, AdminRolesGuard)

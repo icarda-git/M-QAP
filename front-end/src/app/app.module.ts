@@ -26,9 +26,16 @@ import { DeleteIconComponent } from './share/delete-icon/delete-icon.component';
 import { EditIconComponent } from './share/edit-icon/edit-icon.component';
 import { AuthModule } from './pages/auth/auth.module';
 import { DeleteConfirmDialogModule } from './share/delete-confirm-dialog/delete-confirm-dialog.module';
+import { DialogLayoutComponent } from './share/dialog-layout/dialog-layout.component';
+import { ContactUsDialogComponent } from './components/footer/contact-us-dialog/contact-us-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    ContactUsDialogComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,6 +56,8 @@ import { DeleteConfirmDialogModule } from './share/delete-confirm-dialog/delete-
     DeleteIconComponent,
     EditIconComponent,
     AuthModule,
+    DialogLayoutComponent,
+    MatIconModule,
   ],
   providers: [
     TrainingCycleService,

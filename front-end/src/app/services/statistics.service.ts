@@ -1,21 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Statistics } from '../share/types/statistics.model.type';
 
-export type Statistics = {
-  totalCommodities: number;
-  totalOrganization: number;
-  totalTrainingCycle: number;
-  totalPrediction: number;
-  chartData: {
-    cycle_id: number;
-    predictions_count: number;
-  }[];
-  cyclePredictionsAverage: {
-    predictions_average: number;
-    cycle_id: number;
-  }[];
-};
+
 
 @Injectable({
   providedIn: 'root',

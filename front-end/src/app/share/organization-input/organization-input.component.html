@@ -5,7 +5,7 @@
     [readonly]="readonly"
     [multiple]="multiple"
     (change)="selected()"
-    [(ngModel)]="selectedPartner"
+    [(ngModel)]="selectedItem"
     [items]="filteredOptions$ | async"
     [trackByFn]="trackByFn"
     [loading]="loading"
@@ -20,7 +20,3 @@
   </ng-select>
 </div>
 <section class="error-section"></section>
-
-<ng-template #defaultLabelTemplate>
-  {{ label || "" }}
-</ng-template>

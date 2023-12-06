@@ -30,6 +30,7 @@ import {
   tap,
 } from 'rxjs/operators';
 import { OrganizationsService } from 'src/app/services/organizations.service';
+import { Organization } from '../types/organization.model.type';
 
 @Component({
   selector: 'app-organization-input',
@@ -59,59 +60,50 @@ export class OrganizationInputComponent
   @Output() add = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() blur = new EventEmitter();
-
-  @Input() showAddButton = false;
   @Input() multiple: boolean = false;
   @Input() labelTemplate?: TemplateRef<any>;
-  @Input() label = 'Institution';
   @Input() placeholder = 'Search ...';
-  @Input() hint = 'Must select one of listed institutions';
   @Input() readonly: boolean = false;
-  @Input() tooltip?: string;
-  @Input() tooltipPosition: TooltipPosition = 'left';
-  compareObjects: (v1: any, v2: any) => boolean = (
-    v1: any,
-    v2: any
-  ): boolean => {
-    if (v1?.toc_id === v2?.toc_id) return true;
-    else return false;
-  };
+
   value?: string | null;
   labelFieldName = 'name';
-  onChange?: (value: any) => void;
-  onTouched?: () => void;
   filteredOptions$: Observable<any> = of([]);
   partnerInput$ = new Subject<string>();
   searchControl = new FormControl();
   loading = false;
-  selectedPartner?: any;
+  selectedItem?: any;
   control = new FormControl('', Validators.required);
+
+  onChange?: (value: any) => void;
+  onTouched?: () => void;
+  compareObjects: (v1: any, v2: any) => boolean = (v1, v2): boolean => {
+    return v1.id === v2;
+  };
+  trackByFn(item: Organization) {
+    return item.id;
+  }
 
   constructor(
     private organizationsService: OrganizationsService,
     public dialogService: MatDialog
   ) {}
 
-  trackByFn(item: any) {
-    return item.id;
-  }
-
   ngOnInit(): void {
     this.placeholder = this.placeholder
       ? this.placeholder
       : this.labelFieldName;
     this.filteredOptions$ = concat(
-      of([]), // default items
+      of([]),
       this.partnerInput$.pipe(
         distinctUntilChanged(),
-        tap(() => (this.loading = true)),
         filter((term) => {
           return typeof term == 'string' && term.length >= 2;
         }),
+        tap(() => (this.loading = true)),
         switchMap((term) => {
           console.log(term);
           return this.organizationsService.searchOrganization(term).pipe(
-            catchError(() => of([])), // empty list on error
+            catchError(() => of([])),
             tap(() => (this.loading = false))
           );
         })
@@ -125,10 +117,10 @@ export class OrganizationInputComponent
   }
 
   selected() {
-    this.control.setValue(this.selectedPartner);
+    this.control.setValue(this.selectedItem);
   }
 
-  displayFn(option: any): string {
+  displayFn(option: Organization): string {
     return option && option.name ? option.name : '';
   }
 
@@ -141,7 +133,7 @@ export class OrganizationInputComponent
       });
     }
     this.value = obj;
-    this.selectedPartner = obj;
+    this.selectedItem = obj;
     this.control.patchValue(obj, { emitEvent: false });
   }
 

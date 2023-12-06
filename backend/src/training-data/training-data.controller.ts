@@ -6,7 +6,6 @@ import {
   Param,
   Patch,
   Post,
-  Query,
 } from '@nestjs/common';
 import { TrainingDataService } from './training-data.service';
 import { Paginate, PaginateQuery } from 'nestjs-paginate';
@@ -14,7 +13,7 @@ import { Paginate, PaginateQuery } from 'nestjs-paginate';
 @Controller('training-data')
 export class TrainingDataController {
   constructor(private trainingDataService: TrainingDataService) {}
-  
+
   @Post()
   create(@Body() createUserDto: any) {
     return this.trainingDataService.create(createUserDto);

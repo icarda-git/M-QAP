@@ -4,7 +4,7 @@ import { TrainingCycle } from './training-cycle.entity';
 import { Organization } from './organization.entity';
 
 @Entity()
-export class Predictions {
+export class Prediction {
   @PrimaryGeneratedColumn()
   id: number;
 

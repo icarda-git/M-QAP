@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-us-dialog',
@@ -7,13 +7,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./contact-us-dialog.component.scss'],
 })
 export class ContactUsDialogComponent {
-  constructor(
-    private dialogRef: MatDialogRef<ContactUsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public contactData: { title: any; element: any }
-  ) {}
+  constructor(public dialogRef: MatDialogRef<ContactUsDialogComponent>) {}
 
-  //Close-Dialog
-  onCloseDialog() {
-    this.dialogRef.close();
-  }
 }

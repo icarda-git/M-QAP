@@ -8,6 +8,11 @@ import { H1Component } from 'src/app/share/h1/h1.component';
 
 @NgModule({
   declarations: [LicensePageComponent],
-  imports: [CommonModule, LicensePageRoutingModule, PageContainerComponent, H1Component],
+  imports: [
+    CommonModule,
+    LicensePageRoutingModule,
+    PageContainerComponent,
+    H1Component,
+  ],
 })
 export class LicensePageModule {}

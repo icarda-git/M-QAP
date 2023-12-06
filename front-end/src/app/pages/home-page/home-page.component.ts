@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { HeaderServiceService } from '../../header-service.service';
 import { Chart } from 'angular-highcharts';
-import {
-  Statistics,
-  StatisticsService,
-} from 'src/app/services/statistics.service';
+import { StatisticsService } from 'src/app/services/statistics.service';
+import { Statistics } from 'src/app/share/types/statistics.model.type';
 
 @Component({
   selector: 'app-home-page',
@@ -34,6 +32,16 @@ export class HomePageComponent {
 
     this.statisticsService.find().subscribe((response) => {
       this.averageChart = new Chart({
+        tooltip: {
+          formatter: function () {
+            return `
+            <div>
+              <p >The average confidant rate for </p>
+              <br>
+              <p><b> Cycle ${this.x} </b> is <b>${this.y?.toFixed(2)} %</b></p>
+            </div>`;
+          },
+        },
         chart: {
           type: 'line',
         },
@@ -58,8 +66,9 @@ export class HomePageComponent {
         },
         series: [
           {
-            name: 'Cycle id',
+            name: 'Average confidant rate / Cycle',
             data: response.cyclePredictionsAverage.map((i) => ({
+              name: 'Average',
               y: i.predictions_average,
               x: i.cycle_id,
             })),
@@ -67,6 +76,16 @@ export class HomePageComponent {
         ],
       });
       this.countChart = new Chart({
+        tooltip: {
+          formatter: function () {
+            return `
+            <div>
+              <p >The count of predictions for </p>
+              <br>
+              <p><b> Cycle ${this.x} </b> is <b>${this.y}</b></p>
+            </div>`;
+          },
+        },
         chart: {
           type: 'line',
         },
@@ -91,7 +110,7 @@ export class HomePageComponent {
         },
         series: [
           {
-            name: 'Cycle id',
+            name: 'Predictions count / Cycle',
             data: response.chartData.map((i) => ({
               y: i.predictions_count,
               x: i.cycle_id,

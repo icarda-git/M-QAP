@@ -3,19 +3,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { CommoditiesService } from 'src/app/services/commodities.service';
+import { Commodity } from 'src/app/share/types/commodity.model.type';
 
 export interface DialogData {
   id: number;
 }
-
 @Component({
   selector: 'app-commodities-form',
   templateUrl: './commodities-form.component.html',
   styleUrls: ['./commodities-form.component.scss'],
 })
 export class CommoditiesFormComponent implements OnInit {
-  form: FormGroup<any> = new FormGroup([]);
-
+  form!: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<CommoditiesFormComponent>,
     @Inject(MAT_DIALOG_DATA) private data: DialogData,

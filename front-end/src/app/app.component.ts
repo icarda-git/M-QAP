@@ -8,7 +8,9 @@ import { HeaderServiceService } from './header-service.service';
 })
 export class AppComponent implements OnInit {
   constructor(public headerService: HeaderServiceService) {
-    const faviconTag: any = document.getElementById('faviconTag');
+    const faviconTag = document.getElementById('faviconTag') as unknown as {
+      href: string;
+    };
 
     if (
       window.matchMedia &&

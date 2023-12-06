@@ -5,6 +5,7 @@ import { CommoditiesService } from 'src/commodities/commodities.service';
 import { OrganizationsService } from 'src/organizations/organizations.service';
 import { PredictionsService } from 'src/predictions/predictions.service';
 import { TrainingCycleService } from 'src/training-cycle/training-cycle.service';
+import { TrainingDataService } from 'src/training-data/training-data.service';
 
 class PredictionsForEachCycle {
   @Expose()
@@ -31,6 +32,7 @@ export class StatisticsService {
     private organizationsService: OrganizationsService,
     private predictionsService: PredictionsService,
     private trainingCycleService: TrainingCycleService,
+    private trainingDataService: TrainingDataService,
     private commoditiesService: CommoditiesService,
   ) {}
 
@@ -39,6 +41,7 @@ export class StatisticsService {
     total.totalCommodities = await this.findTotalCommodities();
     total.totalOrganization = await this.findTotalOrganization();
     total.totalTrainingCycle = await this.findTotalTrainingCycle();
+    total.totalTrainingData = await this.findTotalTrainingData();
     total.totalPrediction = await this.findTotalPrediction();
     total.chartData = await this.findTrainingCycleData();
     total.cyclePredictionsAverage =
@@ -79,6 +82,17 @@ export class StatisticsService {
       .then((result) => result.meta.totalItems);
   }
 
+  findTotalTrainingData() {
+    const query: PaginateQuery = {
+      path: '',
+      limit: 0,
+      page: 1,
+    };
+    return this.trainingDataService
+      .findAll(query)
+      .then((result) => result.meta.totalItems);
+  }
+
   findTotalPrediction() {
     const query: PaginateQuery = {
       path: '',
@@ -94,8 +108,8 @@ export class StatisticsService {
     const q = await this.trainingCycleService.trainingCycleRepository
       .createQueryBuilder('cycle')
       .select('cycle.id', 'cycle_id')
-      .addSelect('COUNT(predictions.id) as predictions_count')
-      .leftJoin('cycle.predictions', 'predictions')
+      .addSelect('COUNT(prediction.id) as predictions_count')
+      .leftJoin('cycle.predictions', 'prediction')
       .groupBy('cycle.id')
       .orderBy('cycle_id', 'DESC')
       .execute();
@@ -110,8 +124,8 @@ export class StatisticsService {
     const q = await this.trainingCycleService.trainingCycleRepository
       .createQueryBuilder('cycle')
       .select('cycle.id', 'cycle_id')
-      .addSelect('AVG(predictions.confidant) as predictions_average')
-      .leftJoin('cycle.predictions', 'predictions')
+      .addSelect('AVG(prediction.confidant) as predictions_average')
+      .leftJoin('cycle.predictions', 'prediction')
       .groupBy('cycle.id')
       .orderBy('cycle_id', 'DESC')
       .execute();

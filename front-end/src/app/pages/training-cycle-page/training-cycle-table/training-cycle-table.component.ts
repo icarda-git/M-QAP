@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { TrainingCycleService } from 'src/app/services/training-cycle.service';
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +8,8 @@ import { TrainingCycleAddDialogComponent } from '../training-cycle-add-dialog/tr
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Paginated } from 'src/app/share/types/paginate.type';
 import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialog/delete-confirm-dialog.component';
+import { TrainingData } from 'src/app/share/types/training-data.model.type';
+import { TrainingCycle } from 'src/app/share/types/training-cycle.model.type';
 
 @Component({
   selector: 'app-training-cycle-table',
@@ -17,15 +18,9 @@ import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialo
 })
 export class TrainingCycleTableComponent {
   columnsToDisplay: string[] = ['id', 'text', 'creation_date', 'actions'];
-  dataSource!: MatTableDataSource<any>;
-  allTrainingCycle: any = [];
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  @ViewChild(MatSort)
-  sort!: MatSort;
+  dataSource!: MatTableDataSource<TrainingCycle>;
   form!: FormGroup;
-
-  trainingData!: Paginated<any>;
+  response!: Paginated<TrainingCycle>;
   length = 0;
   pageSize = 50;
   pageIndex = 0;
@@ -65,7 +60,7 @@ export class TrainingCycleTableComponent {
     this.trainingCycleService
       .find(queryString.join('&'))
       .subscribe((response) => {
-        this.trainingData = response;
+        this.response = response;
         this.length = response.meta.totalItems;
         this.dataSource = new MatTableDataSource(response.data);
       });
@@ -78,9 +73,9 @@ export class TrainingCycleTableComponent {
       maxWidth: '650px',
     });
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   if (result && result.submitted) this.initTable();
-    // });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result && result.submitted) this.loadData();
+    });
   }
 
   handlePageEvent(e: PageEvent) {

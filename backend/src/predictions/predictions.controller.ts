@@ -8,8 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { PredictionsService } from './predictions.service';
-import { TrainingData } from 'src/entities/training-data.entity';
-import { Paginate, PaginateQuery, Paginated, paginate } from 'nestjs-paginate';
+import { Paginate, PaginateQuery } from 'nestjs-paginate';
 
 @Controller('predictions')
 export class PredictionsController {

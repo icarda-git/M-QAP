@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { firstValueFrom } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { User } from 'src/app/share/types/user.model.type';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class AuthService {
     private router: Router
   ) {}
 
-  async logintoAWS(code: any, redirect_url: any = null) {
+  async logIntoAWS(code: string, redirect_url?: string) {
     let { access_token, expires_in } = await firstValueFrom(
       this.http.post(environment.api_url + '/auth/aws', { code }).pipe(
         map((d: any) => d),
@@ -34,12 +35,12 @@ export class AuthService {
       else this.router.navigateByUrl('/');
     }
   }
-  getLoggedInUser(): any {
+  getLoggedInUser(): User | null {
     if (localStorage.getItem('access_token') as string)
       return jwtDecode(localStorage.getItem('access_token') as string);
-    else return false;
+    else return null;
   }
-  goToLogin(redirect_url: string = '', type: any = null) {
+  goToLogin(redirect_url: string = '', type?: string) {
     this.document.location.href =
       environment.aws_cognito_link +
       `/login?client_id=${
@@ -51,6 +52,7 @@ export class AuthService {
 
   isAdmin() {
     const loggedUser = this.getLoggedInUser();
-    return loggedUser.role == 'admin';
+    if (loggedUser == null) return false;
+    else return loggedUser.role == 'admin';
   }
 }

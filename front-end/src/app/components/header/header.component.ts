@@ -4,6 +4,7 @@ import { DeleteConfirmDialogComponent } from 'src/app/share/delete-confirm-dialo
 import { AuthService } from 'src/app/pages/auth/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { User } from 'src/app/share/types/user.model.type';
 
 @Component({
   selector: 'app-header',
@@ -15,20 +16,18 @@ export class HeaderComponent {
     public headerService: HeaderServiceService,
     private authService: AuthService,
     public router: Router,
-    public dialog: MatDialog,
+    public dialog: MatDialog
   ) {
     this.headerService.setBackground('#0f212f');
   }
-  user_info: any;
+  user: User | null = null;
   loading = true;
+  isAdmin = false;
 
-  isadmin = false;
   ngOnInit() {
-    this.router.events.subscribe((e) => {
-      this.user_info = this.authService.getLoggedInUser();
-    
+    this.router.events.subscribe(() => {
+      this.user = this.authService.getLoggedInUser();
     });
- 
   }
   logout() {
     this.dialog
@@ -36,20 +35,19 @@ export class HeaderComponent {
         data: {
           title: 'Logout',
           message: 'Are you sure you want to logout?',
-          svg: `../../assets/shared-image/logout.png`,
         },
       })
       .afterClosed()
       .subscribe((dialogResult: boolean) => {
         if (dialogResult) {
           localStorage.removeItem('access_token');
-          this.user_info = null;
+          this.user = null;
           this.router.navigate(['./']);
         }
       });
   }
   login() {
-    if (this.user_info) this.logout();
+    if (this.user) this.logout();
     else {
       this.authService.goToLogin();
     }

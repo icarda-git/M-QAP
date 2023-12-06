@@ -16,6 +16,7 @@ import { DialogLayoutComponent } from '../share/dialog-layout/dialog-layout.comp
 import { EditIconComponent } from '../share/edit-icon/edit-icon.component';
 import { InputComponent } from '../share/input/input.component';
 import { OrganizationInputComponent } from '../share/organization-input/organization-input.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { OrganizationInputComponent } from '../share/organization-input/organiza
     OrganizationInputComponent,
     MatFormFieldModule,
     MatInputModule,
-    DialogLayoutComponent
+    DialogLayoutComponent,
+    ToastrModule
   ],
   exports: [
     CommonModule,
@@ -63,6 +65,7 @@ import { OrganizationInputComponent } from '../share/organization-input/organiza
     MatFormFieldModule,
     MatInputModule,
     DialogLayoutComponent,
+    ToastrModule
   ],
 })
 export class PagePaseModule {}

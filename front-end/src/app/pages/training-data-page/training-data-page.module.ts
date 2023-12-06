@@ -12,6 +12,7 @@ import { DeleteConfirmDialogModule } from 'src/app/share/delete-confirm-dialog/d
     TrainingDataTableComponent,
     TrainingDataFormComponent,
   ],
+  exports: [TrainingDataFormComponent],
   imports: [
     PagePaseModule,
     TrainingDataPageRoutingModule,

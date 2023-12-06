@@ -15,6 +15,9 @@ export class FooterComponent {
   ) {}
 
   openDialogContactUs() {
-    this.dialog.open(ContactUsDialogComponent, {});
+    this.dialog.open(ContactUsDialogComponent, {
+      width: '100%',
+      maxWidth: '650px',
+    });
   }
 }

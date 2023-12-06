@@ -7,7 +7,6 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  TemplateRef,
 } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -19,7 +18,7 @@ import {
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule, TooltipPosition } from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { concat, Observable, of, Subject } from 'rxjs';
 import {
@@ -61,25 +60,12 @@ export class CommodityInputComponent
   @Output() add = new EventEmitter();
   @Output() focus = new EventEmitter();
   @Output() blur = new EventEmitter();
-
-  @Input() showAddButton = false;
   @Input() multiple: boolean = false;
-  @Input() labelTemplate?: TemplateRef<any>;
   @Input() placeholder = 'Search ...';
   @Input() readonly: boolean = false;
-  @Input() tooltip?: string;
-  @Input() tooltipPosition: TooltipPosition = 'left';
-  compareObjects: (v1: any, v2: any) => boolean = (
-    v1: any,
-    v2: any
-  ): boolean => {
-    if (v1?.toc_id === v2?.toc_id) return true;
-    else return false;
-  };
+
   value?: string | null;
   labelFieldName = 'name';
-  onChange?: (value: any) => void;
-  onTouched?: () => void;
   filteredOptions$: Observable<any> = of([]);
   partnerInput$ = new Subject<string>();
   searchControl = new FormControl();
@@ -87,28 +73,36 @@ export class CommodityInputComponent
   selectedPartner?: any;
   control = new FormControl('', Validators.required);
 
+  onChange?: (value: any) => void;
+  onTouched?: () => void;
+  compareObjects: (v1: any, v2: any) => boolean = (v1, v2): boolean => {
+    console.log(v1, v2);
+
+    return v1 === v2;
+  };
+  trackByFn(item: any) {
+    return item.id;
+  }
+
   constructor(
     private commoditiesService: CommoditiesService,
     public dialogService: MatDialog
   ) {}
-
-  trackByFn(item: any) {
-    return item.id;
-  }
 
   ngOnInit(): void {
     this.placeholder = this.placeholder
       ? this.placeholder
       : this.labelFieldName;
     this.filteredOptions$ = concat(
-      of([]), // default items
+      of([]),
       this.partnerInput$.pipe(
         distinctUntilChanged(),
         debounceTime(200),
-        tap(() => (this.loading = true)),
         filter((term) => {
           return typeof term == 'string' && term.length >= 2;
         }),
+        tap(() => (this.loading = true)),
+
         switchMap((term) => {
           console.log(term);
           const queryString = [];

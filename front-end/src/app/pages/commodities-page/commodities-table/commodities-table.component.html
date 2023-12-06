@@ -2,7 +2,7 @@
   <section class="action-button-section">
     <button (click)="openDialog()" mat-raised-button color="primary">
       <mat-icon> add_box </mat-icon>
-      Add training data
+      Add commodity
     </button>
 
     <app-upload-file-material (uploaded)="fileUploaded($event)">
@@ -37,7 +37,9 @@
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-        <td mat-cell *matCellDef="let element" class="width-8">{{ element.id }}</td>
+        <td mat-cell *matCellDef="let element" class="width-8">
+          {{ element.id }}
+        </td>
       </ng-container>
 
       <!-- Text Column -->
@@ -67,7 +69,7 @@
         <th mat-header-cell *matHeaderCellDef>
           <span class="h5">Action</span>
         </th>
-        <td mat-cell *matCellDef="let element"  class="width-8">
+        <td mat-cell *matCellDef="let element" class="width-8">
           <div class="action-container">
             <button
               mat-icon-button

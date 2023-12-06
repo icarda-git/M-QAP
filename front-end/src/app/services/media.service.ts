@@ -29,7 +29,7 @@ export class MediaService {
     saveAs(`${this.api}/${url}`, name);
   }
 
-  downloadFile(file: any, text: string) {
+  downloadFile(file: string, text: string) {
     saveAs(
       `${this.api}/file/${file}`,
       [text, '.', file.split('.').pop()].join('')

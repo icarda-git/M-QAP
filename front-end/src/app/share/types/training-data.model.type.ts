@@ -1,4 +1,4 @@
-import { Organization } from "./organization.type";
+import { Organization } from "./organization.model.type";
 
 export type TrainingData = {
   id: number;

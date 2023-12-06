@@ -9,10 +9,11 @@ import {
   UploadFileResponse,
 } from 'src/app/services/media.service';
 import { Paginated } from 'src/app/share/types/paginate.type';
-import { TrainingData } from 'src/app/share/types/training-data.type';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CommoditiesService } from 'src/app/services/commodities.service';
 import { CommoditiesFormComponent } from '../commodities-form/commodities-form.component';
+import { Commodity } from 'src/app/share/types/commodity.model.type';
+import { Organization } from 'src/app/share/types/organization.model.type';
 
 @Component({
   selector: 'app-commodities-table',
@@ -21,14 +22,14 @@ import { CommoditiesFormComponent } from '../commodities-form/commodities-form.c
 })
 export class CommoditiesTableComponent {
   columnsToDisplay: string[] = ['id', 'name', 'parent_id', 'source', 'actions'];
-  dataSource!: MatTableDataSource<any>;
-  trainingData!: Paginated<TrainingData>;
+  dataSource!: MatTableDataSource<Commodity>;
+  response!: Paginated<Commodity>;
   length = 0;
   pageSize = 50;
   pageIndex = 0;
   sortBy = 'id:ASC';
   text = '';
-  organizations: any = [];
+  organizations: Organization[] = [];
   form!: FormGroup;
   constructor(
     public dialog: MatDialog,
@@ -40,7 +41,6 @@ export class CommoditiesTableComponent {
 
   ngOnInit() {
     this.initForm();
-
     this.form.valueChanges.subscribe((value) => {
       this.text = value.text;
       this.sortBy = value.sortBy;
@@ -74,7 +74,7 @@ export class CommoditiesTableComponent {
     this.commoditiesService
       .find(queryString.join('&'))
       .subscribe((response) => {
-        this.trainingData = response;
+        this.response = response;
         this.length = response.meta.totalItems;
         this.dataSource = new MatTableDataSource(response.data);
       });
@@ -107,8 +107,6 @@ export class CommoditiesTableComponent {
         data: {
           message: 'Are you sure you want to delete this record ?',
           title: 'Delete',
-
-          svg: `../../../../assets/shared-image/delete-user.png`,
         },
       })
       .afterClosed()
